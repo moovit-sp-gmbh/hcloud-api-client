@@ -13,7 +13,7 @@ func TestContext(t *testing.T) {
 	AddContext(identifier, "https://app.helmut.cloud", "test@mail.de", "testToken")
 
 	if Config.GetActiveContext() != nil && Config.GetActiveContext().Identifier == identifier {
-		t.Fatalf("failed to delete context, wanted not %s, got %s", "test", Config.GetActiveContext().Identifier)
+		t.Fatalf("failed to delete context, wanted not %s, got %s", identifier, Config.GetActiveContext().Identifier)
 	}
 
 	SetContext(identifier)
