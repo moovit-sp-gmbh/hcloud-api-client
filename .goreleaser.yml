@@ -1,0 +1,19 @@
+project_name: hcloud
+builds:
+  - env: [CGO_ENABLED=0]
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+nfpms:
+- maintainer: Severin Siebertz <s.siebertz@moovit-sp.com>
+  description: hcloud is an command line interface to communicate with the helmut.cloud platform API
+  homepage: https://github.com/moovit-sp-gmbh/hcloud-api-client
+  license: MIT
+  formats:
+  - deb
+  - rpm
+  - apk
