@@ -3,7 +3,6 @@ package idp
 import (
 	"fmt"
 	"hcloud-api-client/pkg"
-	"runtime"
 	"syscall"
 
 	"github.com/moovit-sp-gmbh/hcloud-sdk-go"
@@ -21,19 +20,17 @@ var registerCmd = &cobra.Command{
 func register(cmd *cobra.Command, args []string) {
 	idp := idp.NewFromConfig(&hcloud.Config{Api: server})
 
-	if runtime.GOOS != "windows" {
-		if passwordStdin {
-			fmt.Scan(&password)
-		}
+	if passwordStdin {
+		fmt.Scan(&password)
+	}
 
-		if passwordPrompt {
-			fmt.Print("Please enter password:\n")
-			bytepw, err := term.ReadPassword(syscall.Stdin)
-			if err != nil {
-				pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
-			}
-			password = string(bytepw)
+	if passwordPrompt {
+		fmt.Print("Please enter password:\n")
+		bytepw, err := term.ReadPassword(syscall.Stdin)
+		if err != nil {
+			pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
 		}
+		password = string(bytepw)
 	}
 
 	user, err := idp.Register(name, company, email, password)
