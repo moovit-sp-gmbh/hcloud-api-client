@@ -8,6 +8,9 @@ builds:
     goarch:
       - amd64
       - arm64
+    ignore:
+      - goos: windows
+        goarch: arm64
 nfpms:
 - maintainer: Severin Siebertz <s.siebertz@moovit-sp.com>
   description: hcloud is an command line interface to communicate with the helmut.cloud platform API
