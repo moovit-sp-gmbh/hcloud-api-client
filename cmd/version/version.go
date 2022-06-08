@@ -19,7 +19,7 @@ func (v Version) String() string {
 }
 
 //go:embed version.txt
-var hcloudVersion string
+var HcloudVersion string
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
@@ -43,7 +43,7 @@ func Init(rootCmd *cobra.Command) {
 }
 
 func localVersion(cmd *cobra.Command, args []string) {
-	pkg.Print(Version{Version: hcloudVersion})
+	pkg.Print(Version{Version: HcloudVersion})
 }
 
 func remoteVersion(cmd *cobra.Command, args []string) {
