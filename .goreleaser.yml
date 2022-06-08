@@ -17,3 +17,9 @@ nfpms:
   - deb
   - rpm
   - apk
+brews:
+- name: hcloud
+  homepage: https://github.com/moovit-sp-gmbh/hcloud-api-client
+  tap:
+    owner: moovit-sp-gmbh
+    name: hcloud-api-client
