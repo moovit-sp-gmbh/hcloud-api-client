@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"hcloud-api-client/config"
 	"hcloud-api-client/pkg"
+	"runtime"
 	"syscall"
 
 	"github.com/moovit-sp-gmbh/hcloud-sdk-go"
@@ -21,17 +22,19 @@ var authenticateCmd = &cobra.Command{
 func authenticate(cmd *cobra.Command, args []string) {
 	idp := idp.NewFromConfig(&hcloud.Config{Api: server})
 
-	if passwordStdin {
-		fmt.Scan(&password)
-	}
-
-	if passwordPrompt {
-		fmt.Print("Please enter password:\n")
-		bytepw, err := term.ReadPassword(syscall.Stdin)
-		if err != nil {
-			pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
+	if runtime.GOOS != "windows" {
+		if passwordStdin {
+			fmt.Scan(&password)
 		}
-		password = string(bytepw)
+
+		if passwordPrompt {
+			fmt.Print("Please enter password:\n")
+			bytepw, err := term.ReadPassword(syscall.Stdin)
+			if err != nil {
+				pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
+			}
+			password = string(bytepw)
+		}
 	}
 
 	token, err := idp.Authenticate(email, password)
