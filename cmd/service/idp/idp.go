@@ -28,7 +28,6 @@ func Init(serviceCmd *cobra.Command) {
 	registerCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "the password to use register at the identity provider")
 	if runtime.GOOS != "windows" {
 		registerCmd.PersistentFlags().BoolVarP(&passwordStdin, "password-stdin", "", false, "the password to use register at the identity provider read from stdin")
-		registerCmd.PersistentFlags().BoolVarP(&passwordPrompt, "password-prompt", "", false, "the password to use register at the identity provider request as prompt")
 	}
 	registerCmd.PersistentFlags().StringVarP(&company, "company", "c", "", "the company to use to register at the identity provider")
 	registerCmd.MarkPersistentFlagRequired("server")
@@ -41,7 +40,6 @@ func Init(serviceCmd *cobra.Command) {
 	authenticateCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "the password to use to authenticate against the identity provider")
 	if runtime.GOOS != "windows" {
 		authenticateCmd.PersistentFlags().BoolVarP(&passwordStdin, "password-stdin", "", false, "the password to use register at the identity provider read from stdin")
-		authenticateCmd.PersistentFlags().BoolVarP(&passwordPrompt, "password-prompt", "", false, "the password to use register at the identity provider request as prompt")
 	}
 	authenticateCmd.PersistentFlags().StringVarP(&identifier, "identifier", "i", "", "an identifier to tag this authentication context")
 	authenticateCmd.PersistentFlags().BoolVarP(&setContext, "set-context", "c", true, "set this authentication context as actice")
