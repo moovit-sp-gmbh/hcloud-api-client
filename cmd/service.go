@@ -1,4 +1,4 @@
-package service
+package cmd
 
 import (
 	"hcloud-api-client/cmd/service/idp"
@@ -11,7 +11,9 @@ var serviceCmd = &cobra.Command{
 	Short: "use a helmut.cloud service",
 }
 
-func Init(rootCmd *cobra.Command) {
+func init() {
 	rootCmd.AddCommand(serviceCmd)
+
+	// init idp subcommand
 	idp.Init(serviceCmd)
 }

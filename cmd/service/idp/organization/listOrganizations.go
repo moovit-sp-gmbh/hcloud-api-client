@@ -15,6 +15,12 @@ var listOrganizationCmd = &cobra.Command{
 	Run:   listOrganizations,
 }
 
+func init() {
+	listOrganizationCmd.PersistentFlags().IntVarP(&page, "page", "p", 0, "the page of a paginated request (0 equals first page)")
+	listOrganizationCmd.PersistentFlags().IntVarP(&limit, "limit", "l", 100, "the amount of results")
+	organizationCmd.AddCommand(listOrganizationCmd)
+}
+
 func listOrganizations(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	idp := idp.NewFromConfig(&hcloud.Config{Api: ctx.Server, Token: ctx.Token})

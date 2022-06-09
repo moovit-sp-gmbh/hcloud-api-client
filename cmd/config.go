@@ -1,4 +1,4 @@
-package config
+package cmd
 
 import (
 	"hcloud-api-client/cmd/config/context"
@@ -8,6 +8,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var configCmd = &cobra.Command{
+	Use:   "config",
+	Short: "manage the local configuration file",
+}
+
 type ConfigPath struct {
 	Path string `json:"path"`
 }
@@ -16,14 +21,9 @@ func (c ConfigPath) String() string {
 	return c.Path
 }
 
-var configCmd = &cobra.Command{
-	Use:   "config",
-	Short: "manage the local configuration file",
-}
-
 var identifier string
 
-var configCmds = []*cobra.Command{
+var configSubCmd = []*cobra.Command{
 	{
 		Use:   "path",
 		Short: "print local configuration path",
@@ -36,14 +36,11 @@ var configCmds = []*cobra.Command{
 	},
 }
 
-func Init(rootCmd *cobra.Command) {
+func init() {
 	rootCmd.AddCommand(configCmd)
+	rootCmd.AddCommand(configSubCmd...)
 
-	for _, cm := range configCmds {
-		configCmd.AddCommand(cm)
-	}
-
-	// init context
+	// init context subcommand
 	context.Init(configCmd)
 }
 

@@ -15,6 +15,10 @@ var versionCmd = &cobra.Command{
 	Run:   version,
 }
 
+func init() {
+	idpCmd.AddCommand(versionCmd)
+}
+
 func version(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	idp := idp.NewFromConfig(&hcloud.Config{Api: ctx.Server})

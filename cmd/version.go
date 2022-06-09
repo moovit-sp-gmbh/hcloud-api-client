@@ -1,4 +1,4 @@
-package version
+package cmd
 
 import (
 	_ "embed"
@@ -19,7 +19,7 @@ func (v Version) String() string {
 }
 
 //go:embed version.txt
-var HcloudVersion string
+var hcloudVersion string
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
@@ -36,14 +36,14 @@ var remoteVersionCmd = &cobra.Command{
 	Run:   remoteVersion,
 }
 
-func Init(rootCmd *cobra.Command) {
+func init() {
 	rootCmd.AddCommand(versionCmd)
 	versionCmd.AddCommand(localVersionCmd)
 	versionCmd.AddCommand(remoteVersionCmd)
 }
 
 func localVersion(cmd *cobra.Command, args []string) {
-	pkg.Print(Version{Version: HcloudVersion})
+	pkg.Print(Version{Version: hcloudVersion})
 }
 
 func remoteVersion(cmd *cobra.Command, args []string) {

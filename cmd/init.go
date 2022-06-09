@@ -2,10 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"hcloud-api-client/cmd/config"
-	"hcloud-api-client/cmd/service"
-	"hcloud-api-client/cmd/update"
-	"hcloud-api-client/cmd/version"
 	"hcloud-api-client/pkg"
 	"os"
 
@@ -27,11 +23,6 @@ func Execute(args []string) {
 	rootCmd.PersistentFlags().StringVarP(&format, "format", "f", "plain", "set the output format to plain or json")
 	rootCmd.ParseFlags(args)
 	pkg.SetFormat(format)
-
-	update.Init(rootCmd)
-	service.Init(rootCmd)
-	version.Init(rootCmd)
-	config.Init(rootCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)

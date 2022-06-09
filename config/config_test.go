@@ -8,12 +8,14 @@ import (
 )
 
 func TestContext(t *testing.T) {
+	identifierOriginal := "test" + randomString(8)
 	identifier := "test" + randomString(8)
 	LoadConfig()
+	AddContext(identifierOriginal, "https://app.helmut.cloud", "test@mail.de", "testToken")
 	AddContext(identifier, "https://app.helmut.cloud", "test@mail.de", "testToken")
 
 	if Config.GetActiveContext() != nil && Config.GetActiveContext().Identifier == identifier {
-		t.Fatalf("failed to delete context, wanted not %s, got %s", identifier, Config.GetActiveContext().Identifier)
+		t.Fatalf("failed to add context, wanted not %s, got %s", identifier, Config.GetActiveContext().Identifier)
 	}
 
 	SetContext(identifier)
@@ -27,6 +29,8 @@ func TestContext(t *testing.T) {
 	if Config.GetActiveContext() != nil && Config.GetActiveContext().Identifier == identifier {
 		t.Fatalf("failed to delete context, wanted not %s, got %s", identifier, Config.GetActiveContext().Identifier)
 	}
+
+	DelContext(identifierOriginal)
 }
 
 func randomString(length int) string {

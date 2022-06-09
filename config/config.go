@@ -115,7 +115,9 @@ func DelContext(identifier string) {
 }
 
 func remove(slice []ContextEntry, s int) []ContextEntry {
-	return append(slice[:s], slice[s+1:]...)
+	copy(slice[s:], slice[s+1:])
+	slice[len(slice)-1] = ContextEntry{}
+	return slice[:len(slice)-1]
 }
 
 func writeConfig() {
