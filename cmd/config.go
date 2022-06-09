@@ -38,7 +38,7 @@ var configSubCmd = []*cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(configCmd)
-	rootCmd.AddCommand(configSubCmd...)
+	configCmd.AddCommand(configSubCmd...)
 
 	// init context subcommand
 	context.Init(configCmd)
