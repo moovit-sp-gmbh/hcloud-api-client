@@ -13,6 +13,10 @@ var listContextCmd = &cobra.Command{
 	Run:   listContext,
 }
 
+func init() {
+	contextCmd.AddCommand(listContextCmd)
+}
+
 func listContext(cmd *cobra.Command, args []string) {
 	pkg.Print(config.Config.Contexts)
 }

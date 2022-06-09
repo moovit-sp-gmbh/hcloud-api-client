@@ -15,6 +15,12 @@ var deleteOrganizationCmd = &cobra.Command{
 	Run:   listOrganizations,
 }
 
+func init() {
+	deleteOrganizationCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the organization")
+	deleteOrganizationCmd.MarkPersistentFlagRequired("id")
+	organizationCmd.AddCommand(deleteOrganizationCmd)
+}
+
 func deleteOrganization(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	idp := idp.NewFromConfig(&hcloud.Config{Api: ctx.Server, Token: ctx.Token})

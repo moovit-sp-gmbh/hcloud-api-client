@@ -15,6 +15,14 @@ var listOrganizationMembersCmd = &cobra.Command{
 	Run:   listOrganizationMembers,
 }
 
+func init() {
+	listOrganizationMembersCmd.PersistentFlags().IntVarP(&page, "page", "p", 0, "the page of a paginated request (0 equals first page)")
+	listOrganizationMembersCmd.PersistentFlags().IntVarP(&limit, "limit", "l", 100, "the amount of results")
+	listOrganizationMembersCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the organization")
+	listOrganizationMembersCmd.MarkPersistentFlagRequired("id")
+	organizationMemberCmd.AddCommand(listOrganizationMembersCmd)
+}
+
 func listOrganizationMembers(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	idp := idp.NewFromConfig(&hcloud.Config{Api: ctx.Server, Token: ctx.Token})

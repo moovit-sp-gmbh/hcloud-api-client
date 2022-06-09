@@ -15,6 +15,10 @@ var authorizeCmd = &cobra.Command{
 	Run:   authorize,
 }
 
+func init() {
+	idpCmd.AddCommand(authorizeCmd)
+}
+
 func authorize(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	idp := idp.NewFromConfig(&hcloud.Config{Api: ctx.Server, Token: ctx.Token})

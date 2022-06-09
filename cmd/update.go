@@ -1,9 +1,8 @@
-package update
+package cmd
 
 import (
 	"encoding/json"
 	"fmt"
-	ver "hcloud-api-client/cmd/version"
 	"hcloud-api-client/pkg"
 	"io"
 	"net/http"
@@ -19,7 +18,7 @@ var updateCmd = &cobra.Command{
 	Run:   checkForUpdates,
 }
 
-func Init(rootCmd *cobra.Command) {
+func init() {
 	rootCmd.AddCommand(updateCmd)
 }
 
@@ -47,7 +46,7 @@ func checkForUpdates(cmd *cobra.Command, args []string) {
 	}
 
 	remote, _ := version.NewVersion(t.Tag)
-	local, _ := version.NewVersion(ver.HcloudVersion)
+	local, _ := version.NewVersion(hcloudVersion)
 
 	if remote.GreaterThan(local) {
 		pkg.Print(pkg.OkResponse{Result: fmt.Sprintf("a new version is available (current: %s, latest: %s)\nVisit https://github.com/moovit-sp-gmbh/hcloud-api-client/releases/tag/v%s to download it", local.String(), remote.String(), remote.String())})

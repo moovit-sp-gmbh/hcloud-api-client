@@ -13,6 +13,10 @@ var showContextCmd = &cobra.Command{
 	Run:   showContext,
 }
 
+func init() {
+	contextCmd.AddCommand(showContextCmd)
+}
+
 func showContext(cmd *cobra.Command, args []string) {
 	pkg.Print(config.Config.GetActiveContext())
 }

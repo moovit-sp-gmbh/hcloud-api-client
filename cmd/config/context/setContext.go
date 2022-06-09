@@ -14,6 +14,12 @@ var setContextCmd = &cobra.Command{
 	Run:   setContext,
 }
 
+func init() {
+	setContextCmd.PersistentFlags().StringVarP(&identifier, "identifier", "i", "", "the identifier of the context to be set")
+	setContextCmd.MarkPersistentFlagRequired("identifier")
+	contextCmd.AddCommand(setContextCmd)
+}
+
 func setContext(cmd *cobra.Command, args []string) {
 	config.SetContext(identifier)
 	pkg.Print(pkg.OkResponse{Result: fmt.Sprintf("context set to %s", identifier)})

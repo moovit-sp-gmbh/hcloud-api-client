@@ -15,6 +15,13 @@ var createOrganizationCmd = &cobra.Command{
 	Run:   createOrganization,
 }
 
+func init() {
+	createOrganizationCmd.PersistentFlags().StringVarP(&name, "name", "n", "", "the name of the new organization")
+	createOrganizationCmd.PersistentFlags().StringVarP(&company, "company", "c", "", "the company of the new organization")
+	createOrganizationCmd.MarkPersistentFlagRequired("name")
+	organizationCmd.AddCommand(createOrganizationCmd)
+}
+
 func createOrganization(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	idp := idp.NewFromConfig(&hcloud.Config{Api: ctx.Server, Token: ctx.Token})
