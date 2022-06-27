@@ -32,7 +32,7 @@ func init() {
 }
 
 func register(cmd *cobra.Command, args []string) {
-	idp := idp.NewFromConfig(&hcloud.Config{Api: server})
+	idp := idp.New(hcloud.New(&hcloud.ClientConfig{Api: server}))
 
 	if passwordStdin {
 		fmt.Scan(&password)

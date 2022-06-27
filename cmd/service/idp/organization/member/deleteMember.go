@@ -23,7 +23,7 @@ func init() {
 
 func delOrganizationMember(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	idp := idp.NewFromConfig(&hcloud.Config{Api: ctx.Server, Token: ctx.Token})
+	idp := idp.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
 	err := idp.DeleteOrganizationMemberById(id)
 	if err != nil {
 		pkg.PrintErr(err)
