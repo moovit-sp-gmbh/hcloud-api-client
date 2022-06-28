@@ -36,7 +36,7 @@ func PrintErr(err *hcloud.ErrorResponse) {
 		b, _ := json.Marshal(err)
 		fmt.Fprintf(os.Stderr, "%s\n", string(b))
 	} else {
-		fmt.Fprintf(os.Stderr, "error %d, message: %s\n", err.Code, err.Message)
+		fmt.Fprintf(os.Stderr, "%s\n", err.ToString())
 	}
 	os.Exit(1)
 }
