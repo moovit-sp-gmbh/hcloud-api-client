@@ -22,7 +22,7 @@ func Print(msg interface{}) {
 	if format == "json" {
 		b, err := json.Marshal(msg)
 		if err != nil {
-			PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
+			PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.parse.json", Message: err.Error()})
 		}
 		fmt.Printf("%s", string(b))
 	} else {
