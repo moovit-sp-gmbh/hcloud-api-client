@@ -25,14 +25,14 @@ func init() {
 func checkForUpdates(cmd *cobra.Command, args []string) {
 	resp, err := http.Get("https://api.github.com/repos/moovit-sp-gmbh/hcloud-api-client/releases/latest")
 	if err != nil {
-		pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
+		pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.http.error", Message: err.Error()})
 	}
 
 	defer resp.Body.Close()
 
 	b, err := io.ReadAll(resp.Body)
 	if err != nil {
-		pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
+		pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.http.error", Message: err.Error()})
 	}
 
 	type GithubRelease struct {
@@ -42,7 +42,7 @@ func checkForUpdates(cmd *cobra.Command, args []string) {
 	t := &GithubRelease{}
 	err = json.Unmarshal(b, t)
 	if err != nil {
-		pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
+		pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.parse.error", Message: err.Error()})
 	}
 
 	remote, _ := version.NewVersion(t.Tag)

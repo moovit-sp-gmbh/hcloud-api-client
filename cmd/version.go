@@ -47,5 +47,5 @@ func localVersion(cmd *cobra.Command, args []string) {
 }
 
 func remoteVersion(cmd *cobra.Command, args []string) {
-	pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: "Not implemented"})
+	pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.not.implemented", Message: "Not implemented"})
 }

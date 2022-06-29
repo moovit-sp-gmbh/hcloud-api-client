@@ -49,7 +49,7 @@ func LoadConfig() error {
 
 	err = yaml.Unmarshal(c, &Config)
 	if err != nil {
-		pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
+		pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.config.parse", Message: err.Error()})
 	}
 
 	return nil
@@ -57,7 +57,7 @@ func LoadConfig() error {
 
 func (c *Configuration) GetActiveContext() *ContextEntry {
 	if Config.Active == nil {
-		pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: "no active context found - authenticate first to create a new context (hcloud service idp authenticate -h)"})
+		pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.config.context", Message: "no active context found - authenticate first to create a new context (hcloud service idp authenticate -h)"})
 	}
 
 	return Config.Active
@@ -92,7 +92,7 @@ func SetContext(identifier string) {
 		}
 	}
 
-	pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: fmt.Sprintf("context '%s' not found", identifier)})
+	pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.config.context", Message: fmt.Sprintf("context '%s' not found", identifier)})
 }
 
 func DelContext(identifier string) {
@@ -111,7 +111,7 @@ func DelContext(identifier string) {
 		}
 	}
 
-	pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: fmt.Sprintf("context '%s' not found", identifier)})
+	pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.client.context", Message: fmt.Sprintf("context '%s' not found", identifier)})
 }
 
 func remove(slice []ContextEntry, s int) []ContextEntry {
@@ -125,11 +125,11 @@ func writeConfig() {
 
 	b, err := yaml.Marshal(Config)
 	if err != nil {
-		pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
+		pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.config.write", Message: err.Error()})
 	}
 
 	err = ioutil.WriteFile(pkg.GetHomeDir()+"/.hcloud/config", b, 0700)
 	if err != nil {
-		pkg.PrintErr(&hcloud.ErrorResponse{Code: -1, Message: err.Error()})
+		pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.config.write", Message: err.Error()})
 	}
 }

@@ -15,11 +15,15 @@ func TestGetHomeDir(t *testing.T) {
 }
 
 func TestParseErr(t *testing.T) {
-	testCode := -1
+	testCode := "000.000.0000"
+	testError := "test.error"
 	testMessage := "test message"
-	erro := ParseError(fmt.Sprintf(`{"status":%d,"message":"%s"}`, testCode, testMessage))
-	if erro.Code != -1 {
-		t.Fatalf(`result didnt match, wanted %d, got %d`, testCode, erro.Code)
+	erro := ParseError(fmt.Sprintf(`{"code":%s,error: "%s", "message":"%s"}`, testCode, testError, testMessage))
+	if erro.Code != "000.000.0000" {
+		t.Fatalf(`result didnt match, wanted %s, got %s`, testCode, erro.Code)
+	}
+	if erro.Error != testError {
+		t.Fatalf(`result didnt match, wanted %s, got %s`, testError, erro.Error)
 	}
 	if erro.Message != testMessage {
 		t.Fatalf(`result didnt match, wanted %s, got %s`, testMessage, erro.Message)
