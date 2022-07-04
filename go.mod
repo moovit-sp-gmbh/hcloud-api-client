@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/hashicorp/go-version v1.5.0
-	github.com/moovit-sp-gmbh/hcloud-sdk-go v0.0.7
+	github.com/moovit-sp-gmbh/hcloud-sdk-go v0.0.9
 	github.com/spf13/cobra v1.4.0
 	gopkg.in/yaml.v3 v3.0.1
 )

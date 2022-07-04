@@ -19,6 +19,11 @@ func (o OkResponse) String() string {
 }
 
 func Print(msg interface{}) {
+	PrintContinously(msg)
+	os.Exit(0)
+}
+
+func PrintContinously(msg interface{}) {
 	if format == "json" {
 		b, err := json.Marshal(msg)
 		if err != nil {
@@ -28,7 +33,6 @@ func Print(msg interface{}) {
 	} else {
 		fmt.Printf("%s\n", msg)
 	}
-	os.Exit(0)
 }
 
 func PrintErr(err *hcloud.ErrorResponse) {
