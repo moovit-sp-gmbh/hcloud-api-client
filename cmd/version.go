@@ -18,7 +18,7 @@ func (v Version) String() string {
 	return fmt.Sprint(v.Version)
 }
 
-//go:embed version.txt
+//go:embed .version
 var hcloudVersion string
 
 var versionCmd = &cobra.Command{

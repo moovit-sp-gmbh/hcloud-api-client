@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"hcloud-api-client/cmd/service/auditor"
 	"hcloud-api-client/cmd/service/idp"
 
 	"github.com/spf13/cobra"
@@ -16,4 +17,7 @@ func init() {
 
 	// init idp subcommand
 	idp.Init(serviceCmd)
+
+	// init auditor subcommand
+	auditor.Init(serviceCmd)
 }

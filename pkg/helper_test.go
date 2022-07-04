@@ -18,7 +18,8 @@ func TestParseErr(t *testing.T) {
 	testCode := "000.000.0000"
 	testError := "test.error"
 	testMessage := "test message"
-	erro := ParseError(fmt.Sprintf(`{"code":%s,error: "%s", "message":"%s"}`, testCode, testError, testMessage))
+	body := fmt.Sprintf(`{"code":"%s","error":"%s","message":"%s"}`, testCode, testError, testMessage)
+	erro := ParseError(body)
 	if erro.Code != "000.000.0000" {
 		t.Fatalf(`result didnt match, wanted %s, got %s`, testCode, erro.Code)
 	}
