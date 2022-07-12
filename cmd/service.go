@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"hcloud-api-client/cmd/service/auditor"
+	"hcloud-api-client/cmd/service/high5"
 	"hcloud-api-client/cmd/service/idp"
 	"hcloud-api-client/cmd/service/mailer"
 
@@ -24,4 +25,7 @@ func init() {
 
 	// init mailer subcommand
 	mailer.Init(serviceCmd)
+
+	// init high5 subcommand
+	high5.Init(serviceCmd)
 }
