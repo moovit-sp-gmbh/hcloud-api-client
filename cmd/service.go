@@ -3,6 +3,7 @@ package cmd
 import (
 	"hcloud-api-client/cmd/service/auditor"
 	"hcloud-api-client/cmd/service/idp"
+	"hcloud-api-client/cmd/service/mailer"
 
 	"github.com/spf13/cobra"
 )
@@ -20,4 +21,7 @@ func init() {
 
 	// init auditor subcommand
 	auditor.Init(serviceCmd)
+
+	// init mailer subcommand
+	mailer.Init(serviceCmd)
 }
