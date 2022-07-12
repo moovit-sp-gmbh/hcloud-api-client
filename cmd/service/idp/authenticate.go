@@ -22,7 +22,7 @@ func init() {
 	authenticateCmd.PersistentFlags().StringVarP(&email, "email", "e", "", "the email to use to authenticate against the identity provider")
 	authenticateCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "the password to use to authenticate against the identity provider")
 	if runtime.GOOS != "windows" {
-		authenticateCmd.PersistentFlags().BoolVarP(&passwordStdin, "password-stdin", "", false, "the password to use register at the identity provider read from stdin")
+		authenticateCmd.PersistentFlags().BoolVarP(&passwordStdin, "password-stdin", "", false, "the password to use to authenticate at the identity provider read from stdin")
 	}
 	authenticateCmd.PersistentFlags().StringVarP(&identifier, "identifier", "i", "", "an identifier to tag this authentication context")
 	authenticateCmd.PersistentFlags().BoolVarP(&setContext, "set-context", "c", true, "set this authentication context as actice")
