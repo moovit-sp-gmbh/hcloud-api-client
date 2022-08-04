@@ -1,9 +1,10 @@
 package execute
 
 import (
-	"fmt"
+	"bufio"
 	"hcloud-api-client/config"
 	"hcloud-api-client/pkg"
+	"os"
 	"runtime"
 
 	"github.com/moovit-sp-gmbh/hcloud-sdk-go"
@@ -39,7 +40,10 @@ func executeStream(cmd *cobra.Command, args []string) {
 	high5 := high5.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
 
 	if dataStdin {
-		fmt.Scan(&data)
+		scanner := bufio.NewScanner(os.Stdin)
+		for scanner.Scan() {
+			data += scanner.Text()
+		}
 	}
 
 	if data == "" {
