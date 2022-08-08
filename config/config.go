@@ -38,7 +38,7 @@ type ContextEntry struct {
 }
 
 func (c ContextEntry) String() string {
-	return fmt.Sprintf("Identifier: %s\nServer: %s\nEmail: %s\n", c.Identifier, c.Server, c.Email)
+	return fmt.Sprintf("Identifier: %s\nServer: %s\nEmail: %s\nToken: %s\n", c.Identifier, c.Server, c.Email, c.Token)
 }
 
 func LoadConfig() error {
@@ -64,11 +64,11 @@ func (c *Configuration) GetActiveContext() *ContextEntry {
 }
 
 func AddContext(identifier string, server string, email string, token string) {
-	for _, config := range Config.Contexts {
-		if config.Identifier == identifier {
-			config.Server = server
-			config.Email = email
-			config.Token = token
+	for i, _ := range Config.Contexts {
+		if Config.Contexts[i].Identifier == identifier {
+			Config.Contexts[i].Server = server
+			Config.Contexts[i].Email = email
+			Config.Contexts[i].Token = token
 			writeConfig()
 			return
 		}
