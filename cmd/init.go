@@ -20,7 +20,7 @@ var rootCmd = &cobra.Command{
 func Execute(args []string) {
 	rootCmd.DisableAutoGenTag = true
 
-	rootCmd.PersistentFlags().StringVarP(&format, "format", "f", "plain", "set the output format to plain or json")
+	rootCmd.PersistentFlags().StringVarP(&format, "format", "f", "yaml", "set the output format to 'yaml' (default), 'json', 'json-indent', 'json-pretty' or 'plain' (experimental)")
 	rootCmd.ParseFlags(args)
 	pkg.SetFormat(format)
 
