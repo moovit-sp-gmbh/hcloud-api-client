@@ -16,7 +16,7 @@ var logsCmd = &cobra.Command{
 }
 
 func init() {
-	logsCmd.PersistentFlags().StringVarP(&organization, "organization", "o", "", "the id of the organization to get logs from")
+	logsCmd.PersistentFlags().StringVarP(&organization, "organizationId", "i", "", "the id of the organization to get logs from")
 	logsCmd.PersistentFlags().IntVarP(&limit, "limit", "l", 500, "the maximum amount of logs")
 	logsCmd.PersistentFlags().IntVarP(&page, "page", "p", 0, "the amount of entries to skip (page * limit)")
 	auditorCmd.AddCommand(logsCmd)

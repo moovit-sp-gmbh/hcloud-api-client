@@ -25,7 +25,7 @@ func listApps(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	high5 := high5.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
 
-	apps, err := high5.GetApps(page, limit)
+	apps, err := high5.GetApps(limit, page)
 	if err != nil {
 		pkg.PrintErr(err)
 	}

@@ -19,8 +19,8 @@ func init() {
 	createEventCmd.PersistentFlags().StringVarP(&name, "name", "n", "", "the name of the new organization")
 	createEventCmd.MarkPersistentFlagRequired("name")
 
-	createEventCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the app")
-	createEventCmd.MarkPersistentFlagRequired("id")
+	createEventCmd.PersistentFlags().StringVarP(&id, "appId", "i", "", "the id of the app")
+	createEventCmd.MarkPersistentFlagRequired("appId")
 	eventCmd.AddCommand(createEventCmd)
 }
 

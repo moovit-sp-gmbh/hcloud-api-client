@@ -16,8 +16,8 @@ var listEventsCmd = &cobra.Command{
 }
 
 func init() {
-	listEventsCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the app")
-	listEventsCmd.MarkPersistentFlagRequired("id")
+	listEventsCmd.PersistentFlags().StringVarP(&id, "appId", "i", "", "the id of the app")
+	listEventsCmd.MarkPersistentFlagRequired("appId")
 
 	listEventsCmd.PersistentFlags().IntVarP(&page, "page", "p", 0, "the page of a paginated request (0 equals first page)")
 	listEventsCmd.PersistentFlags().IntVarP(&limit, "limit", "l", 500, "the amount of results")
@@ -28,7 +28,7 @@ func listEvents(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	high5 := high5.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
 
-	apps, err := high5.GetEvents(id, page, limit)
+	apps, err := high5.GetEvents(id, limit, page)
 	if err != nil {
 		pkg.PrintErr(err)
 	}

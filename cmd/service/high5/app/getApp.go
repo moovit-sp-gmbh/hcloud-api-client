@@ -16,8 +16,8 @@ var getAppCmd = &cobra.Command{
 }
 
 func init() {
-	getAppCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the app")
-	getAppCmd.MarkPersistentFlagRequired("id")
+	getAppCmd.PersistentFlags().StringVarP(&id, "appId", "i", "", "the id of the app")
+	getAppCmd.MarkPersistentFlagRequired("appId")
 	appCmd.AddCommand(getAppCmd)
 }
 

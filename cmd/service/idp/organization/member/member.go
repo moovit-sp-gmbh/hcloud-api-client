@@ -9,7 +9,7 @@ var organizationMemberCmd = &cobra.Command{
 	Short: "manage organizations members at the helmut.cloud identity provider",
 }
 
-var id, userid string
+var id, userid, email, permission string
 var page, limit int
 
 func Init(organizationCmd *cobra.Command) {

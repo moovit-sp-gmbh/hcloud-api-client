@@ -16,8 +16,8 @@ var getEventCmd = &cobra.Command{
 }
 
 func init() {
-	getEventCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the app")
-	getEventCmd.MarkPersistentFlagRequired("id")
+	getEventCmd.PersistentFlags().StringVarP(&id, "eventId", "i", "", "the id of the event")
+	getEventCmd.MarkPersistentFlagRequired("eventId")
 	eventCmd.AddCommand(getEventCmd)
 }
 

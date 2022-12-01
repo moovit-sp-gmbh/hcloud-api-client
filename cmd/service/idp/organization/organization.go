@@ -20,21 +20,3 @@ func Init(idpCmd *cobra.Command) {
 	// init organization members
 	member.Init(organizationCmd)
 }
-
-// 	{
-// 		Use:   "member",
-// 		Short: "manage organization members",
-// 		// Run:          members,
-// 	},
-// }
-
-// func createOrganization(cmd *cobra.Command, args []string) {
-// 	ctx := config.Config.GetActiveContext()
-// 	idp := idp.NewFromConfig(&hcloud.Config{Api: ctx.Server, Token: ctx.Token})
-// 	organizations, err := idp.CreateOrganization()
-// 	if err != nil {
-// 		pkg.PrintErr(err)
-// 	}
-
-// 	pkg.Print(organizations)
-// }

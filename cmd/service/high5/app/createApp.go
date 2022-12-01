@@ -16,7 +16,7 @@ var createAppCmd = &cobra.Command{
 }
 
 func init() {
-	createAppCmd.PersistentFlags().StringVarP(&name, "name", "n", "", "the name of the new organization")
+	createAppCmd.PersistentFlags().StringVarP(&name, "name", "n", "", "the name of the new app")
 	createAppCmd.MarkPersistentFlagRequired("name")
 	appCmd.AddCommand(createAppCmd)
 }

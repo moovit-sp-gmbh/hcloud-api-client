@@ -14,13 +14,13 @@ import (
 
 var executeEventCmd = &cobra.Command{
 	Use:   "event",
-	Short: "execute an event by it's NAME",
+	Short: "execute an event by it's name",
 	Run:   executeEvent,
 }
 
 func init() {
-	executeEventCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the app")
-	executeEventCmd.MarkPersistentFlagRequired("id")
+	executeEventCmd.PersistentFlags().StringVarP(&id, "appId", "i", "", "the id of the app")
+	executeEventCmd.MarkPersistentFlagRequired("appId")
 
 	executeEventCmd.PersistentFlags().StringVarP(&name, "name", "n", "", "the name of the event to execute")
 	executeEventCmd.MarkPersistentFlagRequired("name")

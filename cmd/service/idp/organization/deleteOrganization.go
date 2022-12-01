@@ -12,18 +12,19 @@ import (
 var deleteOrganizationCmd = &cobra.Command{
 	Use:   "delete",
 	Short: "delete an organizations by id",
-	Run:   listOrganizations,
+	Run:   deleteOrganization,
 }
 
 func init() {
-	deleteOrganizationCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the organization")
-	deleteOrganizationCmd.MarkPersistentFlagRequired("id")
+	deleteOrganizationCmd.PersistentFlags().StringVarP(&id, "organizationId", "i", "", "the id of the organization")
+	deleteOrganizationCmd.MarkPersistentFlagRequired("organizationId")
 	organizationCmd.AddCommand(deleteOrganizationCmd)
 }
 
 func deleteOrganization(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	idp := idp.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
+
 	err := idp.DeleteOrganizationById(id)
 	if err != nil {
 		pkg.PrintErr(err)

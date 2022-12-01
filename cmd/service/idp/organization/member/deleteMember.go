@@ -16,8 +16,8 @@ var delOrganizationMemberCmd = &cobra.Command{
 }
 
 func init() {
-	delOrganizationMemberCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the organization")
-	delOrganizationMemberCmd.MarkPersistentFlagRequired("id")
+	delOrganizationMemberCmd.PersistentFlags().StringVarP(&id, "organizationId", "i", "", "the id of the organization")
+	delOrganizationMemberCmd.MarkPersistentFlagRequired("organizationId")
 	organizationMemberCmd.AddCommand(delOrganizationMemberCmd)
 }
 

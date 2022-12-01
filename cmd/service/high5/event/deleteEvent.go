@@ -16,8 +16,8 @@ var deleteEventCmd = &cobra.Command{
 }
 
 func init() {
-	deleteEventCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the app")
-	deleteEventCmd.MarkPersistentFlagRequired("id")
+	deleteEventCmd.PersistentFlags().StringVarP(&id, "eventId", "i", "", "the id of the event")
+	deleteEventCmd.MarkPersistentFlagRequired("eventId")
 	eventCmd.AddCommand(deleteEventCmd)
 }
 

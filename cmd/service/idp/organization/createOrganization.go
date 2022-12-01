@@ -25,6 +25,7 @@ func init() {
 func createOrganization(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	idp := idp.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
+
 	organization, err := idp.CreateOrganization(name, company)
 	if err != nil {
 		pkg.PrintErr(err)

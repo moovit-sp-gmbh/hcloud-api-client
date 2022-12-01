@@ -16,8 +16,8 @@ var deleteStreamCmd = &cobra.Command{
 }
 
 func init() {
-	deleteStreamCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the stream")
-	deleteStreamCmd.MarkPersistentFlagRequired("id")
+	deleteStreamCmd.PersistentFlags().StringVarP(&id, "streamId", "i", "", "the id of the stream")
+	deleteStreamCmd.MarkPersistentFlagRequired("streamId")
 
 	streamCmd.AddCommand(deleteStreamCmd)
 }

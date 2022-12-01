@@ -16,8 +16,8 @@ var getStreamCmd = &cobra.Command{
 }
 
 func init() {
-	getStreamCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the stream")
-	getStreamCmd.MarkPersistentFlagRequired("id")
+	getStreamCmd.PersistentFlags().StringVarP(&id, "streamId", "i", "", "the id of the stream")
+	getStreamCmd.MarkPersistentFlagRequired("streamId")
 
 	streamCmd.AddCommand(getStreamCmd)
 }

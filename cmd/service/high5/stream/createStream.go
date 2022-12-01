@@ -16,10 +16,10 @@ var createStreamCmd = &cobra.Command{
 }
 
 func init() {
-	createStreamCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the event")
-	createStreamCmd.MarkPersistentFlagRequired("id")
+	createStreamCmd.PersistentFlags().StringVarP(&id, "eventId", "i", "", "the id of the event")
+	createStreamCmd.MarkPersistentFlagRequired("eventId")
 
-	createStreamCmd.PersistentFlags().StringVarP(&name, "name", "n", "", "the name of the new organization")
+	createStreamCmd.PersistentFlags().StringVarP(&name, "name", "n", "", "the name of the new stream")
 	createStreamCmd.MarkPersistentFlagRequired("name")
 
 	streamCmd.AddCommand(createStreamCmd)

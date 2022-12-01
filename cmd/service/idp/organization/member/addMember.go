@@ -3,6 +3,7 @@ package member
 import (
 	"hcloud-api-client/config"
 	"hcloud-api-client/pkg"
+	"strings"
 
 	"github.com/moovit-sp-gmbh/hcloud-sdk-go"
 	"github.com/moovit-sp-gmbh/hcloud-sdk-go/service/idp"
@@ -16,17 +17,33 @@ var addOrganizationMemberCmd = &cobra.Command{
 }
 
 func init() {
-	addOrganizationMemberCmd.PersistentFlags().StringVarP(&id, "organization-id", "o", "", "the id of the organization")
-	addOrganizationMemberCmd.PersistentFlags().StringVarP(&userid, "user-id", "u", "", "the id of the user")
-	addOrganizationMemberCmd.MarkPersistentFlagRequired("organization-id")
-	addOrganizationMemberCmd.MarkPersistentFlagRequired("user-id")
+	addOrganizationMemberCmd.PersistentFlags().StringVarP(&id, "organizationId", "i", "", "the id of the organization")
+	addOrganizationMemberCmd.PersistentFlags().StringVarP(&email, "email", "e", "", "the email of the user")
+	addOrganizationMemberCmd.PersistentFlags().StringVarP(&permission, "permission", "p", "READ", "the permission the new user should hold (READ, MANAGE, ADMIN, OWNER; default READ)")
+	addOrganizationMemberCmd.MarkPersistentFlagRequired("organizationId")
+	addOrganizationMemberCmd.MarkPersistentFlagRequired("email")
 	organizationMemberCmd.AddCommand(addOrganizationMemberCmd)
 }
 
 func addOrganizationMember(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	idp := idp.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
-	organizationMember, err := idp.AddOrganizationMemberById(id, userid)
+
+	perm := hcloud.ORGANIZATION_READ
+
+	switch strings.ToUpper(permission) {
+	case "MANAGE":
+		perm = hcloud.ORGANIZATION_MANAGE
+		break
+	case "ADMIN":
+		perm = hcloud.ORGANIZATION_MANAGE
+		break
+	case "OWNER":
+		perm = hcloud.ORGANIZATION_OWNER
+		break
+	}
+
+	organizationMember, err := idp.AddOrganizationMemberById(id, email, perm)
 	if err != nil {
 		pkg.PrintErr(err)
 	}

@@ -16,8 +16,8 @@ var deleteAppCmd = &cobra.Command{
 }
 
 func init() {
-	deleteAppCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the app")
-	deleteAppCmd.MarkPersistentFlagRequired("id")
+	deleteAppCmd.PersistentFlags().StringVarP(&id, "appId", "i", "", "the id of the app")
+	deleteAppCmd.MarkPersistentFlagRequired("appId")
 	appCmd.AddCommand(deleteAppCmd)
 }
 

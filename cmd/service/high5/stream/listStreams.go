@@ -16,8 +16,8 @@ var listStreamsCmd = &cobra.Command{
 }
 
 func init() {
-	listStreamsCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "the id of the event")
-	listStreamsCmd.MarkPersistentFlagRequired("id")
+	listStreamsCmd.PersistentFlags().StringVarP(&id, "eventId", "i", "", "the id of the event")
+	listStreamsCmd.MarkPersistentFlagRequired("eventId")
 
 	listStreamsCmd.PersistentFlags().IntVarP(&page, "page", "p", 0, "the page of a paginated request (0 equals first page)")
 	listStreamsCmd.PersistentFlags().IntVarP(&limit, "limit", "l", 500, "the amount of results")
@@ -28,7 +28,7 @@ func listStreams(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
 	high5 := high5.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
 
-	apps, err := high5.GetStreams(id, page, limit)
+	apps, err := high5.GetStreams(id, limit, page)
 	if err != nil {
 		pkg.PrintErr(err)
 	}
