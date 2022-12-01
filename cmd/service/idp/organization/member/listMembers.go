@@ -25,7 +25,7 @@ func init() {
 
 func listOrganizationMembers(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	idp := idp.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
+	idp := idp.New(hcloud.New(&hcloud.Config{Api: ctx.Server, Token: ctx.Token}))
 
 	members, err := idp.ListOrganizationMembersById(id, limit, page)
 	if err != nil {

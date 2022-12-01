@@ -42,7 +42,7 @@ func (c ContextEntry) String() string {
 }
 
 func LoadConfig() error {
-	c, err := ioutil.ReadFile(configPath + "/config")
+	c, err := ioutil.ReadFile(configPath + "/config.yml")
 	if err != nil {
 		return err
 	}
@@ -128,7 +128,7 @@ func writeConfig() {
 		pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.config.write", Message: err.Error()})
 	}
 
-	err = ioutil.WriteFile(pkg.GetHomeDir()+"/.hcloud/config", b, 0700)
+	err = ioutil.WriteFile(pkg.GetHomeDir()+"/.hcloud/config.yml", b, 0700)
 	if err != nil {
 		pkg.PrintErr(&hcloud.ErrorResponse{Code: "000.000.0000", Error: "client.config.write", Message: err.Error()})
 	}

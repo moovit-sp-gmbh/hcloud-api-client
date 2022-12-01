@@ -27,7 +27,7 @@ func init() {
 
 func createStream(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	high5 := high5.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
+	high5 := high5.New(hcloud.New(&hcloud.Config{Api: ctx.Server, Token: ctx.Token}))
 
 	stream, err := high5.CreateStream(name, id)
 	if err != nil {

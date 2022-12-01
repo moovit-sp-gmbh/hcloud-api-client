@@ -21,7 +21,7 @@ func init() {
 
 func version(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	mailer := mailer.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server}))
+	mailer := mailer.New(hcloud.New(&hcloud.Config{Api: ctx.Server}))
 	version, err := mailer.Version()
 	if err != nil {
 		pkg.PrintErr(err)

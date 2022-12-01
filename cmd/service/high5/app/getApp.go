@@ -23,7 +23,7 @@ func init() {
 
 func getAppById(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	high5 := high5.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
+	high5 := high5.New(hcloud.New(&hcloud.Config{Api: ctx.Server, Token: ctx.Token}))
 
 	apps, err := high5.GetAppById(id)
 	if err != nil {

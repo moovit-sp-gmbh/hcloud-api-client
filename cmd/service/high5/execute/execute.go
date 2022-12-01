@@ -9,7 +9,7 @@ var executeCmd = &cobra.Command{
 	Short: "execute a stream or event",
 }
 
-var id, name, target, data string
+var id, name, target, data, dataType string
 var wait, dataStdin bool
 var timeout int
 

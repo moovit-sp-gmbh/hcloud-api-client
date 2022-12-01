@@ -6,6 +6,9 @@ test:
 run:
 	go run -race main.go
 
+tui:
+	go run -race main.go tui
+
 build+linux:
 	GOOS=linux GOARCH=amd64 go build -o bin/linux/hcloud main.go
 

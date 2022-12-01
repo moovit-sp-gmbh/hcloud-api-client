@@ -28,6 +28,7 @@ func init() {
 	executeEventCmd.PersistentFlags().StringVarP(&target, "target", "t", "", "the name of the target to execute the stream on")
 	executeEventCmd.MarkPersistentFlagRequired("target")
 
+	executeEventCmd.PersistentFlags().StringVarP(&dataType, "type", "y", "JSON", "the type of data to be send as payload for the stream, JSON or GENERIC")
 	executeEventCmd.PersistentFlags().StringVarP(&data, "data", "d", "", "the data to be send as payload for the stream")
 	if runtime.GOOS != "windows" {
 		executeEventCmd.PersistentFlags().BoolVarP(&dataStdin, "data-stdin", "", false, "read the data to be send as payload for the stream from stdin")
@@ -40,7 +41,7 @@ func init() {
 
 func executeEvent(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	high5 := high5.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
+	high5 := high5.New(hcloud.New(&hcloud.Config{Api: ctx.Server, Token: ctx.Token}))
 
 	if dataStdin {
 		scanner := bufio.NewScanner(os.Stdin)
@@ -53,7 +54,7 @@ func executeEvent(cmd *cobra.Command, args []string) {
 		data = "{}"
 	}
 
-	apps, err := high5.ExecuteEventByName(id, name, target, []byte(data), timeout, wait)
+	apps, err := high5.ExecuteEventByName(id, name, target, dataType, []byte(data), timeout, wait)
 	if err != nil {
 		pkg.PrintErr(err)
 	}

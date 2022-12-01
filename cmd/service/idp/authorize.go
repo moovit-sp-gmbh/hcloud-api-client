@@ -21,7 +21,7 @@ func init() {
 
 func authorize(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	idp := idp.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
+	idp := idp.New(hcloud.New(&hcloud.Config{Api: ctx.Server, Token: ctx.Token}))
 	user, err := idp.Authorize()
 	if err != nil {
 		pkg.PrintErr(err)

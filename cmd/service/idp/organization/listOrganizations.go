@@ -23,7 +23,7 @@ func init() {
 
 func listOrganizations(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	idp := idp.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
+	idp := idp.New(hcloud.New(&hcloud.Config{Api: ctx.Server, Token: ctx.Token}))
 	organizations, err := idp.ListOrganizations(limit, page)
 	if err != nil {
 		pkg.PrintErr(err)

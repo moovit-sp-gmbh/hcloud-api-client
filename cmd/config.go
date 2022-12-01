@@ -45,7 +45,7 @@ func init() {
 }
 
 func printLocalConfigPath(cmd *cobra.Command, args []string) {
-	pkg.Print(ConfigPath{Path: pkg.GetHomeDir() + "/.hcloud/config"})
+	pkg.Print(ConfigPath{Path: pkg.GetHomeDir() + "/.hcloud/config.yml"})
 }
 
 func printLocalConfig(cmd *cobra.Command, args []string) {

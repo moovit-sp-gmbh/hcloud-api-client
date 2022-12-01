@@ -21,7 +21,7 @@ func init() {
 
 func version(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	auditor := auditor.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server}))
+	auditor := auditor.New(hcloud.New(&hcloud.Config{Api: ctx.Server}))
 	version, err := auditor.Version()
 	if err != nil {
 		pkg.PrintErr(err)

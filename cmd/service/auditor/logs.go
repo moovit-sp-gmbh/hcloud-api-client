@@ -24,7 +24,7 @@ func init() {
 
 func requestLogs(cmd *cobra.Command, args []string) {
 	ctx := config.Config.GetActiveContext()
-	auditor := auditor.New(hcloud.New(&hcloud.ClientConfig{Api: ctx.Server, Token: ctx.Token}))
+	auditor := auditor.New(hcloud.New(&hcloud.Config{Api: ctx.Server, Token: ctx.Token}))
 
 	logs, _, err := auditor.GetAuditLogs(organization, limit, page)
 	if err != nil {
