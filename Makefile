@@ -1,13 +1,16 @@
 .PHONY: build
 
+prepare:
+	go mod tidy
+
+dev:
+	go run -race main.go
+
 test:
 	go test ./...
 
-run:
-	go run -race main.go
-
 build+linux:
-	GOOS=linux GOARCH=amd64 go build -o bin/linux/hcloud main.go
+	GOOS=linux GOARCH=amd64 go build -o bin/linux/amd64/hcloud main.go
 
 build+linux+arm:
 	GOOS=linux GOARCH=arm go build -o bin/linux/arm/hcloud main.go
