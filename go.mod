@@ -16,6 +16,7 @@ require (
 )
 
 require (
+	github.com/derailed/tview v0.7.2 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/gdamore/encoding v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
