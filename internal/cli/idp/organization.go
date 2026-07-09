@@ -5,11 +5,11 @@ import (
 	"database/sql"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal"
+	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/command"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/util"
 	"github.com/spf13/cobra"
 )
@@ -96,11 +96,11 @@ var createOrgCommand = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		fmt.Println(string(text))
 
 		ctx.OrgName = sql.NullString{Valid: true, String: orgName}
 		service.Push(ctx)
 
+		command.SetResult(cmd, command.Text(string(text)))
 		return nil
 	},
 }

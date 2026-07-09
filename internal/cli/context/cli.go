@@ -3,10 +3,10 @@ package context
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 	"strconv"
 
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal"
+	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/command"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/db"
 	"github.com/spf13/cobra"
 )
@@ -38,11 +38,12 @@ var listCmd = &cobra.Command{
 			ctxs = []db.Context{}
 		}
 
-		err = json.NewEncoder(os.Stdout).Encode(ctxs)
+		data, err := json.MarshalIndent(ctxs, "", "  ")
 		if err != nil {
 			return err
 		}
 
+		command.SetResult(cmd, command.Text(string(data)))
 		return nil
 	},
 }
@@ -65,12 +66,14 @@ var setCmd = &cobra.Command{
 			return err
 		}
 
+		command.SetResult(cmd, command.Text(fmt.Sprintf("Set context %d as latest", id)))
 		return nil
 	},
 }
 
 func Command() *cobra.Command {
 	rootCmd := &cobra.Command{Use: "context", Run: func(cmd *cobra.Command, args []string) { cmd.Help() }}
+	rootCmd.Groups()
 	rootCmd.AddCommand(listCmd)
 	rootCmd.AddCommand(setCmd)
 	return rootCmd

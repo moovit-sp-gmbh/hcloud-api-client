@@ -1,14 +1,17 @@
 package idp
 
 import (
+	"bytes"
 	"database/sql"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
 	"net/http"
-	"strings"
 
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal"
+	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli"
+	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/command"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/util"
 	"github.com/spf13/cobra"
 )
@@ -16,7 +19,8 @@ import (
 var server string
 
 func init() {
-	loginCommand.Flags().StringP("data", "d", "", "<{ email, password } JSON>")
+	loginCommand.Flags().StringP("email", "e", "", "email")
+	loginCommand.Flags().StringP("password", "p", "", "password")
 }
 
 var loginCommand = &cobra.Command{
@@ -29,21 +33,33 @@ var loginCommand = &cobra.Command{
 			return err
 		}
 
-		data, err := cmd.Flags().GetString("data")
-		var body io.Reader
-		if (err != nil || data == "") && util.IsPipe() {
-			body = cmd.InOrStdin()
-		} else if len(data) > 0 {
-			body = strings.NewReader(data)
-		} else {
-			return fmt.Errorf("data argument is missing")
+		email, err := cmd.Flags().GetString("email")
+		if err != nil {
+			return err
+		} else if email == "" {
+			email = cli.Prompt("Email")
+		}
+
+		password, err := cmd.Flags().GetString("password")
+		if err != nil {
+			return err
+		} else if password == "" {
+			password = cli.Prompt("Password")
+		}
+
+		body, err := json.Marshal(struct{ 
+			Email string `json:"email"`
+			Password string `json:"password"`
+		}{ email, password })
+		if err != nil {
+			return err
 		}
 
 		url, err := util.BuildURL(server, "/api/account/v1/login")
 		if err != nil {
 			return err
 		}
-		req, err := http.NewRequest(http.MethodPost, url, body)
+		req, err := http.NewRequest(http.MethodPost, url, bytes.NewReader(body))
 		if err != nil {
 			return err
 		}
@@ -64,14 +80,12 @@ var loginCommand = &cobra.Command{
 		}
 
 		authorization := res.Header.Get("authorization")
-		fmt.Printf("Authorization: %s\n", authorization)
 
 		text, err := io.ReadAll(res.Body)
 		defer res.Body.Close()
 		if err != nil {
 			return err
 		}
-		fmt.Println(string(text))
 
 		service := internal.New()
 		ctx, err := service.GetLatest()
@@ -81,6 +95,7 @@ var loginCommand = &cobra.Command{
 		ctx.Jwt = sql.NullString{Valid: true, String: authorization}
 		service.Push(ctx)
 
+		command.SetResult(cmd, command.Text(fmt.Sprintf("Authorization: %s\n%s", authorization, string(text))))
 		return nil
 	},
 }
