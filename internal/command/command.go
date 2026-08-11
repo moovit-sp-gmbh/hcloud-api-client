@@ -98,7 +98,10 @@ func (c *Command) Help(args []string) []string {
 		}
 	})
 
-	lastArg := args[len(args)-1]
+	var lastArg string
+	if len(args) > 0 {
+		lastArg = args[len(args)-1]
+	}
 	if len(lastArg) > 1 && lastArg[0] == '-' && lastArg[1] == '-' {
 		if f, ok := flags[lastArg[2:]]; ok {
 			if f.Value.Type() != "bool" {
