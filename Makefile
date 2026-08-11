@@ -9,3 +9,25 @@ migrate+down:
 
 migrate+up:
 	goose sqlite3 db.sqlite up -dir internal/db/migrations
+
+generate:
+	$(MAKE) generate+idp
+	$(MAKE) generate+high5
+	$(MAKE) generate+mothership
+	$(MAKE) generate+cosmo
+	$(MAKE) generate+dali
+
+generate+idp:
+	./scripts/generate_idp.sh
+
+generate+high5:
+	./scripts/generate_high5.sh
+
+generate+mothership:
+	./scripts/generate_mothership.sh
+
+generate+cosmo:
+	./scripts/generate_cosmo.sh
+
+generate+dali:
+	./scripts/generate_dali.sh
