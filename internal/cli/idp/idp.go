@@ -15,8 +15,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var server string
-
 func init() {
 	loginCommand.Flags().StringP("email", "e", "", "email")
 	loginCommand.Flags().StringP("password", "p", "", "password")
