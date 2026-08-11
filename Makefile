@@ -1,3 +1,6 @@
+build:
+	go build -o hcloud-cli ./main.go
+
 format:
 	go fmt ./...
 
