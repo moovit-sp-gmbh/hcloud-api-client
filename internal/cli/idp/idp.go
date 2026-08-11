@@ -1,17 +1,14 @@
 package idp
 
 import (
-	"bytes"
+	"context"
 	"database/sql"
-	"encoding/json"
-	"errors"
-	"io"
-	"net/http"
 
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli"
+	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/clients/idpClient"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/command"
-	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/util"
+	"github.com/oapi-codegen/runtime/types"
 	"github.com/spf13/cobra"
 )
 
@@ -25,7 +22,7 @@ var loginCommand = &cobra.Command{
 	Short: "Authenticate against helmut.cloud",
 	Long:  "Obtain an authorization token to use in future requests. Saved in context as JWT",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		server, err := command.Server(cmd)
+		server, err := command.ServerIDP(cmd)
 		if err != nil {
 			return err
 		}
@@ -44,55 +41,44 @@ var loginCommand = &cobra.Command{
 			password = cli.Prompt("Password")
 		}
 
-		body, err := json.Marshal(struct {
-			Email    string `json:"email"`
-			Password string `json:"password"`
-		}{email, password})
+		client, err := idpClient.NewClientWithResponses(server)
 		if err != nil {
 			return err
 		}
 
-		url, err := util.BuildURL(server, "/api/account/v1/login")
-		if err != nil {
-			return err
-		}
-		req, err := http.NewRequest(http.MethodPost, url, bytes.NewReader(body))
-		if err != nil {
-			return err
-		}
-		req.Header.Set("content-type", "application/json")
-
-		res, err := http.DefaultClient.Do(req)
+		res, err := client.PostV1LoginWithResponse(context.TODO(), nil, idpClient.PostV1LoginJSONRequestBody{
+			Email:    types.Email(email),
+			Password: password,
+		})
 		if err != nil {
 			return err
 		}
 
-		if res.StatusCode != 200 {
-			text, err := io.ReadAll(res.Body)
-			defer res.Body.Close()
+		var text command.Text
+		switch res.StatusCode() {
+		case 200:
+			authorization := res.HTTPResponse.Header.Get("authorization")
+
+			service := internal.New()
+			ctx, err := service.GetLatest()
 			if err != nil {
 				return err
 			}
-			return errors.New(string(text))
+			ctx.Jwt = sql.NullString{Valid: true, String: authorization}
+			service.Push(ctx)
+
+			text, err = command.JSON(res.JSON200)
+			if err != nil {
+				return err
+			}
+		default:
+			text, err = command.JSON(string(res.Body))
+			if err != nil {
+				return err
+			}
 		}
 
-		authorization := res.Header.Get("authorization")
-
-		text, err := io.ReadAll(res.Body)
-		defer res.Body.Close()
-		if err != nil {
-			return err
-		}
-
-		service := internal.New()
-		ctx, err := service.GetLatest()
-		if err != nil {
-			return err
-		}
-		ctx.Jwt = sql.NullString{Valid: true, String: authorization}
-		service.Push(ctx)
-
-		command.SetResult(cmd, command.Text(string(text)))
+		command.SetResult(cmd, text)
 		return nil
 	},
 }

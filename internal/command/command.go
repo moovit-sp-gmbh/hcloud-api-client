@@ -200,3 +200,39 @@ func Server(cmd *cobra.Command) (string, error) {
 		return serverFlag, err
 	}
 }
+
+func ServerIDP(cmd *cobra.Command) (string, error) {
+	server, err := Server(cmd)
+	if err != nil {
+		return server, err
+	}
+	return server + "/api/account", err
+}
+func ServerHigh5(cmd *cobra.Command) (string, error) {
+	server, err := Server(cmd)
+	if err != nil {
+		return server, err
+	}
+	return server + "/api/high5", err
+}
+func ServerCosmo(cmd *cobra.Command) (string, error) {
+	server, err := Server(cmd)
+	if err != nil {
+		return server, err
+	}
+	return server + "/api/cosmo", err
+}
+func ServerDali(cmd *cobra.Command) (string, error) {
+	server, err := Server(cmd)
+	if err != nil {
+		return server, err
+	}
+	return server + "/api/dali", err
+}
+func ServerMothership(cmd *cobra.Command) (string, error) {
+	server, err := Server(cmd)
+	if err != nil {
+		return server, err
+	}
+	return server + "/api/mothership", err
+}
