@@ -1,6 +1,9 @@
 format:
 	go fmt ./...
 
+sqlc:
+	sqlc generate
+
 migrate+create:
 	read -p "Migration name: "; goose sqlite3 db.sqlite -dir internal/db/migrations create $$REPLY sql
 
