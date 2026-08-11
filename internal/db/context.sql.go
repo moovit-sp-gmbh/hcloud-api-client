@@ -11,22 +11,28 @@ import (
 )
 
 const createContext = `-- name: CreateContext :exec
-INSERT INTO context (timestamp, JWT, org_name) VALUES (?, ?, ?)
+INSERT INTO context (timestamp, JWT, org_name, new_name) VALUES (?, ?, ?, ?)
 `
 
 type CreateContextParams struct {
 	Timestamp int64
 	Jwt       sql.NullString
 	OrgName   sql.NullString
+	NewName   sql.NullString
 }
 
 func (q *Queries) CreateContext(ctx context.Context, arg CreateContextParams) error {
-	_, err := q.db.ExecContext(ctx, createContext, arg.Timestamp, arg.Jwt, arg.OrgName)
+	_, err := q.db.ExecContext(ctx, createContext,
+		arg.Timestamp,
+		arg.Jwt,
+		arg.OrgName,
+		arg.NewName,
+	)
 	return err
 }
 
 const getContext = `-- name: GetContext :one
-SELECT id, timestamp, jwt, org_name FROM context
+SELECT id, timestamp, jwt, org_name, new_name FROM context
 WHERE id=?
 `
 
@@ -38,12 +44,13 @@ func (q *Queries) GetContext(ctx context.Context, id int64) (Context, error) {
 		&i.Timestamp,
 		&i.Jwt,
 		&i.OrgName,
+		&i.NewName,
 	)
 	return i, err
 }
 
 const getLatestContext = `-- name: GetLatestContext :one
-SELECT id, timestamp, jwt, org_name FROM context
+SELECT id, timestamp, jwt, org_name, new_name FROM context
 ORDER BY timestamp DESC
 LIMIT 1
 `
@@ -56,12 +63,13 @@ func (q *Queries) GetLatestContext(ctx context.Context) (Context, error) {
 		&i.Timestamp,
 		&i.Jwt,
 		&i.OrgName,
+		&i.NewName,
 	)
 	return i, err
 }
 
 const list = `-- name: List :many
-SELECT id, timestamp, jwt, org_name FROM context
+SELECT id, timestamp, jwt, org_name, new_name FROM context
 ORDER BY timestamp DESC
 LIMIT ?
 OFFSET ?
@@ -86,6 +94,7 @@ func (q *Queries) List(ctx context.Context, arg ListParams) ([]Context, error) {
 			&i.Timestamp,
 			&i.Jwt,
 			&i.OrgName,
+			&i.NewName,
 		); err != nil {
 			return nil, err
 		}

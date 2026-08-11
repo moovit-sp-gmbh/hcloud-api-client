@@ -1,5 +1,5 @@
 -- name: CreateContext :exec
-INSERT INTO context (timestamp, JWT, org_name) VALUES (?, ?, ?);
+INSERT INTO context (timestamp, JWT, org_name, new_name) VALUES (?, ?, ?, ?);
 
 -- name: GetContext :one
 SELECT * FROM context

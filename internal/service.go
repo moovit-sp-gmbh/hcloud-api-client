@@ -35,6 +35,7 @@ func (cs *ContextService) Push(arg db.Context) error {
 		Timestamp: time.Now().Unix(),
 		Jwt:       arg.Jwt,
 		OrgName:   arg.OrgName,
+		NewName:   arg.NewName,
 	})
 }
 

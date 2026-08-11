@@ -13,4 +13,5 @@ type Context struct {
 	Timestamp int64
 	Jwt       sql.NullString
 	OrgName   sql.NullString
+	NewName   sql.NullString
 }
