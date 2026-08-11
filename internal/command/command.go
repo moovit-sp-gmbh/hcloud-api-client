@@ -64,6 +64,15 @@ func (c *Command) Execute(args []string) (fmt.Stringer, error) {
 	c.Command.SetOut(&buf)
 	defer c.Command.SetOut(nil)
 
+	// Cobra copies the root's context onto the target command only while that
+	// command's own context is still nil, assuming one execution per process.
+	// The REPL executes the same tree repeatedly, so from the second run on the
+	// target would keep the previous run's context and SetResult would write
+	// into a holder nobody reads. Pin the current context ourselves.
+	if target, _, err := c.Command.Find(args); err == nil {
+		target.SetContext(ctx)
+	}
+
 	if err := c.Command.ExecuteContext(ctx); err != nil {
 		return nil, err
 	}
