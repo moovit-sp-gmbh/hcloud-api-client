@@ -3,9 +3,12 @@ package command
 import (
 	"bytes"
 	"context"
+	"database/sql"
 	"fmt"
+	"log"
 	"strings"
 
+	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )
@@ -158,4 +161,33 @@ func findPartials(m map[string]*pflag.Flag, start string) []string {
 		}
 	}
 	return ret
+}
+
+func Server(cmd *cobra.Command) (string, error) {
+	service := internal.New()
+	ctx, err := service.GetLatest()
+	if err != nil {
+		return "", err
+	}
+
+	serverSet := cmd.Flags().Changed("server")
+	log.Println(serverSet)
+	if !serverSet {
+		if ctx.Server.Valid {
+			return ctx.Server.String, nil
+		} else {
+			serverFlag, err := cmd.Flags().GetString("server")
+			if err != nil {
+				return "", err
+			}
+			return serverFlag, nil
+		}
+	} else {
+		serverFlag, err := cmd.Flags().GetString("server")
+		if err == nil {
+			ctx.Server = sql.NullString{Valid: true, String: serverFlag}
+			service.Push(ctx)
+		}
+		return serverFlag, err
+	}
 }

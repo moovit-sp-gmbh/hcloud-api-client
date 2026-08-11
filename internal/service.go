@@ -36,6 +36,7 @@ func (cs *ContextService) Push(arg db.Context) error {
 		Jwt:       arg.Jwt,
 		OrgName:   arg.OrgName,
 		NewName:   arg.NewName,
+		Server:    arg.Server,
 	})
 }
 

@@ -26,7 +26,7 @@ var whoamiCommand = &cobra.Command{
 	Short: "Get user info",
 	Long:  "Get user info",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		server, err := cmd.Flags().GetString("server")
+		server, err := command.Server(cmd)
 		if err != nil {
 			return err
 		}
@@ -72,7 +72,7 @@ var patchCommand = &cobra.Command{
 	Short: "Patch user info",
 	Long:  "Patch user info",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		server, err := cmd.Flags().GetString("server")
+		server, err := command.Server(cmd)
 		if err != nil {
 			return err
 		}

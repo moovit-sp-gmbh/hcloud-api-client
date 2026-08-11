@@ -5,7 +5,6 @@ import (
 	"database/sql"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -28,7 +27,7 @@ var loginCommand = &cobra.Command{
 	Short: "Authenticate against helmut.cloud",
 	Long:  "Obtain an authorization token to use in future requests. Saved in context as JWT",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		server, err := cmd.Flags().GetString("server")
+		server, err := command.Server(cmd)
 		if err != nil {
 			return err
 		}
@@ -95,7 +94,7 @@ var loginCommand = &cobra.Command{
 		ctx.Jwt = sql.NullString{Valid: true, String: authorization}
 		service.Push(ctx)
 
-		command.SetResult(cmd, command.Text(fmt.Sprintf("Authorization: %s\n%s", authorization, string(text))))
+		command.SetResult(cmd, command.Text(string(text)))
 		return nil
 	},
 }
@@ -110,7 +109,7 @@ func Command() *cobra.Command {
 		},
 	}
 
-	idpCommand.PersistentFlags().StringVar(&server, "server", "https://eu-central-1.app.helmut.cloud", "Set the target server/cluster")
+	idpCommand.PersistentFlags().String("server", "https://eu-central-1.app.helmut.cloud", "Set the target server/cluster")
 
 	idpCommand.AddCommand(loginCommand)
 	idpCommand.AddCommand(orgCommand)

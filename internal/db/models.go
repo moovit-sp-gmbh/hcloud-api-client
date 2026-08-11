@@ -14,4 +14,5 @@ type Context struct {
 	Jwt       sql.NullString
 	OrgName   sql.NullString
 	NewName   sql.NullString
+	Server    sql.NullString
 }
