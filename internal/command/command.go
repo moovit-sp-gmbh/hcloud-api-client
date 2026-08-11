@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"log"
 	"strings"
@@ -20,6 +21,14 @@ type Executor interface {
 }
 
 type Text string
+
+func JSON(obj any) (Text, error) {
+	data, err := json.MarshalIndent(obj, "", "  ")
+	if err != nil {
+		return "", err
+	}
+	return Text(string(data)), nil
+}
 
 func (t Text) String() string { return string(t) }
 

@@ -3,9 +3,7 @@ package idp
 import (
 	"context"
 	"database/sql"
-	"encoding/json"
 	"errors"
-	"io"
 	"log"
 	"net/http"
 
@@ -46,7 +44,7 @@ var whoamiCommand = &cobra.Command{
 			return errors.New("JWT not set. Login first")
 		}
 
-		res, err := client.GetV1User(context.TODO(), func(_ context.Context, req *http.Request) error {
+		res, err := client.GetV1UserWithResponse(context.TODO(), func(_ context.Context, req *http.Request) error {
 			req.Header.Set("authorization", ctx.Jwt.String)
 			return nil
 		})
@@ -55,13 +53,11 @@ var whoamiCommand = &cobra.Command{
 			return err
 		}
 
-		data, err := io.ReadAll(res.Body)
+		text, err := command.JSON(res.JSON200)
 		if err != nil {
 			return err
 		}
-		defer res.Body.Close()
-
-		command.SetResult(cmd, command.Text(string(data)))
+		command.SetResult(cmd, text)
 
 		return nil
 	},
@@ -109,18 +105,17 @@ var patchCommand = &cobra.Command{
 		}
 		log.Println(res.JSON200.Name)
 
-		b, err := json.Marshal(res.JSON200)
-		if err != nil {
-			return err
-		}
-
 		ctx.NewName = sql.NullString{Valid: true, String: res.JSON200.Name}
 		err = service.Push(ctx)
 		if err != nil {
 			log.Println(err.Error())
 		}
 
-		command.SetResult(cmd, command.Text(string(b)))
+		text, err := command.JSON(res.JSON200)
+		if err != nil {
+			return err
+		}
+		command.SetResult(cmd, text)
 
 		return nil
 	},
