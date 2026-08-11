@@ -29,12 +29,12 @@ var whoamiCommand = &cobra.Command{
 	Short: "Get user info",
 	Long:  "Get user info",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		server, err := command.Server(cmd)
+		server, err := command.ServerIDP(cmd)
 		if err != nil {
 			return err
 		}
 
-		client, err := idpClient.NewClientWithResponses(server + "/api/account")
+		client, err := idpClient.NewClientWithResponses(server)
 		if err != nil {
 			return err
 		}
@@ -58,10 +58,21 @@ var whoamiCommand = &cobra.Command{
 			return err
 		}
 
-		text, err := command.JSON(res.JSON200)
-		if err != nil {
-			return err
+		var text command.Text
+		switch res.StatusCode() {
+		case 200:
+
+			text, err = command.JSON(res.JSON200)
+			if err != nil {
+				return err
+			}
+		default:
+			text, err = command.JSON(string(res.Body))
+			if err != nil {
+				return err
+			}
 		}
+
 		command.SetResult(cmd, text)
 
 		return nil
@@ -73,12 +84,13 @@ var getUserEmailCommand = &cobra.Command{
 	Short: "Get user email",
 	Long:  "Get user email",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		server, err := cmd.Flags().GetString("server")
+		server, err := command.ServerIDP(cmd)
+
 		if err != nil {
 			return err
 		}
 
-		client, err := idpClient.NewClientWithResponses(server + "/api/account")
+		client, err := idpClient.NewClientWithResponses(server)
 		if err != nil {
 			return err
 		}
@@ -128,12 +140,12 @@ var getUserNatsPermissionsCommand = &cobra.Command{
 	Short: "Get user Nats permissions",
 	Long:  "Get user Nats permissions",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		server, err := cmd.Flags().GetString("server")
+		server, err := command.ServerIDP(cmd)
 		if err != nil {
 			return err
 		}
 
-		client, err := idpClient.NewClientWithResponses(server + "/api/account")
+		client, err := idpClient.NewClientWithResponses(server)
 		if err != nil {
 			return err
 		}
@@ -183,12 +195,12 @@ var patchCommand = &cobra.Command{
 	Short: "Patch user info",
 	Long:  "Patch user info",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		server, err := command.Server(cmd)
+		server, err := command.ServerIDP(cmd)
 		if err != nil {
 			return err
 		}
 
-		client, err := idpClient.NewClientWithResponses(server + "/api/account")
+		client, err := idpClient.NewClientWithResponses(server)
 		if err != nil {
 			return err
 		}
@@ -242,12 +254,12 @@ var patchPwCommand = &cobra.Command{
 	Long:  "Patch user password",
 	RunE: func(cmd *cobra.Command, args []string) error {
 
-		server, err := cmd.Flags().GetString("server")
+		server, err := command.ServerIDP(cmd)
 		if err != nil {
 			return err
 		}
 
-		client, err := idpClient.NewClientWithResponses(server + "/api/account")
+		client, err := idpClient.NewClientWithResponses(server)
 		if err != nil {
 			return err
 		}
