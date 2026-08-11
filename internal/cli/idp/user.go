@@ -22,6 +22,10 @@ func init() {
 	whoamiCommand.AddCommand(getUserNatsPermissionsCommand)
 	whoamiCommand.AddCommand(patchPwCommand)
 
+	updateLicenseCommand.Flags().String("identifier", "", "Identifier of the license")
+
+	whoamiCommand.AddCommand(licenseCommand)
+	licenseCommand.AddCommand(updateLicenseCommand)
 }
 
 var whoamiCommand = &cobra.Command{
@@ -184,6 +188,101 @@ var getUserNatsPermissionsCommand = &cobra.Command{
 			}
 		}
 
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var licenseCommand = &cobra.Command{
+	Use:   "license",
+	Short: "Get user license",
+	Long:  "Get the current license of the user account",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		server, err := command.Server(cmd)
+		if err != nil {
+			return err
+		}
+
+		client, err := idpClient.NewClientWithResponses(server + "/api/account")
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		if !ctx.Jwt.Valid {
+			return errors.New("JWT not set. Login first")
+		}
+
+		res, err := client.GetV1UserLicenseWithResponse(context.TODO(), func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", ctx.Jwt.String)
+			return nil
+		})
+
+		if err != nil {
+			return err
+		}
+
+		text, err := command.JSON(res.JSON200)
+		if err != nil {
+			return err
+		}
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var updateLicenseCommand = &cobra.Command{
+	Use:   "update",
+	Short: "Update user license",
+	Long:  "Update the license of the user account",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		server, err := command.Server(cmd)
+		if err != nil {
+			return err
+		}
+
+		client, err := idpClient.NewClientWithResponses(server + "/api/account")
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		if !ctx.Jwt.Valid {
+			return errors.New("JWT not set. Login first")
+		}
+
+		identifier, err := cmd.Flags().GetString("identifier")
+		if err != nil {
+			return err
+		}
+
+		res, err := client.PutV1UserLicenseWithResponse(context.TODO(), idpClient.PutV1UserLicenseJSONRequestBody{
+			Identifier: identifier,
+		}, func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", ctx.Jwt.String)
+			return nil
+		})
+
+		if err != nil {
+			return err
+		}
+
+		text, err := command.JSON(res.JSON200)
+		if err != nil {
+			return err
+		}
 		command.SetResult(cmd, text)
 
 		return nil
