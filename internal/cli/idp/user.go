@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"io"
 	"log"
 	"net/http"
 
@@ -21,6 +22,9 @@ func init() {
 	whoamiCommand.AddCommand(getUserEmailCommand)
 	whoamiCommand.AddCommand(getUserNatsPermissionsCommand)
 	whoamiCommand.AddCommand(patchPwCommand)
+
+	whoamiCommand.AddCommand(pingCommand)
+	whoamiCommand.AddCommand(logoutCommand)
 
 }
 
@@ -188,6 +192,112 @@ var getUserNatsPermissionsCommand = &cobra.Command{
 
 		return nil
 	},
+}
+
+
+var pingCommand = &cobra.Command{
+	Use:   "ping",
+	Short: "Ping to keep the user session alive",
+	Long:  "Notify the server that the user is online, keeping the session alive",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		server, err := command.Server(cmd)
+		if err != nil {
+			return err
+		}
+
+		client, err := idpClient.NewClientWithResponses(server + "/api/account")
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		if !ctx.Jwt.Valid {
+			return errors.New("JWT not set. Login first")
+		}
+
+		res, err := client.GetV1UserPing(context.TODO(), func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", ctx.Jwt.String)
+			return nil
+		})
+		if err != nil {
+			return err
+		}
+		defer res.Body.Close()
+
+		var text command.Text
+
+		if res.StatusCode != http.StatusNoContent && (res.StatusCode < 200 || res.StatusCode >= 300) {
+			data, err := io.ReadAll(res.Body)
+			if err != nil {
+				return err
+			}
+			text, err := command.JSON(string(data))
+			if err != nil {
+				return err
+			}
+			return errors.New(string(text))
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var logoutCommand = &cobra.Command{
+    Use:   "logout",
+    Short: "Log out of hcloud on all devices",
+    Long:  "Resets all user sessions and therewith logs the user out of hcloud on all devices",
+    RunE: func(cmd *cobra.Command, args []string) error {
+        server, err := command.Server(cmd)
+        if err != nil {
+            return err
+        }
+
+        client, err := idpClient.NewClientWithResponses(server + "/api/account")
+        if err != nil {
+            return err
+        }
+
+        service := internal.New()
+        ctx, err := service.GetLatest()
+        if err != nil {
+            return err
+        }
+
+        if !ctx.Jwt.Valid {
+            return errors.New("JWT not set. Login first")
+        }
+
+        res, err := client.DeleteV1UserSessionsWithResponse(context.TODO(), func(_ context.Context, req *http.Request) error {
+            req.Header.Set("authorization", ctx.Jwt.String)
+            return nil
+        })
+        if err != nil {
+            return err
+        }
+
+		log.Println(res.StatusCode(), string(res.Body))
+
+		var text command.Text
+
+		if res.StatusCode() != http.StatusNoContent && (res.StatusCode() < 200 || res.StatusCode() >= 300) {
+			text, err := command.JSON(string(res.Body))
+			if err != nil {
+				return err
+			}
+			return errors.New(string(text))
+		}
+
+		command.SetResult(cmd, text)
+
+        return nil
+    },
 }
 
 var patchCommand = &cobra.Command{
