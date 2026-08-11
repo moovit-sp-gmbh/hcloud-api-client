@@ -47,10 +47,10 @@ var loginCommand = &cobra.Command{
 			password = cli.Prompt("Password")
 		}
 
-		body, err := json.Marshal(struct{ 
-			Email string `json:"email"`
+		body, err := json.Marshal(struct {
+			Email    string `json:"email"`
 			Password string `json:"password"`
-		}{ email, password })
+		}{email, password})
 		if err != nil {
 			return err
 		}
@@ -114,6 +114,7 @@ func Command() *cobra.Command {
 
 	idpCommand.AddCommand(loginCommand)
 	idpCommand.AddCommand(orgCommand)
+	idpCommand.AddCommand(whoamiCommand)
 
 	return idpCommand
 }
