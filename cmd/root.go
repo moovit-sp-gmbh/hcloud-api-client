@@ -28,6 +28,13 @@ var rootCmd = &cobra.Command{
 			return err
 		}
 		if interactive {
+			f, err := tea.LogToFile("debug.log", "debug")
+			if err != nil {
+				fmt.Println("fatal:", err)
+				os.Exit(1)
+			}
+			defer f.Close()
+
 			cmd.PersistentFlags().Set("interactive", "false")
 			p := tea.NewProgram(repl.New(command.New(cmd), nil))
 			if _, err := p.Run(); err != nil {
