@@ -230,7 +230,6 @@ var patchCommand = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		log.Println(res.JSON200.Name)
 
 		ctx.NewName = sql.NullString{Valid: true, String: res.JSON200.Name}
 		err = service.Push(ctx)

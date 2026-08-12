@@ -5,7 +5,6 @@ import (
 	"database/sql"
 
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal"
-	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/clients/idpClient"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/command"
 	"github.com/oapi-codegen/runtime/types"
@@ -27,18 +26,14 @@ var loginCommand = &cobra.Command{
 			return err
 		}
 
-		email, err := cmd.Flags().GetString("email")
+		email, err := command.FlagOrPromptString(cmd, "email")
 		if err != nil {
 			return err
-		} else if email == "" {
-			email = cli.Prompt("Email")
 		}
 
-		password, err := cmd.Flags().GetString("password")
+		password, err := command.FlagOrPromptString(cmd, "password")
 		if err != nil {
 			return err
-		} else if password == "" {
-			password = cli.Prompt("Password")
 		}
 
 		client, err := idpClient.NewClientWithResponses(server)

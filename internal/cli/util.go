@@ -1,11 +1,18 @@
 package cli
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
-func Prompt(text string) string {
+func Prompt(text string) (string, error) {
 	fmt.Printf("%s: ", text)
-	var input string
-	fmt.Scan(&input)
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n')
+	if err != nil {
+		return "", err
+	}
 
-	return input
+	return input[:len(input)-1], nil
 }

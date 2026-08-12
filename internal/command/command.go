@@ -6,7 +6,6 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal"
@@ -189,7 +188,6 @@ func Server(cmd *cobra.Command) (string, error) {
 	}
 
 	serverSet := cmd.Flags().Changed("server")
-	log.Println(serverSet)
 	if !serverSet {
 		if ctx.Server.Valid {
 			return ctx.Server.String, nil
