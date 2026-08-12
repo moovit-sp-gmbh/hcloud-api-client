@@ -11,15 +11,45 @@ import (
 )
 
 const createContext = `-- name: CreateContext :exec
-INSERT INTO context (timestamp, JWT, org_name, new_name, server) VALUES (?, ?, ?, ?, ?)
+INSERT INTO context (
+        timestamp,
+        JWT,
+        org_name,
+        new_name,
+        server,
+        agent_token,
+        agent_secret,
+        agent_uuid,
+        agent_private_key,
+        agent_public_key,
+        agent_hello_token
+) VALUES (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+)
 `
 
 type CreateContextParams struct {
-	Timestamp int64
-	Jwt       sql.NullString
-	OrgName   sql.NullString
-	NewName   sql.NullString
-	Server    sql.NullString
+	Timestamp       int64
+	Jwt             sql.NullString
+	OrgName         sql.NullString
+	NewName         sql.NullString
+	Server          sql.NullString
+	AgentToken      sql.NullString
+	AgentSecret     sql.NullString
+	AgentUuid       sql.NullString
+	AgentPrivateKey sql.NullString
+	AgentPublicKey  sql.NullString
+	AgentHelloToken sql.NullString
 }
 
 func (q *Queries) CreateContext(ctx context.Context, arg CreateContextParams) error {
@@ -29,12 +59,18 @@ func (q *Queries) CreateContext(ctx context.Context, arg CreateContextParams) er
 		arg.OrgName,
 		arg.NewName,
 		arg.Server,
+		arg.AgentToken,
+		arg.AgentSecret,
+		arg.AgentUuid,
+		arg.AgentPrivateKey,
+		arg.AgentPublicKey,
+		arg.AgentHelloToken,
 	)
 	return err
 }
 
 const getContext = `-- name: GetContext :one
-SELECT id, timestamp, jwt, org_name, new_name, server FROM context
+SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token FROM context
 WHERE id=?
 `
 
@@ -48,12 +84,18 @@ func (q *Queries) GetContext(ctx context.Context, id int64) (Context, error) {
 		&i.OrgName,
 		&i.NewName,
 		&i.Server,
+		&i.AgentToken,
+		&i.AgentSecret,
+		&i.AgentUuid,
+		&i.AgentPrivateKey,
+		&i.AgentPublicKey,
+		&i.AgentHelloToken,
 	)
 	return i, err
 }
 
 const getLatestContext = `-- name: GetLatestContext :one
-SELECT id, timestamp, jwt, org_name, new_name, server FROM context
+SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token FROM context
 ORDER BY timestamp DESC
 LIMIT 1
 `
@@ -68,12 +110,18 @@ func (q *Queries) GetLatestContext(ctx context.Context) (Context, error) {
 		&i.OrgName,
 		&i.NewName,
 		&i.Server,
+		&i.AgentToken,
+		&i.AgentSecret,
+		&i.AgentUuid,
+		&i.AgentPrivateKey,
+		&i.AgentPublicKey,
+		&i.AgentHelloToken,
 	)
 	return i, err
 }
 
 const list = `-- name: List :many
-SELECT id, timestamp, jwt, org_name, new_name, server FROM context
+SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token FROM context
 ORDER BY timestamp DESC
 LIMIT ?
 OFFSET ?
@@ -100,6 +148,12 @@ func (q *Queries) List(ctx context.Context, arg ListParams) ([]Context, error) {
 			&i.OrgName,
 			&i.NewName,
 			&i.Server,
+			&i.AgentToken,
+			&i.AgentSecret,
+			&i.AgentUuid,
+			&i.AgentPrivateKey,
+			&i.AgentPublicKey,
+			&i.AgentHelloToken,
 		); err != nil {
 			return nil, err
 		}

@@ -9,10 +9,16 @@ import (
 )
 
 type Context struct {
-	ID        int64
-	Timestamp int64
-	Jwt       sql.NullString
-	OrgName   sql.NullString
-	NewName   sql.NullString
-	Server    sql.NullString
+	ID              int64
+	Timestamp       int64
+	Jwt             sql.NullString
+	OrgName         sql.NullString
+	NewName         sql.NullString
+	Server          sql.NullString
+	AgentToken      sql.NullString
+	AgentSecret     sql.NullString
+	AgentUuid       sql.NullString
+	AgentPrivateKey sql.NullString
+	AgentPublicKey  sql.NullString
+	AgentHelloToken sql.NullString
 }

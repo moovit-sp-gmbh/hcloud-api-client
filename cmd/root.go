@@ -8,6 +8,7 @@ import (
 	tea "charm.land/bubbletea/v2"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli/context"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli/idp"
+	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli/mothership"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/command"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/repl"
 	"github.com/spf13/cobra"
@@ -16,6 +17,7 @@ import (
 func init() {
 	rootCmd.PersistentFlags().BoolP("interactive", "i", false, "Run the command and stay in the REPL")
 	rootCmd.AddCommand(idp.Command())
+	rootCmd.AddCommand(mothership.Command())
 	rootCmd.AddCommand(context.Command())
 }
 
