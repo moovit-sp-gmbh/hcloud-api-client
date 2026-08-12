@@ -14,10 +14,10 @@
 package main
 
 import (
-	"strings"
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 )
 
 // flatten returns a plain string schema if every union variant is a string,
@@ -59,9 +59,11 @@ func flatten(schema map[string]any) map[string]any {
 			descriptions = append(descriptions, desc)
 		}
 		if len(descriptions) > 0 {
-			var joined strings.Builder; joined.WriteString(descriptions[0])
+			var joined strings.Builder
+			joined.WriteString(descriptions[0])
 			for _, d := range descriptions[1:] {
-				joined.WriteString(" | ");joined.WriteString(d)
+				joined.WriteString(" | ")
+				joined.WriteString(d)
 			}
 			merged["description"] = joined.String()
 		}
