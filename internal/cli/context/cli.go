@@ -48,6 +48,26 @@ var listCmd = &cobra.Command{
 	},
 }
 
+var latestCmd = &cobra.Command{
+	Use: "latest",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		service := internal.New()
+
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		text, err := command.JSON(ctx)
+		if err != nil {
+			return err
+		}
+
+		command.SetResult(cmd, text)
+		return nil
+	},
+}
+
 var setCmd = &cobra.Command{
 	Use:     "set",
 	Short:   "Set a context as the latest",
@@ -75,6 +95,7 @@ func Command() *cobra.Command {
 	rootCmd := &cobra.Command{Use: "context", Run: func(cmd *cobra.Command, args []string) { cmd.Help() }}
 	rootCmd.Groups()
 	rootCmd.AddCommand(listCmd)
+	rootCmd.AddCommand(latestCmd)
 	rootCmd.AddCommand(setCmd)
 	return rootCmd
 }
