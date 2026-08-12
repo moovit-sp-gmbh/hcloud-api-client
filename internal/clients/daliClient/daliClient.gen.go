@@ -53,176 +53,80 @@ type DeleteV1AvatarOrgOrgNameParams struct {
 	Authorization string `json:"authorization"`
 }
 
-// DeleteV1AvatarOrgOrgNameParamsOrgName0 defines parameters for DeleteV1AvatarOrgOrgName.
-type DeleteV1AvatarOrgOrgNameParamsOrgName0 = string
-
-// DeleteV1AvatarOrgOrgNameParamsOrgName1 defines parameters for DeleteV1AvatarOrgOrgName.
-type DeleteV1AvatarOrgOrgNameParamsOrgName1 = string
-
 // PostV1AvatarOrgOrgNameParams defines parameters for PostV1AvatarOrgOrgName.
 type PostV1AvatarOrgOrgNameParams struct {
 	Authorization string `json:"authorization"`
 }
-
-// PostV1AvatarOrgOrgNameParamsOrgName0 defines parameters for PostV1AvatarOrgOrgName.
-type PostV1AvatarOrgOrgNameParamsOrgName0 = string
-
-// PostV1AvatarOrgOrgNameParamsOrgName1 defines parameters for PostV1AvatarOrgOrgName.
-type PostV1AvatarOrgOrgNameParamsOrgName1 = string
 
 // DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams defines parameters for DeleteV1AvatarOrgOrgNameApplicationsOauthAppId.
 type DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams struct {
 	Authorization string `json:"authorization"`
 }
 
-// DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParamsOrgName0 defines parameters for DeleteV1AvatarOrgOrgNameApplicationsOauthAppId.
-type DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParamsOrgName0 = string
-
-// DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParamsOrgName1 defines parameters for DeleteV1AvatarOrgOrgNameApplicationsOauthAppId.
-type DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParamsOrgName1 = string
-
 // PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams defines parameters for PostV1AvatarOrgOrgNameApplicationsOauthAppId.
 type PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams struct {
 	Authorization string `json:"authorization"`
 }
-
-// PostV1AvatarOrgOrgNameApplicationsOauthAppIdParamsOrgName0 defines parameters for PostV1AvatarOrgOrgNameApplicationsOauthAppId.
-type PostV1AvatarOrgOrgNameApplicationsOauthAppIdParamsOrgName0 = string
-
-// PostV1AvatarOrgOrgNameApplicationsOauthAppIdParamsOrgName1 defines parameters for PostV1AvatarOrgOrgNameApplicationsOauthAppId.
-type PostV1AvatarOrgOrgNameApplicationsOauthAppIdParamsOrgName1 = string
 
 // DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams defines parameters for DeleteV1AvatarOrgOrgNameServiceAccountsUserId.
 type DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams struct {
 	Authorization string `json:"authorization"`
 }
 
-// DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParamsOrgName0 defines parameters for DeleteV1AvatarOrgOrgNameServiceAccountsUserId.
-type DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParamsOrgName0 = string
-
-// DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParamsOrgName1 defines parameters for DeleteV1AvatarOrgOrgNameServiceAccountsUserId.
-type DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParamsOrgName1 = string
-
 // PostV1AvatarOrgOrgNameServiceAccountsUserIdParams defines parameters for PostV1AvatarOrgOrgNameServiceAccountsUserId.
 type PostV1AvatarOrgOrgNameServiceAccountsUserIdParams struct {
 	Authorization string `json:"authorization"`
 }
-
-// PostV1AvatarOrgOrgNameServiceAccountsUserIdParamsOrgName0 defines parameters for PostV1AvatarOrgOrgNameServiceAccountsUserId.
-type PostV1AvatarOrgOrgNameServiceAccountsUserIdParamsOrgName0 = string
-
-// PostV1AvatarOrgOrgNameServiceAccountsUserIdParamsOrgName1 defines parameters for PostV1AvatarOrgOrgNameServiceAccountsUserId.
-type PostV1AvatarOrgOrgNameServiceAccountsUserIdParamsOrgName1 = string
 
 // DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams defines parameters for DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName.
 type DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams struct {
 	Authorization string `json:"authorization"`
 }
 
-// DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParamsOrgName0 defines parameters for DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName.
-type DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParamsOrgName0 = string
-
-// DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParamsOrgName1 defines parameters for DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName.
-type DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParamsOrgName1 = string
-
 // PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams defines parameters for PostV1AvatarOrgOrgNameSpacesCosmoSpaceName.
 type PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams struct {
 	Authorization string `json:"authorization"`
 }
-
-// PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParamsOrgName0 defines parameters for PostV1AvatarOrgOrgNameSpacesCosmoSpaceName.
-type PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParamsOrgName0 = string
-
-// PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParamsOrgName1 defines parameters for PostV1AvatarOrgOrgNameSpacesCosmoSpaceName.
-type PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParamsOrgName1 = string
 
 // DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams defines parameters for DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName.
 type DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams struct {
 	Authorization string `json:"authorization"`
 }
 
-// DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParamsOrgName0 defines parameters for DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName.
-type DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParamsOrgName0 = string
-
-// DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParamsOrgName1 defines parameters for DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName.
-type DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParamsOrgName1 = string
-
 // PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams defines parameters for PostV1AvatarOrgOrgNameSpacesHigh5SpaceName.
 type PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams struct {
 	Authorization string `json:"authorization"`
 }
-
-// PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParamsOrgName0 defines parameters for PostV1AvatarOrgOrgNameSpacesHigh5SpaceName.
-type PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParamsOrgName0 = string
-
-// PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParamsOrgName1 defines parameters for PostV1AvatarOrgOrgNameSpacesHigh5SpaceName.
-type PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParamsOrgName1 = string
 
 // DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams defines parameters for DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName.
 type DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams struct {
 	Authorization string `json:"authorization"`
 }
 
-// DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParamsOrgName0 defines parameters for DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName.
-type DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParamsOrgName0 = string
-
-// DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParamsOrgName1 defines parameters for DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName.
-type DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParamsOrgName1 = string
-
 // PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams defines parameters for PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName.
 type PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams struct {
 	Authorization string `json:"authorization"`
 }
-
-// PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParamsOrgName0 defines parameters for PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName.
-type PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParamsOrgName0 = string
-
-// PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParamsOrgName1 defines parameters for PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName.
-type PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParamsOrgName1 = string
 
 // DeleteV1AvatarOrgOrgNameStoragesStorageNameParams defines parameters for DeleteV1AvatarOrgOrgNameStoragesStorageName.
 type DeleteV1AvatarOrgOrgNameStoragesStorageNameParams struct {
 	Authorization string `json:"authorization"`
 }
 
-// DeleteV1AvatarOrgOrgNameStoragesStorageNameParamsOrgName0 defines parameters for DeleteV1AvatarOrgOrgNameStoragesStorageName.
-type DeleteV1AvatarOrgOrgNameStoragesStorageNameParamsOrgName0 = string
-
-// DeleteV1AvatarOrgOrgNameStoragesStorageNameParamsOrgName1 defines parameters for DeleteV1AvatarOrgOrgNameStoragesStorageName.
-type DeleteV1AvatarOrgOrgNameStoragesStorageNameParamsOrgName1 = string
-
 // PostV1AvatarOrgOrgNameStoragesStorageNameParams defines parameters for PostV1AvatarOrgOrgNameStoragesStorageName.
 type PostV1AvatarOrgOrgNameStoragesStorageNameParams struct {
 	Authorization string `json:"authorization"`
 }
-
-// PostV1AvatarOrgOrgNameStoragesStorageNameParamsOrgName0 defines parameters for PostV1AvatarOrgOrgNameStoragesStorageName.
-type PostV1AvatarOrgOrgNameStoragesStorageNameParamsOrgName0 = string
-
-// PostV1AvatarOrgOrgNameStoragesStorageNameParamsOrgName1 defines parameters for PostV1AvatarOrgOrgNameStoragesStorageName.
-type PostV1AvatarOrgOrgNameStoragesStorageNameParamsOrgName1 = string
 
 // DeleteV1AvatarOrgOrgNameTeamsTeamNameParams defines parameters for DeleteV1AvatarOrgOrgNameTeamsTeamName.
 type DeleteV1AvatarOrgOrgNameTeamsTeamNameParams struct {
 	Authorization string `json:"authorization"`
 }
 
-// DeleteV1AvatarOrgOrgNameTeamsTeamNameParamsOrgName0 defines parameters for DeleteV1AvatarOrgOrgNameTeamsTeamName.
-type DeleteV1AvatarOrgOrgNameTeamsTeamNameParamsOrgName0 = string
-
-// DeleteV1AvatarOrgOrgNameTeamsTeamNameParamsOrgName1 defines parameters for DeleteV1AvatarOrgOrgNameTeamsTeamName.
-type DeleteV1AvatarOrgOrgNameTeamsTeamNameParamsOrgName1 = string
-
 // PostV1AvatarOrgOrgNameTeamsTeamNameParams defines parameters for PostV1AvatarOrgOrgNameTeamsTeamName.
 type PostV1AvatarOrgOrgNameTeamsTeamNameParams struct {
 	Authorization string `json:"authorization"`
 }
-
-// PostV1AvatarOrgOrgNameTeamsTeamNameParamsOrgName0 defines parameters for PostV1AvatarOrgOrgNameTeamsTeamName.
-type PostV1AvatarOrgOrgNameTeamsTeamNameParamsOrgName0 = string
-
-// PostV1AvatarOrgOrgNameTeamsTeamNameParamsOrgName1 defines parameters for PostV1AvatarOrgOrgNameTeamsTeamName.
-type PostV1AvatarOrgOrgNameTeamsTeamNameParamsOrgName1 = string
 
 // DeleteV1AvatarUserParams defines parameters for DeleteV1AvatarUser.
 type DeleteV1AvatarUserParams struct {
@@ -308,84 +212,52 @@ func WithRequestEditorFn(fn RequestEditorFn) ClientOption {
 // The interface specification for the client above.
 type ClientInterface interface {
 	// DeleteV1AvatarOrgOrgName request
-	DeleteV1AvatarOrgOrgName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *DeleteV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1AvatarOrgOrgName(ctx context.Context, orgName string, params *DeleteV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1AvatarOrgOrgName request
-	PostV1AvatarOrgOrgName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1AvatarOrgOrgName(ctx context.Context, orgName string, params *PostV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1AvatarOrgOrgNameApplicationsOauthAppId request
-	DeleteV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Context, orgName string, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1AvatarOrgOrgNameApplicationsOauthAppId request
-	PostV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Context, orgName string, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1AvatarOrgOrgNameServiceAccountsUserId request
-	DeleteV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Context, orgName string, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1AvatarOrgOrgNameServiceAccountsUserId request
-	PostV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Context, orgName string, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName request
-	DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Context, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1AvatarOrgOrgNameSpacesCosmoSpaceName request
-	PostV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Context, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName request
-	DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Context, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1AvatarOrgOrgNameSpacesHigh5SpaceName request
-	PostV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Context, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName request
-	DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName string, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName request
-	PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName string, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1AvatarOrgOrgNameStoragesStorageName request
-	DeleteV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, orgName string, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1AvatarOrgOrgNameStoragesStorageName request
-	PostV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, orgName string, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1AvatarOrgOrgNameTeamsTeamName request
-	DeleteV1AvatarOrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1AvatarOrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1AvatarOrgOrgNameTeamsTeamName request
-	PostV1AvatarOrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1AvatarOrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1AvatarUser request
 	DeleteV1AvatarUser(ctx context.Context, params *DeleteV1AvatarUserParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -394,9 +266,7 @@ type ClientInterface interface {
 	PostV1AvatarUser(ctx context.Context, params *PostV1AvatarUserParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
-func (c *Client) DeleteV1AvatarOrgOrgName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *DeleteV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1AvatarOrgOrgName(ctx context.Context, orgName string, params *DeleteV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1AvatarOrgOrgNameRequest(c.Server, orgName, params)
 	if err != nil {
 		return nil, err
@@ -408,9 +278,7 @@ func (c *Client) DeleteV1AvatarOrgOrgName(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1AvatarOrgOrgName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1AvatarOrgOrgName(ctx context.Context, orgName string, params *PostV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1AvatarOrgOrgNameRequest(c.Server, orgName, params)
 	if err != nil {
 		return nil, err
@@ -422,9 +290,7 @@ func (c *Client) PostV1AvatarOrgOrgName(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Context, orgName string, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1AvatarOrgOrgNameApplicationsOauthAppIdRequest(c.Server, orgName, appId, params)
 	if err != nil {
 		return nil, err
@@ -436,9 +302,7 @@ func (c *Client) DeleteV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Cont
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Context, orgName string, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1AvatarOrgOrgNameApplicationsOauthAppIdRequest(c.Server, orgName, appId, params)
 	if err != nil {
 		return nil, err
@@ -450,9 +314,7 @@ func (c *Client) PostV1AvatarOrgOrgNameApplicationsOauthAppId(ctx context.Contex
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Context, orgName string, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1AvatarOrgOrgNameServiceAccountsUserIdRequest(c.Server, orgName, userId, params)
 	if err != nil {
 		return nil, err
@@ -464,9 +326,7 @@ func (c *Client) DeleteV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Conte
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Context, orgName string, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1AvatarOrgOrgNameServiceAccountsUserIdRequest(c.Server, orgName, userId, params)
 	if err != nil {
 		return nil, err
@@ -478,9 +338,7 @@ func (c *Client) PostV1AvatarOrgOrgNameServiceAccountsUserId(ctx context.Context
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Context, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest(c.Server, orgName, spaceName, params)
 	if err != nil {
 		return nil, err
@@ -492,9 +350,7 @@ func (c *Client) DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Contex
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Context, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest(c.Server, orgName, spaceName, params)
 	if err != nil {
 		return nil, err
@@ -506,9 +362,7 @@ func (c *Client) PostV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx context.Context,
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Context, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest(c.Server, orgName, spaceName, params)
 	if err != nil {
 		return nil, err
@@ -520,9 +374,7 @@ func (c *Client) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Contex
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Context, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest(c.Server, orgName, spaceName, params)
 	if err != nil {
 		return nil, err
@@ -534,9 +386,7 @@ func (c *Client) PostV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx context.Context,
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName string, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(c.Server, orgName, spaceName, poolName, params)
 	if err != nil {
 		return nil, err
@@ -548,9 +398,7 @@ func (c *Client) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx c
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName string, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(c.Server, orgName, spaceName, poolName, params)
 	if err != nil {
 		return nil, err
@@ -562,9 +410,7 @@ func (c *Client) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx con
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, orgName string, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1AvatarOrgOrgNameStoragesStorageNameRequest(c.Server, orgName, storageName, params)
 	if err != nil {
 		return nil, err
@@ -576,9 +422,7 @@ func (c *Client) DeleteV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, orgName string, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1AvatarOrgOrgNameStoragesStorageNameRequest(c.Server, orgName, storageName, params)
 	if err != nil {
 		return nil, err
@@ -590,9 +434,7 @@ func (c *Client) PostV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, 
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1AvatarOrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1AvatarOrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1AvatarOrgOrgNameTeamsTeamNameRequest(c.Server, orgName, teamName, params)
 	if err != nil {
 		return nil, err
@@ -604,9 +446,7 @@ func (c *Client) DeleteV1AvatarOrgOrgNameTeamsTeamName(ctx context.Context, orgN
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1AvatarOrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1AvatarOrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1AvatarOrgOrgNameTeamsTeamNameRequest(c.Server, orgName, teamName, params)
 	if err != nil {
 		return nil, err
@@ -643,14 +483,12 @@ func (c *Client) PostV1AvatarUser(ctx context.Context, params *PostV1AvatarUserP
 }
 
 // NewDeleteV1AvatarOrgOrgNameRequest generates requests for DeleteV1AvatarOrgOrgName
-func NewDeleteV1AvatarOrgOrgNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *DeleteV1AvatarOrgOrgNameParams) (*http.Request, error) {
+func NewDeleteV1AvatarOrgOrgNameRequest(server string, orgName string, params *DeleteV1AvatarOrgOrgNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -692,14 +530,12 @@ func NewDeleteV1AvatarOrgOrgNameRequest(server string, orgName struct {
 }
 
 // NewPostV1AvatarOrgOrgNameRequest generates requests for PostV1AvatarOrgOrgName
-func NewPostV1AvatarOrgOrgNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1AvatarOrgOrgNameParams) (*http.Request, error) {
+func NewPostV1AvatarOrgOrgNameRequest(server string, orgName string, params *PostV1AvatarOrgOrgNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -741,14 +577,12 @@ func NewPostV1AvatarOrgOrgNameRequest(server string, orgName struct {
 }
 
 // NewDeleteV1AvatarOrgOrgNameApplicationsOauthAppIdRequest generates requests for DeleteV1AvatarOrgOrgNameApplicationsOauthAppId
-func NewDeleteV1AvatarOrgOrgNameApplicationsOauthAppIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams) (*http.Request, error) {
+func NewDeleteV1AvatarOrgOrgNameApplicationsOauthAppIdRequest(server string, orgName string, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -797,14 +631,12 @@ func NewDeleteV1AvatarOrgOrgNameApplicationsOauthAppIdRequest(server string, org
 }
 
 // NewPostV1AvatarOrgOrgNameApplicationsOauthAppIdRequest generates requests for PostV1AvatarOrgOrgNameApplicationsOauthAppId
-func NewPostV1AvatarOrgOrgNameApplicationsOauthAppIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams) (*http.Request, error) {
+func NewPostV1AvatarOrgOrgNameApplicationsOauthAppIdRequest(server string, orgName string, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -853,14 +685,12 @@ func NewPostV1AvatarOrgOrgNameApplicationsOauthAppIdRequest(server string, orgNa
 }
 
 // NewDeleteV1AvatarOrgOrgNameServiceAccountsUserIdRequest generates requests for DeleteV1AvatarOrgOrgNameServiceAccountsUserId
-func NewDeleteV1AvatarOrgOrgNameServiceAccountsUserIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams) (*http.Request, error) {
+func NewDeleteV1AvatarOrgOrgNameServiceAccountsUserIdRequest(server string, orgName string, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -909,14 +739,12 @@ func NewDeleteV1AvatarOrgOrgNameServiceAccountsUserIdRequest(server string, orgN
 }
 
 // NewPostV1AvatarOrgOrgNameServiceAccountsUserIdRequest generates requests for PostV1AvatarOrgOrgNameServiceAccountsUserId
-func NewPostV1AvatarOrgOrgNameServiceAccountsUserIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams) (*http.Request, error) {
+func NewPostV1AvatarOrgOrgNameServiceAccountsUserIdRequest(server string, orgName string, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -965,14 +793,12 @@ func NewPostV1AvatarOrgOrgNameServiceAccountsUserIdRequest(server string, orgNam
 }
 
 // NewDeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest generates requests for DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName
-func NewDeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams) (*http.Request, error) {
+func NewDeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest(server string, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1021,14 +847,12 @@ func NewDeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest(server string, orgNa
 }
 
 // NewPostV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest generates requests for PostV1AvatarOrgOrgNameSpacesCosmoSpaceName
-func NewPostV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams) (*http.Request, error) {
+func NewPostV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest(server string, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1077,14 +901,12 @@ func NewPostV1AvatarOrgOrgNameSpacesCosmoSpaceNameRequest(server string, orgName
 }
 
 // NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest generates requests for DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName
-func NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams) (*http.Request, error) {
+func NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest(server string, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1133,14 +955,12 @@ func NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest(server string, orgNa
 }
 
 // NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest generates requests for PostV1AvatarOrgOrgNameSpacesHigh5SpaceName
-func NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams) (*http.Request, error) {
+func NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest(server string, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1189,14 +1009,12 @@ func NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNameRequest(server string, orgName
 }
 
 // NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest generates requests for DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName
-func NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams) (*http.Request, error) {
+func NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(server string, orgName string, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1252,14 +1070,12 @@ func NewDeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(server 
 }
 
 // NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest generates requests for PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName
-func NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams) (*http.Request, error) {
+func NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(server string, orgName string, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1315,14 +1131,12 @@ func NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(server st
 }
 
 // NewDeleteV1AvatarOrgOrgNameStoragesStorageNameRequest generates requests for DeleteV1AvatarOrgOrgNameStoragesStorageName
-func NewDeleteV1AvatarOrgOrgNameStoragesStorageNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams) (*http.Request, error) {
+func NewDeleteV1AvatarOrgOrgNameStoragesStorageNameRequest(server string, orgName string, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1371,14 +1185,12 @@ func NewDeleteV1AvatarOrgOrgNameStoragesStorageNameRequest(server string, orgNam
 }
 
 // NewPostV1AvatarOrgOrgNameStoragesStorageNameRequest generates requests for PostV1AvatarOrgOrgNameStoragesStorageName
-func NewPostV1AvatarOrgOrgNameStoragesStorageNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams) (*http.Request, error) {
+func NewPostV1AvatarOrgOrgNameStoragesStorageNameRequest(server string, orgName string, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1427,14 +1239,12 @@ func NewPostV1AvatarOrgOrgNameStoragesStorageNameRequest(server string, orgName 
 }
 
 // NewDeleteV1AvatarOrgOrgNameTeamsTeamNameRequest generates requests for DeleteV1AvatarOrgOrgNameTeamsTeamName
-func NewDeleteV1AvatarOrgOrgNameTeamsTeamNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams) (*http.Request, error) {
+func NewDeleteV1AvatarOrgOrgNameTeamsTeamNameRequest(server string, orgName string, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1483,14 +1293,12 @@ func NewDeleteV1AvatarOrgOrgNameTeamsTeamNameRequest(server string, orgName stru
 }
 
 // NewPostV1AvatarOrgOrgNameTeamsTeamNameRequest generates requests for PostV1AvatarOrgOrgNameTeamsTeamName
-func NewPostV1AvatarOrgOrgNameTeamsTeamNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams) (*http.Request, error) {
+func NewPostV1AvatarOrgOrgNameTeamsTeamNameRequest(server string, orgName string, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1662,84 +1470,52 @@ func WithBaseURL(baseURL string) ClientOption {
 // ClientWithResponsesInterface is the interface specification for the client with responses above.
 type ClientWithResponsesInterface interface {
 	// DeleteV1AvatarOrgOrgNameWithResponse request
-	DeleteV1AvatarOrgOrgNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *DeleteV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameResponse, error)
+	DeleteV1AvatarOrgOrgNameWithResponse(ctx context.Context, orgName string, params *DeleteV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameResponse, error)
 
 	// PostV1AvatarOrgOrgNameWithResponse request
-	PostV1AvatarOrgOrgNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameResponse, error)
+	PostV1AvatarOrgOrgNameWithResponse(ctx context.Context, orgName string, params *PostV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameResponse, error)
 
 	// DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse request
-	DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdResponse, error)
+	DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse(ctx context.Context, orgName string, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdResponse, error)
 
 	// PostV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse request
-	PostV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameApplicationsOauthAppIdResponse, error)
+	PostV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse(ctx context.Context, orgName string, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameApplicationsOauthAppIdResponse, error)
 
 	// DeleteV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse request
-	DeleteV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameServiceAccountsUserIdResponse, error)
+	DeleteV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse(ctx context.Context, orgName string, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameServiceAccountsUserIdResponse, error)
 
 	// PostV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse request
-	PostV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameServiceAccountsUserIdResponse, error)
+	PostV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse(ctx context.Context, orgName string, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameServiceAccountsUserIdResponse, error)
 
 	// DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse request
-	DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse, error)
+	DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse(ctx context.Context, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse, error)
 
 	// PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse request
-	PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse, error)
+	PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse(ctx context.Context, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse, error)
 
 	// DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse request
-	DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse, error)
+	DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse(ctx context.Context, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse, error)
 
 	// PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse request
-	PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse, error)
+	PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse(ctx context.Context, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse, error)
 
 	// DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse request
-	DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse, error)
+	DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse(ctx context.Context, orgName string, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse, error)
 
 	// PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse request
-	PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse, error)
+	PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse(ctx context.Context, orgName string, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse, error)
 
 	// DeleteV1AvatarOrgOrgNameStoragesStorageNameWithResponse request
-	DeleteV1AvatarOrgOrgNameStoragesStorageNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameStoragesStorageNameResponse, error)
+	DeleteV1AvatarOrgOrgNameStoragesStorageNameWithResponse(ctx context.Context, orgName string, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameStoragesStorageNameResponse, error)
 
 	// PostV1AvatarOrgOrgNameStoragesStorageNameWithResponse request
-	PostV1AvatarOrgOrgNameStoragesStorageNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameStoragesStorageNameResponse, error)
+	PostV1AvatarOrgOrgNameStoragesStorageNameWithResponse(ctx context.Context, orgName string, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameStoragesStorageNameResponse, error)
 
 	// DeleteV1AvatarOrgOrgNameTeamsTeamNameWithResponse request
-	DeleteV1AvatarOrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameTeamsTeamNameResponse, error)
+	DeleteV1AvatarOrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameTeamsTeamNameResponse, error)
 
 	// PostV1AvatarOrgOrgNameTeamsTeamNameWithResponse request
-	PostV1AvatarOrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameTeamsTeamNameResponse, error)
+	PostV1AvatarOrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameTeamsTeamNameResponse, error)
 
 	// DeleteV1AvatarUserWithResponse request
 	DeleteV1AvatarUserWithResponse(ctx context.Context, params *DeleteV1AvatarUserParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarUserResponse, error)
@@ -2367,9 +2143,7 @@ func (r PostV1AvatarUserResponse) ContentType() string {
 }
 
 // DeleteV1AvatarOrgOrgNameWithResponse request returning *DeleteV1AvatarOrgOrgNameResponse
-func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *DeleteV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameWithResponse(ctx context.Context, orgName string, params *DeleteV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameResponse, error) {
 	rsp, err := c.DeleteV1AvatarOrgOrgName(ctx, orgName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2378,9 +2152,7 @@ func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameWithResponse(ctx context.C
 }
 
 // PostV1AvatarOrgOrgNameWithResponse request returning *PostV1AvatarOrgOrgNameResponse
-func (c *ClientWithResponses) PostV1AvatarOrgOrgNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameResponse, error) {
+func (c *ClientWithResponses) PostV1AvatarOrgOrgNameWithResponse(ctx context.Context, orgName string, params *PostV1AvatarOrgOrgNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameResponse, error) {
 	rsp, err := c.PostV1AvatarOrgOrgName(ctx, orgName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2389,9 +2161,7 @@ func (c *ClientWithResponses) PostV1AvatarOrgOrgNameWithResponse(ctx context.Con
 }
 
 // DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse request returning *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdResponse
-func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdResponse, error) {
+func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse(ctx context.Context, orgName string, appId string, params *DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdResponse, error) {
 	rsp, err := c.DeleteV1AvatarOrgOrgNameApplicationsOauthAppId(ctx, orgName, appId, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2400,9 +2170,7 @@ func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameApplicationsOauthAppIdWith
 }
 
 // PostV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse request returning *PostV1AvatarOrgOrgNameApplicationsOauthAppIdResponse
-func (c *ClientWithResponses) PostV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameApplicationsOauthAppIdResponse, error) {
+func (c *ClientWithResponses) PostV1AvatarOrgOrgNameApplicationsOauthAppIdWithResponse(ctx context.Context, orgName string, appId string, params *PostV1AvatarOrgOrgNameApplicationsOauthAppIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameApplicationsOauthAppIdResponse, error) {
 	rsp, err := c.PostV1AvatarOrgOrgNameApplicationsOauthAppId(ctx, orgName, appId, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2411,9 +2179,7 @@ func (c *ClientWithResponses) PostV1AvatarOrgOrgNameApplicationsOauthAppIdWithRe
 }
 
 // DeleteV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse request returning *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdResponse
-func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameServiceAccountsUserIdResponse, error) {
+func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse(ctx context.Context, orgName string, userId string, params *DeleteV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameServiceAccountsUserIdResponse, error) {
 	rsp, err := c.DeleteV1AvatarOrgOrgNameServiceAccountsUserId(ctx, orgName, userId, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2422,9 +2188,7 @@ func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameServiceAccountsUserIdWithR
 }
 
 // PostV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse request returning *PostV1AvatarOrgOrgNameServiceAccountsUserIdResponse
-func (c *ClientWithResponses) PostV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameServiceAccountsUserIdResponse, error) {
+func (c *ClientWithResponses) PostV1AvatarOrgOrgNameServiceAccountsUserIdWithResponse(ctx context.Context, orgName string, userId string, params *PostV1AvatarOrgOrgNameServiceAccountsUserIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameServiceAccountsUserIdResponse, error) {
 	rsp, err := c.PostV1AvatarOrgOrgNameServiceAccountsUserId(ctx, orgName, userId, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2433,9 +2197,7 @@ func (c *ClientWithResponses) PostV1AvatarOrgOrgNameServiceAccountsUserIdWithRes
 }
 
 // DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse request returning *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse
-func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse(ctx context.Context, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse, error) {
 	rsp, err := c.DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx, orgName, spaceName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2444,9 +2206,7 @@ func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithRe
 }
 
 // PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse request returning *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse
-func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse, error) {
+func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResponse(ctx context.Context, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameResponse, error) {
 	rsp, err := c.PostV1AvatarOrgOrgNameSpacesCosmoSpaceName(ctx, orgName, spaceName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2455,9 +2215,7 @@ func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesCosmoSpaceNameWithResp
 }
 
 // DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse request returning *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse
-func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse(ctx context.Context, orgName string, spaceName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse, error) {
 	rsp, err := c.DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx, orgName, spaceName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2466,9 +2224,7 @@ func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithRe
 }
 
 // PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse request returning *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse
-func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse, error) {
+func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResponse(ctx context.Context, orgName string, spaceName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameResponse, error) {
 	rsp, err := c.PostV1AvatarOrgOrgNameSpacesHigh5SpaceName(ctx, orgName, spaceName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2477,9 +2233,7 @@ func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNameWithResp
 }
 
 // DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse request returning *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse
-func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse(ctx context.Context, orgName string, spaceName string, poolName string, params *DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse, error) {
 	rsp, err := c.DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx, orgName, spaceName, poolName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2488,9 +2242,7 @@ func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsP
 }
 
 // PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse request returning *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse
-func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse, error) {
+func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse(ctx context.Context, orgName string, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse, error) {
 	rsp, err := c.PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx, orgName, spaceName, poolName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2499,9 +2251,7 @@ func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoo
 }
 
 // DeleteV1AvatarOrgOrgNameStoragesStorageNameWithResponse request returning *DeleteV1AvatarOrgOrgNameStoragesStorageNameResponse
-func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameStoragesStorageNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameStoragesStorageNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameStoragesStorageNameWithResponse(ctx context.Context, orgName string, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameStoragesStorageNameResponse, error) {
 	rsp, err := c.DeleteV1AvatarOrgOrgNameStoragesStorageName(ctx, orgName, storageName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2510,9 +2260,7 @@ func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameStoragesStorageNameWithRes
 }
 
 // PostV1AvatarOrgOrgNameStoragesStorageNameWithResponse request returning *PostV1AvatarOrgOrgNameStoragesStorageNameResponse
-func (c *ClientWithResponses) PostV1AvatarOrgOrgNameStoragesStorageNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameStoragesStorageNameResponse, error) {
+func (c *ClientWithResponses) PostV1AvatarOrgOrgNameStoragesStorageNameWithResponse(ctx context.Context, orgName string, storageName string, params *PostV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameStoragesStorageNameResponse, error) {
 	rsp, err := c.PostV1AvatarOrgOrgNameStoragesStorageName(ctx, orgName, storageName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2521,9 +2269,7 @@ func (c *ClientWithResponses) PostV1AvatarOrgOrgNameStoragesStorageNameWithRespo
 }
 
 // DeleteV1AvatarOrgOrgNameTeamsTeamNameWithResponse request returning *DeleteV1AvatarOrgOrgNameTeamsTeamNameResponse
-func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameTeamsTeamNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, params *DeleteV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameTeamsTeamNameResponse, error) {
 	rsp, err := c.DeleteV1AvatarOrgOrgNameTeamsTeamName(ctx, orgName, teamName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2532,9 +2278,7 @@ func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameTeamsTeamNameWithResponse(
 }
 
 // PostV1AvatarOrgOrgNameTeamsTeamNameWithResponse request returning *PostV1AvatarOrgOrgNameTeamsTeamNameResponse
-func (c *ClientWithResponses) PostV1AvatarOrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameTeamsTeamNameResponse, error) {
+func (c *ClientWithResponses) PostV1AvatarOrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, params *PostV1AvatarOrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameTeamsTeamNameResponse, error) {
 	rsp, err := c.PostV1AvatarOrgOrgNameTeamsTeamName(ctx, orgName, teamName, params, reqEditors...)
 	if err != nil {
 		return nil, err

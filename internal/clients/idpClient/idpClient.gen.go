@@ -3992,12 +3992,6 @@ type PostV1OrgParams struct {
 	NoAvatar *bool `form:"noAvatar,omitempty" json:"noAvatar,omitempty"`
 }
 
-// DeleteV1OrgOrgNameParamsOrgName0 defines parameters for DeleteV1OrgOrgName.
-type DeleteV1OrgOrgNameParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameParamsOrgName1 defines parameters for DeleteV1OrgOrgName.
-type DeleteV1OrgOrgNameParamsOrgName1 = string
-
 // GetV1OrgOrgNameParams defines parameters for GetV1OrgOrgName.
 type GetV1OrgOrgNameParams struct {
 	TeamsOfUser      *bool    `form:"teamsOfUser,omitempty" json:"teamsOfUser,omitempty"`
@@ -4007,83 +4001,11 @@ type GetV1OrgOrgNameParams struct {
 	UserId           *string  `form:"userId,omitempty" json:"userId,omitempty"`
 }
 
-// GetV1OrgOrgNameParamsOrgName0 defines parameters for GetV1OrgOrgName.
-type GetV1OrgOrgNameParamsOrgName0 = string
-
-// GetV1OrgOrgNameParamsOrgName1 defines parameters for GetV1OrgOrgName.
-type GetV1OrgOrgNameParamsOrgName1 = string
-
-// PatchV1OrgOrgNameParamsOrgName0 defines parameters for PatchV1OrgOrgName.
-type PatchV1OrgOrgNameParamsOrgName0 = string
-
-// PatchV1OrgOrgNameParamsOrgName1 defines parameters for PatchV1OrgOrgName.
-type PatchV1OrgOrgNameParamsOrgName1 = string
-
-// PatchV1OrgOrgNameAvatarParamsOrgName0 defines parameters for PatchV1OrgOrgNameAvatar.
-type PatchV1OrgOrgNameAvatarParamsOrgName0 = string
-
-// PatchV1OrgOrgNameAvatarParamsOrgName1 defines parameters for PatchV1OrgOrgNameAvatar.
-type PatchV1OrgOrgNameAvatarParamsOrgName1 = string
-
-// GetV1OrgOrgNameLicenseParamsOrgName0 defines parameters for GetV1OrgOrgNameLicense.
-type GetV1OrgOrgNameLicenseParamsOrgName0 = string
-
-// GetV1OrgOrgNameLicenseParamsOrgName1 defines parameters for GetV1OrgOrgNameLicense.
-type GetV1OrgOrgNameLicenseParamsOrgName1 = string
-
-// PutV1OrgOrgNameLicenseParamsOrgName0 defines parameters for PutV1OrgOrgNameLicense.
-type PutV1OrgOrgNameLicenseParamsOrgName0 = string
-
-// PutV1OrgOrgNameLicenseParamsOrgName1 defines parameters for PutV1OrgOrgNameLicense.
-type PutV1OrgOrgNameLicenseParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameMembersParamsOrgName0 defines parameters for DeleteV1OrgOrgNameMembers.
-type DeleteV1OrgOrgNameMembersParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameMembersParamsOrgName1 defines parameters for DeleteV1OrgOrgNameMembers.
-type DeleteV1OrgOrgNameMembersParamsOrgName1 = string
-
-// PostV1OrgOrgNameMembersInvitationsParamsOrgName0 defines parameters for PostV1OrgOrgNameMembersInvitations.
-type PostV1OrgOrgNameMembersInvitationsParamsOrgName0 = string
-
-// PostV1OrgOrgNameMembersInvitationsParamsOrgName1 defines parameters for PostV1OrgOrgNameMembersInvitations.
-type PostV1OrgOrgNameMembersInvitationsParamsOrgName1 = string
-
-// PostV1OrgOrgNameMembersInvitationsListParamsOrgName0 defines parameters for PostV1OrgOrgNameMembersInvitationsList.
-type PostV1OrgOrgNameMembersInvitationsListParamsOrgName0 = string
-
-// PostV1OrgOrgNameMembersInvitationsListParamsOrgName1 defines parameters for PostV1OrgOrgNameMembersInvitationsList.
-type PostV1OrgOrgNameMembersInvitationsListParamsOrgName1 = string
-
 // PostV1OrgOrgNameMembersInvitationsSearchParams defines parameters for PostV1OrgOrgNameMembersInvitationsSearch.
 type PostV1OrgOrgNameMembersInvitationsSearchParams struct {
 	Limit *float32 `form:"limit,omitempty" json:"limit,omitempty"`
 	Page  *float32 `form:"page,omitempty" json:"page,omitempty"`
 }
-
-// PostV1OrgOrgNameMembersInvitationsSearchParamsOrgName0 defines parameters for PostV1OrgOrgNameMembersInvitationsSearch.
-type PostV1OrgOrgNameMembersInvitationsSearchParamsOrgName0 = string
-
-// PostV1OrgOrgNameMembersInvitationsSearchParamsOrgName1 defines parameters for PostV1OrgOrgNameMembersInvitationsSearch.
-type PostV1OrgOrgNameMembersInvitationsSearchParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameMembersInvitationsInvitationIdParamsOrgName0 defines parameters for DeleteV1OrgOrgNameMembersInvitationsInvitationId.
-type DeleteV1OrgOrgNameMembersInvitationsInvitationIdParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameMembersInvitationsInvitationIdParamsOrgName1 defines parameters for DeleteV1OrgOrgNameMembersInvitationsInvitationId.
-type DeleteV1OrgOrgNameMembersInvitationsInvitationIdParamsOrgName1 = string
-
-// PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalParamsOrgName0 defines parameters for PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval.
-type PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalParamsOrgName0 = string
-
-// PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalParamsOrgName1 defines parameters for PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval.
-type PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalParamsOrgName1 = string
-
-// PostV1OrgOrgNameMembersInvitationsInvitationIdResendParamsOrgName0 defines parameters for PostV1OrgOrgNameMembersInvitationsInvitationIdResend.
-type PostV1OrgOrgNameMembersInvitationsInvitationIdResendParamsOrgName0 = string
-
-// PostV1OrgOrgNameMembersInvitationsInvitationIdResendParamsOrgName1 defines parameters for PostV1OrgOrgNameMembersInvitationsInvitationIdResend.
-type PostV1OrgOrgNameMembersInvitationsInvitationIdResendParamsOrgName1 = string
 
 // PostV1OrgOrgNameMembersSearchParams defines parameters for PostV1OrgOrgNameMembersSearch.
 type PostV1OrgOrgNameMembersSearchParams struct {
@@ -4091,46 +4013,10 @@ type PostV1OrgOrgNameMembersSearchParams struct {
 	Page  *float32 `form:"page,omitempty" json:"page,omitempty"`
 }
 
-// PostV1OrgOrgNameMembersSearchParamsOrgName0 defines parameters for PostV1OrgOrgNameMembersSearch.
-type PostV1OrgOrgNameMembersSearchParamsOrgName0 = string
-
-// PostV1OrgOrgNameMembersSearchParamsOrgName1 defines parameters for PostV1OrgOrgNameMembersSearch.
-type PostV1OrgOrgNameMembersSearchParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameMembersUserIdParamsOrgName0 defines parameters for DeleteV1OrgOrgNameMembersUserId.
-type DeleteV1OrgOrgNameMembersUserIdParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameMembersUserIdParamsOrgName1 defines parameters for DeleteV1OrgOrgNameMembersUserId.
-type DeleteV1OrgOrgNameMembersUserIdParamsOrgName1 = string
-
-// GetV1OrgOrgNameMembersUserIdParamsOrgName0 defines parameters for GetV1OrgOrgNameMembersUserId.
-type GetV1OrgOrgNameMembersUserIdParamsOrgName0 = string
-
-// GetV1OrgOrgNameMembersUserIdParamsOrgName1 defines parameters for GetV1OrgOrgNameMembersUserId.
-type GetV1OrgOrgNameMembersUserIdParamsOrgName1 = string
-
-// PatchV1OrgOrgNameMembersUserIdExecutionTargetParamsOrgName0 defines parameters for PatchV1OrgOrgNameMembersUserIdExecutionTarget.
-type PatchV1OrgOrgNameMembersUserIdExecutionTargetParamsOrgName0 = string
-
-// PatchV1OrgOrgNameMembersUserIdExecutionTargetParamsOrgName1 defines parameters for PatchV1OrgOrgNameMembersUserIdExecutionTarget.
-type PatchV1OrgOrgNameMembersUserIdExecutionTargetParamsOrgName1 = string
-
-// PatchV1OrgOrgNameMembersUserIdRoleParamsOrgName0 defines parameters for PatchV1OrgOrgNameMembersUserIdRole.
-type PatchV1OrgOrgNameMembersUserIdRoleParamsOrgName0 = string
-
-// PatchV1OrgOrgNameMembersUserIdRoleParamsOrgName1 defines parameters for PatchV1OrgOrgNameMembersUserIdRole.
-type PatchV1OrgOrgNameMembersUserIdRoleParamsOrgName1 = string
-
 // PostV1OrgOrgNameServiceAccountsParams defines parameters for PostV1OrgOrgNameServiceAccounts.
 type PostV1OrgOrgNameServiceAccountsParams struct {
 	NoAvatar *bool `form:"noAvatar,omitempty" json:"noAvatar,omitempty"`
 }
-
-// PostV1OrgOrgNameServiceAccountsParamsOrgName0 defines parameters for PostV1OrgOrgNameServiceAccounts.
-type PostV1OrgOrgNameServiceAccountsParamsOrgName0 = string
-
-// PostV1OrgOrgNameServiceAccountsParamsOrgName1 defines parameters for PostV1OrgOrgNameServiceAccounts.
-type PostV1OrgOrgNameServiceAccountsParamsOrgName1 = string
 
 // PostV1OrgOrgNameServiceAccountsSearchParams defines parameters for PostV1OrgOrgNameServiceAccountsSearch.
 type PostV1OrgOrgNameServiceAccountsSearchParams struct {
@@ -4138,131 +4024,11 @@ type PostV1OrgOrgNameServiceAccountsSearchParams struct {
 	Page  *float32 `form:"page,omitempty" json:"page,omitempty"`
 }
 
-// PostV1OrgOrgNameServiceAccountsSearchParamsOrgName0 defines parameters for PostV1OrgOrgNameServiceAccountsSearch.
-type PostV1OrgOrgNameServiceAccountsSearchParamsOrgName0 = string
-
-// PostV1OrgOrgNameServiceAccountsSearchParamsOrgName1 defines parameters for PostV1OrgOrgNameServiceAccountsSearch.
-type PostV1OrgOrgNameServiceAccountsSearchParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameServiceAccountsServiceAccountIdParamsOrgName0 defines parameters for DeleteV1OrgOrgNameServiceAccountsServiceAccountId.
-type DeleteV1OrgOrgNameServiceAccountsServiceAccountIdParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameServiceAccountsServiceAccountIdParamsOrgName1 defines parameters for DeleteV1OrgOrgNameServiceAccountsServiceAccountId.
-type DeleteV1OrgOrgNameServiceAccountsServiceAccountIdParamsOrgName1 = string
-
-// GetV1OrgOrgNameServiceAccountsServiceAccountIdParamsOrgName0 defines parameters for GetV1OrgOrgNameServiceAccountsServiceAccountId.
-type GetV1OrgOrgNameServiceAccountsServiceAccountIdParamsOrgName0 = string
-
-// GetV1OrgOrgNameServiceAccountsServiceAccountIdParamsOrgName1 defines parameters for GetV1OrgOrgNameServiceAccountsServiceAccountId.
-type GetV1OrgOrgNameServiceAccountsServiceAccountIdParamsOrgName1 = string
-
-// PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarParamsOrgName0 defines parameters for PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatar.
-type PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarParamsOrgName0 = string
-
-// PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarParamsOrgName1 defines parameters for PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatar.
-type PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarParamsOrgName1 = string
-
-// PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameParamsOrgName0 defines parameters for PatchV1OrgOrgNameServiceAccountsServiceAccountIdName.
-type PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameParamsOrgName0 = string
-
-// PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameParamsOrgName1 defines parameters for PatchV1OrgOrgNameServiceAccountsServiceAccountIdName.
-type PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameParamsOrgName1 = string
-
-// PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateParamsOrgName0 defines parameters for PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate.
-type PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateParamsOrgName0 = string
-
-// PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateParamsOrgName1 defines parameters for PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate.
-type PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateParamsOrgName1 = string
-
-// PostV1OrgOrgNameSettingsApplicationsOauthParamsOrgName0 defines parameters for PostV1OrgOrgNameSettingsApplicationsOauth.
-type PostV1OrgOrgNameSettingsApplicationsOauthParamsOrgName0 = string
-
-// PostV1OrgOrgNameSettingsApplicationsOauthParamsOrgName1 defines parameters for PostV1OrgOrgNameSettingsApplicationsOauth.
-type PostV1OrgOrgNameSettingsApplicationsOauthParamsOrgName1 = string
-
 // PostV1OrgOrgNameSettingsApplicationsOauthSearchParams defines parameters for PostV1OrgOrgNameSettingsApplicationsOauthSearch.
 type PostV1OrgOrgNameSettingsApplicationsOauthSearchParams struct {
 	Limit *float32 `form:"limit,omitempty" json:"limit,omitempty"`
 	Page  *float32 `form:"page,omitempty" json:"page,omitempty"`
 }
-
-// PostV1OrgOrgNameSettingsApplicationsOauthSearchParamsOrgName0 defines parameters for PostV1OrgOrgNameSettingsApplicationsOauthSearch.
-type PostV1OrgOrgNameSettingsApplicationsOauthSearchParamsOrgName0 = string
-
-// PostV1OrgOrgNameSettingsApplicationsOauthSearchParamsOrgName1 defines parameters for PostV1OrgOrgNameSettingsApplicationsOauthSearch.
-type PostV1OrgOrgNameSettingsApplicationsOauthSearchParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName0 defines parameters for DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId.
-type DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName1 defines parameters for DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId.
-type DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName1 = string
-
-// GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName0 defines parameters for GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId.
-type GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName0 = string
-
-// GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName1 defines parameters for GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId.
-type GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName1 = string
-
-// PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName0 defines parameters for PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId.
-type PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName0 = string
-
-// PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName1 defines parameters for PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId.
-type PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdParamsOrgName1 = string
-
-// PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarParamsOrgName0 defines parameters for PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatar.
-type PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarParamsOrgName0 = string
-
-// PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarParamsOrgName1 defines parameters for PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatar.
-type PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarParamsOrgName1 = string
-
-// PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretParamsOrgName0 defines parameters for PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret.
-type PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretParamsOrgName0 = string
-
-// PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretParamsOrgName1 defines parameters for PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret.
-type PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameParamsOrgName0 defines parameters for DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName.
-type DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameParamsOrgName1 defines parameters for DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName.
-type DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameParamsOrgName1 = string
-
-// GetV1OrgOrgNameSettingsDomainsParamsOrgName0 defines parameters for GetV1OrgOrgNameSettingsDomains.
-type GetV1OrgOrgNameSettingsDomainsParamsOrgName0 = string
-
-// GetV1OrgOrgNameSettingsDomainsParamsOrgName1 defines parameters for GetV1OrgOrgNameSettingsDomains.
-type GetV1OrgOrgNameSettingsDomainsParamsOrgName1 = string
-
-// PostV1OrgOrgNameSettingsDomainsParamsOrgName0 defines parameters for PostV1OrgOrgNameSettingsDomains.
-type PostV1OrgOrgNameSettingsDomainsParamsOrgName0 = string
-
-// PostV1OrgOrgNameSettingsDomainsParamsOrgName1 defines parameters for PostV1OrgOrgNameSettingsDomains.
-type PostV1OrgOrgNameSettingsDomainsParamsOrgName1 = string
-
-// GetV1OrgOrgNameSettingsDomainsOidcParamsOrgName0 defines parameters for GetV1OrgOrgNameSettingsDomainsOidc.
-type GetV1OrgOrgNameSettingsDomainsOidcParamsOrgName0 = string
-
-// GetV1OrgOrgNameSettingsDomainsOidcParamsOrgName1 defines parameters for GetV1OrgOrgNameSettingsDomainsOidc.
-type GetV1OrgOrgNameSettingsDomainsOidcParamsOrgName1 = string
-
-// GetV1OrgOrgNameSettingsDomainsSamlParamsOrgName0 defines parameters for GetV1OrgOrgNameSettingsDomainsSaml.
-type GetV1OrgOrgNameSettingsDomainsSamlParamsOrgName0 = string
-
-// GetV1OrgOrgNameSettingsDomainsSamlParamsOrgName1 defines parameters for GetV1OrgOrgNameSettingsDomainsSaml.
-type GetV1OrgOrgNameSettingsDomainsSamlParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameSettingsDomainsDomainNameParamsOrgName0 defines parameters for DeleteV1OrgOrgNameSettingsDomainsDomainName.
-type DeleteV1OrgOrgNameSettingsDomainsDomainNameParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameSettingsDomainsDomainNameParamsOrgName1 defines parameters for DeleteV1OrgOrgNameSettingsDomainsDomainName.
-type DeleteV1OrgOrgNameSettingsDomainsDomainNameParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName0 defines parameters for DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc.
-type DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName1 defines parameters for DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc.
-type DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName1 = string
 
 // PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONBody defines parameters for PatchV1OrgOrgNameSettingsDomainsDomainNameOidc.
 type PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONBody struct {
@@ -4270,70 +4036,16 @@ type PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONBody struct {
 	ClientSecret *string `json:"clientSecret,omitempty"`
 }
 
-// PatchV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName0 defines parameters for PatchV1OrgOrgNameSettingsDomainsDomainNameOidc.
-type PatchV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName0 = string
-
-// PatchV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName1 defines parameters for PatchV1OrgOrgNameSettingsDomainsDomainNameOidc.
-type PatchV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName1 = string
-
 // PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONBody defines parameters for PostV1OrgOrgNameSettingsDomainsDomainNameOidc.
 type PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONBody struct {
 	ClientId     string `json:"clientId"`
 	ClientSecret string `json:"clientSecret"`
 }
 
-// PostV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName0 defines parameters for PostV1OrgOrgNameSettingsDomainsDomainNameOidc.
-type PostV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName0 = string
-
-// PostV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName1 defines parameters for PostV1OrgOrgNameSettingsDomainsDomainNameOidc.
-type PostV1OrgOrgNameSettingsDomainsDomainNameOidcParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName0 defines parameters for DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml.
-type DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName1 defines parameters for DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml.
-type DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName1 = string
-
-// PostV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName0 defines parameters for PostV1OrgOrgNameSettingsDomainsDomainNameSaml.
-type PostV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName0 = string
-
-// PostV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName1 defines parameters for PostV1OrgOrgNameSettingsDomainsDomainNameSaml.
-type PostV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName1 = string
-
-// PutV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName0 defines parameters for PutV1OrgOrgNameSettingsDomainsDomainNameSaml.
-type PutV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName0 = string
-
-// PutV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName1 defines parameters for PutV1OrgOrgNameSettingsDomainsDomainNameSaml.
-type PutV1OrgOrgNameSettingsDomainsDomainNameSamlParamsOrgName1 = string
-
-// PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesParamsOrgName0 defines parameters for PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificates.
-type PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesParamsOrgName0 = string
-
-// PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesParamsOrgName1 defines parameters for PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificates.
-type PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesParamsOrgName1 = string
-
-// PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyParamsOrgName0 defines parameters for PatchV1OrgOrgNameSettingsDomainsDomainNameVerify.
-type PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyParamsOrgName0 = string
-
-// PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyParamsOrgName1 defines parameters for PatchV1OrgOrgNameSettingsDomainsDomainNameVerify.
-type PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyParamsOrgName1 = string
-
-// GetV1OrgOrgNameStatsParamsOrgName0 defines parameters for GetV1OrgOrgNameStats.
-type GetV1OrgOrgNameStatsParamsOrgName0 = string
-
-// GetV1OrgOrgNameStatsParamsOrgName1 defines parameters for GetV1OrgOrgNameStats.
-type GetV1OrgOrgNameStatsParamsOrgName1 = string
-
 // PostV1OrgOrgNameStorageParams defines parameters for PostV1OrgOrgNameStorage.
 type PostV1OrgOrgNameStorageParams struct {
 	NoAvatar *bool `form:"noAvatar,omitempty" json:"noAvatar,omitempty"`
 }
-
-// PostV1OrgOrgNameStorageParamsOrgName0 defines parameters for PostV1OrgOrgNameStorage.
-type PostV1OrgOrgNameStorageParamsOrgName0 = string
-
-// PostV1OrgOrgNameStorageParamsOrgName1 defines parameters for PostV1OrgOrgNameStorage.
-type PostV1OrgOrgNameStorageParamsOrgName1 = string
 
 // PostV1OrgOrgNameStorageSearchParams defines parameters for PostV1OrgOrgNameStorageSearch.
 type PostV1OrgOrgNameStorageSearchParams struct {
@@ -4341,40 +4053,10 @@ type PostV1OrgOrgNameStorageSearchParams struct {
 	Page  *float32 `form:"page,omitempty" json:"page,omitempty"`
 }
 
-// PostV1OrgOrgNameStorageSearchParamsOrgName0 defines parameters for PostV1OrgOrgNameStorageSearch.
-type PostV1OrgOrgNameStorageSearchParamsOrgName0 = string
-
-// PostV1OrgOrgNameStorageSearchParamsOrgName1 defines parameters for PostV1OrgOrgNameStorageSearch.
-type PostV1OrgOrgNameStorageSearchParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameStorageStorageIdParamsOrgName0 defines parameters for DeleteV1OrgOrgNameStorageStorageId.
-type DeleteV1OrgOrgNameStorageStorageIdParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameStorageStorageIdParamsOrgName1 defines parameters for DeleteV1OrgOrgNameStorageStorageId.
-type DeleteV1OrgOrgNameStorageStorageIdParamsOrgName1 = string
-
-// PatchV1OrgOrgNameStorageStorageIdParamsOrgName0 defines parameters for PatchV1OrgOrgNameStorageStorageId.
-type PatchV1OrgOrgNameStorageStorageIdParamsOrgName0 = string
-
-// PatchV1OrgOrgNameStorageStorageIdParamsOrgName1 defines parameters for PatchV1OrgOrgNameStorageStorageId.
-type PatchV1OrgOrgNameStorageStorageIdParamsOrgName1 = string
-
-// PatchV1OrgOrgNameStorageStorageIdAvatarParamsOrgName0 defines parameters for PatchV1OrgOrgNameStorageStorageIdAvatar.
-type PatchV1OrgOrgNameStorageStorageIdAvatarParamsOrgName0 = string
-
-// PatchV1OrgOrgNameStorageStorageIdAvatarParamsOrgName1 defines parameters for PatchV1OrgOrgNameStorageStorageIdAvatar.
-type PatchV1OrgOrgNameStorageStorageIdAvatarParamsOrgName1 = string
-
 // PostV1OrgOrgNameTeamsParams defines parameters for PostV1OrgOrgNameTeams.
 type PostV1OrgOrgNameTeamsParams struct {
 	NoAvatar *bool `form:"noAvatar,omitempty" json:"noAvatar,omitempty"`
 }
-
-// PostV1OrgOrgNameTeamsParamsOrgName0 defines parameters for PostV1OrgOrgNameTeams.
-type PostV1OrgOrgNameTeamsParamsOrgName0 = string
-
-// PostV1OrgOrgNameTeamsParamsOrgName1 defines parameters for PostV1OrgOrgNameTeams.
-type PostV1OrgOrgNameTeamsParamsOrgName1 = string
 
 // PostV1OrgOrgNameTeamsSearchParams defines parameters for PostV1OrgOrgNameTeamsSearch.
 type PostV1OrgOrgNameTeamsSearchParams struct {
@@ -4384,52 +4066,16 @@ type PostV1OrgOrgNameTeamsSearchParams struct {
 	MembersSample    *float32 `form:"membersSample,omitempty" json:"membersSample,omitempty"`
 }
 
-// PostV1OrgOrgNameTeamsSearchParamsOrgName0 defines parameters for PostV1OrgOrgNameTeamsSearch.
-type PostV1OrgOrgNameTeamsSearchParamsOrgName0 = string
-
-// PostV1OrgOrgNameTeamsSearchParamsOrgName1 defines parameters for PostV1OrgOrgNameTeamsSearch.
-type PostV1OrgOrgNameTeamsSearchParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameTeamsTeamNameParamsOrgName0 defines parameters for DeleteV1OrgOrgNameTeamsTeamName.
-type DeleteV1OrgOrgNameTeamsTeamNameParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameTeamsTeamNameParamsOrgName1 defines parameters for DeleteV1OrgOrgNameTeamsTeamName.
-type DeleteV1OrgOrgNameTeamsTeamNameParamsOrgName1 = string
-
 // GetV1OrgOrgNameTeamsTeamNameParams defines parameters for GetV1OrgOrgNameTeamsTeamName.
 type GetV1OrgOrgNameTeamsTeamNameParams struct {
 	MembersLimit *float32 `form:"membersLimit,omitempty" json:"membersLimit,omitempty"`
 }
-
-// GetV1OrgOrgNameTeamsTeamNameParamsOrgName0 defines parameters for GetV1OrgOrgNameTeamsTeamName.
-type GetV1OrgOrgNameTeamsTeamNameParamsOrgName0 = string
-
-// GetV1OrgOrgNameTeamsTeamNameParamsOrgName1 defines parameters for GetV1OrgOrgNameTeamsTeamName.
-type GetV1OrgOrgNameTeamsTeamNameParamsOrgName1 = string
-
-// PatchV1OrgOrgNameTeamsTeamNameParamsOrgName0 defines parameters for PatchV1OrgOrgNameTeamsTeamName.
-type PatchV1OrgOrgNameTeamsTeamNameParamsOrgName0 = string
-
-// PatchV1OrgOrgNameTeamsTeamNameParamsOrgName1 defines parameters for PatchV1OrgOrgNameTeamsTeamName.
-type PatchV1OrgOrgNameTeamsTeamNameParamsOrgName1 = string
-
-// PatchV1OrgOrgNameTeamsTeamNameAvatarParamsOrgName0 defines parameters for PatchV1OrgOrgNameTeamsTeamNameAvatar.
-type PatchV1OrgOrgNameTeamsTeamNameAvatarParamsOrgName0 = string
-
-// PatchV1OrgOrgNameTeamsTeamNameAvatarParamsOrgName1 defines parameters for PatchV1OrgOrgNameTeamsTeamNameAvatar.
-type PatchV1OrgOrgNameTeamsTeamNameAvatarParamsOrgName1 = string
 
 // PostV1OrgOrgNameTeamsTeamNameMembersSearchParams defines parameters for PostV1OrgOrgNameTeamsTeamNameMembersSearch.
 type PostV1OrgOrgNameTeamsTeamNameMembersSearchParams struct {
 	Limit *float32 `form:"limit,omitempty" json:"limit,omitempty"`
 	Page  *float32 `form:"page,omitempty" json:"page,omitempty"`
 }
-
-// PostV1OrgOrgNameTeamsTeamNameMembersSearchParamsOrgName0 defines parameters for PostV1OrgOrgNameTeamsTeamNameMembersSearch.
-type PostV1OrgOrgNameTeamsTeamNameMembersSearchParamsOrgName0 = string
-
-// PostV1OrgOrgNameTeamsTeamNameMembersSearchParamsOrgName1 defines parameters for PostV1OrgOrgNameTeamsTeamNameMembersSearch.
-type PostV1OrgOrgNameTeamsTeamNameMembersSearchParamsOrgName1 = string
 
 // PostV1RegisterParams defines parameters for PostV1Register.
 type PostV1RegisterParams struct {
@@ -5464,403 +5110,233 @@ type ClientInterface interface {
 	GetV1OrgOrgNameStorageStorageIdTest(ctx context.Context, storageId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgName request
-	DeleteV1OrgOrgName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgName(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgName request
-	GetV1OrgOrgName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *GetV1OrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgName(ctx context.Context, orgName string, params *GetV1OrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameWithBody request with any body
-	PatchV1OrgOrgNameWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PatchV1OrgOrgName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PatchV1OrgOrgNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgName(ctx context.Context, orgName string, body PatchV1OrgOrgNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameAvatarWithBody request with any body
-	PatchV1OrgOrgNameAvatarWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameAvatarWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameLicense request
-	GetV1OrgOrgNameLicense(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameLicense(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PutV1OrgOrgNameLicenseWithBody request with any body
-	PutV1OrgOrgNameLicenseWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PutV1OrgOrgNameLicenseWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PutV1OrgOrgNameLicense(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PutV1OrgOrgNameLicenseJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PutV1OrgOrgNameLicense(ctx context.Context, orgName string, body PutV1OrgOrgNameLicenseJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameMembers request
-	DeleteV1OrgOrgNameMembers(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameMembers(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameMembersInvitationsWithBody request with any body
-	PostV1OrgOrgNameMembersInvitationsWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameMembersInvitationsWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameMembersInvitations(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameMembersInvitations(ctx context.Context, orgName string, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameMembersInvitationsListWithBody request with any body
-	PostV1OrgOrgNameMembersInvitationsListWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameMembersInvitationsListWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameMembersInvitationsList(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameMembersInvitationsList(ctx context.Context, orgName string, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameMembersInvitationsSearchWithBody request with any body
-	PostV1OrgOrgNameMembersInvitationsSearchWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameMembersInvitationsSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameMembersInvitationsSearch(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameMembersInvitationsSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameMembersInvitationsInvitationId request
-	DeleteV1OrgOrgNameMembersInvitationsInvitationId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, invitationId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameMembersInvitationsInvitationId(ctx context.Context, orgName string, invitationId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBody request with any body
-	PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, invitationId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBody(ctx context.Context, orgName string, invitationId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval(ctx context.Context, orgName string, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameMembersInvitationsInvitationIdResend request
-	PostV1OrgOrgNameMembersInvitationsInvitationIdResend(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, invitationId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameMembersInvitationsInvitationIdResend(ctx context.Context, orgName string, invitationId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameMembersSearchWithBody request with any body
-	PostV1OrgOrgNameMembersSearchWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameMembersSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameMembersSearch(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameMembersSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameMembersUserId request
-	DeleteV1OrgOrgNameMembersUserId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameMembersUserId(ctx context.Context, orgName string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameMembersUserId request
-	GetV1OrgOrgNameMembersUserId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameMembersUserId(ctx context.Context, orgName string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBody request with any body
-	PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBody(ctx context.Context, orgName string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PatchV1OrgOrgNameMembersUserIdExecutionTarget(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameMembersUserIdExecutionTarget(ctx context.Context, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameMembersUserIdRoleWithBody request with any body
-	PatchV1OrgOrgNameMembersUserIdRoleWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameMembersUserIdRoleWithBody(ctx context.Context, orgName string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PatchV1OrgOrgNameMembersUserIdRole(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameMembersUserIdRole(ctx context.Context, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameServiceAccountsWithBody request with any body
-	PostV1OrgOrgNameServiceAccountsWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameServiceAccountsWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameServiceAccounts(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameServiceAccounts(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameServiceAccountsSearchWithBody request with any body
-	PostV1OrgOrgNameServiceAccountsSearchWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameServiceAccountsSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameServiceAccountsSearch(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameServiceAccountsSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameServiceAccountsServiceAccountId request
-	DeleteV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameServiceAccountsServiceAccountId request
-	GetV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBody request with any body
-	PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBody(ctx context.Context, orgName string, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBody request with any body
-	PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBody(ctx context.Context, orgName string, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PatchV1OrgOrgNameServiceAccountsServiceAccountIdName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameServiceAccountsServiceAccountIdName(ctx context.Context, orgName string, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate request
-	PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameSettingsApplicationsOauthWithBody request with any body
-	PostV1OrgOrgNameSettingsApplicationsOauthWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameSettingsApplicationsOauth(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsApplicationsOauth(ctx context.Context, orgName string, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBody request with any body
-	PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameSettingsApplicationsOauthSearch(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId request
-	DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName string, oAuthAppId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId request
-	GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName string, oAuthAppId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBody request with any body
-	PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBody(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName string, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBody request with any body
-	PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBody(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBody request with any body
-	PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBody(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret(ctx context.Context, orgName string, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName request
-	DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, name string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName(ctx context.Context, orgName string, oAuthAppId string, name string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameSettingsDomains request
-	GetV1OrgOrgNameSettingsDomains(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameSettingsDomains(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameSettingsDomainsWithBody request with any body
-	PostV1OrgOrgNameSettingsDomainsWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsDomainsWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameSettingsDomains(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsDomains(ctx context.Context, orgName string, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameSettingsDomainsOidc request
-	GetV1OrgOrgNameSettingsDomainsOidc(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameSettingsDomainsOidc(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameSettingsDomainsSaml request
-	GetV1OrgOrgNameSettingsDomainsSaml(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameSettingsDomainsSaml(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameSettingsDomainsDomainName request
-	DeleteV1OrgOrgNameSettingsDomainsDomainName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameSettingsDomainsDomainName(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc request
-	DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody request with any body
-	PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PatchV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName string, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody request with any body
-	PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName string, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml request
-	DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody request with any body
-	PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody request with any body
-	PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBody request with any body
-	PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameSettingsDomainsDomainNameVerify request
-	PatchV1OrgOrgNameSettingsDomainsDomainNameVerify(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameSettingsDomainsDomainNameVerify(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameStats request
-	GetV1OrgOrgNameStats(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameStats(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameStorageWithBody request with any body
-	PostV1OrgOrgNameStorageWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameStorageWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameStorage(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameStorage(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameStorageSearchWithBody request with any body
-	PostV1OrgOrgNameStorageSearchWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameStorageSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameStorageSearch(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameStorageSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameStorageStorageId request
-	DeleteV1OrgOrgNameStorageStorageId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageId TheIdOfTheStorageToDelete, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameStorageStorageId(ctx context.Context, orgName string, storageId TheIdOfTheStorageToDelete, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameStorageStorageIdWithBody request with any body
-	PatchV1OrgOrgNameStorageStorageIdWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameStorageStorageIdWithBody(ctx context.Context, orgName string, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PatchV1OrgOrgNameStorageStorageId(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameStorageStorageId(ctx context.Context, orgName string, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameStorageStorageIdAvatarWithBody request with any body
-	PatchV1OrgOrgNameStorageStorageIdAvatarWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameStorageStorageIdAvatarWithBody(ctx context.Context, orgName string, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameTeamsWithBody request with any body
-	PostV1OrgOrgNameTeamsWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameTeamsWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameTeams(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameTeams(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameTeamsSearchWithBody request with any body
-	PostV1OrgOrgNameTeamsSearchWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameTeamsSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameTeamsSearch(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameTeamsSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameTeamsTeamName request
-	DeleteV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameTeamsTeamName request
-	GetV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameTeamsTeamNameWithBody request with any body
-	PatchV1OrgOrgNameTeamsTeamNameWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameTeamsTeamNameWithBody(ctx context.Context, orgName string, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PatchV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1OrgOrgNameTeamsTeamNameAvatarWithBody request with any body
-	PatchV1OrgOrgNameTeamsTeamNameAvatarWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PatchV1OrgOrgNameTeamsTeamNameAvatarWithBody(ctx context.Context, orgName string, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBody request with any body
-	PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBody(ctx context.Context, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameTeamsTeamNameMembersSearch(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameTeamsTeamNameMembersSearch(ctx context.Context, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1RegisterWithBody request with any body
 	PostV1RegisterWithBody(ctx context.Context, params *PostV1RegisterParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -6580,9 +6056,7 @@ func (c *Client) GetV1OrgOrgNameStorageStorageIdTest(ctx context.Context, storag
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgName(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameRequest(c.Server, orgName)
 	if err != nil {
 		return nil, err
@@ -6594,9 +6068,7 @@ func (c *Client) DeleteV1OrgOrgName(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *GetV1OrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgName(ctx context.Context, orgName string, params *GetV1OrgOrgNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameRequest(c.Server, orgName, params)
 	if err != nil {
 		return nil, err
@@ -6608,9 +6080,7 @@ func (c *Client) GetV1OrgOrgName(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameRequestWithBody(c.Server, orgName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6622,9 +6092,7 @@ func (c *Client) PatchV1OrgOrgNameWithBody(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PatchV1OrgOrgNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgName(ctx context.Context, orgName string, body PatchV1OrgOrgNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameRequest(c.Server, orgName, body)
 	if err != nil {
 		return nil, err
@@ -6636,9 +6104,7 @@ func (c *Client) PatchV1OrgOrgName(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameAvatarWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameAvatarWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameAvatarRequestWithBody(c.Server, orgName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6650,9 +6116,7 @@ func (c *Client) PatchV1OrgOrgNameAvatarWithBody(ctx context.Context, orgName st
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameLicense(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameLicense(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameLicenseRequest(c.Server, orgName)
 	if err != nil {
 		return nil, err
@@ -6664,9 +6128,7 @@ func (c *Client) GetV1OrgOrgNameLicense(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PutV1OrgOrgNameLicenseWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PutV1OrgOrgNameLicenseWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPutV1OrgOrgNameLicenseRequestWithBody(c.Server, orgName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6678,9 +6140,7 @@ func (c *Client) PutV1OrgOrgNameLicenseWithBody(ctx context.Context, orgName str
 	return c.Client.Do(req)
 }
 
-func (c *Client) PutV1OrgOrgNameLicense(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PutV1OrgOrgNameLicenseJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PutV1OrgOrgNameLicense(ctx context.Context, orgName string, body PutV1OrgOrgNameLicenseJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPutV1OrgOrgNameLicenseRequest(c.Server, orgName, body)
 	if err != nil {
 		return nil, err
@@ -6692,9 +6152,7 @@ func (c *Client) PutV1OrgOrgNameLicense(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameMembers(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameMembers(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameMembersRequest(c.Server, orgName)
 	if err != nil {
 		return nil, err
@@ -6706,9 +6164,7 @@ func (c *Client) DeleteV1OrgOrgNameMembers(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameMembersInvitationsWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameMembersInvitationsWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameMembersInvitationsRequestWithBody(c.Server, orgName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6720,9 +6176,7 @@ func (c *Client) PostV1OrgOrgNameMembersInvitationsWithBody(ctx context.Context,
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameMembersInvitations(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameMembersInvitations(ctx context.Context, orgName string, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameMembersInvitationsRequest(c.Server, orgName, body)
 	if err != nil {
 		return nil, err
@@ -6734,9 +6188,7 @@ func (c *Client) PostV1OrgOrgNameMembersInvitations(ctx context.Context, orgName
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameMembersInvitationsListWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameMembersInvitationsListWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameMembersInvitationsListRequestWithBody(c.Server, orgName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6748,9 +6200,7 @@ func (c *Client) PostV1OrgOrgNameMembersInvitationsListWithBody(ctx context.Cont
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameMembersInvitationsList(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameMembersInvitationsList(ctx context.Context, orgName string, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameMembersInvitationsListRequest(c.Server, orgName, body)
 	if err != nil {
 		return nil, err
@@ -6762,9 +6212,7 @@ func (c *Client) PostV1OrgOrgNameMembersInvitationsList(ctx context.Context, org
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameMembersInvitationsSearchWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameMembersInvitationsSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameMembersInvitationsSearchRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6776,9 +6224,7 @@ func (c *Client) PostV1OrgOrgNameMembersInvitationsSearchWithBody(ctx context.Co
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameMembersInvitationsSearch(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameMembersInvitationsSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameMembersInvitationsSearchRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -6790,9 +6236,7 @@ func (c *Client) PostV1OrgOrgNameMembersInvitationsSearch(ctx context.Context, o
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameMembersInvitationsInvitationId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, invitationId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameMembersInvitationsInvitationId(ctx context.Context, orgName string, invitationId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameMembersInvitationsInvitationIdRequest(c.Server, orgName, invitationId)
 	if err != nil {
 		return nil, err
@@ -6804,9 +6248,7 @@ func (c *Client) DeleteV1OrgOrgNameMembersInvitationsInvitationId(ctx context.Co
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, invitationId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBody(ctx context.Context, orgName string, invitationId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequestWithBody(c.Server, orgName, invitationId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6818,9 +6260,7 @@ func (c *Client) PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBody
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval(ctx context.Context, orgName string, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequest(c.Server, orgName, invitationId, body)
 	if err != nil {
 		return nil, err
@@ -6832,9 +6272,7 @@ func (c *Client) PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval(ctx con
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameMembersInvitationsInvitationIdResend(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, invitationId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameMembersInvitationsInvitationIdResend(ctx context.Context, orgName string, invitationId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameMembersInvitationsInvitationIdResendRequest(c.Server, orgName, invitationId)
 	if err != nil {
 		return nil, err
@@ -6846,9 +6284,7 @@ func (c *Client) PostV1OrgOrgNameMembersInvitationsInvitationIdResend(ctx contex
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameMembersSearchWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameMembersSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameMembersSearchRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6860,9 +6296,7 @@ func (c *Client) PostV1OrgOrgNameMembersSearchWithBody(ctx context.Context, orgN
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameMembersSearch(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameMembersSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameMembersSearchRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -6874,9 +6308,7 @@ func (c *Client) PostV1OrgOrgNameMembersSearch(ctx context.Context, orgName stru
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameMembersUserId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameMembersUserId(ctx context.Context, orgName string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameMembersUserIdRequest(c.Server, orgName, userId)
 	if err != nil {
 		return nil, err
@@ -6888,9 +6320,7 @@ func (c *Client) DeleteV1OrgOrgNameMembersUserId(ctx context.Context, orgName st
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameMembersUserId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameMembersUserId(ctx context.Context, orgName string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameMembersUserIdRequest(c.Server, orgName, userId)
 	if err != nil {
 		return nil, err
@@ -6902,9 +6332,7 @@ func (c *Client) GetV1OrgOrgNameMembersUserId(ctx context.Context, orgName struc
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBody(ctx context.Context, orgName string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequestWithBody(c.Server, orgName, userId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6916,9 +6344,7 @@ func (c *Client) PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBody(ctx conte
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameMembersUserIdExecutionTarget(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameMembersUserIdExecutionTarget(ctx context.Context, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequest(c.Server, orgName, userId, body)
 	if err != nil {
 		return nil, err
@@ -6930,9 +6356,7 @@ func (c *Client) PatchV1OrgOrgNameMembersUserIdExecutionTarget(ctx context.Conte
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameMembersUserIdRoleWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameMembersUserIdRoleWithBody(ctx context.Context, orgName string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameMembersUserIdRoleRequestWithBody(c.Server, orgName, userId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6944,9 +6368,7 @@ func (c *Client) PatchV1OrgOrgNameMembersUserIdRoleWithBody(ctx context.Context,
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameMembersUserIdRole(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameMembersUserIdRole(ctx context.Context, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameMembersUserIdRoleRequest(c.Server, orgName, userId, body)
 	if err != nil {
 		return nil, err
@@ -6958,9 +6380,7 @@ func (c *Client) PatchV1OrgOrgNameMembersUserIdRole(ctx context.Context, orgName
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameServiceAccountsWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameServiceAccountsWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameServiceAccountsRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -6972,9 +6392,7 @@ func (c *Client) PostV1OrgOrgNameServiceAccountsWithBody(ctx context.Context, or
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameServiceAccounts(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameServiceAccounts(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameServiceAccountsRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -6986,9 +6404,7 @@ func (c *Client) PostV1OrgOrgNameServiceAccounts(ctx context.Context, orgName st
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameServiceAccountsSearchWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameServiceAccountsSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameServiceAccountsSearchRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7000,9 +6416,7 @@ func (c *Client) PostV1OrgOrgNameServiceAccountsSearchWithBody(ctx context.Conte
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameServiceAccountsSearch(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameServiceAccountsSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameServiceAccountsSearchRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -7014,9 +6428,7 @@ func (c *Client) PostV1OrgOrgNameServiceAccountsSearch(ctx context.Context, orgN
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameServiceAccountsServiceAccountIdRequest(c.Server, orgName, serviceAccountId)
 	if err != nil {
 		return nil, err
@@ -7028,9 +6440,7 @@ func (c *Client) DeleteV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.C
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameServiceAccountsServiceAccountIdRequest(c.Server, orgName, serviceAccountId)
 	if err != nil {
 		return nil, err
@@ -7042,9 +6452,7 @@ func (c *Client) GetV1OrgOrgNameServiceAccountsServiceAccountId(ctx context.Cont
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBody(ctx context.Context, orgName string, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarRequestWithBody(c.Server, orgName, serviceAccountId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7056,9 +6464,7 @@ func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBody(
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBody(ctx context.Context, orgName string, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequestWithBody(c.Server, orgName, serviceAccountId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7070,9 +6476,7 @@ func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBody(ct
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdName(ctx context.Context, orgName string, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequest(c.Server, orgName, serviceAccountId, body)
 	if err != nil {
 		return nil, err
@@ -7084,9 +6488,7 @@ func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdName(ctx contex
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateRequest(c.Server, orgName, serviceAccountId)
 	if err != nil {
 		return nil, err
@@ -7098,9 +6500,7 @@ func (c *Client) PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate(ctx 
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsApplicationsOauthRequestWithBody(c.Server, orgName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7112,9 +6512,7 @@ func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthWithBody(ctx context.C
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauth(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauth(ctx context.Context, orgName string, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsApplicationsOauthRequest(c.Server, orgName, body)
 	if err != nil {
 		return nil, err
@@ -7126,9 +6524,7 @@ func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauth(ctx context.Context, 
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7140,9 +6536,7 @@ func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBody(ctx con
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthSearch(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -7154,9 +6548,7 @@ func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthSearch(ctx context.Con
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName string, oAuthAppId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(c.Server, orgName, oAuthAppId)
 	if err != nil {
 		return nil, err
@@ -7168,9 +6560,7 @@ func (c *Client) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx conte
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName string, oAuthAppId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(c.Server, orgName, oAuthAppId)
 	if err != nil {
 		return nil, err
@@ -7182,9 +6572,7 @@ func (c *Client) GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.
 	return c.Client.Do(req)
 }
 
-func (c *Client) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBody(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequestWithBody(c.Server, orgName, oAuthAppId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7196,9 +6584,7 @@ func (c *Client) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBody(ctx 
 	return c.Client.Do(req)
 }
 
-func (c *Client) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.Context, orgName string, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(c.Server, orgName, oAuthAppId, body)
 	if err != nil {
 		return nil, err
@@ -7210,9 +6596,7 @@ func (c *Client) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx context.
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBody(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarRequestWithBody(c.Server, orgName, oAuthAppId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7224,9 +6608,7 @@ func (c *Client) PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithB
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBody(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequestWithBody(c.Server, orgName, oAuthAppId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7238,9 +6620,7 @@ func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBo
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret(ctx context.Context, orgName string, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequest(c.Server, orgName, oAuthAppId, body)
 	if err != nil {
 		return nil, err
@@ -7252,9 +6632,7 @@ func (c *Client) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret(ctx c
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, name string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName(ctx context.Context, orgName string, oAuthAppId string, name string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameRequest(c.Server, orgName, oAuthAppId, name)
 	if err != nil {
 		return nil, err
@@ -7266,9 +6644,7 @@ func (c *Client) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameSettingsDomains(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameSettingsDomains(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameSettingsDomainsRequest(c.Server, orgName)
 	if err != nil {
 		return nil, err
@@ -7280,9 +6656,7 @@ func (c *Client) GetV1OrgOrgNameSettingsDomains(ctx context.Context, orgName str
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsDomainsWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsDomainsWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsDomainsRequestWithBody(c.Server, orgName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7294,9 +6668,7 @@ func (c *Client) PostV1OrgOrgNameSettingsDomainsWithBody(ctx context.Context, or
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsDomains(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsDomains(ctx context.Context, orgName string, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsDomainsRequest(c.Server, orgName, body)
 	if err != nil {
 		return nil, err
@@ -7308,9 +6680,7 @@ func (c *Client) PostV1OrgOrgNameSettingsDomains(ctx context.Context, orgName st
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameSettingsDomainsOidc(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameSettingsDomainsOidc(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameSettingsDomainsOidcRequest(c.Server, orgName)
 	if err != nil {
 		return nil, err
@@ -7322,9 +6692,7 @@ func (c *Client) GetV1OrgOrgNameSettingsDomainsOidc(ctx context.Context, orgName
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameSettingsDomainsSaml(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameSettingsDomainsSaml(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameSettingsDomainsSamlRequest(c.Server, orgName)
 	if err != nil {
 		return nil, err
@@ -7336,9 +6704,7 @@ func (c *Client) GetV1OrgOrgNameSettingsDomainsSaml(ctx context.Context, orgName
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameSettingsDomainsDomainName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameSettingsDomainsDomainName(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameSettingsDomainsDomainNameRequest(c.Server, orgName, domainName)
 	if err != nil {
 		return nil, err
@@ -7350,9 +6716,7 @@ func (c *Client) DeleteV1OrgOrgNameSettingsDomainsDomainName(ctx context.Context
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(c.Server, orgName, domainName)
 	if err != nil {
 		return nil, err
@@ -7364,9 +6728,7 @@ func (c *Client) DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Con
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody(c.Server, orgName, domainName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7378,9 +6740,7 @@ func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx cont
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName string, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(c.Server, orgName, domainName, body)
 	if err != nil {
 		return nil, err
@@ -7392,9 +6752,7 @@ func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Cont
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody(c.Server, orgName, domainName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7406,9 +6764,7 @@ func (c *Client) PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx conte
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Context, orgName string, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(c.Server, orgName, domainName, body)
 	if err != nil {
 		return nil, err
@@ -7420,9 +6776,7 @@ func (c *Client) PostV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx context.Conte
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameSettingsDomainsDomainNameSamlRequest(c.Server, orgName, domainName)
 	if err != nil {
 		return nil, err
@@ -7434,9 +6788,7 @@ func (c *Client) DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml(ctx context.Con
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody(c.Server, orgName, domainName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7448,9 +6800,7 @@ func (c *Client) PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx conte
 	return c.Client.Do(req)
 }
 
-func (c *Client) PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPutV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody(c.Server, orgName, domainName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7462,9 +6812,7 @@ func (c *Client) PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx contex
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBody(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesRequestWithBody(c.Server, orgName, domainName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7476,9 +6824,7 @@ func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithB
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameVerify(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameVerify(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameSettingsDomainsDomainNameVerifyRequest(c.Server, orgName, domainName)
 	if err != nil {
 		return nil, err
@@ -7490,9 +6836,7 @@ func (c *Client) PatchV1OrgOrgNameSettingsDomainsDomainNameVerify(ctx context.Co
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameStats(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameStats(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameStatsRequest(c.Server, orgName)
 	if err != nil {
 		return nil, err
@@ -7504,9 +6848,7 @@ func (c *Client) GetV1OrgOrgNameStats(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameStorageWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameStorageWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameStorageRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7518,9 +6860,7 @@ func (c *Client) PostV1OrgOrgNameStorageWithBody(ctx context.Context, orgName st
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameStorage(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameStorage(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameStorageRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -7532,9 +6872,7 @@ func (c *Client) PostV1OrgOrgNameStorage(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameStorageSearchWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameStorageSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameStorageSearchRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7546,9 +6884,7 @@ func (c *Client) PostV1OrgOrgNameStorageSearchWithBody(ctx context.Context, orgN
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameStorageSearch(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameStorageSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameStorageSearchRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -7560,9 +6896,7 @@ func (c *Client) PostV1OrgOrgNameStorageSearch(ctx context.Context, orgName stru
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameStorageStorageId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageId TheIdOfTheStorageToDelete, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameStorageStorageId(ctx context.Context, orgName string, storageId TheIdOfTheStorageToDelete, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameStorageStorageIdRequest(c.Server, orgName, storageId)
 	if err != nil {
 		return nil, err
@@ -7574,9 +6908,7 @@ func (c *Client) DeleteV1OrgOrgNameStorageStorageId(ctx context.Context, orgName
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameStorageStorageIdWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameStorageStorageIdWithBody(ctx context.Context, orgName string, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameStorageStorageIdRequestWithBody(c.Server, orgName, storageId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7588,9 +6920,7 @@ func (c *Client) PatchV1OrgOrgNameStorageStorageIdWithBody(ctx context.Context, 
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameStorageStorageId(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameStorageStorageId(ctx context.Context, orgName string, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameStorageStorageIdRequest(c.Server, orgName, storageId, body)
 	if err != nil {
 		return nil, err
@@ -7602,9 +6932,7 @@ func (c *Client) PatchV1OrgOrgNameStorageStorageId(ctx context.Context, orgName 
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameStorageStorageIdAvatarWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameStorageStorageIdAvatarWithBody(ctx context.Context, orgName string, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameStorageStorageIdAvatarRequestWithBody(c.Server, orgName, storageId, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7616,9 +6944,7 @@ func (c *Client) PatchV1OrgOrgNameStorageStorageIdAvatarWithBody(ctx context.Con
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameTeamsWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameTeamsWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameTeamsRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7630,9 +6956,7 @@ func (c *Client) PostV1OrgOrgNameTeamsWithBody(ctx context.Context, orgName stru
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameTeams(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameTeams(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameTeamsRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -7644,9 +6968,7 @@ func (c *Client) PostV1OrgOrgNameTeams(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameTeamsSearchWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameTeamsSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameTeamsSearchRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7658,9 +6980,7 @@ func (c *Client) PostV1OrgOrgNameTeamsSearchWithBody(ctx context.Context, orgNam
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameTeamsSearch(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameTeamsSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameTeamsSearchRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -7672,9 +6992,7 @@ func (c *Client) PostV1OrgOrgNameTeamsSearch(ctx context.Context, orgName struct
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameTeamsTeamNameRequest(c.Server, orgName, teamName)
 	if err != nil {
 		return nil, err
@@ -7686,9 +7004,7 @@ func (c *Client) DeleteV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName st
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameTeamsTeamNameRequest(c.Server, orgName, teamName, params)
 	if err != nil {
 		return nil, err
@@ -7700,9 +7016,7 @@ func (c *Client) GetV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName struc
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameTeamsTeamNameWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameTeamsTeamNameWithBody(ctx context.Context, orgName string, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameTeamsTeamNameRequestWithBody(c.Server, orgName, teamName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7714,9 +7028,7 @@ func (c *Client) PatchV1OrgOrgNameTeamsTeamNameWithBody(ctx context.Context, org
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName string, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameTeamsTeamNameRequest(c.Server, orgName, teamName, body)
 	if err != nil {
 		return nil, err
@@ -7728,9 +7040,7 @@ func (c *Client) PatchV1OrgOrgNameTeamsTeamName(ctx context.Context, orgName str
 	return c.Client.Do(req)
 }
 
-func (c *Client) PatchV1OrgOrgNameTeamsTeamNameAvatarWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PatchV1OrgOrgNameTeamsTeamNameAvatarWithBody(ctx context.Context, orgName string, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameTeamsTeamNameAvatarRequestWithBody(c.Server, orgName, teamName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7742,9 +7052,7 @@ func (c *Client) PatchV1OrgOrgNameTeamsTeamNameAvatarWithBody(ctx context.Contex
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBody(ctx context.Context, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameTeamsTeamNameMembersSearchRequestWithBody(c.Server, orgName, teamName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -7756,9 +7064,7 @@ func (c *Client) PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBody(ctx context.
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameTeamsTeamNameMembersSearch(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameTeamsTeamNameMembersSearch(ctx context.Context, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameTeamsTeamNameMembersSearchRequest(c.Server, orgName, teamName, params, body)
 	if err != nil {
 		return nil, err
@@ -10055,14 +9361,12 @@ func NewGetV1OrgOrgNameStorageStorageIdTestRequest(server string, storageId stri
 }
 
 // NewDeleteV1OrgOrgNameRequest generates requests for DeleteV1OrgOrgName
-func NewDeleteV1OrgOrgNameRequest(server string, orgName struct {
-	union json.RawMessage
-}) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameRequest(server string, orgName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10091,14 +9395,12 @@ func NewDeleteV1OrgOrgNameRequest(server string, orgName struct {
 }
 
 // NewGetV1OrgOrgNameRequest generates requests for GetV1OrgOrgName
-func NewGetV1OrgOrgNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *GetV1OrgOrgNameParams) (*http.Request, error) {
+func NewGetV1OrgOrgNameRequest(server string, orgName string, params *GetV1OrgOrgNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10202,9 +9504,7 @@ func NewGetV1OrgOrgNameRequest(server string, orgName struct {
 }
 
 // NewPatchV1OrgOrgNameRequest calls the generic PatchV1OrgOrgName builder with application/json body
-func NewPatchV1OrgOrgNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, body PatchV1OrgOrgNameJSONRequestBody) (*http.Request, error) {
+func NewPatchV1OrgOrgNameRequest(server string, orgName string, body PatchV1OrgOrgNameJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -10215,14 +9515,12 @@ func NewPatchV1OrgOrgNameRequest(server string, orgName struct {
 }
 
 // NewPatchV1OrgOrgNameRequestWithBody generates requests for PatchV1OrgOrgName with any type of body
-func NewPatchV1OrgOrgNameRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameRequestWithBody(server string, orgName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10253,14 +9551,12 @@ func NewPatchV1OrgOrgNameRequestWithBody(server string, orgName struct {
 }
 
 // NewPatchV1OrgOrgNameAvatarRequestWithBody generates requests for PatchV1OrgOrgNameAvatar with any type of body
-func NewPatchV1OrgOrgNameAvatarRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameAvatarRequestWithBody(server string, orgName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10291,14 +9587,12 @@ func NewPatchV1OrgOrgNameAvatarRequestWithBody(server string, orgName struct {
 }
 
 // NewGetV1OrgOrgNameLicenseRequest generates requests for GetV1OrgOrgNameLicense
-func NewGetV1OrgOrgNameLicenseRequest(server string, orgName struct {
-	union json.RawMessage
-}) (*http.Request, error) {
+func NewGetV1OrgOrgNameLicenseRequest(server string, orgName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10327,9 +9621,7 @@ func NewGetV1OrgOrgNameLicenseRequest(server string, orgName struct {
 }
 
 // NewPutV1OrgOrgNameLicenseRequest calls the generic PutV1OrgOrgNameLicense builder with application/json body
-func NewPutV1OrgOrgNameLicenseRequest(server string, orgName struct {
-	union json.RawMessage
-}, body PutV1OrgOrgNameLicenseJSONRequestBody) (*http.Request, error) {
+func NewPutV1OrgOrgNameLicenseRequest(server string, orgName string, body PutV1OrgOrgNameLicenseJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -10340,14 +9632,12 @@ func NewPutV1OrgOrgNameLicenseRequest(server string, orgName struct {
 }
 
 // NewPutV1OrgOrgNameLicenseRequestWithBody generates requests for PutV1OrgOrgNameLicense with any type of body
-func NewPutV1OrgOrgNameLicenseRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader) (*http.Request, error) {
+func NewPutV1OrgOrgNameLicenseRequestWithBody(server string, orgName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10378,14 +9668,12 @@ func NewPutV1OrgOrgNameLicenseRequestWithBody(server string, orgName struct {
 }
 
 // NewDeleteV1OrgOrgNameMembersRequest generates requests for DeleteV1OrgOrgNameMembers
-func NewDeleteV1OrgOrgNameMembersRequest(server string, orgName struct {
-	union json.RawMessage
-}) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameMembersRequest(server string, orgName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10414,9 +9702,7 @@ func NewDeleteV1OrgOrgNameMembersRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameMembersInvitationsRequest calls the generic PostV1OrgOrgNameMembersInvitations builder with application/json body
-func NewPostV1OrgOrgNameMembersInvitationsRequest(server string, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameMembersInvitationsRequest(server string, orgName string, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -10427,14 +9713,12 @@ func NewPostV1OrgOrgNameMembersInvitationsRequest(server string, orgName struct 
 }
 
 // NewPostV1OrgOrgNameMembersInvitationsRequestWithBody generates requests for PostV1OrgOrgNameMembersInvitations with any type of body
-func NewPostV1OrgOrgNameMembersInvitationsRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameMembersInvitationsRequestWithBody(server string, orgName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10465,9 +9749,7 @@ func NewPostV1OrgOrgNameMembersInvitationsRequestWithBody(server string, orgName
 }
 
 // NewPostV1OrgOrgNameMembersInvitationsListRequest calls the generic PostV1OrgOrgNameMembersInvitationsList builder with application/json body
-func NewPostV1OrgOrgNameMembersInvitationsListRequest(server string, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameMembersInvitationsListRequest(server string, orgName string, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -10478,14 +9760,12 @@ func NewPostV1OrgOrgNameMembersInvitationsListRequest(server string, orgName str
 }
 
 // NewPostV1OrgOrgNameMembersInvitationsListRequestWithBody generates requests for PostV1OrgOrgNameMembersInvitationsList with any type of body
-func NewPostV1OrgOrgNameMembersInvitationsListRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameMembersInvitationsListRequestWithBody(server string, orgName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10516,9 +9796,7 @@ func NewPostV1OrgOrgNameMembersInvitationsListRequestWithBody(server string, org
 }
 
 // NewPostV1OrgOrgNameMembersInvitationsSearchRequest calls the generic PostV1OrgOrgNameMembersInvitationsSearch builder with application/json body
-func NewPostV1OrgOrgNameMembersInvitationsSearchRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameMembersInvitationsSearchRequest(server string, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -10529,14 +9807,12 @@ func NewPostV1OrgOrgNameMembersInvitationsSearchRequest(server string, orgName s
 }
 
 // NewPostV1OrgOrgNameMembersInvitationsSearchRequestWithBody generates requests for PostV1OrgOrgNameMembersInvitationsSearch with any type of body
-func NewPostV1OrgOrgNameMembersInvitationsSearchRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameMembersInvitationsSearchRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10606,14 +9882,12 @@ func NewPostV1OrgOrgNameMembersInvitationsSearchRequestWithBody(server string, o
 }
 
 // NewDeleteV1OrgOrgNameMembersInvitationsInvitationIdRequest generates requests for DeleteV1OrgOrgNameMembersInvitationsInvitationId
-func NewDeleteV1OrgOrgNameMembersInvitationsInvitationIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, invitationId string) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameMembersInvitationsInvitationIdRequest(server string, orgName string, invitationId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10649,9 +9923,7 @@ func NewDeleteV1OrgOrgNameMembersInvitationsInvitationIdRequest(server string, o
 }
 
 // NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequest calls the generic PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval builder with application/json body
-func NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequest(server string, orgName struct {
-	union json.RawMessage
-}, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody) (*http.Request, error) {
+func NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequest(server string, orgName string, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -10662,14 +9934,12 @@ func NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequest(server st
 }
 
 // NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequestWithBody generates requests for PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval with any type of body
-func NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, invitationId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequestWithBody(server string, orgName string, invitationId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10707,14 +9977,12 @@ func NewPatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalRequestWithBody(s
 }
 
 // NewPostV1OrgOrgNameMembersInvitationsInvitationIdResendRequest generates requests for PostV1OrgOrgNameMembersInvitationsInvitationIdResend
-func NewPostV1OrgOrgNameMembersInvitationsInvitationIdResendRequest(server string, orgName struct {
-	union json.RawMessage
-}, invitationId string) (*http.Request, error) {
+func NewPostV1OrgOrgNameMembersInvitationsInvitationIdResendRequest(server string, orgName string, invitationId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10750,9 +10018,7 @@ func NewPostV1OrgOrgNameMembersInvitationsInvitationIdResendRequest(server strin
 }
 
 // NewPostV1OrgOrgNameMembersSearchRequest calls the generic PostV1OrgOrgNameMembersSearch builder with application/json body
-func NewPostV1OrgOrgNameMembersSearchRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameMembersSearchRequest(server string, orgName string, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -10763,14 +10029,12 @@ func NewPostV1OrgOrgNameMembersSearchRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameMembersSearchRequestWithBody generates requests for PostV1OrgOrgNameMembersSearch with any type of body
-func NewPostV1OrgOrgNameMembersSearchRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameMembersSearchRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10840,14 +10104,12 @@ func NewPostV1OrgOrgNameMembersSearchRequestWithBody(server string, orgName stru
 }
 
 // NewDeleteV1OrgOrgNameMembersUserIdRequest generates requests for DeleteV1OrgOrgNameMembersUserId
-func NewDeleteV1OrgOrgNameMembersUserIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, userId string) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameMembersUserIdRequest(server string, orgName string, userId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10883,14 +10145,12 @@ func NewDeleteV1OrgOrgNameMembersUserIdRequest(server string, orgName struct {
 }
 
 // NewGetV1OrgOrgNameMembersUserIdRequest generates requests for GetV1OrgOrgNameMembersUserId
-func NewGetV1OrgOrgNameMembersUserIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, userId string) (*http.Request, error) {
+func NewGetV1OrgOrgNameMembersUserIdRequest(server string, orgName string, userId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10926,9 +10186,7 @@ func NewGetV1OrgOrgNameMembersUserIdRequest(server string, orgName struct {
 }
 
 // NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequest calls the generic PatchV1OrgOrgNameMembersUserIdExecutionTarget builder with application/json body
-func NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequest(server string, orgName struct {
-	union json.RawMessage
-}, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody) (*http.Request, error) {
+func NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequest(server string, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -10939,14 +10197,12 @@ func NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequest(server string, orgN
 }
 
 // NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequestWithBody generates requests for PatchV1OrgOrgNameMembersUserIdExecutionTarget with any type of body
-func NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, userId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequestWithBody(server string, orgName string, userId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -10984,9 +10240,7 @@ func NewPatchV1OrgOrgNameMembersUserIdExecutionTargetRequestWithBody(server stri
 }
 
 // NewPatchV1OrgOrgNameMembersUserIdRoleRequest calls the generic PatchV1OrgOrgNameMembersUserIdRole builder with application/json body
-func NewPatchV1OrgOrgNameMembersUserIdRoleRequest(server string, orgName struct {
-	union json.RawMessage
-}, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody) (*http.Request, error) {
+func NewPatchV1OrgOrgNameMembersUserIdRoleRequest(server string, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -10997,14 +10251,12 @@ func NewPatchV1OrgOrgNameMembersUserIdRoleRequest(server string, orgName struct 
 }
 
 // NewPatchV1OrgOrgNameMembersUserIdRoleRequestWithBody generates requests for PatchV1OrgOrgNameMembersUserIdRole with any type of body
-func NewPatchV1OrgOrgNameMembersUserIdRoleRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, userId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameMembersUserIdRoleRequestWithBody(server string, orgName string, userId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11042,9 +10294,7 @@ func NewPatchV1OrgOrgNameMembersUserIdRoleRequestWithBody(server string, orgName
 }
 
 // NewPostV1OrgOrgNameServiceAccountsRequest calls the generic PostV1OrgOrgNameServiceAccounts builder with application/json body
-func NewPostV1OrgOrgNameServiceAccountsRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameServiceAccountsRequest(server string, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -11055,14 +10305,12 @@ func NewPostV1OrgOrgNameServiceAccountsRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameServiceAccountsRequestWithBody generates requests for PostV1OrgOrgNameServiceAccounts with any type of body
-func NewPostV1OrgOrgNameServiceAccountsRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameServiceAccountsRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11120,9 +10368,7 @@ func NewPostV1OrgOrgNameServiceAccountsRequestWithBody(server string, orgName st
 }
 
 // NewPostV1OrgOrgNameServiceAccountsSearchRequest calls the generic PostV1OrgOrgNameServiceAccountsSearch builder with application/json body
-func NewPostV1OrgOrgNameServiceAccountsSearchRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameServiceAccountsSearchRequest(server string, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -11133,14 +10379,12 @@ func NewPostV1OrgOrgNameServiceAccountsSearchRequest(server string, orgName stru
 }
 
 // NewPostV1OrgOrgNameServiceAccountsSearchRequestWithBody generates requests for PostV1OrgOrgNameServiceAccountsSearch with any type of body
-func NewPostV1OrgOrgNameServiceAccountsSearchRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameServiceAccountsSearchRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11210,14 +10454,12 @@ func NewPostV1OrgOrgNameServiceAccountsSearchRequestWithBody(server string, orgN
 }
 
 // NewDeleteV1OrgOrgNameServiceAccountsServiceAccountIdRequest generates requests for DeleteV1OrgOrgNameServiceAccountsServiceAccountId
-func NewDeleteV1OrgOrgNameServiceAccountsServiceAccountIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameServiceAccountsServiceAccountIdRequest(server string, orgName string, serviceAccountId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11253,14 +10495,12 @@ func NewDeleteV1OrgOrgNameServiceAccountsServiceAccountIdRequest(server string, 
 }
 
 // NewGetV1OrgOrgNameServiceAccountsServiceAccountIdRequest generates requests for GetV1OrgOrgNameServiceAccountsServiceAccountId
-func NewGetV1OrgOrgNameServiceAccountsServiceAccountIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string) (*http.Request, error) {
+func NewGetV1OrgOrgNameServiceAccountsServiceAccountIdRequest(server string, orgName string, serviceAccountId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11296,14 +10536,12 @@ func NewGetV1OrgOrgNameServiceAccountsServiceAccountIdRequest(server string, org
 }
 
 // NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarRequestWithBody generates requests for PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatar with any type of body
-func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarRequestWithBody(server string, orgName string, serviceAccountId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11341,9 +10579,7 @@ func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarRequestWithBody(se
 }
 
 // NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequest calls the generic PatchV1OrgOrgNameServiceAccountsServiceAccountIdName builder with application/json body
-func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody) (*http.Request, error) {
+func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequest(server string, orgName string, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -11354,14 +10590,12 @@ func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequest(server strin
 }
 
 // NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequestWithBody generates requests for PatchV1OrgOrgNameServiceAccountsServiceAccountIdName with any type of body
-func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequestWithBody(server string, orgName string, serviceAccountId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11399,14 +10633,12 @@ func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdNameRequestWithBody(serv
 }
 
 // NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateRequest generates requests for PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate
-func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateRequest(server string, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string) (*http.Request, error) {
+func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateRequest(server string, orgName string, serviceAccountId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11442,9 +10674,7 @@ func NewPatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateRequest(server
 }
 
 // NewPostV1OrgOrgNameSettingsApplicationsOauthRequest calls the generic PostV1OrgOrgNameSettingsApplicationsOauth builder with application/json body
-func NewPostV1OrgOrgNameSettingsApplicationsOauthRequest(server string, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsApplicationsOauthRequest(server string, orgName string, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -11455,14 +10685,12 @@ func NewPostV1OrgOrgNameSettingsApplicationsOauthRequest(server string, orgName 
 }
 
 // NewPostV1OrgOrgNameSettingsApplicationsOauthRequestWithBody generates requests for PostV1OrgOrgNameSettingsApplicationsOauth with any type of body
-func NewPostV1OrgOrgNameSettingsApplicationsOauthRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsApplicationsOauthRequestWithBody(server string, orgName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11493,9 +10721,7 @@ func NewPostV1OrgOrgNameSettingsApplicationsOauthRequestWithBody(server string, 
 }
 
 // NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequest calls the generic PostV1OrgOrgNameSettingsApplicationsOauthSearch builder with application/json body
-func NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequest(server string, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -11506,14 +10732,12 @@ func NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequest(server string, or
 }
 
 // NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequestWithBody generates requests for PostV1OrgOrgNameSettingsApplicationsOauthSearch with any type of body
-func NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11583,14 +10807,12 @@ func NewPostV1OrgOrgNameSettingsApplicationsOauthSearchRequestWithBody(server st
 }
 
 // NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest generates requests for DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId
-func NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(server string, orgName string, oAuthAppId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11626,14 +10848,12 @@ func NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(server stri
 }
 
 // NewGetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest generates requests for GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId
-func NewGetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string) (*http.Request, error) {
+func NewGetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(server string, orgName string, oAuthAppId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11669,9 +10889,7 @@ func NewGetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(server string,
 }
 
 // NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest calls the generic PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId builder with application/json body
-func NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody) (*http.Request, error) {
+func NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(server string, orgName string, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -11682,14 +10900,12 @@ func NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequest(server string,
 }
 
 // NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequestWithBody generates requests for PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId with any type of body
-func NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequestWithBody(server string, orgName string, oAuthAppId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11727,14 +10943,12 @@ func NewPutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdRequestWithBody(server
 }
 
 // NewPatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarRequestWithBody generates requests for PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatar with any type of body
-func NewPatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarRequestWithBody(server string, orgName string, oAuthAppId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11772,9 +10986,7 @@ func NewPatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarRequestWithBod
 }
 
 // NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequest calls the generic PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret builder with application/json body
-func NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequest(server string, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequest(server string, orgName string, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -11785,14 +10997,12 @@ func NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequest(server 
 }
 
 // NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequestWithBody generates requests for PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret with any type of body
-func NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequestWithBody(server string, orgName string, oAuthAppId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11830,14 +11040,12 @@ func NewPostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretRequestWithBody
 }
 
 // NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameRequest generates requests for DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName
-func NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, name string) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameRequest(server string, orgName string, oAuthAppId string, name string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11880,14 +11088,12 @@ func NewDeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameRequest(s
 }
 
 // NewGetV1OrgOrgNameSettingsDomainsRequest generates requests for GetV1OrgOrgNameSettingsDomains
-func NewGetV1OrgOrgNameSettingsDomainsRequest(server string, orgName struct {
-	union json.RawMessage
-}) (*http.Request, error) {
+func NewGetV1OrgOrgNameSettingsDomainsRequest(server string, orgName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11916,9 +11122,7 @@ func NewGetV1OrgOrgNameSettingsDomainsRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameSettingsDomainsRequest calls the generic PostV1OrgOrgNameSettingsDomains builder with application/json body
-func NewPostV1OrgOrgNameSettingsDomainsRequest(server string, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsDomainsRequest(server string, orgName string, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -11929,14 +11133,12 @@ func NewPostV1OrgOrgNameSettingsDomainsRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameSettingsDomainsRequestWithBody generates requests for PostV1OrgOrgNameSettingsDomains with any type of body
-func NewPostV1OrgOrgNameSettingsDomainsRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsDomainsRequestWithBody(server string, orgName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -11967,14 +11169,12 @@ func NewPostV1OrgOrgNameSettingsDomainsRequestWithBody(server string, orgName st
 }
 
 // NewGetV1OrgOrgNameSettingsDomainsOidcRequest generates requests for GetV1OrgOrgNameSettingsDomainsOidc
-func NewGetV1OrgOrgNameSettingsDomainsOidcRequest(server string, orgName struct {
-	union json.RawMessage
-}) (*http.Request, error) {
+func NewGetV1OrgOrgNameSettingsDomainsOidcRequest(server string, orgName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12003,14 +11203,12 @@ func NewGetV1OrgOrgNameSettingsDomainsOidcRequest(server string, orgName struct 
 }
 
 // NewGetV1OrgOrgNameSettingsDomainsSamlRequest generates requests for GetV1OrgOrgNameSettingsDomainsSaml
-func NewGetV1OrgOrgNameSettingsDomainsSamlRequest(server string, orgName struct {
-	union json.RawMessage
-}) (*http.Request, error) {
+func NewGetV1OrgOrgNameSettingsDomainsSamlRequest(server string, orgName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12039,14 +11237,12 @@ func NewGetV1OrgOrgNameSettingsDomainsSamlRequest(server string, orgName struct 
 }
 
 // NewDeleteV1OrgOrgNameSettingsDomainsDomainNameRequest generates requests for DeleteV1OrgOrgNameSettingsDomainsDomainName
-func NewDeleteV1OrgOrgNameSettingsDomainsDomainNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, domainName string) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameSettingsDomainsDomainNameRequest(server string, orgName string, domainName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12082,14 +11278,12 @@ func NewDeleteV1OrgOrgNameSettingsDomainsDomainNameRequest(server string, orgNam
 }
 
 // NewDeleteV1OrgOrgNameSettingsDomainsDomainNameOidcRequest generates requests for DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc
-func NewDeleteV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(server string, orgName struct {
-	union json.RawMessage
-}, domainName string) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(server string, orgName string, domainName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12125,9 +11319,7 @@ func NewDeleteV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(server string, or
 }
 
 // NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequest calls the generic PatchV1OrgOrgNameSettingsDomainsDomainNameOidc builder with application/json body
-func NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(server string, orgName struct {
-	union json.RawMessage
-}, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody) (*http.Request, error) {
+func NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(server string, orgName string, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -12138,14 +11330,12 @@ func NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(server string, org
 }
 
 // NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody generates requests for PatchV1OrgOrgNameSettingsDomainsDomainNameOidc with any type of body
-func NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody(server string, orgName string, domainName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12183,9 +11373,7 @@ func NewPatchV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody(server str
 }
 
 // NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequest calls the generic PostV1OrgOrgNameSettingsDomainsDomainNameOidc builder with application/json body
-func NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(server string, orgName struct {
-	union json.RawMessage
-}, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(server string, orgName string, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -12196,14 +11384,12 @@ func NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequest(server string, orgN
 }
 
 // NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody generates requests for PostV1OrgOrgNameSettingsDomainsDomainNameOidc with any type of body
-func NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody(server string, orgName string, domainName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12241,14 +11427,12 @@ func NewPostV1OrgOrgNameSettingsDomainsDomainNameOidcRequestWithBody(server stri
 }
 
 // NewDeleteV1OrgOrgNameSettingsDomainsDomainNameSamlRequest generates requests for DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml
-func NewDeleteV1OrgOrgNameSettingsDomainsDomainNameSamlRequest(server string, orgName struct {
-	union json.RawMessage
-}, domainName string) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameSettingsDomainsDomainNameSamlRequest(server string, orgName string, domainName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12284,14 +11468,12 @@ func NewDeleteV1OrgOrgNameSettingsDomainsDomainNameSamlRequest(server string, or
 }
 
 // NewPostV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody generates requests for PostV1OrgOrgNameSettingsDomainsDomainNameSaml with any type of body
-func NewPostV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody(server string, orgName string, domainName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12329,14 +11511,12 @@ func NewPostV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody(server stri
 }
 
 // NewPutV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody generates requests for PutV1OrgOrgNameSettingsDomainsDomainNameSaml with any type of body
-func NewPutV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPutV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody(server string, orgName string, domainName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12374,14 +11554,12 @@ func NewPutV1OrgOrgNameSettingsDomainsDomainNameSamlRequestWithBody(server strin
 }
 
 // NewPatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesRequestWithBody generates requests for PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificates with any type of body
-func NewPatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesRequestWithBody(server string, orgName string, domainName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12419,14 +11597,12 @@ func NewPatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesRequestWithBod
 }
 
 // NewPatchV1OrgOrgNameSettingsDomainsDomainNameVerifyRequest generates requests for PatchV1OrgOrgNameSettingsDomainsDomainNameVerify
-func NewPatchV1OrgOrgNameSettingsDomainsDomainNameVerifyRequest(server string, orgName struct {
-	union json.RawMessage
-}, domainName string) (*http.Request, error) {
+func NewPatchV1OrgOrgNameSettingsDomainsDomainNameVerifyRequest(server string, orgName string, domainName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12462,14 +11638,12 @@ func NewPatchV1OrgOrgNameSettingsDomainsDomainNameVerifyRequest(server string, o
 }
 
 // NewGetV1OrgOrgNameStatsRequest generates requests for GetV1OrgOrgNameStats
-func NewGetV1OrgOrgNameStatsRequest(server string, orgName struct {
-	union json.RawMessage
-}) (*http.Request, error) {
+func NewGetV1OrgOrgNameStatsRequest(server string, orgName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12498,9 +11672,7 @@ func NewGetV1OrgOrgNameStatsRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameStorageRequest calls the generic PostV1OrgOrgNameStorage builder with application/json body
-func NewPostV1OrgOrgNameStorageRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameStorageRequest(server string, orgName string, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -12511,14 +11683,12 @@ func NewPostV1OrgOrgNameStorageRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameStorageRequestWithBody generates requests for PostV1OrgOrgNameStorage with any type of body
-func NewPostV1OrgOrgNameStorageRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameStorageRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12576,9 +11746,7 @@ func NewPostV1OrgOrgNameStorageRequestWithBody(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameStorageSearchRequest calls the generic PostV1OrgOrgNameStorageSearch builder with application/json body
-func NewPostV1OrgOrgNameStorageSearchRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameStorageSearchRequest(server string, orgName string, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -12589,14 +11757,12 @@ func NewPostV1OrgOrgNameStorageSearchRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameStorageSearchRequestWithBody generates requests for PostV1OrgOrgNameStorageSearch with any type of body
-func NewPostV1OrgOrgNameStorageSearchRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameStorageSearchRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12666,14 +11832,12 @@ func NewPostV1OrgOrgNameStorageSearchRequestWithBody(server string, orgName stru
 }
 
 // NewDeleteV1OrgOrgNameStorageStorageIdRequest generates requests for DeleteV1OrgOrgNameStorageStorageId
-func NewDeleteV1OrgOrgNameStorageStorageIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, storageId TheIdOfTheStorageToDelete) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameStorageStorageIdRequest(server string, orgName string, storageId TheIdOfTheStorageToDelete) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12709,9 +11873,7 @@ func NewDeleteV1OrgOrgNameStorageStorageIdRequest(server string, orgName struct 
 }
 
 // NewPatchV1OrgOrgNameStorageStorageIdRequest calls the generic PatchV1OrgOrgNameStorageStorageId builder with application/json body
-func NewPatchV1OrgOrgNameStorageStorageIdRequest(server string, orgName struct {
-	union json.RawMessage
-}, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody) (*http.Request, error) {
+func NewPatchV1OrgOrgNameStorageStorageIdRequest(server string, orgName string, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -12722,14 +11884,12 @@ func NewPatchV1OrgOrgNameStorageStorageIdRequest(server string, orgName struct {
 }
 
 // NewPatchV1OrgOrgNameStorageStorageIdRequestWithBody generates requests for PatchV1OrgOrgNameStorageStorageId with any type of body
-func NewPatchV1OrgOrgNameStorageStorageIdRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, storageId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameStorageStorageIdRequestWithBody(server string, orgName string, storageId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12767,14 +11927,12 @@ func NewPatchV1OrgOrgNameStorageStorageIdRequestWithBody(server string, orgName 
 }
 
 // NewPatchV1OrgOrgNameStorageStorageIdAvatarRequestWithBody generates requests for PatchV1OrgOrgNameStorageStorageIdAvatar with any type of body
-func NewPatchV1OrgOrgNameStorageStorageIdAvatarRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, storageId string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameStorageStorageIdAvatarRequestWithBody(server string, orgName string, storageId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12812,9 +11970,7 @@ func NewPatchV1OrgOrgNameStorageStorageIdAvatarRequestWithBody(server string, or
 }
 
 // NewPostV1OrgOrgNameTeamsRequest calls the generic PostV1OrgOrgNameTeams builder with application/json body
-func NewPostV1OrgOrgNameTeamsRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameTeamsRequest(server string, orgName string, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -12825,14 +11981,12 @@ func NewPostV1OrgOrgNameTeamsRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameTeamsRequestWithBody generates requests for PostV1OrgOrgNameTeams with any type of body
-func NewPostV1OrgOrgNameTeamsRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameTeamsRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -12890,9 +12044,7 @@ func NewPostV1OrgOrgNameTeamsRequestWithBody(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameTeamsSearchRequest calls the generic PostV1OrgOrgNameTeamsSearch builder with application/json body
-func NewPostV1OrgOrgNameTeamsSearchRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameTeamsSearchRequest(server string, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -12903,14 +12055,12 @@ func NewPostV1OrgOrgNameTeamsSearchRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameTeamsSearchRequestWithBody generates requests for PostV1OrgOrgNameTeamsSearch with any type of body
-func NewPostV1OrgOrgNameTeamsSearchRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameTeamsSearchRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -13004,14 +12154,12 @@ func NewPostV1OrgOrgNameTeamsSearchRequestWithBody(server string, orgName struct
 }
 
 // NewDeleteV1OrgOrgNameTeamsTeamNameRequest generates requests for DeleteV1OrgOrgNameTeamsTeamName
-func NewDeleteV1OrgOrgNameTeamsTeamNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, teamName string) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameTeamsTeamNameRequest(server string, orgName string, teamName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -13047,14 +12195,12 @@ func NewDeleteV1OrgOrgNameTeamsTeamNameRequest(server string, orgName struct {
 }
 
 // NewGetV1OrgOrgNameTeamsTeamNameRequest generates requests for GetV1OrgOrgNameTeamsTeamName
-func NewGetV1OrgOrgNameTeamsTeamNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams) (*http.Request, error) {
+func NewGetV1OrgOrgNameTeamsTeamNameRequest(server string, orgName string, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -13117,9 +12263,7 @@ func NewGetV1OrgOrgNameTeamsTeamNameRequest(server string, orgName struct {
 }
 
 // NewPatchV1OrgOrgNameTeamsTeamNameRequest calls the generic PatchV1OrgOrgNameTeamsTeamName builder with application/json body
-func NewPatchV1OrgOrgNameTeamsTeamNameRequest(server string, orgName struct {
-	union json.RawMessage
-}, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody) (*http.Request, error) {
+func NewPatchV1OrgOrgNameTeamsTeamNameRequest(server string, orgName string, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -13130,14 +12274,12 @@ func NewPatchV1OrgOrgNameTeamsTeamNameRequest(server string, orgName struct {
 }
 
 // NewPatchV1OrgOrgNameTeamsTeamNameRequestWithBody generates requests for PatchV1OrgOrgNameTeamsTeamName with any type of body
-func NewPatchV1OrgOrgNameTeamsTeamNameRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, teamName string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameTeamsTeamNameRequestWithBody(server string, orgName string, teamName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -13175,14 +12317,12 @@ func NewPatchV1OrgOrgNameTeamsTeamNameRequestWithBody(server string, orgName str
 }
 
 // NewPatchV1OrgOrgNameTeamsTeamNameAvatarRequestWithBody generates requests for PatchV1OrgOrgNameTeamsTeamNameAvatar with any type of body
-func NewPatchV1OrgOrgNameTeamsTeamNameAvatarRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, teamName string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPatchV1OrgOrgNameTeamsTeamNameAvatarRequestWithBody(server string, orgName string, teamName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -13220,9 +12360,7 @@ func NewPatchV1OrgOrgNameTeamsTeamNameAvatarRequestWithBody(server string, orgNa
 }
 
 // NewPostV1OrgOrgNameTeamsTeamNameMembersSearchRequest calls the generic PostV1OrgOrgNameTeamsTeamNameMembersSearch builder with application/json body
-func NewPostV1OrgOrgNameTeamsTeamNameMembersSearchRequest(server string, orgName struct {
-	union json.RawMessage
-}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameTeamsTeamNameMembersSearchRequest(server string, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -13233,14 +12371,12 @@ func NewPostV1OrgOrgNameTeamsTeamNameMembersSearchRequest(server string, orgName
 }
 
 // NewPostV1OrgOrgNameTeamsTeamNameMembersSearchRequestWithBody generates requests for PostV1OrgOrgNameTeamsTeamNameMembersSearch with any type of body
-func NewPostV1OrgOrgNameTeamsTeamNameMembersSearchRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameTeamsTeamNameMembersSearchRequestWithBody(server string, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -15120,403 +14256,233 @@ type ClientWithResponsesInterface interface {
 	GetV1OrgOrgNameStorageStorageIdTestWithResponse(ctx context.Context, storageId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameStorageStorageIdTestResponse, error)
 
 	// DeleteV1OrgOrgNameWithResponse request
-	DeleteV1OrgOrgNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameResponse, error)
+	DeleteV1OrgOrgNameWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameResponse, error)
 
 	// GetV1OrgOrgNameWithResponse request
-	GetV1OrgOrgNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *GetV1OrgOrgNameParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameResponse, error)
+	GetV1OrgOrgNameWithResponse(ctx context.Context, orgName string, params *GetV1OrgOrgNameParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameResponse, error)
 
 	// PatchV1OrgOrgNameWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameResponse, error)
+	PatchV1OrgOrgNameWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameResponse, error)
 
-	PatchV1OrgOrgNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PatchV1OrgOrgNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameResponse, error)
+	PatchV1OrgOrgNameWithResponse(ctx context.Context, orgName string, body PatchV1OrgOrgNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameResponse, error)
 
 	// PatchV1OrgOrgNameAvatarWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameAvatarResponse, error)
+	PatchV1OrgOrgNameAvatarWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameAvatarResponse, error)
 
 	// GetV1OrgOrgNameLicenseWithResponse request
-	GetV1OrgOrgNameLicenseWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameLicenseResponse, error)
+	GetV1OrgOrgNameLicenseWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameLicenseResponse, error)
 
 	// PutV1OrgOrgNameLicenseWithBodyWithResponse request with any body
-	PutV1OrgOrgNameLicenseWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameLicenseResponse, error)
+	PutV1OrgOrgNameLicenseWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameLicenseResponse, error)
 
-	PutV1OrgOrgNameLicenseWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PutV1OrgOrgNameLicenseJSONRequestBody, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameLicenseResponse, error)
+	PutV1OrgOrgNameLicenseWithResponse(ctx context.Context, orgName string, body PutV1OrgOrgNameLicenseJSONRequestBody, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameLicenseResponse, error)
 
 	// DeleteV1OrgOrgNameMembersWithResponse request
-	DeleteV1OrgOrgNameMembersWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersResponse, error)
+	DeleteV1OrgOrgNameMembersWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersResponse, error)
 
 	// PostV1OrgOrgNameMembersInvitationsWithBodyWithResponse request with any body
-	PostV1OrgOrgNameMembersInvitationsWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsResponse, error)
+	PostV1OrgOrgNameMembersInvitationsWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsResponse, error)
 
-	PostV1OrgOrgNameMembersInvitationsWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsResponse, error)
+	PostV1OrgOrgNameMembersInvitationsWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsResponse, error)
 
 	// PostV1OrgOrgNameMembersInvitationsListWithBodyWithResponse request with any body
-	PostV1OrgOrgNameMembersInvitationsListWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsListResponse, error)
+	PostV1OrgOrgNameMembersInvitationsListWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsListResponse, error)
 
-	PostV1OrgOrgNameMembersInvitationsListWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsListResponse, error)
+	PostV1OrgOrgNameMembersInvitationsListWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsListResponse, error)
 
 	// PostV1OrgOrgNameMembersInvitationsSearchWithBodyWithResponse request with any body
-	PostV1OrgOrgNameMembersInvitationsSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsSearchResponse, error)
+	PostV1OrgOrgNameMembersInvitationsSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsSearchResponse, error)
 
-	PostV1OrgOrgNameMembersInvitationsSearchWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsSearchResponse, error)
+	PostV1OrgOrgNameMembersInvitationsSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsSearchResponse, error)
 
 	// DeleteV1OrgOrgNameMembersInvitationsInvitationIdWithResponse request
-	DeleteV1OrgOrgNameMembersInvitationsInvitationIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, invitationId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersInvitationsInvitationIdResponse, error)
+	DeleteV1OrgOrgNameMembersInvitationsInvitationIdWithResponse(ctx context.Context, orgName string, invitationId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersInvitationsInvitationIdResponse, error)
 
 	// PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, invitationId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse, error)
+	PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBodyWithResponse(ctx context.Context, orgName string, invitationId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse, error)
 
-	PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse, error)
+	PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithResponse(ctx context.Context, orgName string, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse, error)
 
 	// PostV1OrgOrgNameMembersInvitationsInvitationIdResendWithResponse request
-	PostV1OrgOrgNameMembersInvitationsInvitationIdResendWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, invitationId string, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsInvitationIdResendResponse, error)
+	PostV1OrgOrgNameMembersInvitationsInvitationIdResendWithResponse(ctx context.Context, orgName string, invitationId string, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsInvitationIdResendResponse, error)
 
 	// PostV1OrgOrgNameMembersSearchWithBodyWithResponse request with any body
-	PostV1OrgOrgNameMembersSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersSearchResponse, error)
+	PostV1OrgOrgNameMembersSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersSearchResponse, error)
 
-	PostV1OrgOrgNameMembersSearchWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersSearchResponse, error)
+	PostV1OrgOrgNameMembersSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersSearchResponse, error)
 
 	// DeleteV1OrgOrgNameMembersUserIdWithResponse request
-	DeleteV1OrgOrgNameMembersUserIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersUserIdResponse, error)
+	DeleteV1OrgOrgNameMembersUserIdWithResponse(ctx context.Context, orgName string, userId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersUserIdResponse, error)
 
 	// GetV1OrgOrgNameMembersUserIdWithResponse request
-	GetV1OrgOrgNameMembersUserIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameMembersUserIdResponse, error)
+	GetV1OrgOrgNameMembersUserIdWithResponse(ctx context.Context, orgName string, userId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameMembersUserIdResponse, error)
 
 	// PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdExecutionTargetResponse, error)
+	PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBodyWithResponse(ctx context.Context, orgName string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdExecutionTargetResponse, error)
 
-	PatchV1OrgOrgNameMembersUserIdExecutionTargetWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdExecutionTargetResponse, error)
+	PatchV1OrgOrgNameMembersUserIdExecutionTargetWithResponse(ctx context.Context, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdExecutionTargetResponse, error)
 
 	// PatchV1OrgOrgNameMembersUserIdRoleWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameMembersUserIdRoleWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdRoleResponse, error)
+	PatchV1OrgOrgNameMembersUserIdRoleWithBodyWithResponse(ctx context.Context, orgName string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdRoleResponse, error)
 
-	PatchV1OrgOrgNameMembersUserIdRoleWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdRoleResponse, error)
+	PatchV1OrgOrgNameMembersUserIdRoleWithResponse(ctx context.Context, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdRoleResponse, error)
 
 	// PostV1OrgOrgNameServiceAccountsWithBodyWithResponse request with any body
-	PostV1OrgOrgNameServiceAccountsWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsResponse, error)
+	PostV1OrgOrgNameServiceAccountsWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsResponse, error)
 
-	PostV1OrgOrgNameServiceAccountsWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsResponse, error)
+	PostV1OrgOrgNameServiceAccountsWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsResponse, error)
 
 	// PostV1OrgOrgNameServiceAccountsSearchWithBodyWithResponse request with any body
-	PostV1OrgOrgNameServiceAccountsSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsSearchResponse, error)
+	PostV1OrgOrgNameServiceAccountsSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsSearchResponse, error)
 
-	PostV1OrgOrgNameServiceAccountsSearchWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsSearchResponse, error)
+	PostV1OrgOrgNameServiceAccountsSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsSearchResponse, error)
 
 	// DeleteV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse request
-	DeleteV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameServiceAccountsServiceAccountIdResponse, error)
+	DeleteV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameServiceAccountsServiceAccountIdResponse, error)
 
 	// GetV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse request
-	GetV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameServiceAccountsServiceAccountIdResponse, error)
+	GetV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameServiceAccountsServiceAccountIdResponse, error)
 
 	// PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarResponse, error)
+	PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBodyWithResponse(ctx context.Context, orgName string, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarResponse, error)
 
 	// PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse, error)
+	PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBodyWithResponse(ctx context.Context, orgName string, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse, error)
 
-	PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse, error)
+	PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithResponse(ctx context.Context, orgName string, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse, error)
 
 	// PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateWithResponse request
-	PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, serviceAccountId string, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateResponse, error)
+	PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateWithResponse(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateResponse, error)
 
 	// PostV1OrgOrgNameSettingsApplicationsOauthWithBodyWithResponse request with any body
-	PostV1OrgOrgNameSettingsApplicationsOauthWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthResponse, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthResponse, error)
 
-	PostV1OrgOrgNameSettingsApplicationsOauthWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthResponse, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthResponse, error)
 
 	// PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBodyWithResponse request with any body
-	PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthSearchResponse, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthSearchResponse, error)
 
-	PostV1OrgOrgNameSettingsApplicationsOauthSearchWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthSearchResponse, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthSearchResponse, error)
 
 	// DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse request
-	DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error)
+	DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName string, oAuthAppId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error)
 
 	// GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse request
-	GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error)
+	GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName string, oAuthAppId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error)
 
 	// PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBodyWithResponse request with any body
-	PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error)
+	PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBodyWithResponse(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error)
 
-	PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error)
+	PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName string, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error)
 
 	// PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarResponse, error)
+	PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBodyWithResponse(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarResponse, error)
 
 	// PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBodyWithResponse request with any body
-	PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBodyWithResponse(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse, error)
 
-	PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse, error)
+	PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithResponse(ctx context.Context, orgName string, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse, error)
 
 	// DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameWithResponse request
-	DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, oAuthAppId string, name string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameResponse, error)
+	DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameWithResponse(ctx context.Context, orgName string, oAuthAppId string, name string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameResponse, error)
 
 	// GetV1OrgOrgNameSettingsDomainsWithResponse request
-	GetV1OrgOrgNameSettingsDomainsWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsResponse, error)
+	GetV1OrgOrgNameSettingsDomainsWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsResponse, error)
 
 	// PostV1OrgOrgNameSettingsDomainsWithBodyWithResponse request with any body
-	PostV1OrgOrgNameSettingsDomainsWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsResponse, error)
+	PostV1OrgOrgNameSettingsDomainsWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsResponse, error)
 
-	PostV1OrgOrgNameSettingsDomainsWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsResponse, error)
+	PostV1OrgOrgNameSettingsDomainsWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsResponse, error)
 
 	// GetV1OrgOrgNameSettingsDomainsOidcWithResponse request
-	GetV1OrgOrgNameSettingsDomainsOidcWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsOidcResponse, error)
+	GetV1OrgOrgNameSettingsDomainsOidcWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsOidcResponse, error)
 
 	// GetV1OrgOrgNameSettingsDomainsSamlWithResponse request
-	GetV1OrgOrgNameSettingsDomainsSamlWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsSamlResponse, error)
+	GetV1OrgOrgNameSettingsDomainsSamlWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsSamlResponse, error)
 
 	// DeleteV1OrgOrgNameSettingsDomainsDomainNameWithResponse request
-	DeleteV1OrgOrgNameSettingsDomainsDomainNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameResponse, error)
+	DeleteV1OrgOrgNameSettingsDomainsDomainNameWithResponse(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameResponse, error)
 
 	// DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse request
-	DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
+	DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
 
 	// PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
+	PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
 
-	PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
+	PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName string, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
 
 	// PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse request with any body
-	PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
+	PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
 
-	PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
+	PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName string, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error)
 
 	// DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlWithResponse request
-	DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error)
+	DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlWithResponse(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error)
 
 	// PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse request with any body
-	PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error)
+	PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error)
 
 	// PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse request with any body
-	PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error)
+	PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error)
 
 	// PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesResponse, error)
+	PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesResponse, error)
 
 	// PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyWithResponse request
-	PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, domainName string, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyResponse, error)
+	PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyWithResponse(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyResponse, error)
 
 	// GetV1OrgOrgNameStatsWithResponse request
-	GetV1OrgOrgNameStatsWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameStatsResponse, error)
+	GetV1OrgOrgNameStatsWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameStatsResponse, error)
 
 	// PostV1OrgOrgNameStorageWithBodyWithResponse request with any body
-	PostV1OrgOrgNameStorageWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageResponse, error)
+	PostV1OrgOrgNameStorageWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageResponse, error)
 
-	PostV1OrgOrgNameStorageWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageResponse, error)
+	PostV1OrgOrgNameStorageWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageResponse, error)
 
 	// PostV1OrgOrgNameStorageSearchWithBodyWithResponse request with any body
-	PostV1OrgOrgNameStorageSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageSearchResponse, error)
+	PostV1OrgOrgNameStorageSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageSearchResponse, error)
 
-	PostV1OrgOrgNameStorageSearchWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageSearchResponse, error)
+	PostV1OrgOrgNameStorageSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageSearchResponse, error)
 
 	// DeleteV1OrgOrgNameStorageStorageIdWithResponse request
-	DeleteV1OrgOrgNameStorageStorageIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageId TheIdOfTheStorageToDelete, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameStorageStorageIdResponse, error)
+	DeleteV1OrgOrgNameStorageStorageIdWithResponse(ctx context.Context, orgName string, storageId TheIdOfTheStorageToDelete, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameStorageStorageIdResponse, error)
 
 	// PatchV1OrgOrgNameStorageStorageIdWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameStorageStorageIdWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdResponse, error)
+	PatchV1OrgOrgNameStorageStorageIdWithBodyWithResponse(ctx context.Context, orgName string, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdResponse, error)
 
-	PatchV1OrgOrgNameStorageStorageIdWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdResponse, error)
+	PatchV1OrgOrgNameStorageStorageIdWithResponse(ctx context.Context, orgName string, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdResponse, error)
 
 	// PatchV1OrgOrgNameStorageStorageIdAvatarWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameStorageStorageIdAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdAvatarResponse, error)
+	PatchV1OrgOrgNameStorageStorageIdAvatarWithBodyWithResponse(ctx context.Context, orgName string, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdAvatarResponse, error)
 
 	// PostV1OrgOrgNameTeamsWithBodyWithResponse request with any body
-	PostV1OrgOrgNameTeamsWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsResponse, error)
+	PostV1OrgOrgNameTeamsWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsResponse, error)
 
-	PostV1OrgOrgNameTeamsWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsResponse, error)
+	PostV1OrgOrgNameTeamsWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsResponse, error)
 
 	// PostV1OrgOrgNameTeamsSearchWithBodyWithResponse request with any body
-	PostV1OrgOrgNameTeamsSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsSearchResponse, error)
+	PostV1OrgOrgNameTeamsSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsSearchResponse, error)
 
-	PostV1OrgOrgNameTeamsSearchWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsSearchResponse, error)
+	PostV1OrgOrgNameTeamsSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsSearchResponse, error)
 
 	// DeleteV1OrgOrgNameTeamsTeamNameWithResponse request
-	DeleteV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameTeamsTeamNameResponse, error)
+	DeleteV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameTeamsTeamNameResponse, error)
 
 	// GetV1OrgOrgNameTeamsTeamNameWithResponse request
-	GetV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameTeamsTeamNameResponse, error)
+	GetV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameTeamsTeamNameResponse, error)
 
 	// PatchV1OrgOrgNameTeamsTeamNameWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameTeamsTeamNameWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameResponse, error)
+	PatchV1OrgOrgNameTeamsTeamNameWithBodyWithResponse(ctx context.Context, orgName string, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameResponse, error)
 
-	PatchV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameResponse, error)
+	PatchV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameResponse, error)
 
 	// PatchV1OrgOrgNameTeamsTeamNameAvatarWithBodyWithResponse request with any body
-	PatchV1OrgOrgNameTeamsTeamNameAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameAvatarResponse, error)
+	PatchV1OrgOrgNameTeamsTeamNameAvatarWithBodyWithResponse(ctx context.Context, orgName string, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameAvatarResponse, error)
 
 	// PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBodyWithResponse request with any body
-	PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsTeamNameMembersSearchResponse, error)
+	PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBodyWithResponse(ctx context.Context, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsTeamNameMembersSearchResponse, error)
 
-	PostV1OrgOrgNameTeamsTeamNameMembersSearchWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsTeamNameMembersSearchResponse, error)
+	PostV1OrgOrgNameTeamsTeamNameMembersSearchWithResponse(ctx context.Context, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsTeamNameMembersSearchResponse, error)
 
 	// PostV1RegisterWithBodyWithResponse request with any body
 	PostV1RegisterWithBodyWithResponse(ctx context.Context, params *PostV1RegisterParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1RegisterResponse, error)
@@ -20307,9 +19273,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameStorageStorageIdTestWithResponse(ct
 }
 
 // DeleteV1OrgOrgNameWithResponse request returning *DeleteV1OrgOrgNameResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgName(ctx, orgName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20318,9 +19282,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameWithResponse(ctx context.Context
 }
 
 // GetV1OrgOrgNameWithResponse request returning *GetV1OrgOrgNameResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *GetV1OrgOrgNameParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameWithResponse(ctx context.Context, orgName string, params *GetV1OrgOrgNameParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameResponse, error) {
 	rsp, err := c.GetV1OrgOrgName(ctx, orgName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20329,9 +19291,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameWithResponse(ctx context.Context, o
 }
 
 // PatchV1OrgOrgNameWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameWithBody(ctx, orgName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20339,9 +19299,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameWithBodyWithResponse(ctx context.
 	return ParsePatchV1OrgOrgNameResponse(rsp)
 }
 
-func (c *ClientWithResponses) PatchV1OrgOrgNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PatchV1OrgOrgNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameWithResponse(ctx context.Context, orgName string, body PatchV1OrgOrgNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameResponse, error) {
 	rsp, err := c.PatchV1OrgOrgName(ctx, orgName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20350,9 +19308,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameWithResponse(ctx context.Context,
 }
 
 // PatchV1OrgOrgNameAvatarWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameAvatarResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameAvatarResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameAvatarWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameAvatarResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameAvatarWithBody(ctx, orgName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20361,9 +19317,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameAvatarWithBodyWithResponse(ctx co
 }
 
 // GetV1OrgOrgNameLicenseWithResponse request returning *GetV1OrgOrgNameLicenseResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameLicenseWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameLicenseResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameLicenseWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameLicenseResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameLicense(ctx, orgName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20372,9 +19326,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameLicenseWithResponse(ctx context.Con
 }
 
 // PutV1OrgOrgNameLicenseWithBodyWithResponse request with arbitrary body returning *PutV1OrgOrgNameLicenseResponse
-func (c *ClientWithResponses) PutV1OrgOrgNameLicenseWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameLicenseResponse, error) {
+func (c *ClientWithResponses) PutV1OrgOrgNameLicenseWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameLicenseResponse, error) {
 	rsp, err := c.PutV1OrgOrgNameLicenseWithBody(ctx, orgName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20382,9 +19334,7 @@ func (c *ClientWithResponses) PutV1OrgOrgNameLicenseWithBodyWithResponse(ctx con
 	return ParsePutV1OrgOrgNameLicenseResponse(rsp)
 }
 
-func (c *ClientWithResponses) PutV1OrgOrgNameLicenseWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PutV1OrgOrgNameLicenseJSONRequestBody, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameLicenseResponse, error) {
+func (c *ClientWithResponses) PutV1OrgOrgNameLicenseWithResponse(ctx context.Context, orgName string, body PutV1OrgOrgNameLicenseJSONRequestBody, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameLicenseResponse, error) {
 	rsp, err := c.PutV1OrgOrgNameLicense(ctx, orgName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20393,9 +19343,7 @@ func (c *ClientWithResponses) PutV1OrgOrgNameLicenseWithResponse(ctx context.Con
 }
 
 // DeleteV1OrgOrgNameMembersWithResponse request returning *DeleteV1OrgOrgNameMembersResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameMembersWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameMembersWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameMembers(ctx, orgName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20404,9 +19352,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameMembersWithResponse(ctx context.
 }
 
 // PostV1OrgOrgNameMembersInvitationsWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameMembersInvitationsResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameMembersInvitationsWithBody(ctx, orgName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20414,9 +19360,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsWithBodyWithResp
 	return ParsePostV1OrgOrgNameMembersInvitationsResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameMembersInvitationsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameMembersInvitations(ctx, orgName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20425,9 +19369,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsWithResponse(ctx
 }
 
 // PostV1OrgOrgNameMembersInvitationsListWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameMembersInvitationsListResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsListWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsListResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsListWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsListResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameMembersInvitationsListWithBody(ctx, orgName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20435,9 +19377,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsListWithBodyWith
 	return ParsePostV1OrgOrgNameMembersInvitationsListResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsListWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsListResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsListWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameMembersInvitationsListJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsListResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameMembersInvitationsList(ctx, orgName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20446,9 +19386,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsListWithResponse
 }
 
 // PostV1OrgOrgNameMembersInvitationsSearchWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameMembersInvitationsSearchResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameMembersInvitationsSearchWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20456,9 +19394,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsSearchWithBodyWi
 	return ParsePostV1OrgOrgNameMembersInvitationsSearchResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsSearchWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersInvitationsSearchParams, body PostV1OrgOrgNameMembersInvitationsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameMembersInvitationsSearch(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20467,9 +19403,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsSearchWithRespon
 }
 
 // DeleteV1OrgOrgNameMembersInvitationsInvitationIdWithResponse request returning *DeleteV1OrgOrgNameMembersInvitationsInvitationIdResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameMembersInvitationsInvitationIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, invitationId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersInvitationsInvitationIdResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameMembersInvitationsInvitationIdWithResponse(ctx context.Context, orgName string, invitationId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersInvitationsInvitationIdResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameMembersInvitationsInvitationId(ctx, orgName, invitationId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20478,9 +19412,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameMembersInvitationsInvitationIdWi
 }
 
 // PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, invitationId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBodyWithResponse(ctx context.Context, orgName string, invitationId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithBody(ctx, orgName, invitationId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20488,9 +19420,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameMembersInvitationsInvitationIdApp
 	return ParsePatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse(rsp)
 }
 
-func (c *ClientWithResponses) PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalWithResponse(ctx context.Context, orgName string, invitationId string, body PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersInvitationsInvitationIdApprovalResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval(ctx, orgName, invitationId, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20499,9 +19429,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameMembersInvitationsInvitationIdApp
 }
 
 // PostV1OrgOrgNameMembersInvitationsInvitationIdResendWithResponse request returning *PostV1OrgOrgNameMembersInvitationsInvitationIdResendResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsInvitationIdResendWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, invitationId string, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsInvitationIdResendResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsInvitationIdResendWithResponse(ctx context.Context, orgName string, invitationId string, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersInvitationsInvitationIdResendResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameMembersInvitationsInvitationIdResend(ctx, orgName, invitationId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20510,9 +19438,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameMembersInvitationsInvitationIdRese
 }
 
 // PostV1OrgOrgNameMembersSearchWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameMembersSearchResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameMembersSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameMembersSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameMembersSearchWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20520,9 +19446,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameMembersSearchWithBodyWithResponse(
 	return ParsePostV1OrgOrgNameMembersSearchResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameMembersSearchWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameMembersSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameMembersSearchParams, body PostV1OrgOrgNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameMembersSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameMembersSearch(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20531,9 +19455,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameMembersSearchWithResponse(ctx cont
 }
 
 // DeleteV1OrgOrgNameMembersUserIdWithResponse request returning *DeleteV1OrgOrgNameMembersUserIdResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameMembersUserIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersUserIdResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameMembersUserIdWithResponse(ctx context.Context, orgName string, userId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameMembersUserIdResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameMembersUserId(ctx, orgName, userId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20542,9 +19464,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameMembersUserIdWithResponse(ctx co
 }
 
 // GetV1OrgOrgNameMembersUserIdWithResponse request returning *GetV1OrgOrgNameMembersUserIdResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameMembersUserIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameMembersUserIdResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameMembersUserIdWithResponse(ctx context.Context, orgName string, userId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameMembersUserIdResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameMembersUserId(ctx, orgName, userId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20553,9 +19473,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameMembersUserIdWithResponse(ctx conte
 }
 
 // PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameMembersUserIdExecutionTargetResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdExecutionTargetResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBodyWithResponse(ctx context.Context, orgName string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdExecutionTargetResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameMembersUserIdExecutionTargetWithBody(ctx, orgName, userId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20563,9 +19481,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdExecutionTargetWithB
 	return ParsePatchV1OrgOrgNameMembersUserIdExecutionTargetResponse(rsp)
 }
 
-func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdExecutionTargetWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdExecutionTargetResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdExecutionTargetWithResponse(ctx context.Context, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdExecutionTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdExecutionTargetResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameMembersUserIdExecutionTarget(ctx, orgName, userId, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20574,9 +19490,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdExecutionTargetWithR
 }
 
 // PatchV1OrgOrgNameMembersUserIdRoleWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameMembersUserIdRoleResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdRoleWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdRoleResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdRoleWithBodyWithResponse(ctx context.Context, orgName string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdRoleResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameMembersUserIdRoleWithBody(ctx, orgName, userId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20584,9 +19498,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdRoleWithBodyWithResp
 	return ParsePatchV1OrgOrgNameMembersUserIdRoleResponse(rsp)
 }
 
-func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdRoleWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdRoleResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdRoleWithResponse(ctx context.Context, orgName string, userId string, body PatchV1OrgOrgNameMembersUserIdRoleJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameMembersUserIdRoleResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameMembersUserIdRole(ctx, orgName, userId, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20595,9 +19507,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameMembersUserIdRoleWithResponse(ctx
 }
 
 // PostV1OrgOrgNameServiceAccountsWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameServiceAccountsResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameServiceAccountsWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20605,9 +19515,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsWithBodyWithRespons
 	return ParsePostV1OrgOrgNameServiceAccountsResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsParams, body PostV1OrgOrgNameServiceAccountsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameServiceAccounts(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20616,9 +19524,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsWithResponse(ctx co
 }
 
 // PostV1OrgOrgNameServiceAccountsSearchWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameServiceAccountsSearchResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameServiceAccountsSearchWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20626,9 +19532,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsSearchWithBodyWithR
 	return ParsePostV1OrgOrgNameServiceAccountsSearchResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsSearchWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameServiceAccountsSearchParams, body PostV1OrgOrgNameServiceAccountsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameServiceAccountsSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameServiceAccountsSearch(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20637,9 +19541,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameServiceAccountsSearchWithResponse(
 }
 
 // DeleteV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse request returning *DeleteV1OrgOrgNameServiceAccountsServiceAccountIdResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameServiceAccountsServiceAccountIdResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameServiceAccountsServiceAccountIdResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameServiceAccountsServiceAccountId(ctx, orgName, serviceAccountId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20648,9 +19550,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameServiceAccountsServiceAccountIdW
 }
 
 // GetV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse request returning *GetV1OrgOrgNameServiceAccountsServiceAccountIdResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameServiceAccountsServiceAccountIdResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameServiceAccountsServiceAccountIdWithResponse(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameServiceAccountsServiceAccountIdResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameServiceAccountsServiceAccountId(ctx, orgName, serviceAccountId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20659,9 +19559,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameServiceAccountsServiceAccountIdWith
 }
 
 // PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBodyWithResponse(ctx context.Context, orgName string, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameServiceAccountsServiceAccountIdAvatarWithBody(ctx, orgName, serviceAccountId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20670,9 +19568,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdAv
 }
 
 // PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBodyWithResponse(ctx context.Context, orgName string, serviceAccountId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithBody(ctx, orgName, serviceAccountId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20680,9 +19576,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdNa
 	return ParsePatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse(rsp)
 }
 
-func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameWithResponse(ctx context.Context, orgName string, serviceAccountId string, body PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdNameResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameServiceAccountsServiceAccountIdName(ctx, orgName, serviceAccountId, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20691,9 +19585,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdNa
 }
 
 // PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateWithResponse request returning *PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, serviceAccountId string, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateWithResponse(ctx context.Context, orgName string, serviceAccountId string, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerateResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate(ctx, orgName, serviceAccountId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20702,9 +19594,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameServiceAccountsServiceAccountIdRe
 }
 
 // PostV1OrgOrgNameSettingsApplicationsOauthWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameSettingsApplicationsOauthResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsApplicationsOauthWithBody(ctx, orgName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20712,9 +19602,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthWithBodyW
 	return ParsePostV1OrgOrgNameSettingsApplicationsOauthResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameSettingsApplicationsOauthJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsApplicationsOauth(ctx, orgName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20723,9 +19611,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthWithRespo
 }
 
 // PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameSettingsApplicationsOauthSearchResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsApplicationsOauthSearchWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20733,9 +19619,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthSearchWit
 	return ParsePostV1OrgOrgNameSettingsApplicationsOauthSearchResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthSearchWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameSettingsApplicationsOauthSearchParams, body PostV1OrgOrgNameSettingsApplicationsOauthSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsApplicationsOauthSearch(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20744,9 +19628,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthSearchWit
 }
 
 // DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse request returning *DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName string, oAuthAppId string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx, orgName, oAuthAppId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20755,9 +19637,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAp
 }
 
 // GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse request returning *GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName string, oAuthAppId string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx, orgName, oAuthAppId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20766,9 +19646,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId
 }
 
 // PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBodyWithResponse request with arbitrary body returning *PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse
-func (c *ClientWithResponses) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error) {
+func (c *ClientWithResponses) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBodyWithResponse(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error) {
 	rsp, err := c.PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithBody(ctx, orgName, oAuthAppId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20776,9 +19654,7 @@ func (c *ClientWithResponses) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId
 	return ParsePutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse(rsp)
 }
 
-func (c *ClientWithResponses) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error) {
+func (c *ClientWithResponses) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(ctx context.Context, orgName string, oAuthAppId string, body PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdResponse, error) {
 	rsp, err := c.PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId(ctx, orgName, oAuthAppId, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20787,9 +19663,7 @@ func (c *ClientWithResponses) PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId
 }
 
 // PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBodyWithResponse(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdAvatarWithBody(ctx, orgName, oAuthAppId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20798,9 +19672,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsApplicationsOauthOAuthApp
 }
 
 // PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBodyWithResponse(ctx context.Context, orgName string, oAuthAppId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithBody(ctx, orgName, oAuthAppId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20808,9 +19680,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppI
 	return ParsePostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretWithResponse(ctx context.Context, orgName string, oAuthAppId string, body PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret(ctx, orgName, oAuthAppId, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20819,9 +19689,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppI
 }
 
 // DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameWithResponse request returning *DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, oAuthAppId string, name string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameWithResponse(ctx context.Context, orgName string, oAuthAppId string, name string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretNameResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName(ctx, orgName, oAuthAppId, name, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20830,9 +19698,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAp
 }
 
 // GetV1OrgOrgNameSettingsDomainsWithResponse request returning *GetV1OrgOrgNameSettingsDomainsResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameSettingsDomainsWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameSettingsDomainsWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameSettingsDomains(ctx, orgName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20841,9 +19707,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameSettingsDomainsWithResponse(ctx con
 }
 
 // PostV1OrgOrgNameSettingsDomainsWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameSettingsDomainsResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsDomainsWithBody(ctx, orgName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20851,9 +19715,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsWithBodyWithRespons
 	return ParsePostV1OrgOrgNameSettingsDomainsResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameSettingsDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsDomains(ctx, orgName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20862,9 +19724,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsWithResponse(ctx co
 }
 
 // GetV1OrgOrgNameSettingsDomainsOidcWithResponse request returning *GetV1OrgOrgNameSettingsDomainsOidcResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameSettingsDomainsOidcWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsOidcResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameSettingsDomainsOidcWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsOidcResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameSettingsDomainsOidc(ctx, orgName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20873,9 +19733,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameSettingsDomainsOidcWithResponse(ctx
 }
 
 // GetV1OrgOrgNameSettingsDomainsSamlWithResponse request returning *GetV1OrgOrgNameSettingsDomainsSamlResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameSettingsDomainsSamlWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsSamlResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameSettingsDomainsSamlWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSettingsDomainsSamlResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameSettingsDomainsSaml(ctx, orgName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20884,9 +19742,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameSettingsDomainsSamlWithResponse(ctx
 }
 
 // DeleteV1OrgOrgNameSettingsDomainsDomainNameWithResponse request returning *DeleteV1OrgOrgNameSettingsDomainsDomainNameResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsDomainsDomainNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsDomainsDomainNameWithResponse(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameSettingsDomainsDomainName(ctx, orgName, domainName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20895,9 +19751,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsDomainsDomainNameWithRes
 }
 
 // DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse request returning *DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx, orgName, domainName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20906,9 +19760,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsDomainsDomainNameOidcWit
 }
 
 // PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx, orgName, domainName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20916,9 +19768,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWith
 	return ParsePatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse(rsp)
 }
 
-func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName string, domainName string, body PatchV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx, orgName, domainName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20927,9 +19777,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameOidcWith
 }
 
 // PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithBody(ctx, orgName, domainName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20937,9 +19785,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithB
 	return ParsePostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithResponse(ctx context.Context, orgName string, domainName string, body PostV1OrgOrgNameSettingsDomainsDomainNameOidcJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameOidcResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsDomainsDomainNameOidc(ctx, orgName, domainName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20948,9 +19794,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsDomainNameOidcWithR
 }
 
 // DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlWithResponse request returning *DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlWithResponse(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml(ctx, orgName, domainName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20959,9 +19803,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameSettingsDomainsDomainNameSamlWit
 }
 
 // PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameSettingsDomainsDomainNameSamlResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx, orgName, domainName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20970,9 +19812,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameSettingsDomainsDomainNameSamlWithB
 }
 
 // PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse request with arbitrary body returning *PutV1OrgOrgNameSettingsDomainsDomainNameSamlResponse
-func (c *ClientWithResponses) PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error) {
+func (c *ClientWithResponses) PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1OrgOrgNameSettingsDomainsDomainNameSamlResponse, error) {
 	rsp, err := c.PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBody(ctx, orgName, domainName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20981,9 +19821,7 @@ func (c *ClientWithResponses) PutV1OrgOrgNameSettingsDomainsDomainNameSamlWithBo
 }
 
 // PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBodyWithResponse(ctx context.Context, orgName string, domainName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCertificatesWithBody(ctx, orgName, domainName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -20992,9 +19830,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameSamlCert
 }
 
 // PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyWithResponse request returning *PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, domainName string, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyWithResponse(ctx context.Context, orgName string, domainName string, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameSettingsDomainsDomainNameVerify(ctx, orgName, domainName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21003,9 +19839,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameSettingsDomainsDomainNameVerifyWi
 }
 
 // GetV1OrgOrgNameStatsWithResponse request returning *GetV1OrgOrgNameStatsResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameStatsWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameStatsResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameStatsWithResponse(ctx context.Context, orgName string, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameStatsResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameStats(ctx, orgName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21014,9 +19848,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameStatsWithResponse(ctx context.Conte
 }
 
 // PostV1OrgOrgNameStorageWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameStorageResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameStorageWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameStorageWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameStorageWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21024,9 +19856,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameStorageWithBodyWithResponse(ctx co
 	return ParsePostV1OrgOrgNameStorageResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameStorageWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameStorageWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageParams, body PostV1OrgOrgNameStorageJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameStorage(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21035,9 +19865,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameStorageWithResponse(ctx context.Co
 }
 
 // PostV1OrgOrgNameStorageSearchWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameStorageSearchResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameStorageSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameStorageSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameStorageSearchWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21045,9 +19873,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameStorageSearchWithBodyWithResponse(
 	return ParsePostV1OrgOrgNameStorageSearchResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameStorageSearchWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameStorageSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameStorageSearchParams, body PostV1OrgOrgNameStorageSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameStorageSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameStorageSearch(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21056,9 +19882,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameStorageSearchWithResponse(ctx cont
 }
 
 // DeleteV1OrgOrgNameStorageStorageIdWithResponse request returning *DeleteV1OrgOrgNameStorageStorageIdResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameStorageStorageIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageId TheIdOfTheStorageToDelete, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameStorageStorageIdResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameStorageStorageIdWithResponse(ctx context.Context, orgName string, storageId TheIdOfTheStorageToDelete, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameStorageStorageIdResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameStorageStorageId(ctx, orgName, storageId, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21067,9 +19891,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameStorageStorageIdWithResponse(ctx
 }
 
 // PatchV1OrgOrgNameStorageStorageIdWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameStorageStorageIdResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameStorageStorageIdWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameStorageStorageIdWithBodyWithResponse(ctx context.Context, orgName string, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameStorageStorageIdWithBody(ctx, orgName, storageId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21077,9 +19899,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameStorageStorageIdWithBodyWithRespo
 	return ParsePatchV1OrgOrgNameStorageStorageIdResponse(rsp)
 }
 
-func (c *ClientWithResponses) PatchV1OrgOrgNameStorageStorageIdWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameStorageStorageIdWithResponse(ctx context.Context, orgName string, storageId string, body PatchV1OrgOrgNameStorageStorageIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameStorageStorageId(ctx, orgName, storageId, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21088,9 +19908,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameStorageStorageIdWithResponse(ctx 
 }
 
 // PatchV1OrgOrgNameStorageStorageIdAvatarWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameStorageStorageIdAvatarResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameStorageStorageIdAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdAvatarResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameStorageStorageIdAvatarWithBodyWithResponse(ctx context.Context, orgName string, storageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameStorageStorageIdAvatarResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameStorageStorageIdAvatarWithBody(ctx, orgName, storageId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21099,9 +19917,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameStorageStorageIdAvatarWithBodyWit
 }
 
 // PostV1OrgOrgNameTeamsWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameTeamsResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameTeamsWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameTeamsWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameTeamsWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21109,9 +19925,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameTeamsWithBodyWithResponse(ctx cont
 	return ParsePostV1OrgOrgNameTeamsResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameTeamsWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameTeamsWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsParams, body PostV1OrgOrgNameTeamsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameTeams(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21120,9 +19934,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameTeamsWithResponse(ctx context.Cont
 }
 
 // PostV1OrgOrgNameTeamsSearchWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameTeamsSearchResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameTeamsSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameTeamsSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameTeamsSearchWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21130,9 +19942,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameTeamsSearchWithBodyWithResponse(ct
 	return ParsePostV1OrgOrgNameTeamsSearchResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameTeamsSearchWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameTeamsSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameTeamsSearchParams, body PostV1OrgOrgNameTeamsSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameTeamsSearch(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21141,9 +19951,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameTeamsSearchWithResponse(ctx contex
 }
 
 // DeleteV1OrgOrgNameTeamsTeamNameWithResponse request returning *DeleteV1OrgOrgNameTeamsTeamNameResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameTeamsTeamNameResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameTeamsTeamNameResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameTeamsTeamName(ctx, orgName, teamName, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21152,9 +19960,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameTeamsTeamNameWithResponse(ctx co
 }
 
 // GetV1OrgOrgNameTeamsTeamNameWithResponse request returning *GetV1OrgOrgNameTeamsTeamNameResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameTeamsTeamNameResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, params *GetV1OrgOrgNameTeamsTeamNameParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameTeamsTeamNameResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameTeamsTeamName(ctx, orgName, teamName, params, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21163,9 +19969,7 @@ func (c *ClientWithResponses) GetV1OrgOrgNameTeamsTeamNameWithResponse(ctx conte
 }
 
 // PatchV1OrgOrgNameTeamsTeamNameWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameTeamsTeamNameResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameTeamsTeamNameWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameTeamsTeamNameWithBodyWithResponse(ctx context.Context, orgName string, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameTeamsTeamNameWithBody(ctx, orgName, teamName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21173,9 +19977,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameTeamsTeamNameWithBodyWithResponse
 	return ParsePatchV1OrgOrgNameTeamsTeamNameResponse(rsp)
 }
 
-func (c *ClientWithResponses) PatchV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameTeamsTeamNameWithResponse(ctx context.Context, orgName string, teamName string, body PatchV1OrgOrgNameTeamsTeamNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameTeamsTeamName(ctx, orgName, teamName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21184,9 +19986,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameTeamsTeamNameWithResponse(ctx con
 }
 
 // PatchV1OrgOrgNameTeamsTeamNameAvatarWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameTeamsTeamNameAvatarResponse
-func (c *ClientWithResponses) PatchV1OrgOrgNameTeamsTeamNameAvatarWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameAvatarResponse, error) {
+func (c *ClientWithResponses) PatchV1OrgOrgNameTeamsTeamNameAvatarWithBodyWithResponse(ctx context.Context, orgName string, teamName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameTeamsTeamNameAvatarResponse, error) {
 	rsp, err := c.PatchV1OrgOrgNameTeamsTeamNameAvatarWithBody(ctx, orgName, teamName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21195,9 +19995,7 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameTeamsTeamNameAvatarWithBodyWithRe
 }
 
 // PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameTeamsTeamNameMembersSearchResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsTeamNameMembersSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBodyWithResponse(ctx context.Context, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsTeamNameMembersSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBody(ctx, orgName, teamName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -21205,9 +20003,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameTeamsTeamNameMembersSearchWithBody
 	return ParsePostV1OrgOrgNameTeamsTeamNameMembersSearchResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameTeamsTeamNameMembersSearchWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsTeamNameMembersSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameTeamsTeamNameMembersSearchWithResponse(ctx context.Context, orgName string, teamName string, params *PostV1OrgOrgNameTeamsTeamNameMembersSearchParams, body PostV1OrgOrgNameTeamsTeamNameMembersSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameTeamsTeamNameMembersSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameTeamsTeamNameMembersSearch(ctx, orgName, teamName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err

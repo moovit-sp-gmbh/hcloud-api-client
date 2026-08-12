@@ -733,12 +733,6 @@ type bearerAuthContextKey string
 // patAuthContextKey is the context key for patAuth security scheme
 type patAuthContextKey string
 
-// PostV1OrgOrgNameConnectParamsOrgName0 defines parameters for PostV1OrgOrgNameConnect.
-type PostV1OrgOrgNameConnectParamsOrgName0 = string
-
-// PostV1OrgOrgNameConnectParamsOrgName1 defines parameters for PostV1OrgOrgNameConnect.
-type PostV1OrgOrgNameConnectParamsOrgName1 = string
-
 // PostV1OrgOrgNameConnectSearchParams defines parameters for PostV1OrgOrgNameConnectSearch.
 type PostV1OrgOrgNameConnectSearchParams struct {
 	Limit         *float32 `form:"limit,omitempty" json:"limit,omitempty"`
@@ -746,28 +740,10 @@ type PostV1OrgOrgNameConnectSearchParams struct {
 	Authorization string   `json:"authorization"`
 }
 
-// PostV1OrgOrgNameConnectSearchParamsOrgName0 defines parameters for PostV1OrgOrgNameConnectSearch.
-type PostV1OrgOrgNameConnectSearchParamsOrgName0 = string
-
-// PostV1OrgOrgNameConnectSearchParamsOrgName1 defines parameters for PostV1OrgOrgNameConnectSearch.
-type PostV1OrgOrgNameConnectSearchParamsOrgName1 = string
-
-// DeleteV1OrgOrgNameConnectEmailParamsOrgName0 defines parameters for DeleteV1OrgOrgNameConnectEmail.
-type DeleteV1OrgOrgNameConnectEmailParamsOrgName0 = string
-
-// DeleteV1OrgOrgNameConnectEmailParamsOrgName1 defines parameters for DeleteV1OrgOrgNameConnectEmail.
-type DeleteV1OrgOrgNameConnectEmailParamsOrgName1 = string
-
 // GetV1OrgOrgNameStatsParams defines parameters for GetV1OrgOrgNameStats.
 type GetV1OrgOrgNameStatsParams struct {
 	Authorization string `json:"authorization"`
 }
-
-// GetV1OrgOrgNameStatsParamsOrgName0 defines parameters for GetV1OrgOrgNameStats.
-type GetV1OrgOrgNameStatsParamsOrgName0 = string
-
-// GetV1OrgOrgNameStatsParamsOrgName1 defines parameters for GetV1OrgOrgNameStats.
-type GetV1OrgOrgNameStatsParamsOrgName1 = string
 
 // PostV1HelloJSONRequestBody defines body for PostV1Hello for application/json ContentType.
 type PostV1HelloJSONRequestBody = AgentHelloDto
@@ -1190,32 +1166,20 @@ type ClientInterface interface {
 	PatchV1HelloAgain(ctx context.Context, body PatchV1HelloAgainJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameConnectWithBody request with any body
-	PostV1OrgOrgNameConnectWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameConnectWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameConnect(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameConnectJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameConnect(ctx context.Context, orgName string, body PostV1OrgOrgNameConnectJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1OrgOrgNameConnectSearchWithBody request with any body
-	PostV1OrgOrgNameConnectSearchWithBody(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameConnectSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1OrgOrgNameConnectSearch(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1OrgOrgNameConnectSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1OrgOrgNameConnectEmail request
-	DeleteV1OrgOrgNameConnectEmail(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, email openapi_types.Email, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteV1OrgOrgNameConnectEmail(ctx context.Context, orgName string, email openapi_types.Email, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1OrgOrgNameStats request
-	GetV1OrgOrgNameStats(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *GetV1OrgOrgNameStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetV1OrgOrgNameStats(ctx context.Context, orgName string, params *GetV1OrgOrgNameStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1RegisterWithBody request with any body
 	PostV1RegisterWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -1295,9 +1259,7 @@ func (c *Client) PatchV1HelloAgain(ctx context.Context, body PatchV1HelloAgainJS
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameConnectWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameConnectWithBody(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameConnectRequestWithBody(c.Server, orgName, contentType, body)
 	if err != nil {
 		return nil, err
@@ -1309,9 +1271,7 @@ func (c *Client) PostV1OrgOrgNameConnectWithBody(ctx context.Context, orgName st
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameConnect(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameConnectJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameConnect(ctx context.Context, orgName string, body PostV1OrgOrgNameConnectJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameConnectRequest(c.Server, orgName, body)
 	if err != nil {
 		return nil, err
@@ -1323,9 +1283,7 @@ func (c *Client) PostV1OrgOrgNameConnect(ctx context.Context, orgName struct {
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameConnectSearchWithBody(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameConnectSearchWithBody(ctx context.Context, orgName string, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameConnectSearchRequestWithBody(c.Server, orgName, params, contentType, body)
 	if err != nil {
 		return nil, err
@@ -1337,9 +1295,7 @@ func (c *Client) PostV1OrgOrgNameConnectSearchWithBody(ctx context.Context, orgN
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1OrgOrgNameConnectSearch(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) PostV1OrgOrgNameConnectSearch(ctx context.Context, orgName string, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1OrgOrgNameConnectSearchRequest(c.Server, orgName, params, body)
 	if err != nil {
 		return nil, err
@@ -1351,9 +1307,7 @@ func (c *Client) PostV1OrgOrgNameConnectSearch(ctx context.Context, orgName stru
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteV1OrgOrgNameConnectEmail(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, email openapi_types.Email, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteV1OrgOrgNameConnectEmail(ctx context.Context, orgName string, email openapi_types.Email, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1OrgOrgNameConnectEmailRequest(c.Server, orgName, email)
 	if err != nil {
 		return nil, err
@@ -1365,9 +1319,7 @@ func (c *Client) DeleteV1OrgOrgNameConnectEmail(ctx context.Context, orgName str
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetV1OrgOrgNameStats(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *GetV1OrgOrgNameStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetV1OrgOrgNameStats(ctx context.Context, orgName string, params *GetV1OrgOrgNameStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameStatsRequest(c.Server, orgName, params)
 	if err != nil {
 		return nil, err
@@ -1545,9 +1497,7 @@ func NewPatchV1HelloAgainRequestWithBody(server string, contentType string, body
 }
 
 // NewPostV1OrgOrgNameConnectRequest calls the generic PostV1OrgOrgNameConnect builder with application/json body
-func NewPostV1OrgOrgNameConnectRequest(server string, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameConnectJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameConnectRequest(server string, orgName string, body PostV1OrgOrgNameConnectJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -1558,14 +1508,12 @@ func NewPostV1OrgOrgNameConnectRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameConnectRequestWithBody generates requests for PostV1OrgOrgNameConnect with any type of body
-func NewPostV1OrgOrgNameConnectRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameConnectRequestWithBody(server string, orgName string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1596,9 +1544,7 @@ func NewPostV1OrgOrgNameConnectRequestWithBody(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameConnectSearchRequest calls the generic PostV1OrgOrgNameConnectSearch builder with application/json body
-func NewPostV1OrgOrgNameConnectSearchRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody) (*http.Request, error) {
+func NewPostV1OrgOrgNameConnectSearchRequest(server string, orgName string, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -1609,14 +1555,12 @@ func NewPostV1OrgOrgNameConnectSearchRequest(server string, orgName struct {
 }
 
 // NewPostV1OrgOrgNameConnectSearchRequestWithBody generates requests for PostV1OrgOrgNameConnectSearch with any type of body
-func NewPostV1OrgOrgNameConnectSearchRequestWithBody(server string, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1OrgOrgNameConnectSearchRequestWithBody(server string, orgName string, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1699,14 +1643,12 @@ func NewPostV1OrgOrgNameConnectSearchRequestWithBody(server string, orgName stru
 }
 
 // NewDeleteV1OrgOrgNameConnectEmailRequest generates requests for DeleteV1OrgOrgNameConnectEmail
-func NewDeleteV1OrgOrgNameConnectEmailRequest(server string, orgName struct {
-	union json.RawMessage
-}, email openapi_types.Email) (*http.Request, error) {
+func NewDeleteV1OrgOrgNameConnectEmailRequest(server string, orgName string, email openapi_types.Email) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1742,14 +1684,12 @@ func NewDeleteV1OrgOrgNameConnectEmailRequest(server string, orgName struct {
 }
 
 // NewGetV1OrgOrgNameStatsRequest generates requests for GetV1OrgOrgNameStats
-func NewGetV1OrgOrgNameStatsRequest(server string, orgName struct {
-	union json.RawMessage
-}, params *GetV1OrgOrgNameStatsParams) (*http.Request, error) {
+func NewGetV1OrgOrgNameStatsRequest(server string, orgName string, params *GetV1OrgOrgNameStatsParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
 	if err != nil {
 		return nil, err
 	}
@@ -1890,32 +1830,20 @@ type ClientWithResponsesInterface interface {
 	PatchV1HelloAgainWithResponse(ctx context.Context, body PatchV1HelloAgainJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1HelloAgainResponse, error)
 
 	// PostV1OrgOrgNameConnectWithBodyWithResponse request with any body
-	PostV1OrgOrgNameConnectWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectResponse, error)
+	PostV1OrgOrgNameConnectWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectResponse, error)
 
-	PostV1OrgOrgNameConnectWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, body PostV1OrgOrgNameConnectJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectResponse, error)
+	PostV1OrgOrgNameConnectWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameConnectJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectResponse, error)
 
 	// PostV1OrgOrgNameConnectSearchWithBodyWithResponse request with any body
-	PostV1OrgOrgNameConnectSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectSearchResponse, error)
+	PostV1OrgOrgNameConnectSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectSearchResponse, error)
 
-	PostV1OrgOrgNameConnectSearchWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectSearchResponse, error)
+	PostV1OrgOrgNameConnectSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectSearchResponse, error)
 
 	// DeleteV1OrgOrgNameConnectEmailWithResponse request
-	DeleteV1OrgOrgNameConnectEmailWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, email openapi_types.Email, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameConnectEmailResponse, error)
+	DeleteV1OrgOrgNameConnectEmailWithResponse(ctx context.Context, orgName string, email openapi_types.Email, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameConnectEmailResponse, error)
 
 	// GetV1OrgOrgNameStatsWithResponse request
-	GetV1OrgOrgNameStatsWithResponse(ctx context.Context, orgName struct {
-		union json.RawMessage
-	}, params *GetV1OrgOrgNameStatsParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameStatsResponse, error)
+	GetV1OrgOrgNameStatsWithResponse(ctx context.Context, orgName string, params *GetV1OrgOrgNameStatsParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameStatsResponse, error)
 
 	// PostV1RegisterWithBodyWithResponse request with any body
 	PostV1RegisterWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1RegisterResponse, error)
@@ -2266,9 +2194,7 @@ func (c *ClientWithResponses) PatchV1HelloAgainWithResponse(ctx context.Context,
 }
 
 // PostV1OrgOrgNameConnectWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameConnectResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameConnectWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameConnectWithBodyWithResponse(ctx context.Context, orgName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameConnectWithBody(ctx, orgName, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2276,9 +2202,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameConnectWithBodyWithResponse(ctx co
 	return ParsePostV1OrgOrgNameConnectResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameConnectWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, body PostV1OrgOrgNameConnectJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameConnectWithResponse(ctx context.Context, orgName string, body PostV1OrgOrgNameConnectJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameConnect(ctx, orgName, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2287,9 +2211,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameConnectWithResponse(ctx context.Co
 }
 
 // PostV1OrgOrgNameConnectSearchWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameConnectSearchResponse
-func (c *ClientWithResponses) PostV1OrgOrgNameConnectSearchWithBodyWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameConnectSearchWithBodyWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameConnectSearchParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameConnectSearchWithBody(ctx, orgName, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2297,9 +2219,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameConnectSearchWithBodyWithResponse(
 	return ParsePostV1OrgOrgNameConnectSearchResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1OrgOrgNameConnectSearchWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectSearchResponse, error) {
+func (c *ClientWithResponses) PostV1OrgOrgNameConnectSearchWithResponse(ctx context.Context, orgName string, params *PostV1OrgOrgNameConnectSearchParams, body PostV1OrgOrgNameConnectSearchJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameConnectSearchResponse, error) {
 	rsp, err := c.PostV1OrgOrgNameConnectSearch(ctx, orgName, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2308,9 +2228,7 @@ func (c *ClientWithResponses) PostV1OrgOrgNameConnectSearchWithResponse(ctx cont
 }
 
 // DeleteV1OrgOrgNameConnectEmailWithResponse request returning *DeleteV1OrgOrgNameConnectEmailResponse
-func (c *ClientWithResponses) DeleteV1OrgOrgNameConnectEmailWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, email openapi_types.Email, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameConnectEmailResponse, error) {
+func (c *ClientWithResponses) DeleteV1OrgOrgNameConnectEmailWithResponse(ctx context.Context, orgName string, email openapi_types.Email, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameConnectEmailResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameConnectEmail(ctx, orgName, email, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -2319,9 +2237,7 @@ func (c *ClientWithResponses) DeleteV1OrgOrgNameConnectEmailWithResponse(ctx con
 }
 
 // GetV1OrgOrgNameStatsWithResponse request returning *GetV1OrgOrgNameStatsResponse
-func (c *ClientWithResponses) GetV1OrgOrgNameStatsWithResponse(ctx context.Context, orgName struct {
-	union json.RawMessage
-}, params *GetV1OrgOrgNameStatsParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameStatsResponse, error) {
+func (c *ClientWithResponses) GetV1OrgOrgNameStatsWithResponse(ctx context.Context, orgName string, params *GetV1OrgOrgNameStatsParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameStatsResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameStats(ctx, orgName, params, reqEditors...)
 	if err != nil {
 		return nil, err
