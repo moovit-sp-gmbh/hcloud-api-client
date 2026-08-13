@@ -6,6 +6,7 @@ import (
 	"os"
 	"slices"
 	"strings"
+	"unicode"
 
 	tea "charm.land/bubbletea/v2"
 	"github.com/charmbracelet/x/ansi"
@@ -41,6 +42,34 @@ type model struct {
 func (m *model) setCommand(cmd []rune) {
 	m.command = cmd
 	m.pos = len(cmd)
+}
+
+// wordLeft returns the offset of the start of the word preceding the cursor,
+// skipping any run of whitespace in between. It returns 0 at the start of the
+// line.
+func (m *model) wordLeft() int {
+	i := m.pos
+	for i > 0 && unicode.IsSpace(m.command[i-1]) {
+		i--
+	}
+	for i > 0 && !unicode.IsSpace(m.command[i-1]) {
+		i--
+	}
+	return i
+}
+
+// wordRight returns the offset just past the end of the word following the
+// cursor, skipping any run of whitespace in between. It returns len(command)
+// at the end of the line.
+func (m *model) wordRight() int {
+	i := m.pos
+	for i < len(m.command) && unicode.IsSpace(m.command[i]) {
+		i++
+	}
+	for i < len(m.command) && !unicode.IsSpace(m.command[i]) {
+		i++
+	}
+	return i
 }
 
 func New(root, init command.Executor) tea.Model {
@@ -90,6 +119,10 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.pos = max(0, m.pos-1)
 		case "right":
 			m.pos = min(len(m.command), m.pos+1)
+		case "ctrl+left":
+			m.pos = m.wordLeft()
+		case "ctrl+right":
+			m.pos = m.wordRight()
 		case "ctrl+c", "ctrl+d":
 			return m, tea.Quit
 		case "tab":
