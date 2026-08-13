@@ -3,13 +3,11 @@ package mothership
 import (
 	"context"
 	"database/sql"
-	"errors"
 	"net/http"
 
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/clients/mothershipClient"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/command"
-	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/db"
 	"github.com/spf13/cobra"
 )
 
@@ -34,24 +32,16 @@ var agentDeleteCommand = &cobra.Command{
 		}
 
 		service := internal.New()
-		ctx, err := service.GetLatest()
-		if err != nil {
-			ctx = db.Context{}
-		}
-
-		token, err := cmd.Flags().GetString("token")
+		latest, err := service.GetLatest()
 		if err != nil {
 			return err
 		}
 
-		if token == "" {
-			if !ctx.AgentToken.Valid {
-				return errors.New("No agent token defined")
-			} else {
-				token = ctx.AgentToken.String
-			}
+		helloToken, err := command.GetArg(cmd, command.StringFlagIfSet("hello_token"), command.ContextIfValidString(latest.AgentHelloToken), command.PromptString("hello token"))
+		if err != nil {
+			return err
 		}
-		ctx.AgentToken = sql.NullString{Valid: true, String: token}
+		latest.AgentHelloToken = sql.NullString{Valid: true, String: helloToken}
 
 		client, err := mothershipClient.NewClientWithResponses(server)
 		if err != nil {
@@ -59,7 +49,7 @@ var agentDeleteCommand = &cobra.Command{
 		}
 
 		res, err := client.DeleteV1AgentWithResponse(context.TODO(), func(ctx context.Context, req *http.Request) error {
-			req.Header.Set("authorization", token)
+			req.Header.Set("authorization", helloToken)
 			return nil
 		})
 
@@ -67,7 +57,7 @@ var agentDeleteCommand = &cobra.Command{
 		switch res.StatusCode() {
 		case 204:
 			text = command.Text("Success")
-			service.Push(ctx)
+			service.Push(latest)
 		default:
 			text, err = command.JSON(string(res.Body))
 			if err != nil {
