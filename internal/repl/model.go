@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"slices"
 	"strings"
 
 	tea "charm.land/bubbletea/v2"
@@ -27,9 +28,19 @@ type model struct {
 	commands []result
 	command  []rune
 
+	// pos is where the next rune is inserted, as a rune offset into command.
+	// It is always in [0, len(command)]; len(command) means end of line.
+	pos int
+
 	idx int
 
 	helpMessage string
+}
+
+// setCommand replaces the editable line and parks the cursor at its end.
+func (m *model) setCommand(cmd []rune) {
+	m.command = cmd
+	m.pos = len(cmd)
 }
 
 func New(root, init command.Executor) tea.Model {
@@ -66,15 +77,19 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "up":
 			m.idx = min(len(m.commands), m.idx+1)
 			if m.idx > 0 {
-				m.command = []rune(m.commands[len(m.commands)-m.idx].command)
+				m.setCommand([]rune(m.commands[len(m.commands)-m.idx].command))
 			}
 		case "down":
 			m.idx = max(0, m.idx-1)
 			if m.idx <= 0 {
-				m.command = nil
+				m.setCommand(nil)
 			} else {
-				m.command = []rune(m.commands[len(m.commands)-m.idx].command)
+				m.setCommand([]rune(m.commands[len(m.commands)-m.idx].command))
 			}
+		case "left":
+			m.pos = max(0, m.pos-1)
+		case "right":
+			m.pos = min(len(m.command), m.pos+1)
 		case "ctrl+c", "ctrl+d":
 			return m, tea.Quit
 		case "tab":
@@ -85,23 +100,25 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, m.runCommand()
 		case "backspace":
 			m.helpMessage = ""
-			if len(m.command) > 0 {
-				m.command = m.command[:len(m.command)-1]
+			if m.pos > 0 {
+				m.command = slices.Delete(m.command, m.pos-1, m.pos)
+				m.pos--
 			}
 		default:
 			m.helpMessage = ""
+			code := msg.Code
 			if msg.Key().Mod == tea.ModShift {
-				m.command = append(m.command, msg.ShiftedCode)
-			} else {
-				m.command = append(m.command, msg.Code)
+				code = msg.ShiftedCode
 			}
+			m.command = slices.Insert(m.command, m.pos, code)
+			m.pos++
 		}
 	case errMsg:
 		m.commands = append(m.commands, result{
 			command: string(m.command),
 			output:  msg.err.Error(),
 		})
-		m.command = nil
+		m.setCommand(nil)
 	case outputMsg:
 		out := ""
 		if msg.output != nil {
@@ -111,7 +128,7 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			command: string(m.command),
 			output:  out,
 		})
-		m.command = nil
+		m.setCommand(nil)
 	}
 	return m, nil
 }
@@ -127,7 +144,7 @@ func (m *model) View() tea.View {
 	// Every entry above ends in a newline, so the prompt lands on the line
 	// after them.
 	row := bytes.Count(buf.Bytes(), []byte("\n"))
-	col := ansi.StringWidth(prompt + string(m.command))
+	col := ansi.StringWidth(prompt + string(m.command[:m.pos]))
 
 	fmt.Fprintf(&buf, "%s%s", prompt, string(m.command))
 
