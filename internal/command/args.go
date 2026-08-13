@@ -1,11 +1,29 @@
 package command
 
 import (
+	"database/sql"
+	"errors"
 	"strconv"
 
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli"
 	"github.com/spf13/cobra"
 )
+
+type GetArgOption[T string | int | float64 | bool] func(cmd *cobra.Command) (T, bool, error)
+
+func GetArg[T string | int | float64 | bool](cmd *cobra.Command, fns ...GetArgOption[T]) (T, error) {
+	var v T
+	for _, fn := range fns {
+		v, ok, err := fn(cmd)
+		if err != nil {
+			return v, err
+		}
+		if ok {
+			return v, nil
+		}
+	}
+	return v, errors.New("unable to get argument")
+}
 
 func FlagOrPromptString(cmd *cobra.Command, name string) (string, error) {
 	return FlagOrDifferentPromptString(cmd, name, name)
@@ -65,4 +83,31 @@ func FlagOrDifferentPromptFloat(cmd *cobra.Command, name string, prompt string) 
 		return 0, err
 	}
 	return strconv.ParseFloat(str, 64)
+}
+
+func StringFlagIfSet(name string) GetArgOption[string] {
+	return func(cmd *cobra.Command) (string, bool, error) {
+		if ok := cmd.Flags().Changed(name); ok {
+			v, err := cmd.Flags().GetString(name)
+			return v, true, err
+		}
+		return "", false, nil
+	}
+}
+
+func PromptString(prompt string) GetArgOption[string] {
+	return func(cmd *cobra.Command) (string, bool, error) {
+		v, err := cli.Prompt(prompt)
+		if err != nil {
+			return "", true, err
+		}
+
+		return v, v != "", nil
+	}
+}
+
+func ContextIfValidString(v sql.NullString) GetArgOption[string] {
+	return func(cmd *cobra.Command) (string, bool, error) {
+		return v.String, v.Valid, nil
+	}
 }

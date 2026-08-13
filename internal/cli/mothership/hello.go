@@ -216,7 +216,7 @@ var helloAgainCommand = &cobra.Command{
 		}
 
 		var data any
-		err = json.Unmarshal([]byte(res.Body), &data)
+		err = json.Unmarshal(res.Body, &data)
 		if err != nil {
 			return err
 		}

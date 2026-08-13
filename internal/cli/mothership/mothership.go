@@ -17,6 +17,8 @@ func Command() *cobra.Command {
 	mothershipCommand.AddCommand(agentCommand)
 	mothershipCommand.AddCommand(registerCommand)
 	mothershipCommand.AddCommand(helloCommand)
+	mothershipCommand.AddCommand(connectCommand)
+	mothershipCommand.AddCommand(disconnectCommand)
 
 	return mothershipCommand
 }
