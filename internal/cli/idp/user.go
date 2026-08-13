@@ -34,6 +34,9 @@ func init() {
 	patchNotificationSettingsCommand.Flags().Bool("system-notifications", false, "Enable/disable system notifications")
 	patchNotificationSettingsCommand.Flags().Bool("cosmo-notifications", false, "Enable/disable cosmo notifications")
 
+	activateTotpCommand.Flags().String("token", "", "Token to match against a TOTP secret")
+	deleteTotpCommand.Flags().String("token", "", "Token to match against a TOTP secret")
+
 	whoamiCommand.AddCommand(patchCommand)
 	whoamiCommand.AddCommand(getUserEmailCommand)
 	whoamiCommand.AddCommand(getUserPasskeysCommand)
@@ -47,6 +50,12 @@ func init() {
 	whoamiCommand.AddCommand(patchNotificationSettingsCommand)
 	whoamiCommand.AddCommand(patchPwCommand)
 	whoamiCommand.AddCommand(revokeOAuthAppCommand)
+	whoamiCommand.AddCommand(deleteAllPatsCommand)
+	whoamiCommand.AddCommand(getPatCommand)
+	whoamiCommand.AddCommand(deletePatCommand)
+	whoamiCommand.AddCommand(createTotpCommand)
+	whoamiCommand.AddCommand(activateTotpCommand)
+	whoamiCommand.AddCommand(deleteTotpCommand)
 
 	whoamiCommand.AddCommand(pingCommand)
 	whoamiCommand.AddCommand(logoutCommand)
@@ -857,6 +866,344 @@ var patchLastVisitCommand = &cobra.Command{
 			if err != nil {
 				return err
 			}
+		default:
+			text, err = command.JSON(string(res.Body))
+			if err != nil {
+				return err
+			}
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var getPatCommand = &cobra.Command{
+	Use:   "pat <patId>",
+	Short: "Get a PAT",
+	Long:  "Get a single pat by ID",
+	Args:  cobra.ExactArgs(1),
+	RunE: func(cmd *cobra.Command, args []string) error {
+		patId := args[0]
+
+		server, err := command.ServerIDP(cmd)
+		if err != nil {
+			return err
+		}
+
+		client, err := idpClient.NewClientWithResponses(server)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		if !ctx.Jwt.Valid {
+			return errors.New("JWT not set. Login first")
+		}
+
+		res, err := client.GetV1UserSettingsPatsPatIdWithResponse(context.TODO(), patId, func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", ctx.Jwt.String)
+			return nil
+		})
+
+		if err != nil {
+			return err
+		}
+		var text command.Text
+
+		switch res.StatusCode() {
+		case 200:
+
+			text, err = command.JSON(res.JSON200)
+			if err != nil {
+				return err
+			}
+		default:
+			text, err = command.JSON(string(res.Body))
+			if err != nil {
+				return err
+			}
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var deletePatCommand = &cobra.Command{
+	Use:   "delete-pat <patId>",
+	Short: "Delete a PAT",
+	Long:  "Deletes a users pat by ID",
+	Args:  cobra.ExactArgs(1),
+	RunE: func(cmd *cobra.Command, args []string) error {
+		patId := args[0]
+
+		server, err := command.ServerIDP(cmd)
+		if err != nil {
+			return err
+		}
+
+		client, err := idpClient.NewClientWithResponses(server)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		if !ctx.Jwt.Valid {
+			return errors.New("JWT not set. Login first")
+		}
+
+		res, err := client.DeleteV1UserSettingsPatsPatIdWithResponse(context.TODO(), patId, func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", ctx.Jwt.String)
+			return nil
+		})
+
+		if err != nil {
+			return err
+		}
+
+		var text command.Text
+		switch res.StatusCode() {
+		case 204:
+			text = command.Text("Success")
+		default:
+			text, err = command.JSON(string(res.Body))
+			if err != nil {
+				return err
+			}
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var createTotpCommand = &cobra.Command{
+	Use:   "create-totp",
+	Short: "Create user TOTP",
+	Long:  "Create a new user TOTP",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		server, err := command.ServerIDP(cmd)
+		if err != nil {
+			return err
+		}
+
+		client, err := idpClient.NewClientWithResponses(server)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		if !ctx.Jwt.Valid {
+			return errors.New("JWT not set. Login first")
+		}
+
+		res, err := client.PostV1UserSettingsSecurity2faTotpWithResponse(context.TODO(), func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", ctx.Jwt.String)
+			return nil
+		})
+
+		if err != nil {
+			return err
+		}
+		var text command.Text
+
+		switch res.StatusCode() {
+		case 201:
+
+			text, err = command.JSON(res.JSON201)
+			if err != nil {
+				return err
+			}
+		default:
+			text, err = command.JSON(string(res.Body))
+			if err != nil {
+				return err
+			}
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var activateTotpCommand = &cobra.Command{
+	Use:   "activate-totp",
+	Short: "Activate user TOTP",
+	Long:  "Activate a user TOTP",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		server, err := command.ServerIDP(cmd)
+		if err != nil {
+			return err
+		}
+
+		client, err := idpClient.NewClientWithResponses(server)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		if !ctx.Jwt.Valid {
+			return errors.New("JWT not set. Login first")
+		}
+
+		token, err := cmd.Flags().GetString("token")
+		if err != nil {
+			return err
+		}
+
+		res, err := client.PatchV1UserSettingsSecurity2faTotpActivateWithResponse(context.TODO(), idpClient.PatchV1UserSettingsSecurity2faTotpActivateJSONRequestBody{
+			Token: token,
+		}, func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", ctx.Jwt.String)
+			return nil
+		})
+
+		if err != nil {
+			return err
+		}
+		var text command.Text
+
+		switch res.StatusCode() {
+		case 200:
+
+			text, err = command.JSON(res.JSON200)
+			if err != nil {
+				return err
+			}
+		default:
+			text, err = command.JSON(string(res.Body))
+			if err != nil {
+				return err
+			}
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var deleteTotpCommand = &cobra.Command{
+	Use:   "delete-totp",
+	Short: "Delete user TOTP",
+	Long:  "Delete a user TOTP",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		server, err := command.ServerIDP(cmd)
+		if err != nil {
+			return err
+		}
+
+		client, err := idpClient.NewClientWithResponses(server)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		if !ctx.Jwt.Valid {
+			return errors.New("JWT not set. Login first")
+		}
+
+		token, err := cmd.Flags().GetString("token")
+		if err != nil {
+			return err
+		}
+
+		res, err := client.DeleteV1UserSettingsSecurity2faTotpWithResponse(context.TODO(), idpClient.DeleteV1UserSettingsSecurity2faTotpJSONRequestBody{
+			Token: token,
+		}, func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", ctx.Jwt.String)
+			return nil
+		})
+
+		if err != nil {
+			return err
+		}
+
+		var text command.Text
+		switch res.StatusCode() {
+		case 204:
+			text = command.Text("Success")
+		default:
+			text, err = command.JSON(string(res.Body))
+			if err != nil {
+				return err
+			}
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var deleteAllPatsCommand = &cobra.Command{
+	Use:   "delete-pats",
+	Short: "Delete all PATs",
+	Long:  "Deletes all users pats",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		server, err := command.ServerIDP(cmd)
+		if err != nil {
+			return err
+		}
+
+		client, err := idpClient.NewClientWithResponses(server)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		ctx, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		if !ctx.Jwt.Valid {
+			return errors.New("JWT not set. Login first")
+		}
+
+		res, err := client.DeleteV1UserSettingsPatsWithResponse(context.TODO(), func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", ctx.Jwt.String)
+			return nil
+		})
+
+		if err != nil {
+			return err
+		}
+
+		var text command.Text
+		switch res.StatusCode() {
+		case 204:
+			text = command.Text("Success")
 		default:
 			text, err = command.JSON(string(res.Body))
 			if err != nil {
