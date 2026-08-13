@@ -1,3 +1,6 @@
+test:
+	go test ./... && go mod tidy && go vet ./...
+
 build:
 	go build -o hcloud-cli ./main.go
 	go build -o patcher ./cmd/patcher

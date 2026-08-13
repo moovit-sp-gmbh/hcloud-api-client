@@ -7,8 +7,13 @@ import (
 	"strings"
 
 	tea "charm.land/bubbletea/v2"
+	"github.com/charmbracelet/x/ansi"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/command"
 )
+
+// prompt precedes the editable line. The cursor is placed relative to it, so
+// its width has to stay in sync with what [model.View] renders.
+const prompt = "> "
 
 type result struct {
 	command string
@@ -116,16 +121,26 @@ func (m *model) View() tea.View {
 	var buf bytes.Buffer
 
 	for _, command := range m.commands {
-		fmt.Fprintf(&buf, "> %s\n%s\n", command.command, command.output)
+		fmt.Fprintf(&buf, "%s%s\n%s\n", prompt, command.command, command.output)
 	}
 
-	fmt.Fprintf(&buf, "> %s", string(m.command))
+	// Every entry above ends in a newline, so the prompt lands on the line
+	// after them.
+	row := bytes.Count(buf.Bytes(), []byte("\n"))
+	col := ansi.StringWidth(prompt + string(m.command))
+
+	fmt.Fprintf(&buf, "%s%s", prompt, string(m.command))
 
 	if m.helpMessage != "" {
 		fmt.Fprintf(&buf, "\n%s", m.helpMessage)
 	}
 
-	return tea.NewView(buf.String())
+	view := tea.NewView(buf.String())
+	view.Cursor = tea.NewCursor(col, row)
+	view.Cursor.Shape = tea.CursorBar
+	view.Cursor.Blink = false
+
+	return view
 }
 
 func (m *model) runCommand() tea.Cmd {

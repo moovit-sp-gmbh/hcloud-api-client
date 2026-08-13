@@ -3,6 +3,7 @@ module github.com/moovit-sp-gmbh/hcloud-cli-repl
 go 1.25.7
 
 require (
+	github.com/charmbracelet/x/ansi v0.11.7
 	github.com/oapi-codegen/runtime v1.6.0
 	github.com/pressly/goose/v3 v3.27.2
 	github.com/shirou/gopsutil/v4 v4.26.7
@@ -14,7 +15,6 @@ require (
 	github.com/apapsch/go-jsonmerge/v2 v2.0.0 // indirect
 	github.com/charmbracelet/colorprofile v0.4.3 // indirect
 	github.com/charmbracelet/ultraviolet v0.0.0-20260703014108-f5a850f9c2b7 // indirect
-	github.com/charmbracelet/x/ansi v0.11.7 // indirect
 	github.com/charmbracelet/x/term v0.2.2 // indirect
 	github.com/charmbracelet/x/termios v0.1.1 // indirect
 	github.com/charmbracelet/x/windows v0.2.2 // indirect

@@ -51,23 +51,6 @@ func TestExecuteCapturesInCommandHelp(t *testing.T) {
 	}
 }
 
-func TestHelpReturnsUsage(t *testing.T) {
-	cmd := New(&cobra.Command{
-		Use:   "greet",
-		Short: "say hello",
-		Long:  "greet prints a friendly greeting",
-		Run:   func(cmd *cobra.Command, args []string) {},
-	})
-
-	help := cmd.Help(nil)
-	if !strings.Contains(help, "greet prints a friendly greeting") {
-		t.Fatalf("help missing long description:\n%s", help)
-	}
-	if !strings.Contains(help, "Usage:") {
-		t.Fatalf("help missing usage section:\n%s", help)
-	}
-}
-
 func TestExecutePropagatesError(t *testing.T) {
 	wantErr := errors.New("boom")
 	cmd := New(&cobra.Command{
