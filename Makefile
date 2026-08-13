@@ -24,7 +24,7 @@ generate:
 	$(MAKE) generate+idp
 	$(MAKE) generate+high5
 	$(MAKE) generate+mothership
-#	$(MAKE) generate+cosmo
+	$(MAKE) generate+cosmo
 	$(MAKE) generate+dali
 
 generate+idp:
