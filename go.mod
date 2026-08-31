@@ -8,6 +8,7 @@ require (
 	github.com/pressly/goose/v3 v3.27.2
 	github.com/shirou/gopsutil/v4 v4.26.7
 	github.com/spf13/cobra v1.10.2
+	gopkg.in/yaml.v3 v3.0.1
 	modernc.org/sqlite v1.53.0
 )
 
@@ -47,7 +48,6 @@ require (
 	golang.org/x/mod v0.38.0 // indirect
 	golang.org/x/text v0.40.0 // indirect
 	golang.org/x/tools v0.48.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
 require (

@@ -1,3 +1,4 @@
 db.sqlite
 /hcloud-cli
 /debug.log
+bin/

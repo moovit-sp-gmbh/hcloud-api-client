@@ -1,0 +1,117 @@
+# Endpoints this CLI has handled, and the ones deliberately left alone.
+# Written by cmd/codegen; `make coverage` reads it. Hand edits are fine —
+# add a `status: skipped` entry with a `reason` to retire an endpoint from
+# the missing list.
+endpoints:
+  - client: idpClient
+    operation: PostV1Login
+    method: POST
+    path: /v1/login
+    command: idp login
+    status: implemented
+    source: handwritten
+  - client: idpClient
+    operation: PostV1Org
+    method: POST
+    path: /v1/org
+    command: idp organization create
+    status: implemented
+    source: handwritten
+  - client: idpClient
+    operation: GetV1User
+    method: GET
+    path: /v1/user
+    command: idp user
+    status: implemented
+    source: handwritten
+  - client: idpClient
+    operation: PatchV1User
+    method: PATCH
+    path: /v1/user
+    command: idp user patch
+    status: implemented
+    source: handwritten
+  - client: idpClient
+    operation: GetV1UserEmail
+    method: GET
+    path: /v1/user/email
+    command: idp user email
+    status: implemented
+    source: handwritten
+  - client: idpClient
+    operation: GetV1UserNats
+    method: GET
+    path: /v1/user/nats
+    command: idp user nats
+    status: implemented
+    source: handwritten
+  - client: idpClient
+    operation: PatchV1UserPassword
+    method: PATCH
+    path: /v1/user/password
+    command: idp user patch-password
+    status: implemented
+    source: handwritten
+  - client: mothershipClient
+    operation: DeleteV1Agent
+    method: DELETE
+    path: /v1/agent
+    command: mothership agent delete
+    status: implemented
+    source: handwritten
+  - client: mothershipClient
+    operation: DeleteV1ConnectEmail
+    method: DELETE
+    path: /v1/connect/{email}
+    command: mothership disconnect all
+    status: implemented
+    source: handwritten
+  - client: mothershipClient
+    operation: PostV1Hello
+    method: POST
+    path: /v1/hello
+    command: mothership hello
+    status: implemented
+    source: handwritten
+  - client: mothershipClient
+    operation: PatchV1HelloAgain
+    method: PATCH
+    path: /v1/hello/again
+    command: mothership hello again
+    status: implemented
+    source: handwritten
+  - client: mothershipClient
+    operation: PostV1OrgOrgNameConnect
+    method: POST
+    path: /v1/org/{orgName}/connect
+    command: mothership connect
+    status: implemented
+    source: handwritten
+  - client: mothershipClient
+    operation: PostV1OrgOrgNameConnectSearch
+    method: POST
+    path: /v1/org/{orgName}/connect/search
+    command: mothership connect search
+    status: implemented
+    source: handwritten
+  - client: mothershipClient
+    operation: DeleteV1OrgOrgNameConnectEmail
+    method: DELETE
+    path: /v1/org/{orgName}/connect/{email}
+    command: mothership disconnect
+    status: implemented
+    source: handwritten
+  - client: mothershipClient
+    operation: GetV1OrgOrgNameStats
+    method: GET
+    path: /v1/org/{orgName}/stats
+    command: mothership stats
+    status: implemented
+    source: handwritten
+  - client: mothershipClient
+    operation: PostV1Register
+    method: POST
+    path: /v1/register
+    command: mothership register
+    status: implemented
+    source: handwritten

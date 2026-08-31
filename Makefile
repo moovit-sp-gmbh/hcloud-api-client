@@ -4,6 +4,26 @@ test:
 build:
 	go build -o hcloud-cli ./main.go
 	go build -o patcher ./cmd/patcher
+	go build -o bin/codegen ./cmd/codegen
+
+# Which endpoints have commands, which are left, and which the manifest claims
+# but the clients no longer expose. Exits non-zero on the last.
+coverage: bin/codegen
+	./bin/codegen coverage --verify
+
+missing: bin/codegen
+	./bin/codegen coverage --missing
+
+# Generate a command for an endpoint. Pass a service with SERVICE=cosmo.
+new-command: bin/codegen
+	./bin/codegen new $(if $(SERVICE),--client $(SERVICE),)
+
+# Replay every recipe, e.g. after changing the emitter or regenerating a client.
+regen-commands: bin/codegen
+	./bin/codegen regen
+
+bin/codegen: $(shell find cmd/codegen internal/codegen -name '*.go')
+	go build -o bin/codegen ./cmd/codegen
 
 format:
 	go fmt ./...
