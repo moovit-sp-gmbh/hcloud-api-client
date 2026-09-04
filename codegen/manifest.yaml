@@ -36,6 +36,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-oauth-well-known.yaml
   - client: idpClient
+    operation: GetV1GuestEmailEmail
+    method: GET
+    path: /v1/guest/email/{email}
+    command: idp guest email
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-guest-email.yaml
+  - client: idpClient
     operation: PostV1Login
     method: POST
     path: /v1/login

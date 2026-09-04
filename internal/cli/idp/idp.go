@@ -97,6 +97,7 @@ func Command() *cobra.Command {
 	idpCommand.AddCommand(orgCommand)
 	idpCommand.AddCommand(whoamiCommand)
 	idpCommand.AddCommand(oauthCommand)
+	idpCommand.AddCommand(guestCommand)
 
 	return idpCommand
 }
