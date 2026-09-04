@@ -1,0 +1,99 @@
+# Generation input for `idp login oauth info`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1LoginOauthInfo
+command:
+  path:
+    - idp
+    - login
+    - oauth
+    - info
+  file: oauth.go
+  var: loginOauthInfoCommand
+  short: OAuth Preflight Info Endpoint
+  long: This endpoint servers as a pseudo **authorize endpoint**. It will return an error if the user has not given permission to it yet or it will redirect like the **authorize endpoint** if the user has already consented to the scopes specified
+args:
+  - source: query
+    name: response_type
+    goName: ResponseType
+    cli: responseType
+    var: responseType
+    type: '*string'
+    description: Tells the authorization server which grant to execute. Currently only "code" is supported
+    default: code
+    unset: default
+    resolve:
+      - flag
+  - source: query
+    name: client_id
+    goName: ClientId
+    cli: clientId
+    var: clientId
+    type: string
+    description: The ID of the application that is asking for authorization
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OauthAppClientID
+    persist: true
+    prompt: OAuth client ID
+  - source: query
+    name: redirect_uri
+    goName: RedirectUri
+    cli: redirectURI
+    var: redirectUri
+    type: string
+    description: A successful response will redirect to this URI
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OauthAppRedirectUri
+    persist: true
+    prompt: OAuth app redirect URI
+  - source: query
+    name: scope
+    goName: Scope
+    cli: scope
+    var: scope
+    type: string
+    description: Space-delimited list of hcloud permissions that the application requires as well as openId if required
+    resolve:
+      - flag
+      - prompt
+    prompt: scope
+  - source: query
+    name: state
+    goName: State
+    cli: state
+    var: state
+    type: '*string'
+    description: Optional value, used for security purposes (XSRF) or to store non-sensitive information between requests. If this request parameter is set in the request, then it is returned to the application as part of the redirect_uri with no changes
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: code_challenge
+    goName: CodeChallenge
+    cli: codeChallenge
+    var: codeChallenge
+    type: '*string'
+    description: Optional value, used for PKCE (https://www.rfc-editor.org/rfc/rfc7636#section-4)
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: code_challenge_method
+    goName: CodeChallengeMethod
+    cli: codeChallengeMethod
+    var: codeChallengeMethod
+    type: '*GetV1LoginOauthInfoParamsCodeChallengeMethod'
+    description: Optional value, used for PKCE (https://www.rfc-editor.org/rfc/rfc7636#section-4)
+    unset: omit
+    resolve:
+      - flag
+body:
+  mode: none
+response:
+  render: body

@@ -18,6 +18,7 @@ func init() {
 	loginOauthCommand.AddCommand(loginOauthAppCommand)
 	loginOauthCommand.AddCommand(loginOauthAuthorizeCommand)
 	loginOauthCommand.AddCommand(loginOauthDeviceCommand)
+	loginOauthCommand.AddCommand(loginOauthInfoCommand)
 }
 
 var loginOauthCommand = &cobra.Command{
