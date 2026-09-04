@@ -51,6 +51,14 @@ endpoints:
     status: implemented
     source: handwritten
   - client: idpClient
+    operation: GetV1LoginOauthAppClientId
+    method: GET
+    path: /v1/login/oauth/app/{clientId}
+    command: idp login oauth app
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-login-oauth-app.yaml
+  - client: idpClient
     operation: PostV1Org
     method: POST
     path: /v1/org

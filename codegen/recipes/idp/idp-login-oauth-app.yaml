@@ -1,0 +1,33 @@
+# Generation input for `idp login oauth app`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1LoginOauthAppClientId
+command:
+  path:
+    - idp
+    - login
+    - oauth
+    - app
+  file: app.go
+  var: loginOauthAppCommand
+  short: OAuth App public info by clientId
+args:
+  - source: path
+    name: clientId
+    goName: clientId
+    cli: clientId
+    var: clientId
+    type: openapi_types.UUID
+    description: Client ID of the OAuth application
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OauthAppClientID
+    persist: true
+    prompt: OAuth Client ID
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200
