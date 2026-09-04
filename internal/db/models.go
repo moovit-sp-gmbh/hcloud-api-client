@@ -25,4 +25,5 @@ type Context struct {
 	High5SpaceName      sql.NullString
 	OauthAppClientID    sql.NullString
 	OauthAppRedirectUri sql.NullString
+	Email               sql.NullString
 }
