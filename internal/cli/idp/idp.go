@@ -14,6 +14,7 @@ import (
 func init() {
 	loginCommand.AddCommand(loginOauthCommand)
 	loginCommand.AddCommand(loginPreCommand)
+	loginCommand.AddCommand(loginSamlCommand)
 	loginCommand.Flags().StringP("email", "e", "", "email")
 	loginCommand.Flags().StringP("password", "p", "", "password")
 }
