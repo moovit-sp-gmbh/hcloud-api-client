@@ -48,8 +48,8 @@ func newCommand() *cobra.Command {
 			specs := codegen.LoadSpecs(root)
 			if specs.Empty() {
 				fmt.Fprintln(cmd.OutOrStdout(),
-					"note: no vendored specs under specs/, so summaries and tags are unavailable.\n"+
-						"      run `make generate` to fetch and vendor them.")
+					"note: no vendored specs under specs/, so nothing can be prefilled from them.\n"+
+						"      run `make specs` to fetch them (it does not touch the clients).")
 			}
 
 			out := cmd.OutOrStdout()

@@ -49,6 +49,21 @@ func (w *Wizard) ask(prompt, def string) (string, error) {
 	return answer, nil
 }
 
+// askText asks for a free-text answer that may legitimately be empty.
+//
+// A prefilled default cannot otherwise be cleared: an empty line means "keep
+// the default", so answering "-" is the way to say "no description at all".
+func (w *Wizard) askText(prompt, def string) (string, error) {
+	answer, err := w.ask(prompt, def)
+	if err != nil {
+		return "", err
+	}
+	if answer == "-" {
+		return "", nil
+	}
+	return answer, nil
+}
+
 // askValid re-asks until the answer passes, so a mistyped flag or context field
 // is caught while the person can still fix it rather than surfacing later as a
 // column called "name of the space".
@@ -221,6 +236,11 @@ func (w *Wizard) commandPath(op *Operation, r *Recipe) error {
 	if info := w.Specs.For(op); info.Tag != "" {
 		w.printf("spec tag: %s\n", info.Tag)
 	}
+	if w.Specs.Empty() {
+		w.printf("no vendored spec, so nothing is prefilled — run `make specs` to fetch one\n")
+	} else {
+		w.printf("descriptions are prefilled from the spec; answer \"-\" to clear one\n")
+	}
 	w.printf("existing commands under %s: %s\n", r.Command.Service(), strings.Join(siblingPaths(w.Tree, r.Command.Service()), ", "))
 
 	for {
@@ -276,10 +296,11 @@ func (w *Wizard) commandPath(op *Operation, r *Recipe) error {
 	}
 	r.Command.File = file
 
-	if r.Command.Short, err = w.ask("short description", r.Command.Short); err != nil {
+	// Short and Long are prefilled from the spec's summary and description.
+	if r.Command.Short, err = w.askText("short description", r.Command.Short); err != nil {
 		return err
 	}
-	if r.Command.Long, err = w.ask("long description (optional)", r.Command.Long); err != nil {
+	if r.Command.Long, err = w.askText("long description (optional)", r.Command.Long); err != nil {
 		return err
 	}
 	return nil
@@ -343,7 +364,7 @@ func (w *Wizard) arguments(op *Operation, r *Recipe) error {
 			"a shorthand is a single character"); err != nil {
 			return err
 		}
-		if arg.Description, err = w.ask("  flag help", arg.Description); err != nil {
+		if arg.Description, err = w.askText("  flag help", arg.Description); err != nil {
 			return err
 		}
 		if err := w.resolution(&arg.Resolve, &arg.Context, &arg.Persist, &arg.Prompt, arg.CLI); err != nil {
@@ -613,7 +634,7 @@ func (w *Wizard) body(op *Operation, r *Recipe) error {
 			"a shorthand is a single character"); err != nil {
 			return err
 		}
-		if f.Description, err = w.ask("  flag help", f.Description); err != nil {
+		if f.Description, err = w.askText("  flag help", f.Description); err != nil {
 			return err
 		}
 		if err := w.resolution(&f.Resolve, &f.Context, &f.Persist, &f.Prompt, f.CLI); err != nil {

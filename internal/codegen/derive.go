@@ -28,10 +28,10 @@ func Derive(op *Operation, client *Client, specs *Specs, schema *ContextSchema) 
 	r.Command.File = r.Command.Use() + ".go"
 
 	for _, p := range op.PathParams {
-		r.Args = append(r.Args, deriveArg(p, schema))
+		r.Args = append(r.Args, deriveArg(p, info, schema))
 	}
 	for _, p := range op.Params {
-		r.Args = append(r.Args, deriveArg(p, schema))
+		r.Args = append(r.Args, deriveArg(p, info, schema))
 	}
 
 	// An endpoint can require credentials without declaring an authorization
@@ -156,14 +156,16 @@ func requiresRawBody(body *Body, client string) bool {
 	return false
 }
 
-func deriveArg(p Param, schema *ContextSchema) RecipeArg {
+func deriveArg(p Param, info OpInfo, schema *ContextSchema) RecipeArg {
+	// The spec is the better source: oapi-codegen emits no doc comment for a
+	// path parameter, so p.Doc is always empty for those.
 	arg := RecipeArg{
 		Source:      p.In,
 		Name:        p.Name,
 		GoName:      p.GoName,
 		CLI:         p.Name,
 		Type:        p.GoType,
-		Description: p.Doc,
+		Description: firstNonEmpty(info.Param(p.In, p.Name), p.Doc),
 		Prompt:      p.Name,
 		Resolve:     []string{FromFlag, FromPrompt},
 	}
@@ -174,6 +176,7 @@ func deriveArg(p Param, schema *ContextSchema) RecipeArg {
 		arg.CLI = "token"
 		arg.Var = "jwt"
 		arg.Context = "Jwt"
+		arg.Description = firstNonEmpty(arg.Description, "authorization token")
 		arg.Prompt = "authorization token"
 		arg.Persist = true
 		arg.Via = ViaParams

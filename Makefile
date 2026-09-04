@@ -40,6 +40,11 @@ migrate+down:
 migrate+up:
 	goose sqlite3 db.sqlite up -dir internal/db/migrations
 
+# Refresh only the vendored specs, without regenerating any client. This is
+# what cmd/codegen reads for summaries, descriptions and tags.
+specs:
+	./scripts/specs.sh
+
 generate:
 	$(MAKE) generate+idp
 	$(MAKE) generate+high5

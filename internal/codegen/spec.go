@@ -27,6 +27,15 @@ type OpInfo struct {
 	Secured bool
 	// Known distinguishes "the spec says no auth" from "there is no spec".
 	Known bool
+	// Params holds each parameter's description, keyed by "<in>|<name>". The
+	// generated clients carry no doc comment for a path parameter at all, so
+	// for those this is the only description that exists.
+	Params map[string]string
+}
+
+// Param returns the spec's description for one parameter.
+func (o OpInfo) Param(in Location, name string) string {
+	return o.Params[string(in)+"|"+name]
 }
 
 // Specs is the vendored spec metadata, keyed by client package.
@@ -56,6 +65,7 @@ func LoadSpecs(root string) *Specs {
 				Tags        []string         `json:"tags"`
 				Deprecated  bool             `json:"deprecated"`
 				Security    []map[string]any `json:"security"`
+				Parameters  []specParameter  `json:"parameters"`
 			} `json:"paths"`
 		}
 		if err := json.Unmarshal(data, &doc); err != nil {
@@ -80,6 +90,14 @@ func LoadSpecs(root string) *Specs {
 				if len(op.Tags) > 0 {
 					info.Tag = op.Tags[0]
 				}
+				for _, param := range op.Parameters {
+					if desc := param.describe(); desc != "" {
+						if info.Params == nil {
+							info.Params = map[string]string{}
+						}
+						info.Params[param.In+"|"+param.Name] = desc
+					}
+				}
 				s.ops[specKey(client, method, p)] = info
 			}
 		}
@@ -103,6 +121,53 @@ func (s *Specs) Lookup(client, method, path string) (OpInfo, bool) {
 func (s *Specs) For(op *Operation) OpInfo {
 	info, _ := s.Lookup(op.Client, op.Method, op.Path)
 	return info
+}
+
+// specParameter is one entry of an operation's parameter list.
+type specParameter struct {
+	Name   string     `json:"name"`
+	In     string     `json:"in"`
+	Desc   string     `json:"description"`
+	Schema specSchema `json:"schema"`
+}
+
+// specSchema is the part of a parameter's schema that carries prose.
+type specSchema struct {
+	Desc  string       `json:"description"`
+	AnyOf []specSchema `json:"anyOf"`
+	OneOf []specSchema `json:"oneOf"`
+}
+
+// describe returns the parameter's description.
+//
+// These specs put it on the schema rather than on the parameter, and an
+// org-name parameter is a union of two string variants that each describe
+// themselves. cmd/patcher joins those variants with " | " so nothing is lost
+// during generation, but a joined pair runs past 200 characters and reads badly
+// as flag help, so only the first variant is offered.
+func (p specParameter) describe() string {
+	desc := p.Desc
+	if desc == "" {
+		desc = p.Schema.describe()
+	}
+	if first, _, joined := strings.Cut(desc, " | "); joined {
+		return strings.TrimSpace(first)
+	}
+	return desc
+}
+
+func (s specSchema) describe() string {
+	if s.Desc != "" {
+		return s.Desc
+	}
+	for _, variants := range [][]specSchema{s.AnyOf, s.OneOf} {
+		for _, v := range variants {
+			if desc := v.describe(); desc != "" {
+				return desc
+			}
+		}
+	}
+	return ""
 }
 
 func specKey(client, method, path string) string {
