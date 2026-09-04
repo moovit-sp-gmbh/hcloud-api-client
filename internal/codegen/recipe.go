@@ -31,6 +31,16 @@ const (
 	ViaEditor = "editor" // a RequestEditorFn closure
 )
 
+// What an optional value does when its flag is not given.
+const (
+	// UnsetOmit leaves the field out of the request entirely, so the server
+	// applies its own default. This is the default behaviour.
+	UnsetOmit = "omit"
+	// UnsetDefault always sends the field, carrying Default when the flag is
+	// not given.
+	UnsetDefault = "default"
+)
+
 // RecipeCommand says where in the tree the command goes and what it is called.
 type RecipeCommand struct {
 	Path  []string `yaml:"path"` // full path under the root command
@@ -67,31 +77,52 @@ type RecipeArg struct {
 	Var         string   `yaml:"var,omitempty"` // local variable in the generated code
 	Type        string   `yaml:"type"`          // Go type as the client declares it
 	Description string   `yaml:"description,omitempty"`
-	Default     string   `yaml:"default,omitempty"`
-	Resolve     []string `yaml:"resolve"`           // flag, context, prompt
-	Context     string   `yaml:"context,omitempty"` // db.Context field to read
-	Persist     bool     `yaml:"persist,omitempty"` // write the resolved value back
-	Prompt      string   `yaml:"prompt,omitempty"`
-	Via         string   `yaml:"via,omitempty"` // header only
-	Skip        bool     `yaml:"skip,omitempty"`
+	// Default is the value sent when the flag is not given, written as a plain
+	// value rather than as Go source: `default: false`, not `default: "false"`.
+	Default string `yaml:"default,omitempty"`
+	// Unset says what happens when an optional value's flag is not given:
+	// "omit" to leave the field out, "default" to always send it. Ignored for
+	// required values, which are always sent.
+	Unset   string   `yaml:"unset,omitempty"`
+	Resolve []string `yaml:"resolve"`           // flag, context, prompt
+	Context string   `yaml:"context,omitempty"` // db.Context field to read
+	Persist bool     `yaml:"persist,omitempty"` // write the resolved value back
+	Prompt  string   `yaml:"prompt,omitempty"`
+	Via     string   `yaml:"via,omitempty"` // header only
+	Skip    bool     `yaml:"skip,omitempty"`
 }
 
 // RecipeBodyField maps one request-body field onto a flag.
 type RecipeBodyField struct {
-	Field       string   `yaml:"field"` // Go field on the DTO
-	Name        string   `yaml:"name"`  // JSON name
-	CLI         string   `yaml:"cli"`
-	Shorthand   string   `yaml:"shorthand,omitempty"`
-	Var         string   `yaml:"var,omitempty"`
-	Type        string   `yaml:"type"`
-	Description string   `yaml:"description,omitempty"`
-	Optional    bool     `yaml:"optional,omitempty"`
-	Resolve     []string `yaml:"resolve"`
-	Context     string   `yaml:"context,omitempty"`
-	Persist     bool     `yaml:"persist,omitempty"`
-	Prompt      string   `yaml:"prompt,omitempty"`
-	Skip        bool     `yaml:"skip,omitempty"`
+	Field       string `yaml:"field"` // Go field on the DTO
+	Name        string `yaml:"name"`  // JSON name
+	CLI         string `yaml:"cli"`
+	Shorthand   string `yaml:"shorthand,omitempty"`
+	Var         string `yaml:"var,omitempty"`
+	Type        string `yaml:"type"`
+	Description string `yaml:"description,omitempty"`
+	Optional    bool   `yaml:"optional,omitempty"`
+	// Default is the value sent when the flag is not given, written as a plain
+	// value rather than as Go source: `default: false`, not `default: "false"`.
+	Default string `yaml:"default,omitempty"`
+	// Unset says what happens when an optional field's flag is not given:
+	// "omit" to leave the field out of the request body, "default" to always
+	// send it carrying Default.
+	Unset   string   `yaml:"unset,omitempty"`
+	Resolve []string `yaml:"resolve"`
+	Context string   `yaml:"context,omitempty"`
+	Persist bool     `yaml:"persist,omitempty"`
+	Prompt  string   `yaml:"prompt,omitempty"`
+	Skip    bool     `yaml:"skip,omitempty"`
 }
+
+// SendsAlways reports whether an optional value is sent even when its flag is
+// not given.
+func (f RecipeBodyField) SendsAlways() bool { return f.Unset == UnsetDefault }
+
+// SendsAlways reports whether an optional parameter is sent even when its flag
+// is not given.
+func (a RecipeArg) SendsAlways() bool { return a.Unset == UnsetDefault }
 
 // RecipeBody says how the request body is built.
 type RecipeBody struct {

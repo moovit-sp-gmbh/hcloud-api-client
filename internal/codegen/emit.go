@@ -162,7 +162,10 @@ func (e *emitter) runE() ([]string, error) {
 		return nil, err
 	}
 
-	paramsExpr := e.buildParams()
+	paramsExpr, err := e.buildParams()
+	if err != nil {
+		return nil, err
+	}
 	bodyExpr, err := e.buildBody()
 	if err != nil {
 		return nil, err
@@ -314,11 +317,11 @@ func (e *emitter) resolveOne(s argSpec) (string, error) {
 	if variable == "" {
 		variable = LocalVar(s.cli)
 	}
-	def := s.def
-	if def == "" {
-		def = kind.Default
+	literal, err := kind.DefaultLiteral(s.def)
+	if err != nil {
+		return "", fmt.Errorf("--%s default: %w", s.cli, err)
 	}
-	e.addFlag(s.cli, s.shorthand, kind.Flag, def, s.description)
+	e.addFlag(s.cli, s.shorthand, kind.Flag, literal, s.description)
 
 	e.blank()
 	switch {
@@ -400,9 +403,9 @@ func (e *emitter) asString(variable, goType, scalar string) string {
 
 // buildParams emits the operation's Params struct and returns the expression to
 // pass, or "nil" when nothing maps onto it.
-func (e *emitter) buildParams() string {
+func (e *emitter) buildParams() (string, error) {
 	if e.op.ParamsType == "" {
-		return ""
+		return "", nil
 	}
 
 	type mapped struct {
@@ -425,7 +428,7 @@ func (e *emitter) buildParams() string {
 		}
 	}
 	if len(required) == 0 && len(optional) == 0 {
-		return "nil"
+		return "nil", nil
 	}
 	e.needClient()
 
@@ -435,8 +438,7 @@ func (e *emitter) buildParams() string {
 	for _, m := range required {
 		expr, err := e.resolveOne(e.specForParam(m.param, m.arg))
 		if err != nil {
-			e.warn("parameter %s skipped: %v", m.param.Name, err)
-			continue
+			return "", fmt.Errorf("%s parameter %s: %w", m.param.In, m.param.Name, err)
 		}
 		inline = append(inline, fmt.Sprintf("%s: %s,", m.param.GoName, expr))
 	}
@@ -445,9 +447,9 @@ func (e *emitter) buildParams() string {
 	// call site, which is how internal/cli/mothership/stats.go writes it.
 	if len(optional) == 0 {
 		if len(inline) == 0 {
-			return fmt.Sprintf("&%s.%s{}", e.client, e.op.ParamsType)
+			return fmt.Sprintf("&%s.%s{}", e.client, e.op.ParamsType), nil
 		}
-		return fmt.Sprintf("&%s.%s{\n%s\n}", e.client, e.op.ParamsType, strings.Join(inline, "\n"))
+		return fmt.Sprintf("&%s.%s{\n%s\n}", e.client, e.op.ParamsType, strings.Join(inline, "\n")), nil
 	}
 
 	e.blank()
@@ -462,28 +464,93 @@ func (e *emitter) buildParams() string {
 	}
 
 	for _, m := range optional {
-		kind := KindFor(m.param.GoType, m.param.Scalar, false, e.client)
-		if !kind.Supported {
-			e.warn("query parameter %s skipped: type %s cannot be carried on a flag", m.param.Name, m.param.GoType)
-			continue
+		if err := e.emitOptional(optionalSpec{
+			target:      "params",
+			field:       m.param.GoName,
+			goType:      m.param.GoType,
+			scalar:      m.param.Scalar,
+			cli:         m.arg.CLI,
+			shorthand:   m.arg.Shorthand,
+			variable:    m.arg.Var,
+			description: firstNonEmpty(m.arg.Description, m.param.Doc),
+			unset:       m.arg.Unset,
+			def:         m.arg.Default,
+		}); err != nil {
+			return "", err
 		}
-		variable := firstNonEmpty(m.arg.Var, LocalVar(m.arg.CLI))
-		e.addFlag(m.arg.CLI, m.arg.Shorthand, kind.Flag, firstNonEmpty(m.arg.Default, kind.Default), firstNonEmpty(m.arg.Description, m.param.Doc))
-		e.need(kind.Imports...)
+	}
+	return "params", nil
+}
 
-		e.blank()
-		e.line("if cmd.Flags().Changed(%q) {", m.arg.CLI)
-		e.line("%s, err := cmd.Flags().Get%s(%q)", variable, kind.Flag, m.arg.CLI)
+// optionalSpec is one optional value to wire onto a struct field: a query
+// parameter onto the Params struct, or a body field onto the body.
+type optionalSpec struct {
+	target      string // "params" or "body"
+	field       string // Go field name on that struct
+	goType      string
+	scalar      string
+	cli         string
+	shorthand   string
+	variable    string
+	description string
+	unset       string // omit or default
+	def         string
+}
+
+// emitOptional wires one optional value onto its struct.
+//
+// With unset "omit" the field is only set when the flag was given, so the
+// server keeps applying its own default. With unset "default" the field is
+// always sent, carrying the recipe's default when the flag was not given —
+// which is the only way to make a command state a value explicitly rather than
+// deferring to the API.
+func (e *emitter) emitOptional(s optionalSpec) error {
+	kind := KindFor(s.goType, s.scalar, false, e.client)
+	if !kind.Supported {
+		e.warn("optional %s field %s skipped: type %s cannot be carried on a flag", s.target, s.field, s.goType)
+		return nil
+	}
+
+	literal, err := kind.DefaultLiteral(s.def)
+	if err != nil {
+		return fmt.Errorf("--%s default: %w", s.cli, err)
+	}
+
+	variable := firstNonEmpty(s.variable, LocalVar(s.cli))
+	e.addFlag(s.cli, s.shorthand, kind.Flag, literal, s.description)
+	e.need(kind.Imports...)
+
+	// A pointer field takes the address; oapi-codegen renders optional fields
+	// as pointers, but a slice or map optional-by-omitempty is not one.
+	assign := "%s.%s = &%s"
+	if !strings.HasPrefix(s.goType, "*") {
+		assign = "%s.%s = %s"
+	}
+
+	e.blank()
+	if s.unset == UnsetDefault {
+		e.line("%s, err := cmd.Flags().Get%s(%q)", variable, kind.Flag, s.cli)
 		e.errCheck()
 		if kind.Wrap != "" {
 			converted := variable + "Value"
 			e.line("%s := %s", converted, kind.Convert(variable))
 			variable = converted
 		}
-		e.line("params.%s = &%s", m.param.GoName, variable)
-		e.line("}")
+		e.line(assign, s.target, s.field, variable)
+		return nil
 	}
-	return "params"
+
+	e.line("if cmd.Flags().Changed(%q) {", s.cli)
+	e.line("%s, err := cmd.Flags().Get%s(%q)", variable, kind.Flag, s.cli)
+	e.errCheck()
+	if kind.Wrap != "" {
+		converted := variable + "Value"
+		e.line("%s := %s", converted, kind.Convert(variable))
+		variable = converted
+	}
+	e.line(assign, s.target, s.field, variable)
+	e.line("}")
+	return nil
 }
 
 func (e *emitter) specForParam(p Param, arg RecipeArg) argSpec {
@@ -561,6 +628,7 @@ func (e *emitter) buildBody() (string, error) {
 				contextName: rf.Context,
 				persist:     rf.Persist,
 				prompt:      rf.Prompt,
+				def:         rf.Default,
 				required:    true,
 			})
 			if err != nil {
@@ -582,26 +650,20 @@ func (e *emitter) buildBody() (string, error) {
 
 		for _, rf := range optional {
 			field := byName[rf.Field]
-			kind := KindFor(field.GoType, field.Scalar, false, e.client)
-			if !kind.Supported {
-				e.warn("optional body field %s skipped: type %s cannot be carried on a flag", rf.Field, field.GoType)
-				continue
+			if err := e.emitOptional(optionalSpec{
+				target:      "body",
+				field:       field.GoName,
+				goType:      field.GoType,
+				scalar:      field.Scalar,
+				cli:         rf.CLI,
+				shorthand:   rf.Shorthand,
+				variable:    rf.Var,
+				description: firstNonEmpty(rf.Description, field.Doc),
+				unset:       rf.Unset,
+				def:         rf.Default,
+			}); err != nil {
+				return "", fmt.Errorf("body field %s: %w", rf.Field, err)
 			}
-			variable := firstNonEmpty(rf.Var, LocalVar(rf.CLI))
-			e.addFlag(rf.CLI, rf.Shorthand, kind.Flag, kind.Default, firstNonEmpty(rf.Description, field.Doc))
-			e.need(kind.Imports...)
-
-			e.blank()
-			e.line("if cmd.Flags().Changed(%q) {", rf.CLI)
-			e.line("%s, err := cmd.Flags().Get%s(%q)", variable, kind.Flag, rf.CLI)
-			e.errCheck()
-			if kind.Wrap != "" {
-				converted := variable + "Value"
-				e.line("%s := %s", converted, kind.Convert(variable))
-				variable = converted
-			}
-			e.line("body.%s = &%s", field.GoName, variable)
-			e.line("}")
 		}
 		return "body", nil
 	}

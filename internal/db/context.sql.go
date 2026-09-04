@@ -22,8 +22,12 @@ INSERT INTO context (
         agent_uuid,
         agent_private_key,
         agent_public_key,
-        agent_hello_token
+        agent_hello_token,
+        high5_space_id,
+        high5_space_name
 ) VALUES (
+        ?,
+        ?,
         ?,
         ?,
         ?,
@@ -50,6 +54,8 @@ type CreateContextParams struct {
 	AgentPrivateKey sql.NullString
 	AgentPublicKey  sql.NullString
 	AgentHelloToken sql.NullString
+	High5SpaceID    sql.NullString
+	High5SpaceName  sql.NullString
 }
 
 func (q *Queries) CreateContext(ctx context.Context, arg CreateContextParams) error {
@@ -65,12 +71,14 @@ func (q *Queries) CreateContext(ctx context.Context, arg CreateContextParams) er
 		arg.AgentPrivateKey,
 		arg.AgentPublicKey,
 		arg.AgentHelloToken,
+		arg.High5SpaceID,
+		arg.High5SpaceName,
 	)
 	return err
 }
 
 const getContext = `-- name: GetContext :one
-SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token FROM context
+SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token, high5_space_id, high5_space_name FROM context
 WHERE id=?
 `
 
@@ -90,12 +98,14 @@ func (q *Queries) GetContext(ctx context.Context, id int64) (Context, error) {
 		&i.AgentPrivateKey,
 		&i.AgentPublicKey,
 		&i.AgentHelloToken,
+		&i.High5SpaceID,
+		&i.High5SpaceName,
 	)
 	return i, err
 }
 
 const getLatestContext = `-- name: GetLatestContext :one
-SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token FROM context
+SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token, high5_space_id, high5_space_name FROM context
 ORDER BY timestamp DESC
 LIMIT 1
 `
@@ -116,12 +126,14 @@ func (q *Queries) GetLatestContext(ctx context.Context) (Context, error) {
 		&i.AgentPrivateKey,
 		&i.AgentPublicKey,
 		&i.AgentHelloToken,
+		&i.High5SpaceID,
+		&i.High5SpaceName,
 	)
 	return i, err
 }
 
 const list = `-- name: List :many
-SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token FROM context
+SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token, high5_space_id, high5_space_name FROM context
 ORDER BY timestamp DESC
 LIMIT ?
 OFFSET ?
@@ -154,6 +166,8 @@ func (q *Queries) List(ctx context.Context, arg ListParams) ([]Context, error) {
 			&i.AgentPrivateKey,
 			&i.AgentPublicKey,
 			&i.AgentHelloToken,
+			&i.High5SpaceID,
+			&i.High5SpaceName,
 		); err != nil {
 			return nil, err
 		}

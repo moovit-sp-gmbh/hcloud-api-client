@@ -88,6 +88,13 @@ func (r *Recipe) Validate() error {
 			bad("%s context field %q is not an identifier", what, field)
 		}
 	}
+	checkUnset := func(what, unset string) {
+		switch unset {
+		case "", UnsetOmit, UnsetDefault:
+		default:
+			bad("%s unset %q must be omit or default", what, unset)
+		}
+	}
 	checkResolve := func(what string, resolve []string) {
 		if len(resolve) == 0 {
 			bad("%s has no resolution sources", what)
@@ -121,6 +128,7 @@ func (r *Recipe) Validate() error {
 		if a.Via != "" && a.Via != ViaParams && a.Via != ViaEditor {
 			bad("%s via %q must be params or editor", what, a.Via)
 		}
+		checkUnset(what, a.Unset)
 	}
 
 	switch r.Body.Mode {
@@ -144,6 +152,10 @@ func (r *Recipe) Validate() error {
 		checkFlag(what, f.CLI, f.Shorthand)
 		checkResolve(what, f.Resolve)
 		checkContext(what, f.Context, f.Resolve, f.Persist)
+		checkUnset(what, f.Unset)
+		if f.Default != "" && !f.Optional && hasSource(f.Resolve, FromPrompt) {
+			bad("%s has a default but is prompted for, so the default can never apply", what)
+		}
 	}
 
 	switch r.Response.Render {

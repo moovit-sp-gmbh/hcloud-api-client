@@ -21,4 +21,6 @@ type Context struct {
 	AgentPrivateKey sql.NullString
 	AgentPublicKey  sql.NullString
 	AgentHelloToken sql.NullString
+	High5SpaceID    sql.NullString
+	High5SpaceName  sql.NullString
 }

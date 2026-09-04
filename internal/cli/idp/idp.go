@@ -60,7 +60,10 @@ var loginCommand = &cobra.Command{
 				return err
 			}
 			ctx.Jwt = sql.NullString{Valid: true, String: authorization}
-			service.Push(ctx)
+			err = service.Push(ctx)
+			if err != nil {
+				return err
+			}
 
 			text, err = command.JSON(res.JSON200)
 			if err != nil {

@@ -43,6 +43,8 @@ func (cs *ContextService) Push(arg db.Context) error {
 		AgentPrivateKey: arg.AgentPrivateKey,
 		AgentPublicKey:  arg.AgentPublicKey,
 		AgentHelloToken: arg.AgentHelloToken,
+		High5SpaceID:    arg.High5SpaceID,
+		High5SpaceName:  arg.High5SpaceName,
 	})
 }
 

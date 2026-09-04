@@ -349,6 +349,15 @@ func (w *Wizard) arguments(op *Operation, r *Recipe) error {
 		if err := w.resolution(&arg.Resolve, &arg.Context, &arg.Persist, &arg.Prompt, arg.CLI); err != nil {
 			return err
 		}
+		if !required {
+			if err := w.unsetBehaviour(&arg.Unset, &arg.Default, arg.CLI, arg.Type); err != nil {
+				return err
+			}
+		} else if len(arg.Resolve) == 1 && arg.Resolve[0] == FromFlag {
+			if err := w.defaultValue(&arg.Default, arg.CLI, arg.Type); err != nil {
+				return err
+			}
+		}
 	}
 	return nil
 }
@@ -472,6 +481,68 @@ func (w *Wizard) resolution(resolve *[]string, contextField *string, persist *bo
 	return nil
 }
 
+// unsetBehaviour asks what an optional value does when its flag is not given:
+// leave the field out and let the API apply its own default, or always send it
+// carrying a default the command states itself.
+func (w *Wizard) unsetBehaviour(unset, def *string, cli, goType string) error {
+	kind := KindFor(goType, "", false, "")
+	options := []string{
+		"omit it — leave the field out of the request, so the API applies its own default",
+		"always send it, carrying a default value",
+	}
+	choice := 0
+	if *unset == UnsetDefault {
+		choice = 1
+	}
+
+	choice, err := w.choose("  when --"+cli+" is not given", options, choice)
+	if err != nil {
+		return err
+	}
+	if choice == 0 {
+		*unset = UnsetOmit
+		*def = ""
+		return nil
+	}
+	*unset = UnsetDefault
+
+	zero := strings.Trim(kind.Default, `"`)
+	if zero == "nil" {
+		zero = ""
+	}
+	value, err := w.askValid("  default value", firstNonEmpty(*def, zero), func(v string) bool {
+		if !kind.Supported {
+			return true
+		}
+		_, err := kind.DefaultLiteral(v)
+		return err == nil
+	}, "that is not a valid "+goType)
+	if err != nil {
+		return err
+	}
+	*def = value
+	return nil
+}
+
+// defaultValue asks for a flag's default, for a value resolved from its flag
+// alone. Without one the command silently sends the type's zero.
+func (w *Wizard) defaultValue(def *string, cli, goType string) error {
+	kind := KindFor(goType, "", false, "")
+	if !kind.Supported {
+		return nil
+	}
+
+	value, err := w.askValid("  default value when --"+cli+" is not given", *def, func(v string) bool {
+		_, err := kind.DefaultLiteral(v)
+		return err == nil
+	}, "that is not a valid "+goType)
+	if err != nil {
+		return err
+	}
+	*def = value
+	return nil
+}
+
 // body asks how the request body is built.
 func (w *Wizard) body(op *Operation, r *Recipe) error {
 	if op.Body == nil {
@@ -547,6 +618,15 @@ func (w *Wizard) body(op *Operation, r *Recipe) error {
 		}
 		if err := w.resolution(&f.Resolve, &f.Context, &f.Persist, &f.Prompt, f.CLI); err != nil {
 			return err
+		}
+		if f.Optional {
+			if err := w.unsetBehaviour(&f.Unset, &f.Default, f.CLI, f.Type); err != nil {
+				return err
+			}
+		} else if len(f.Resolve) == 1 && f.Resolve[0] == FromFlag {
+			if err := w.defaultValue(&f.Default, f.CLI, f.Type); err != nil {
+				return err
+			}
 		}
 	}
 	return nil

@@ -2,6 +2,7 @@ package codegen
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -20,6 +21,46 @@ type argKind struct {
 	Parse     bool   // needs a parse step rather than a cast (UUID)
 	Imports   []string
 	Supported bool
+}
+
+// DefaultLiteral turns a recipe's plain default value into the Go literal the
+// flag registration needs, so a recipe can say `default: false` or
+// `default: my-space` rather than carrying Go source.
+//
+// An empty value means the type's zero, which is what pflag would use anyway.
+func (k argKind) DefaultLiteral(value string) (string, error) {
+	if value == "" {
+		return k.Default, nil
+	}
+
+	switch k.Flag {
+	case "String":
+		return strconv.Quote(value), nil
+	case "StringSlice":
+		parts := strings.Split(value, ",")
+		quoted := make([]string, 0, len(parts))
+		for _, part := range parts {
+			quoted = append(quoted, strconv.Quote(strings.TrimSpace(part)))
+		}
+		return "[]string{" + strings.Join(quoted, ", ") + "}", nil
+	case "Bool":
+		b, err := strconv.ParseBool(value)
+		if err != nil {
+			return "", fmt.Errorf("%q is not a boolean; use true or false", value)
+		}
+		return strconv.FormatBool(b), nil
+	case "Int", "Int32", "Int64":
+		if _, err := strconv.ParseInt(value, 10, 64); err != nil {
+			return "", fmt.Errorf("%q is not a whole number", value)
+		}
+		return value, nil
+	case "Float32", "Float64":
+		if _, err := strconv.ParseFloat(value, 64); err != nil {
+			return "", fmt.Errorf("%q is not a number", value)
+		}
+		return value, nil
+	}
+	return "", fmt.Errorf("a %s flag cannot carry a default", k.Flag)
 }
 
 // Convert renders the call-site expression for a resolved variable.

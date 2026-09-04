@@ -3,6 +3,30 @@
 # add a `status: skipped` entry with a `reason` to retire an endpoint from
 # the missing list.
 endpoints:
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpaces
+    method: POST
+    path: /v1/org/{orgName}/spaces
+    command: high5 space create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-space-create.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceName
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}
+    command: high5 space get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-space-get.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDev
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/dev
+    command: high5 space edit dev
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-space-edit-dev.yaml
   - client: idpClient
     operation: PostV1Login
     method: POST

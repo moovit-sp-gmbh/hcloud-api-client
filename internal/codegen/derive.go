@@ -196,10 +196,12 @@ func deriveArg(p Param, schema *ContextSchema) RecipeArg {
 
 	// Optional query parameters are sent only when asked for, so they get a
 	// flag and nothing else; prompting for a page number nobody set would be
-	// noise.
+	// noise. Whether an unset flag omits the parameter or sends a default is
+	// the caller's call, so default to leaving it out and let the wizard ask.
 	if p.In == InQuery && p.Optional {
 		arg.Resolve = []string{FromFlag}
 		arg.Prompt = ""
+		arg.Unset = UnsetOmit
 	}
 	return arg
 }
@@ -219,6 +221,7 @@ func deriveBodyField(f Field, schema *ContextSchema) RecipeBodyField {
 	if f.Optional {
 		out.Resolve = []string{FromFlag}
 		out.Prompt = ""
+		out.Unset = UnsetOmit
 	}
 	if ctxField, ok := schema.Field(f.JSONName); ok {
 		out.Context = ctxField.GoName

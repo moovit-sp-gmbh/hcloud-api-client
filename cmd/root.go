@@ -5,8 +5,9 @@ import (
 	"os"
 	"strings"
 
-	tea "charm.land/bubbletea/v2"
+	"charm.land/bubbletea/v2"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli/context"
+	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli/high5"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli/idp"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/cli/mothership"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/command"
@@ -19,6 +20,7 @@ func init() {
 	rootCmd.AddCommand(idp.Command())
 	rootCmd.AddCommand(mothership.Command())
 	rootCmd.AddCommand(context.Command())
+	rootCmd.AddCommand(high5.Command())
 }
 
 var rootCmd = &cobra.Command{
