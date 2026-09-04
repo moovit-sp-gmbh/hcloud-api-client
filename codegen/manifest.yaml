@@ -67,6 +67,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-login-oauth-authorize.yaml
   - client: idpClient
+    operation: GetV1LoginOauthDeviceAuthorize
+    method: GET
+    path: /v1/login/oauth/device/authorize
+    command: idp login oauth device authorize
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-login-oauth-device-authorize.yaml
+  - client: idpClient
     operation: PostV1Org
     method: POST
     path: /v1/org

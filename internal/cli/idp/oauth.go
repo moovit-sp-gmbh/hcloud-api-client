@@ -13,6 +13,9 @@ import (
 )
 
 func init() {
+	loginOauthDeviceAuthorizeCommand.Flags().String("clientId", "", "Client ID of the OAuth application")
+	loginOauthDeviceAuthorizeCommand.Flags().String("userCode", "", "User code to validate")
+	loginOauthDeviceCommand.AddCommand(loginOauthDeviceAuthorizeCommand)
 	loginOauthAuthorizeCommand.Flags().String("clientId", "", "The ID of the application that is asking for authorization")
 	loginOauthAuthorizeCommand.Flags().String("redirectURI", "", "A successful response will redirect to this URI")
 	loginOauthAuthorizeCommand.Flags().String("scope", "", "Space-delimited list of hcloud permissions that the application requires as well as openId if required")
@@ -131,6 +134,69 @@ var loginOauthAuthorizeCommand = &cobra.Command{
 		}
 
 		res, err := client.GetV1LoginOauthAuthorizeWithResponse(context.TODO(), params)
+		if err != nil {
+			return err
+		}
+
+		var data any
+		err = json.Unmarshal(res.Body, &data)
+		if err != nil {
+			return err
+		}
+		text, err := command.JSON(data)
+		if err != nil {
+			return err
+		}
+
+		if res.StatusCode() >= 200 && res.StatusCode() < 300 {
+			service.Push(latest)
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var loginOauthDeviceCommand = &cobra.Command{
+	Use:   "device",
+	Short: "Commands for device",
+	Run: func(cmd *cobra.Command, args []string) {
+		cmd.Help()
+	},
+}
+
+var loginOauthDeviceAuthorizeCommand = &cobra.Command{
+	Use:   "authorize",
+	Short: "Device flow - Validate the user code",
+	Long:  "Authorization endpoint used in the OAuth 2.0 Device Authorization Flow to validate the user code",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		client, err := clients.NewIDPClient(cmd)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		latest, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		clientId, err := command.GetArg(cmd, command.StringFlagIfSet("clientId"), command.ContextIfValidString(latest.OauthAppClientID), command.PromptString("OAuth App Client ID"))
+		if err != nil {
+			return err
+		}
+		latest.OauthAppClientID = sql.NullString{Valid: true, String: clientId}
+
+		userCode, err := command.FlagOrDifferentPromptString(cmd, "userCode", "user code")
+		if err != nil {
+			return err
+		}
+
+		res, err := client.GetV1LoginOauthDeviceAuthorizeWithResponse(context.TODO(), &idpClient.GetV1LoginOauthDeviceAuthorizeParams{
+			ClientId: clientId,
+			UserCode: userCode,
+		})
 		if err != nil {
 			return err
 		}

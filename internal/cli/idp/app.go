@@ -17,6 +17,7 @@ func init() {
 	loginOauthAppCommand.Flags().String("clientId", "", "Client ID of the OAuth application")
 	loginOauthCommand.AddCommand(loginOauthAppCommand)
 	loginOauthCommand.AddCommand(loginOauthAuthorizeCommand)
+	loginOauthCommand.AddCommand(loginOauthDeviceCommand)
 }
 
 var loginOauthCommand = &cobra.Command{
