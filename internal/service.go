@@ -32,20 +32,21 @@ func (cs *ContextService) GetLatest() (db.Context, error) {
 
 func (cs *ContextService) Push(arg db.Context) error {
 	return cs.q.CreateContext(context.Background(), db.CreateContextParams{
-		Timestamp:        time.Now().Unix(),
-		Jwt:              arg.Jwt,
-		OrgName:          arg.OrgName,
-		NewName:          arg.NewName,
-		Server:           arg.Server,
-		AgentToken:       arg.AgentToken,
-		AgentSecret:      arg.AgentSecret,
-		AgentUuid:        arg.AgentUuid,
-		AgentPrivateKey:  arg.AgentPrivateKey,
-		AgentPublicKey:   arg.AgentPublicKey,
-		AgentHelloToken:  arg.AgentHelloToken,
-		High5SpaceID:     arg.High5SpaceID,
-		High5SpaceName:   arg.High5SpaceName,
-		OauthAppClientID: arg.OauthAppClientID,
+		Timestamp:           time.Now().Unix(),
+		Jwt:                 arg.Jwt,
+		OrgName:             arg.OrgName,
+		NewName:             arg.NewName,
+		Server:              arg.Server,
+		AgentToken:          arg.AgentToken,
+		AgentSecret:         arg.AgentSecret,
+		AgentUuid:           arg.AgentUuid,
+		AgentPrivateKey:     arg.AgentPrivateKey,
+		AgentPublicKey:      arg.AgentPublicKey,
+		AgentHelloToken:     arg.AgentHelloToken,
+		High5SpaceID:        arg.High5SpaceID,
+		High5SpaceName:      arg.High5SpaceName,
+		OauthAppClientID:    arg.OauthAppClientID,
+		OauthAppRedirectUri: arg.OauthAppRedirectUri,
 	})
 }
 

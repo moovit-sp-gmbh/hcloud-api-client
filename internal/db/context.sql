@@ -13,8 +13,10 @@ INSERT INTO context (
         agent_hello_token,
         high5_space_id,
         high5_space_name,
-        oauth_app_client_id
+        oauth_app_client_id,
+        oauth_app_redirect_uri
 ) VALUES (
+        ?,
         ?,
         ?,
         ?,
