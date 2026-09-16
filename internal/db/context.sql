@@ -17,8 +17,10 @@ INSERT INTO context (
         oauth_app_redirect_uri,
         email,
         storage_id,
-        oauth_app_id
+        oauth_app_id,
+        team_name
 ) VALUES (
+        ?,
         ?,
         ?,
         ?,

@@ -50,6 +50,7 @@ func (cs *ContextService) Push(arg db.Context) error {
 		Email:               arg.Email,
 		StorageID:           arg.StorageID,
 		OauthAppID:          arg.OauthAppID,
+		TeamName:            arg.TeamName,
 	})
 }
 

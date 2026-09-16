@@ -202,6 +202,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-stats.yaml
   - client: idpClient
+    operation: GetV1OrgOrgNameTeamsTeamName
+    method: GET
+    path: /v1/org/{orgName}/teams/{teamName}
+    command: idp organization teams get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-organization-teams-get.yaml
+  - client: idpClient
     operation: GetV1User
     method: GET
     path: /v1/user

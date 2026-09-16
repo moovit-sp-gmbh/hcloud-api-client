@@ -33,6 +33,7 @@ func init() {
 	orgCommand.AddCommand(organizationServiceAccountsCommand)
 	orgCommand.AddCommand(organizationSettingsCommand)
 	orgCommand.AddCommand(organizationStatsCommand)
+	orgCommand.AddCommand(organizationTeamsCommand)
 }
 
 var orgCommand = &cobra.Command{

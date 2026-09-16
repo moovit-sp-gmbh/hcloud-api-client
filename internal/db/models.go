@@ -28,4 +28,5 @@ type Context struct {
 	Email               sql.NullString
 	StorageID           sql.NullString
 	OauthAppID          sql.NullString
+	TeamName            sql.NullString
 }
