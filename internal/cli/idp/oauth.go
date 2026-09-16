@@ -19,6 +19,7 @@ func init() {
 	organizationSettingsOauthGetCommand.Flags().String("token", "", "authorization token")
 	organizationSettingsOauthCommand.AddCommand(organizationSettingsOauthGetCommand)
 	organizationSettingsCommand.AddCommand(organizationSettingsOauthCommand)
+	organizationSettingsCommand.AddCommand(organizationSettingsDomainsCommand)
 	loginOauthInfoCommand.Flags().String("clientId", "", "The ID of the application that is asking for authorization")
 	loginOauthInfoCommand.Flags().String("redirectURI", "", "A successful response will redirect to this URI")
 	loginOauthInfoCommand.Flags().String("scope", "", "Space-delimited list of hcloud permissions that the application requires as well as openId if required")
