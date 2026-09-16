@@ -99,6 +99,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-login-saml.yaml
   - client: idpClient
+    operation: GetV1LoginSamlMetadataXml
+    method: GET
+    path: /v1/login/saml/metadata.xml
+    command: idp login saml metadata
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-login-saml-metadata.yaml
+  - client: idpClient
     operation: PostV1Org
     method: POST
     path: /v1/org
