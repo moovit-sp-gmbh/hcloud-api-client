@@ -7,6 +7,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -1613,6 +1614,21 @@ func (e JobDtoTime5Type) Valid() bool {
 	}
 }
 
+// Defines values for LocalCredentialsResourceType.
+const (
+	LocalCredentialsResourceTypeLOCAL LocalCredentialsResourceType = "LOCAL"
+)
+
+// Valid indicates whether the value is a known member of the LocalCredentialsResourceType enum.
+func (e LocalCredentialsResourceType) Valid() bool {
+	switch e {
+	case LocalCredentialsResourceTypeLOCAL:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for MoveDirection.
 const (
 	DOWN MoveDirection = "DOWN"
@@ -1712,6 +1728,21 @@ func (e PoolTargetPatchOperation) Valid() bool {
 	case REMOVE:
 		return true
 	case SET:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for S3CredentialsResourceType.
+const (
+	S3 S3CredentialsResourceType = "S3"
+)
+
+// Valid indicates whether the value is a known member of the S3CredentialsResourceType enum.
+func (e S3CredentialsResourceType) Valid() bool {
+	switch e {
+	case S3:
 		return true
 	default:
 		return false
@@ -3095,6 +3126,54 @@ func (e TriggerSource) Valid() bool {
 	}
 }
 
+// Defines values for WatchFolderFileStatus.
+const (
+	GROWING    WatchFolderFileStatus = "GROWING"
+	MISSING    WatchFolderFileStatus = "MISSING"
+	NEW        WatchFolderFileStatus = "NEW"
+	PROCESSED  WatchFolderFileStatus = "PROCESSED"
+	PROCESSING WatchFolderFileStatus = "PROCESSING"
+	STABLE     WatchFolderFileStatus = "STABLE"
+)
+
+// Valid indicates whether the value is a known member of the WatchFolderFileStatus enum.
+func (e WatchFolderFileStatus) Valid() bool {
+	switch e {
+	case GROWING:
+		return true
+	case MISSING:
+		return true
+	case NEW:
+		return true
+	case PROCESSED:
+		return true
+	case PROCESSING:
+		return true
+	case STABLE:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for WatchFolderResourceType.
+const (
+	WatchFolderResourceTypeLOCAL WatchFolderResourceType = "LOCAL"
+	WatchFolderResourceTypeS3    WatchFolderResourceType = "S3"
+)
+
+// Valid indicates whether the value is a known member of the WatchFolderResourceType enum.
+func (e WatchFolderResourceType) Valid() bool {
+	switch e {
+	case WatchFolderResourceTypeLOCAL:
+		return true
+	case WatchFolderResourceTypeS3:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for WebhookDtoType.
 const (
 	WebhookDtoTypeEVENT   WebhookDtoType = "EVENT"
@@ -3670,6 +3749,7 @@ type DesignOperation0Details0 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                                     `json:"expression,omitempty"`
+		If         *map[string]interface{}                   `json:"if,omitempty"`
 		Mandatory  *bool                                     `json:"mandatory,omitempty"`
 		Name       string                                    `json:"name"`
 		Type       DesignOperation0Details0InputsType        `json:"type"`
@@ -3801,6 +3881,7 @@ type DesignOperation0Details1 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                                     `json:"expression,omitempty"`
+		If         *map[string]interface{}                   `json:"if,omitempty"`
 		Mandatory  *bool                                     `json:"mandatory,omitempty"`
 		Name       string                                    `json:"name"`
 		Type       DesignOperation0Details1InputsType        `json:"type"`
@@ -3910,6 +3991,7 @@ type DesignOperation0Details2 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                                     `json:"expression,omitempty"`
+		If         *map[string]interface{}                   `json:"if,omitempty"`
 		Mandatory  *bool                                     `json:"mandatory,omitempty"`
 		Name       string                                    `json:"name"`
 		Type       DesignOperation0Details2InputsType        `json:"type"`
@@ -4593,6 +4675,9 @@ type High5ExecutionPatchStatus struct {
 	// EndDate End date of execution (timestamp)
 	EndDate *float32 `json:"endDate,omitempty"`
 
+	// Executor ID of the user linked to the context on the agent executing the stream. Will match the target user for non-pool executions. Older agent versions will not report this value.
+	Executor *string `json:"executor,omitempty"`
+
 	// Message Optional message describing the status and outcome
 	Message *string `json:"message,omitempty"`
 
@@ -4617,6 +4702,9 @@ type High5ExecutionPayloadType string
 
 // High5ExecutionRequestDto Request for the execution
 type High5ExecutionRequestDto struct {
+	// Blocking Whether the agent should block further queue processing until this execution completes
+	Blocking *bool `json:"blocking,omitempty"`
+
 	// Dry Definition whether the execution should be a dry run or not. Standard is false
 	Dry *bool `json:"dry,omitempty"`
 
@@ -4630,6 +4718,18 @@ type High5ExecutionRequestDto struct {
 		// Type The type of the payload
 		Type High5ExecutionPayloadType `json:"type"`
 	} `json:"payload"`
+
+	// Priority Execution priority (1 = lowest, 1000 = highest)
+	Priority *int `json:"priority,omitempty"`
+
+	// Queued Whether the execution should be placed in the queue instead of dispatched immediately
+	Queued *bool `json:"queued,omitempty"`
+
+	// RetryCount Number of retries on client disconnect
+	RetryCount *int `json:"retryCount,omitempty"`
+
+	// StartTime Unix timestamp (ms) after which the execution may be picked up from the queue (0 - immediately)
+	StartTime *float32 `json:"startTime,omitempty"`
 
 	// Target Target that executes the stream. Can be a user email or pool name.
 	Target High5ExecutionRequestDto_Target `json:"target"`
@@ -4798,6 +4898,18 @@ type High5ExecutionStatusDtoOutcome string
 // High5ExecutionStatusDtoState defines model for High5ExecutionStatusDto.State.
 type High5ExecutionStatusDtoState string
 
+// High5QueuePollDto Request body for polling the execution queue
+type High5QueuePollDto struct {
+	// Blocking Whether this agent is ready to accept blocking executions
+	Blocking bool `json:"blocking"`
+
+	// Limit Maximum number of executions to return
+	Limit *int `json:"limit,omitempty"`
+
+	// OrganizationIds IDs of the organizations to poll the queue for
+	OrganizationIds []string `json:"organizationIds"`
+}
+
 // IncomingWebhookNetworkSettingsDto Configuration for network access to incoming webhook
 type IncomingWebhookNetworkSettingsDto struct {
 	// AddressBlackList List of address to black list
@@ -4861,6 +4973,7 @@ type IssueDebugCommandDtoNode0 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                                     `json:"expression,omitempty"`
+		If         *map[string]interface{}                   `json:"if,omitempty"`
 		Mandatory  *bool                                     `json:"mandatory,omitempty"`
 		Name       string                                    `json:"name"`
 		Type       IssueDebugCommandDtoNode0InputsType       `json:"type"`
@@ -4992,6 +5105,7 @@ type IssueDebugCommandDtoNode1 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                                     `json:"expression,omitempty"`
+		If         *map[string]interface{}                   `json:"if,omitempty"`
 		Mandatory  *bool                                     `json:"mandatory,omitempty"`
 		Name       string                                    `json:"name"`
 		Type       IssueDebugCommandDtoNode1InputsType       `json:"type"`
@@ -5101,6 +5215,7 @@ type IssueDebugCommandDtoNode2 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                                     `json:"expression,omitempty"`
+		If         *map[string]interface{}                   `json:"if,omitempty"`
 		Mandatory  *bool                                     `json:"mandatory,omitempty"`
 		Name       string                                    `json:"name"`
 		Type       IssueDebugCommandDtoNode2InputsType       `json:"type"`
@@ -5233,7 +5348,7 @@ type JobCreateDto struct {
 	// Payload Execution payload, limited to 1024kb
 	Payload *string `json:"payload,omitempty"`
 
-	// Target Target that executes the stream. Can be a user email or pool name
+	// Target Target that executes the stream, can be a user email or pool name
 	Target string `json:"target"`
 
 	// TargetEvent Name of the event (only alphanumeric characters, underscores, hyphens and dots are allowed; it should contain between 1 and 128 characters)
@@ -5623,6 +5738,14 @@ type JoinTokenPostDto struct {
 	// Name Name of the join token (only alphanumeric characters, underscores, hyphens and dots are allowed; it should contain between 1 and 64 characters)
 	Name string `json:"name"`
 }
+
+// LocalCredentials Marker credentials for scanning a local filesystem path on the agent; no secrets required
+type LocalCredentials struct {
+	ResourceType LocalCredentialsResourceType `json:"resourceType"`
+}
+
+// LocalCredentialsResourceType defines model for LocalCredentials.ResourceType.
+type LocalCredentialsResourceType string
 
 // MoveDirection Direction of the changing of stream order
 type MoveDirection string
@@ -6032,6 +6155,28 @@ type ReducedUser struct {
 	// Name Full name of the user
 	Name string `json:"name"`
 }
+
+// S3Credentials Credentials for accessing an S3 or S3-compatible storage bucket
+type S3Credentials struct {
+	// AccessKeyId Access Key ID or compatible credential identifier
+	AccessKeyId string `json:"accessKeyId"`
+
+	// Bucket Name of the S3 bucket to scan
+	Bucket string `json:"bucket"`
+
+	// Endpoint Custom endpoint URL for S3-compatible storage providers (e.g. Cloudflare R2, MinIO). Omit for AWS S3
+	Endpoint *string `json:"endpoint,omitempty"`
+
+	// Region AWS region or region identifier for S3-compatible storage
+	Region       string                    `json:"region"`
+	ResourceType S3CredentialsResourceType `json:"resourceType"`
+
+	// SecretAccessKey Secret Access Key or compatible credential secret
+	SecretAccessKey string `json:"secretAccessKey"`
+}
+
+// S3CredentialsResourceType defines model for S3Credentials.ResourceType.
+type S3CredentialsResourceType string
 
 // Scope * hcloud:full - Full access to HCloud
 // * idp:email:read - Access to email read operations
@@ -6566,6 +6711,7 @@ type SnapshotDtoContentNodes0 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                                     `json:"expression,omitempty"`
+		If         *map[string]interface{}                   `json:"if,omitempty"`
 		Mandatory  *bool                                     `json:"mandatory,omitempty"`
 		Name       string                                    `json:"name"`
 		Type       SnapshotDtoContentNodes0InputsType        `json:"type"`
@@ -6697,6 +6843,7 @@ type SnapshotDtoContentNodes1 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                                     `json:"expression,omitempty"`
+		If         *map[string]interface{}                   `json:"if,omitempty"`
 		Mandatory  *bool                                     `json:"mandatory,omitempty"`
 		Name       string                                    `json:"name"`
 		Type       SnapshotDtoContentNodes1InputsType        `json:"type"`
@@ -6806,6 +6953,7 @@ type SnapshotDtoContentNodes2 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                                     `json:"expression,omitempty"`
+		If         *map[string]interface{}                   `json:"if,omitempty"`
 		Mandatory  *bool                                     `json:"mandatory,omitempty"`
 		Name       string                                    `json:"name"`
 		Type       SnapshotDtoContentNodes2InputsType        `json:"type"`
@@ -7283,6 +7431,7 @@ type StreamDesignNodes0 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                              `json:"expression,omitempty"`
+		If         *map[string]interface{}            `json:"if,omitempty"`
 		Mandatory  *bool                              `json:"mandatory,omitempty"`
 		Name       string                             `json:"name"`
 		Type       StreamDesignNodes0InputsType       `json:"type"`
@@ -7414,6 +7563,7 @@ type StreamDesignNodes1 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                              `json:"expression,omitempty"`
+		If         *map[string]interface{}            `json:"if,omitempty"`
 		Mandatory  *bool                              `json:"mandatory,omitempty"`
 		Name       string                             `json:"name"`
 		Type       StreamDesignNodes1InputsType       `json:"type"`
@@ -7523,6 +7673,7 @@ type StreamDesignNodes2 struct {
 
 		// Expression Used to toggle the input between a string type and its regular type for wildcard expression use
 		Expression *bool                              `json:"expression,omitempty"`
+		If         *map[string]interface{}            `json:"if,omitempty"`
 		Mandatory  *bool                              `json:"mandatory,omitempty"`
 		Name       string                             `json:"name"`
 		Type       StreamDesignNodes2InputsType       `json:"type"`
@@ -7966,6 +8117,224 @@ type UserDto struct {
 	Name string `json:"name"`
 }
 
+// WatchFolderCreateDto Watch folder creation details, Watchfolders provide a long-established mechanism for ingesting files of various types into remote systems
+type WatchFolderCreateDto struct {
+	// Credentials Storage credentials, structure depends on resourceType
+	Credentials WatchFolderCredentials `json:"credentials"`
+
+	// EventName Name of the High5 event to execute when a stable file is detected
+	EventName string `json:"eventName"`
+
+	// Interval Interval between scans in seconds
+	Interval int `json:"interval"`
+
+	// Name Name of the WatchFolder (only alphanumeric characters, underscores, hyphens, dots and spaces are allowed; it should contain between 2 and 128 characters)
+	Name string `json:"name"`
+
+	// Path Folder path or prefix to scan
+	Path string `json:"path"`
+
+	// ResourceType Type of storage resource to scan
+	ResourceType WatchFolderResourceType `json:"resourceType"`
+
+	// Target Target that will execute the watch folder scan, can be a user email or pool name
+	Target WatchFolderCreateDto_Target `json:"target"`
+}
+
+// WatchFolderCreateDtoTarget0 defines model for .
+type WatchFolderCreateDtoTarget0 = openapi_types.Email
+
+// WatchFolderCreateDtoTarget1 Name of the pool (only alphanumeric characters, underscores, hyphens and dots are allowed; it should contain between 1 and 128 characters)
+type WatchFolderCreateDtoTarget1 = string
+
+// WatchFolderCreateDto_Target Target that will execute the watch folder scan, can be a user email or pool name
+type WatchFolderCreateDto_Target struct {
+	union json.RawMessage
+}
+
+// WatchFolderCredentials Storage credentials, structure depends on resourceType
+type WatchFolderCredentials struct {
+	union json.RawMessage
+}
+
+// WatchFolderDto Full representation of a watch folder configuration, Watchfolders provide a long-established mechanism for ingesting files of various types into remote systems
+type WatchFolderDto struct {
+	// UnderscoreId Database ID of the watch folder
+	UnderscoreId string `json:"_id"`
+
+	// CreateDate Date of creation as unix timestamp
+	CreateDate int `json:"createDate"`
+	Creator    struct {
+		// UnderscoreId Unique identifier of the user
+		UnderscoreId string `json:"_id"`
+
+		// AvatarUrl URL to the user's avatar image
+		AvatarUrl string `json:"avatarUrl"`
+
+		// Email Email address of the user
+		Email openapi_types.Email `json:"email"`
+
+		// IsAgent Indicates if the user is an agent
+		IsAgent *bool `json:"isAgent,omitempty"`
+
+		// IsGuest Indicates if the user is a guest
+		IsGuest *bool `json:"isGuest,omitempty"`
+
+		// Name Full name of the user
+		Name string `json:"name"`
+	} `json:"creator"`
+	Credentials WatchFolderDto_Credentials `json:"credentials"`
+
+	// EventName Name of the High5 event to execute when a stable file is detected
+	EventName string `json:"eventName"`
+
+	// Interval Interval between scans in seconds
+	Interval int `json:"interval"`
+
+	// Name Name of the watch folder
+	Name         string `json:"name"`
+	Organization struct {
+		// UnderscoreId Unique identifier of the organization
+		UnderscoreId string `json:"_id"`
+
+		// AvatarUrl URL to the avatar image of the organization
+		AvatarUrl string `json:"avatarUrl"`
+
+		// Name Name of the organization
+		Name string `json:"name"`
+	} `json:"organization"`
+
+	// Path Folder path or prefix to scan
+	Path string `json:"path"`
+
+	// ResourceType Type of storage resource to scan
+	ResourceType WatchFolderResourceType `json:"resourceType"`
+	Space        struct {
+		// UnderscoreId Unique identifier of the space
+		UnderscoreId string `json:"_id"`
+
+		// AvatarUrl URL to the avatar image of the Space
+		AvatarUrl string `json:"avatarUrl"`
+
+		// Name Name of the space
+		Name string `json:"name"`
+	} `json:"space"`
+
+	// Target Target that will execute the watch folder scan, can be a user email or pool name
+	Target string `json:"target"`
+}
+
+// WatchFolderDto_Credentials defines model for WatchFolderDto.Credentials.
+type WatchFolderDto_Credentials struct {
+	union json.RawMessage
+}
+
+// WatchFolderFileDto Represents a file tracked by a watch folder
+type WatchFolderFileDto struct {
+	// UnderscoreId Database ID of the file entry
+	UnderscoreId string `json:"_id"`
+
+	// CreateDate Unix timestamp when the file entry was first created
+	CreateDate int `json:"createDate"`
+
+	// LastSeen Unix timestamp of the last scan that observed this file
+	LastSeen int `json:"lastSeen"`
+
+	// OrganizationId ID of the organization
+	OrganizationId string `json:"organizationId"`
+
+	// Path File path as reported by the agent
+	Path string `json:"path"`
+
+	// Size File size in bytes at the last scan
+	Size int `json:"size"`
+
+	// SpaceId ID of the space
+	SpaceId string `json:"spaceId"`
+
+	// Status * NEW - File was first observed; size not yet verified as stable
+	// * GROWING - File size changed between consecutive scans; write or upload still in progress
+	// * STABLE - File size unchanged between consecutive scans; stream execution has been triggered
+	// * PROCESSING - Stream execution has been triggered and is currently in progress; file will not be re-triggered
+	// * PROCESSED - Stream execution completed successfully; file has been fully processed and will not be re-triggered
+	// * MISSING - File was no longer found during the most recent scan; if it reappears it is treated as new again
+	Status WatchFolderFileStatus `json:"status"`
+
+	// WatchFolderId ID of the watch folder this file belongs to
+	WatchFolderId string `json:"watchFolderId"`
+}
+
+// WatchFolderFileStatus * NEW - File was first observed; size not yet verified as stable
+// * GROWING - File size changed between consecutive scans; write or upload still in progress
+// * STABLE - File size unchanged between consecutive scans; stream execution has been triggered
+// * PROCESSING - Stream execution has been triggered and is currently in progress; file will not be re-triggered
+// * PROCESSED - Stream execution completed successfully; file has been fully processed and will not be re-triggered
+// * MISSING - File was no longer found during the most recent scan; if it reappears it is treated as new again
+type WatchFolderFileStatus string
+
+// WatchFolderPatchDto Watch folder update details
+type WatchFolderPatchDto struct {
+	// Credentials Storage credentials, structure depends on resourceType
+	Credentials *WatchFolderCredentials `json:"credentials,omitempty"`
+
+	// EventName Name of the High5 event to execute when a stable file is detected
+	EventName *string `json:"eventName,omitempty"`
+
+	// Interval Interval between scans in seconds
+	Interval *int `json:"interval,omitempty"`
+
+	// Name Name of the WatchFolder (only alphanumeric characters, underscores, hyphens, dots and spaces are allowed; it should contain between 2 and 128 characters)
+	Name *string `json:"name,omitempty"`
+
+	// Path Folder path or prefix to scan
+	Path *string `json:"path,omitempty"`
+
+	// ResourceType Type of storage resource to scan
+	ResourceType *WatchFolderResourceType `json:"resourceType,omitempty"`
+
+	// Target Target that will execute the watch folder scan, can be a user email or pool name
+	Target *WatchFolderPatchDto_Target `json:"target,omitempty"`
+}
+
+// WatchFolderPatchDtoTarget0 defines model for .
+type WatchFolderPatchDtoTarget0 = openapi_types.Email
+
+// WatchFolderPatchDtoTarget1 Name of the pool (only alphanumeric characters, underscores, hyphens and dots are allowed; it should contain between 1 and 128 characters)
+type WatchFolderPatchDtoTarget1 = string
+
+// WatchFolderPatchDto_Target Target that will execute the watch folder scan, can be a user email or pool name
+type WatchFolderPatchDto_Target struct {
+	union json.RawMessage
+}
+
+// WatchFolderResourceType Type of storage resource to scan
+type WatchFolderResourceType string
+
+// WatchFolderScanConfigDto Scan configuration handed to the agent that owns the currently active scan, identified by the one-time scan secret
+type WatchFolderScanConfigDto struct {
+	Credentials WatchFolderScanConfigDto_Credentials `json:"credentials"`
+
+	// Path Folder path or prefix to scan
+	Path string `json:"path"`
+}
+
+// WatchFolderScanConfigDto_Credentials defines model for WatchFolderScanConfigDto.Credentials.
+type WatchFolderScanConfigDto_Credentials struct {
+	union json.RawMessage
+}
+
+// WatchFolderScanReportDto Scan report submitted by the agent after scanning the watch folder
+type WatchFolderScanReportDto struct {
+	// Files List of files discovered during the scan
+	Files []struct {
+		// Path File path relative to the configured folder prefix
+		Path string `json:"path"`
+
+		// Size File size in bytes
+		Size int `json:"size"`
+	} `json:"files"`
+}
+
 // WaveCatalogDto Wave catalog details
 type WaveCatalogDto struct {
 	// UnderscoreId Database ID
@@ -8300,6 +8669,11 @@ type patAuthContextKey string
 
 // PostV1CronResolveParams defines parameters for PostV1CronResolve.
 type PostV1CronResolveParams struct {
+	Authorization string `json:"authorization"`
+}
+
+// PostV1ExecuteQueueParams defines parameters for PostV1ExecuteQueue.
+type PostV1ExecuteQueueParams struct {
 	Authorization string `json:"authorization"`
 }
 
@@ -8826,6 +9200,41 @@ type PatchV1OrgOrgNameSpacesSpaceNameTargetParams struct {
 	Authorization string `json:"authorization"`
 }
 
+// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams defines parameters for PostV1OrgOrgNameSpacesSpaceNameWatchfolders.
+type PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams struct {
+	Authorization string `json:"authorization"`
+}
+
+// DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams defines parameters for DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId.
+type DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams struct {
+	Authorization string `json:"authorization"`
+}
+
+// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams defines parameters for GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId.
+type GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams struct {
+	Authorization string `json:"authorization"`
+}
+
+// PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams defines parameters for PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId.
+type PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams struct {
+	Authorization string `json:"authorization"`
+}
+
+// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesParams defines parameters for GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFiles.
+type GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesParams struct {
+	Authorization string `json:"authorization"`
+}
+
+// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams defines parameters for GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret.
+type GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams struct {
+	Authorization string `json:"authorization"`
+}
+
+// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams defines parameters for PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret.
+type PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams struct {
+	Authorization string `json:"authorization"`
+}
+
 // GetV1OrgOrgNameSpacesSpaceNameWaveCatalogParams defines parameters for GetV1OrgOrgNameSpacesSpaceNameWaveCatalog.
 type GetV1OrgOrgNameSpacesSpaceNameWaveCatalogParams struct {
 	Authorization string `json:"authorization"`
@@ -8905,8 +9314,16 @@ type GetV1SpacesParams struct {
 	Authorization string `json:"authorization"`
 }
 
+// GetV1WatchfoldersParams defines parameters for GetV1Watchfolders.
+type GetV1WatchfoldersParams struct {
+	Authorization string `json:"authorization"`
+}
+
 // PostV1CronResolveJSONRequestBody defines body for PostV1CronResolve for application/json ContentType.
 type PostV1CronResolveJSONRequestBody = CronPatternDto
+
+// PostV1ExecuteQueueJSONRequestBody defines body for PostV1ExecuteQueue for application/json ContentType.
+type PostV1ExecuteQueueJSONRequestBody = High5QueuePollDto
 
 // PostV1OrgOrgNameExecutionLogsSearchJSONRequestBody defines body for PostV1OrgOrgNameExecutionLogsSearch for application/json ContentType.
 type PostV1OrgOrgNameExecutionLogsSearchJSONRequestBody = Search
@@ -9102,6 +9519,15 @@ type PostV1OrgOrgNameSpacesSpaceNameStreamsSearchJSONRequestBody = Search
 
 // PatchV1OrgOrgNameSpacesSpaceNameTargetJSONRequestBody defines body for PatchV1OrgOrgNameSpacesSpaceNameTarget for application/json ContentType.
 type PatchV1OrgOrgNameSpacesSpaceNameTargetJSONRequestBody = SpacePatchEventExecutionTargetDto
+
+// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersJSONRequestBody defines body for PostV1OrgOrgNameSpacesSpaceNameWatchfolders for application/json ContentType.
+type PostV1OrgOrgNameSpacesSpaceNameWatchfoldersJSONRequestBody = WatchFolderCreateDto
+
+// PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdJSONRequestBody defines body for PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId for application/json ContentType.
+type PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdJSONRequestBody = WatchFolderPatchDto
+
+// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretJSONRequestBody defines body for PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret for application/json ContentType.
+type PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretJSONRequestBody = WatchFolderScanReportDto
 
 // PostV1OrgOrgNameSpacesSpaceNameWaveCatalogJSONRequestBody defines body for PostV1OrgOrgNameSpacesSpaceNameWaveCatalog for application/json ContentType.
 type PostV1OrgOrgNameSpacesSpaceNameWaveCatalogJSONRequestBody = SpacePatchCatalogDto
@@ -16312,6 +16738,397 @@ func (t *StreamDesign_Nodes_Item) UnmarshalJSON(b []byte) error {
 	return err
 }
 
+// AsWatchFolderCreateDtoTarget0 returns the union data inside the WatchFolderCreateDto_Target as a WatchFolderCreateDtoTarget0
+func (t WatchFolderCreateDto_Target) AsWatchFolderCreateDtoTarget0() (WatchFolderCreateDtoTarget0, error) {
+	var body WatchFolderCreateDtoTarget0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromWatchFolderCreateDtoTarget0 overwrites any union data inside the WatchFolderCreateDto_Target as the provided WatchFolderCreateDtoTarget0
+func (t *WatchFolderCreateDto_Target) FromWatchFolderCreateDtoTarget0(v WatchFolderCreateDtoTarget0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeWatchFolderCreateDtoTarget0 performs a merge with any union data inside the WatchFolderCreateDto_Target, using the provided WatchFolderCreateDtoTarget0
+func (t *WatchFolderCreateDto_Target) MergeWatchFolderCreateDtoTarget0(v WatchFolderCreateDtoTarget0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsWatchFolderCreateDtoTarget1 returns the union data inside the WatchFolderCreateDto_Target as a WatchFolderCreateDtoTarget1
+func (t WatchFolderCreateDto_Target) AsWatchFolderCreateDtoTarget1() (WatchFolderCreateDtoTarget1, error) {
+	var body WatchFolderCreateDtoTarget1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromWatchFolderCreateDtoTarget1 overwrites any union data inside the WatchFolderCreateDto_Target as the provided WatchFolderCreateDtoTarget1
+func (t *WatchFolderCreateDto_Target) FromWatchFolderCreateDtoTarget1(v WatchFolderCreateDtoTarget1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeWatchFolderCreateDtoTarget1 performs a merge with any union data inside the WatchFolderCreateDto_Target, using the provided WatchFolderCreateDtoTarget1
+func (t *WatchFolderCreateDto_Target) MergeWatchFolderCreateDtoTarget1(v WatchFolderCreateDtoTarget1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t WatchFolderCreateDto_Target) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *WatchFolderCreateDto_Target) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsS3Credentials returns the union data inside the WatchFolderCredentials as a S3Credentials
+func (t WatchFolderCredentials) AsS3Credentials() (S3Credentials, error) {
+	var body S3Credentials
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromS3Credentials overwrites any union data inside the WatchFolderCredentials as the provided S3Credentials
+func (t *WatchFolderCredentials) FromS3Credentials(v S3Credentials) error {
+	v.ResourceType = "S3"
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeS3Credentials performs a merge with any union data inside the WatchFolderCredentials, using the provided S3Credentials
+func (t *WatchFolderCredentials) MergeS3Credentials(v S3Credentials) error {
+	v.ResourceType = "S3"
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsLocalCredentials returns the union data inside the WatchFolderCredentials as a LocalCredentials
+func (t WatchFolderCredentials) AsLocalCredentials() (LocalCredentials, error) {
+	var body LocalCredentials
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromLocalCredentials overwrites any union data inside the WatchFolderCredentials as the provided LocalCredentials
+func (t *WatchFolderCredentials) FromLocalCredentials(v LocalCredentials) error {
+	v.ResourceType = "LOCAL"
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeLocalCredentials performs a merge with any union data inside the WatchFolderCredentials, using the provided LocalCredentials
+func (t *WatchFolderCredentials) MergeLocalCredentials(v LocalCredentials) error {
+	v.ResourceType = "LOCAL"
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t WatchFolderCredentials) Discriminator() (string, error) {
+	var discriminator struct {
+		Discriminator string `json:"resourceType"`
+	}
+	err := json.Unmarshal(t.union, &discriminator)
+	return discriminator.Discriminator, err
+}
+
+func (t WatchFolderCredentials) ValueByDiscriminator() (interface{}, error) {
+	discriminator, err := t.Discriminator()
+	if err != nil {
+		return nil, err
+	}
+	switch discriminator {
+	case "LOCAL":
+		return t.AsLocalCredentials()
+	case "S3":
+		return t.AsS3Credentials()
+	default:
+		return nil, errors.New("unknown discriminator value: " + discriminator)
+	}
+}
+
+func (t WatchFolderCredentials) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *WatchFolderCredentials) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsS3Credentials returns the union data inside the WatchFolderDto_Credentials as a S3Credentials
+func (t WatchFolderDto_Credentials) AsS3Credentials() (S3Credentials, error) {
+	var body S3Credentials
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromS3Credentials overwrites any union data inside the WatchFolderDto_Credentials as the provided S3Credentials
+func (t *WatchFolderDto_Credentials) FromS3Credentials(v S3Credentials) error {
+	v.ResourceType = "S3"
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeS3Credentials performs a merge with any union data inside the WatchFolderDto_Credentials, using the provided S3Credentials
+func (t *WatchFolderDto_Credentials) MergeS3Credentials(v S3Credentials) error {
+	v.ResourceType = "S3"
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsLocalCredentials returns the union data inside the WatchFolderDto_Credentials as a LocalCredentials
+func (t WatchFolderDto_Credentials) AsLocalCredentials() (LocalCredentials, error) {
+	var body LocalCredentials
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromLocalCredentials overwrites any union data inside the WatchFolderDto_Credentials as the provided LocalCredentials
+func (t *WatchFolderDto_Credentials) FromLocalCredentials(v LocalCredentials) error {
+	v.ResourceType = "LOCAL"
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeLocalCredentials performs a merge with any union data inside the WatchFolderDto_Credentials, using the provided LocalCredentials
+func (t *WatchFolderDto_Credentials) MergeLocalCredentials(v LocalCredentials) error {
+	v.ResourceType = "LOCAL"
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t WatchFolderDto_Credentials) Discriminator() (string, error) {
+	var discriminator struct {
+		Discriminator string `json:"resourceType"`
+	}
+	err := json.Unmarshal(t.union, &discriminator)
+	return discriminator.Discriminator, err
+}
+
+func (t WatchFolderDto_Credentials) ValueByDiscriminator() (interface{}, error) {
+	discriminator, err := t.Discriminator()
+	if err != nil {
+		return nil, err
+	}
+	switch discriminator {
+	case "LOCAL":
+		return t.AsLocalCredentials()
+	case "S3":
+		return t.AsS3Credentials()
+	default:
+		return nil, errors.New("unknown discriminator value: " + discriminator)
+	}
+}
+
+func (t WatchFolderDto_Credentials) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *WatchFolderDto_Credentials) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsWatchFolderPatchDtoTarget0 returns the union data inside the WatchFolderPatchDto_Target as a WatchFolderPatchDtoTarget0
+func (t WatchFolderPatchDto_Target) AsWatchFolderPatchDtoTarget0() (WatchFolderPatchDtoTarget0, error) {
+	var body WatchFolderPatchDtoTarget0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromWatchFolderPatchDtoTarget0 overwrites any union data inside the WatchFolderPatchDto_Target as the provided WatchFolderPatchDtoTarget0
+func (t *WatchFolderPatchDto_Target) FromWatchFolderPatchDtoTarget0(v WatchFolderPatchDtoTarget0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeWatchFolderPatchDtoTarget0 performs a merge with any union data inside the WatchFolderPatchDto_Target, using the provided WatchFolderPatchDtoTarget0
+func (t *WatchFolderPatchDto_Target) MergeWatchFolderPatchDtoTarget0(v WatchFolderPatchDtoTarget0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsWatchFolderPatchDtoTarget1 returns the union data inside the WatchFolderPatchDto_Target as a WatchFolderPatchDtoTarget1
+func (t WatchFolderPatchDto_Target) AsWatchFolderPatchDtoTarget1() (WatchFolderPatchDtoTarget1, error) {
+	var body WatchFolderPatchDtoTarget1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromWatchFolderPatchDtoTarget1 overwrites any union data inside the WatchFolderPatchDto_Target as the provided WatchFolderPatchDtoTarget1
+func (t *WatchFolderPatchDto_Target) FromWatchFolderPatchDtoTarget1(v WatchFolderPatchDtoTarget1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeWatchFolderPatchDtoTarget1 performs a merge with any union data inside the WatchFolderPatchDto_Target, using the provided WatchFolderPatchDtoTarget1
+func (t *WatchFolderPatchDto_Target) MergeWatchFolderPatchDtoTarget1(v WatchFolderPatchDtoTarget1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t WatchFolderPatchDto_Target) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *WatchFolderPatchDto_Target) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsS3Credentials returns the union data inside the WatchFolderScanConfigDto_Credentials as a S3Credentials
+func (t WatchFolderScanConfigDto_Credentials) AsS3Credentials() (S3Credentials, error) {
+	var body S3Credentials
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromS3Credentials overwrites any union data inside the WatchFolderScanConfigDto_Credentials as the provided S3Credentials
+func (t *WatchFolderScanConfigDto_Credentials) FromS3Credentials(v S3Credentials) error {
+	v.ResourceType = "S3"
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeS3Credentials performs a merge with any union data inside the WatchFolderScanConfigDto_Credentials, using the provided S3Credentials
+func (t *WatchFolderScanConfigDto_Credentials) MergeS3Credentials(v S3Credentials) error {
+	v.ResourceType = "S3"
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsLocalCredentials returns the union data inside the WatchFolderScanConfigDto_Credentials as a LocalCredentials
+func (t WatchFolderScanConfigDto_Credentials) AsLocalCredentials() (LocalCredentials, error) {
+	var body LocalCredentials
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromLocalCredentials overwrites any union data inside the WatchFolderScanConfigDto_Credentials as the provided LocalCredentials
+func (t *WatchFolderScanConfigDto_Credentials) FromLocalCredentials(v LocalCredentials) error {
+	v.ResourceType = "LOCAL"
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeLocalCredentials performs a merge with any union data inside the WatchFolderScanConfigDto_Credentials, using the provided LocalCredentials
+func (t *WatchFolderScanConfigDto_Credentials) MergeLocalCredentials(v LocalCredentials) error {
+	v.ResourceType = "LOCAL"
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t WatchFolderScanConfigDto_Credentials) Discriminator() (string, error) {
+	var discriminator struct {
+		Discriminator string `json:"resourceType"`
+	}
+	err := json.Unmarshal(t.union, &discriminator)
+	return discriminator.Discriminator, err
+}
+
+func (t WatchFolderScanConfigDto_Credentials) ValueByDiscriminator() (interface{}, error) {
+	discriminator, err := t.Discriminator()
+	if err != nil {
+		return nil, err
+	}
+	switch discriminator {
+	case "LOCAL":
+		return t.AsLocalCredentials()
+	case "S3":
+		return t.AsS3Credentials()
+	default:
+		return nil, errors.New("unknown discriminator value: " + discriminator)
+	}
+}
+
+func (t WatchFolderScanConfigDto_Credentials) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *WatchFolderScanConfigDto_Credentials) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
 // AsWebhookCallbackDtoHeaders0 returns the union data inside the WebhookCallbackDto_Headers_AdditionalProperties as a WebhookCallbackDtoHeaders0
 func (t WebhookCallbackDto_Headers_AdditionalProperties) AsWebhookCallbackDtoHeaders0() (WebhookCallbackDtoHeaders0, error) {
 	var body WebhookCallbackDtoHeaders0
@@ -16715,6 +17532,11 @@ type ClientInterface interface {
 	PostV1CronResolveWithBody(ctx context.Context, params *PostV1CronResolveParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	PostV1CronResolve(ctx context.Context, params *PostV1CronResolveParams, body PostV1CronResolveJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostV1ExecuteQueueWithBody request with any body
+	PostV1ExecuteQueueWithBody(ctx context.Context, params *PostV1ExecuteQueueParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostV1ExecuteQueue(ctx context.Context, params *PostV1ExecuteQueueParams, body PostV1ExecuteQueueJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1JoinToken request
 	PostV1JoinToken(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -17184,6 +18006,33 @@ type ClientInterface interface {
 
 	PatchV1OrgOrgNameSpacesSpaceNameTarget(ctx context.Context, orgName string, spaceName string, params *PatchV1OrgOrgNameSpacesSpaceNameTargetParams, body PatchV1OrgOrgNameSpacesSpaceNameTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithBody request with any body
+	PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithBody(ctx context.Context, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostV1OrgOrgNameSpacesSpaceNameWatchfolders(ctx context.Context, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId request
+	DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId request
+	GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithBody request with any body
+	PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithBody(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, body PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFiles request
+	GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFiles(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret request
+	GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithBody request with any body
+	PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithBody(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetV1OrgOrgNameSpacesSpaceNameWaveCatalog request
 	GetV1OrgOrgNameSpacesSpaceNameWaveCatalog(ctx context.Context, orgName string, spaceName string, params *GetV1OrgOrgNameSpacesSpaceNameWaveCatalogParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -17238,6 +18087,9 @@ type ClientInterface interface {
 
 	// GetV1Spaces request
 	GetV1Spaces(ctx context.Context, params *GetV1SpacesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1Watchfolders request
+	GetV1Watchfolders(ctx context.Context, params *GetV1WatchfoldersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
 func (c *Client) PostV1CronResolveWithBody(ctx context.Context, params *PostV1CronResolveParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -17254,6 +18106,30 @@ func (c *Client) PostV1CronResolveWithBody(ctx context.Context, params *PostV1Cr
 
 func (c *Client) PostV1CronResolve(ctx context.Context, params *PostV1CronResolveParams, body PostV1CronResolveJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1CronResolveRequest(c.Server, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1ExecuteQueueWithBody(ctx context.Context, params *PostV1ExecuteQueueParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1ExecuteQueueRequestWithBody(c.Server, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1ExecuteQueue(ctx context.Context, params *PostV1ExecuteQueueParams, body PostV1ExecuteQueueJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1ExecuteQueueRequest(c.Server, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -19388,6 +20264,126 @@ func (c *Client) PatchV1OrgOrgNameSpacesSpaceNameTarget(ctx context.Context, org
 	return c.Client.Do(req)
 }
 
+func (c *Client) PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithBody(ctx context.Context, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersRequestWithBody(c.Server, orgName, spaceName, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1OrgOrgNameSpacesSpaceNameWatchfolders(ctx context.Context, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersRequest(c.Server, orgName, spaceName, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequest(c.Server, orgName, spaceName, watchFolderId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequest(c.Server, orgName, spaceName, watchFolderId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithBody(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequestWithBody(c.Server, orgName, spaceName, watchFolderId, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, body PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequest(c.Server, orgName, spaceName, watchFolderId, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFiles(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesRequest(c.Server, orgName, spaceName, watchFolderId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequest(c.Server, orgName, spaceName, watchFolderId, scanSecret, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithBody(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequestWithBody(c.Server, orgName, spaceName, watchFolderId, scanSecret, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequest(c.Server, orgName, spaceName, watchFolderId, scanSecret, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) GetV1OrgOrgNameSpacesSpaceNameWaveCatalog(ctx context.Context, orgName string, spaceName string, params *GetV1OrgOrgNameSpacesSpaceNameWaveCatalogParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1OrgOrgNameSpacesSpaceNameWaveCatalogRequest(c.Server, orgName, spaceName, params)
 	if err != nil {
@@ -19628,6 +20624,18 @@ func (c *Client) GetV1Spaces(ctx context.Context, params *GetV1SpacesParams, req
 	return c.Client.Do(req)
 }
 
+func (c *Client) GetV1Watchfolders(ctx context.Context, params *GetV1WatchfoldersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1WatchfoldersRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // NewPostV1CronResolveRequest calls the generic PostV1CronResolve builder with application/json body
 func NewPostV1CronResolveRequest(server string, params *PostV1CronResolveParams, body PostV1CronResolveJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -19649,6 +20657,59 @@ func NewPostV1CronResolveRequestWithBody(server string, params *PostV1CronResolv
 	}
 
 	operationPath := fmt.Sprintf("/v1/cron/resolve")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
+// NewPostV1ExecuteQueueRequest calls the generic PostV1ExecuteQueue builder with application/json body
+func NewPostV1ExecuteQueueRequest(server string, params *PostV1ExecuteQueueParams, body PostV1ExecuteQueueJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostV1ExecuteQueueRequestWithBody(server, params, "application/json", bodyReader)
+}
+
+// NewPostV1ExecuteQueueRequestWithBody generates requests for PostV1ExecuteQueue with any type of body
+func NewPostV1ExecuteQueueRequestWithBody(server string, params *PostV1ExecuteQueueParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/execute/queue")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -28267,6 +29328,479 @@ func NewPatchV1OrgOrgNameSpacesSpaceNameTargetRequestWithBody(server string, org
 	return req, nil
 }
 
+// NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersRequest calls the generic PostV1OrgOrgNameSpacesSpaceNameWatchfolders builder with application/json body
+func NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersRequest(server string, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersRequestWithBody(server, orgName, spaceName, params, "application/json", bodyReader)
+}
+
+// NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersRequestWithBody generates requests for PostV1OrgOrgNameSpacesSpaceNameWatchfolders with any type of body
+func NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersRequestWithBody(server string, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/org/%s/spaces/%s/watchfolders", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
+// NewDeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequest generates requests for DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId
+func NewDeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequest(server string, orgName string, spaceName string, watchFolderId string, params *DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "watchFolderId", watchFolderId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "hexadecimal"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/org/%s/spaces/%s/watchfolders/%s", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
+// NewGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequest generates requests for GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId
+func NewGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequest(server string, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "watchFolderId", watchFolderId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "hexadecimal"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/org/%s/spaces/%s/watchfolders/%s", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
+// NewPatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequest calls the generic PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId builder with application/json body
+func NewPatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequest(server string, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, body PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequestWithBody(server, orgName, spaceName, watchFolderId, params, "application/json", bodyReader)
+}
+
+// NewPatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequestWithBody generates requests for PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId with any type of body
+func NewPatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdRequestWithBody(server string, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "watchFolderId", watchFolderId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "hexadecimal"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/org/%s/spaces/%s/watchfolders/%s", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
+// NewGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesRequest generates requests for GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFiles
+func NewGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesRequest(server string, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "watchFolderId", watchFolderId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "hexadecimal"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/org/%s/spaces/%s/watchfolders/%s/files", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
+// NewGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequest generates requests for GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret
+func NewGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequest(server string, orgName string, spaceName string, watchFolderId string, scanSecret string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "watchFolderId", watchFolderId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "hexadecimal"})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithOptions("simple", false, "scanSecret", scanSecret, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/org/%s/spaces/%s/watchfolders/%s/scan/%s", pathParam0, pathParam1, pathParam2, pathParam3)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
+// NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequest calls the generic PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret builder with application/json body
+func NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequest(server string, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequestWithBody(server, orgName, spaceName, watchFolderId, scanSecret, params, "application/json", bodyReader)
+}
+
+// NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequestWithBody generates requests for PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret with any type of body
+func NewPostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretRequestWithBody(server string, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "watchFolderId", watchFolderId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "hexadecimal"})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithOptions("simple", false, "scanSecret", scanSecret, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/org/%s/spaces/%s/watchfolders/%s/scan/%s", pathParam0, pathParam1, pathParam2, pathParam3)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
 // NewGetV1OrgOrgNameSpacesSpaceNameWaveCatalogRequest generates requests for GetV1OrgOrgNameSpacesSpaceNameWaveCatalog
 func NewGetV1OrgOrgNameSpacesSpaceNameWaveCatalogRequest(server string, orgName string, spaceName string, params *GetV1OrgOrgNameSpacesSpaceNameWaveCatalogParams) (*http.Request, error) {
 	var err error
@@ -29227,6 +30761,46 @@ func NewGetV1SpacesRequest(server string, params *GetV1SpacesParams) (*http.Requ
 	return req, nil
 }
 
+// NewGetV1WatchfoldersRequest generates requests for GetV1Watchfolders
+func NewGetV1WatchfoldersRequest(server string, params *GetV1WatchfoldersParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/watchfolders")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
 func (c *Client) applyEditors(ctx context.Context, req *http.Request, additionalEditors []RequestEditorFn) error {
 	for _, r := range c.RequestEditors {
 		if err := r(ctx, req); err != nil {
@@ -29274,6 +30848,11 @@ type ClientWithResponsesInterface interface {
 	PostV1CronResolveWithBodyWithResponse(ctx context.Context, params *PostV1CronResolveParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1CronResolveResponse, error)
 
 	PostV1CronResolveWithResponse(ctx context.Context, params *PostV1CronResolveParams, body PostV1CronResolveJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1CronResolveResponse, error)
+
+	// PostV1ExecuteQueueWithBodyWithResponse request with any body
+	PostV1ExecuteQueueWithBodyWithResponse(ctx context.Context, params *PostV1ExecuteQueueParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1ExecuteQueueResponse, error)
+
+	PostV1ExecuteQueueWithResponse(ctx context.Context, params *PostV1ExecuteQueueParams, body PostV1ExecuteQueueJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1ExecuteQueueResponse, error)
 
 	// PostV1JoinTokenWithResponse request
 	PostV1JoinTokenWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostV1JoinTokenResponse, error)
@@ -29743,6 +31322,33 @@ type ClientWithResponsesInterface interface {
 
 	PatchV1OrgOrgNameSpacesSpaceNameTargetWithResponse(ctx context.Context, orgName string, spaceName string, params *PatchV1OrgOrgNameSpacesSpaceNameTargetParams, body PatchV1OrgOrgNameSpacesSpaceNameTargetJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSpacesSpaceNameTargetResponse, error)
 
+	// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithBodyWithResponse request with any body
+	PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse, error)
+
+	PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithResponse(ctx context.Context, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse, error)
+
+	// DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse request
+	DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error)
+
+	// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse request
+	GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error)
+
+	// PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithBodyWithResponse request with any body
+	PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error)
+
+	PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, body PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error)
+
+	// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesWithResponse request
+	GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse, error)
+
+	// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithResponse request
+	GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse, error)
+
+	// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithBodyWithResponse request with any body
+	PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse, error)
+
+	PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse, error)
+
 	// GetV1OrgOrgNameSpacesSpaceNameWaveCatalogWithResponse request
 	GetV1OrgOrgNameSpacesSpaceNameWaveCatalogWithResponse(ctx context.Context, orgName string, spaceName string, params *GetV1OrgOrgNameSpacesSpaceNameWaveCatalogParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSpacesSpaceNameWaveCatalogResponse, error)
 
@@ -29797,6 +31403,9 @@ type ClientWithResponsesInterface interface {
 
 	// GetV1SpacesWithResponse request
 	GetV1SpacesWithResponse(ctx context.Context, params *GetV1SpacesParams, reqEditors ...RequestEditorFn) (*GetV1SpacesResponse, error)
+
+	// GetV1WatchfoldersWithResponse request
+	GetV1WatchfoldersWithResponse(ctx context.Context, params *GetV1WatchfoldersParams, reqEditors ...RequestEditorFn) (*GetV1WatchfoldersResponse, error)
 }
 
 type PostV1CronResolveResponse struct {
@@ -29825,6 +31434,38 @@ func (r PostV1CronResolveResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r PostV1CronResolveResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PostV1ExecuteQueueResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1ExecuteQueueResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1ExecuteQueueResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1ExecuteQueueResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -34136,6 +35777,249 @@ func (r PatchV1OrgOrgNameSpacesSpaceNameTargetResponse) ContentType() string {
 	return ""
 }
 
+type PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON201      *WatchFolderDto
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *WatchFolderDto
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *WatchFolderDto
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]WatchFolderFileDto
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *WatchFolderScanConfigDto
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetV1OrgOrgNameSpacesSpaceNameWaveCatalogResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34691,6 +36575,39 @@ func (r GetV1SpacesResponse) ContentType() string {
 	return ""
 }
 
+type GetV1WatchfoldersResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]WatchFolderDto
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1WatchfoldersResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1WatchfoldersResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1WatchfoldersResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 // PostV1CronResolveWithBodyWithResponse request with arbitrary body returning *PostV1CronResolveResponse
 func (c *ClientWithResponses) PostV1CronResolveWithBodyWithResponse(ctx context.Context, params *PostV1CronResolveParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1CronResolveResponse, error) {
 	rsp, err := c.PostV1CronResolveWithBody(ctx, params, contentType, body, reqEditors...)
@@ -34706,6 +36623,23 @@ func (c *ClientWithResponses) PostV1CronResolveWithResponse(ctx context.Context,
 		return nil, err
 	}
 	return ParsePostV1CronResolveResponse(rsp)
+}
+
+// PostV1ExecuteQueueWithBodyWithResponse request with arbitrary body returning *PostV1ExecuteQueueResponse
+func (c *ClientWithResponses) PostV1ExecuteQueueWithBodyWithResponse(ctx context.Context, params *PostV1ExecuteQueueParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1ExecuteQueueResponse, error) {
+	rsp, err := c.PostV1ExecuteQueueWithBody(ctx, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1ExecuteQueueResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostV1ExecuteQueueWithResponse(ctx context.Context, params *PostV1ExecuteQueueParams, body PostV1ExecuteQueueJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1ExecuteQueueResponse, error) {
+	rsp, err := c.PostV1ExecuteQueue(ctx, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1ExecuteQueueResponse(rsp)
 }
 
 // PostV1JoinTokenWithResponse request returning *PostV1JoinTokenResponse
@@ -36238,6 +38172,93 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameSpacesSpaceNameTargetWithResponse
 	return ParsePatchV1OrgOrgNameSpacesSpaceNameTargetResponse(rsp)
 }
 
+// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse
+func (c *ClientWithResponses) PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse, error) {
+	rsp, err := c.PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithBody(ctx, orgName, spaceName, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithResponse(ctx context.Context, orgName string, spaceName string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse, error) {
+	rsp, err := c.PostV1OrgOrgNameSpacesSpaceNameWatchfolders(ctx, orgName, spaceName, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse(rsp)
+}
+
+// DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse request returning *DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse
+func (c *ClientWithResponses) DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error) {
+	rsp, err := c.DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId(ctx, orgName, spaceName, watchFolderId, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse(rsp)
+}
+
+// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse request returning *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse
+func (c *ClientWithResponses) GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error) {
+	rsp, err := c.GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId(ctx, orgName, spaceName, watchFolderId, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse(rsp)
+}
+
+// PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse
+func (c *ClientWithResponses) PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error) {
+	rsp, err := c.PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithBody(ctx, orgName, spaceName, watchFolderId, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse(rsp)
+}
+
+func (c *ClientWithResponses) PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdParams, body PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error) {
+	rsp, err := c.PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId(ctx, orgName, spaceName, watchFolderId, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse(rsp)
+}
+
+// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesWithResponse request returning *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse
+func (c *ClientWithResponses) GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse, error) {
+	rsp, err := c.GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFiles(ctx, orgName, spaceName, watchFolderId, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse(rsp)
+}
+
+// GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithResponse request returning *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse
+func (c *ClientWithResponses) GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse, error) {
+	rsp, err := c.GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret(ctx, orgName, spaceName, watchFolderId, scanSecret, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse(rsp)
+}
+
+// PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithBodyWithResponse request with arbitrary body returning *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse
+func (c *ClientWithResponses) PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse, error) {
+	rsp, err := c.PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithBody(ctx, orgName, spaceName, watchFolderId, scanSecret, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithResponse(ctx context.Context, orgName string, spaceName string, watchFolderId string, scanSecret string, params *PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretParams, body PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse, error) {
+	rsp, err := c.PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret(ctx, orgName, spaceName, watchFolderId, scanSecret, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse(rsp)
+}
+
 // GetV1OrgOrgNameSpacesSpaceNameWaveCatalogWithResponse request returning *GetV1OrgOrgNameSpacesSpaceNameWaveCatalogResponse
 func (c *ClientWithResponses) GetV1OrgOrgNameSpacesSpaceNameWaveCatalogWithResponse(ctx context.Context, orgName string, spaceName string, params *GetV1OrgOrgNameSpacesSpaceNameWaveCatalogParams, reqEditors ...RequestEditorFn) (*GetV1OrgOrgNameSpacesSpaceNameWaveCatalogResponse, error) {
 	rsp, err := c.GetV1OrgOrgNameSpacesSpaceNameWaveCatalog(ctx, orgName, spaceName, params, reqEditors...)
@@ -36413,6 +38434,15 @@ func (c *ClientWithResponses) GetV1SpacesWithResponse(ctx context.Context, param
 	return ParseGetV1SpacesResponse(rsp)
 }
 
+// GetV1WatchfoldersWithResponse request returning *GetV1WatchfoldersResponse
+func (c *ClientWithResponses) GetV1WatchfoldersWithResponse(ctx context.Context, params *GetV1WatchfoldersParams, reqEditors ...RequestEditorFn) (*GetV1WatchfoldersResponse, error) {
+	rsp, err := c.GetV1Watchfolders(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1WatchfoldersResponse(rsp)
+}
+
 // ParsePostV1CronResolveResponse parses an HTTP response from a PostV1CronResolveWithResponse call
 func ParsePostV1CronResolveResponse(rsp *http.Response) (*PostV1CronResolveResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -36440,6 +38470,46 @@ func ParsePostV1CronResolveResponse(rsp *http.Response) (*PostV1CronResolveRespo
 			return nil, err
 		}
 		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostV1ExecuteQueueResponse parses an HTTP response from a PostV1ExecuteQueueWithResponse call
+func ParsePostV1ExecuteQueueResponse(rsp *http.Response) (*PostV1ExecuteQueueResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1ExecuteQueueResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest CustomError
@@ -43320,6 +45390,419 @@ func ParsePatchV1OrgOrgNameSpacesSpaceNameTargetResponse(rsp *http.Response) (*P
 	return response, nil
 }
 
+// ParsePostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse parses an HTTP response from a PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWithResponse call
+func ParsePostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse(rsp *http.Response) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1OrgOrgNameSpacesSpaceNameWatchfoldersResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest WatchFolderDto
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse parses an HTTP response from a DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse call
+func ParseDeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse(rsp *http.Response) (*DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse parses an HTTP response from a GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse call
+func ParseGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse(rsp *http.Response) (*GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest WatchFolderDto
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse parses an HTTP response from a PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdWithResponse call
+func ParsePatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse(rsp *http.Response) (*PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest WatchFolderDto
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse parses an HTTP response from a GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesWithResponse call
+func ParseGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse(rsp *http.Response) (*GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFilesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []WatchFolderFileDto
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse parses an HTTP response from a GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithResponse call
+func ParseGetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse(rsp *http.Response) (*GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest WatchFolderScanConfigDto
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse parses an HTTP response from a PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretWithResponse call
+func ParsePostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse(rsp *http.Response) (*PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecretResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetV1OrgOrgNameSpacesSpaceNameWaveCatalogResponse parses an HTTP response from a GetV1OrgOrgNameSpacesSpaceNameWaveCatalogWithResponse call
 func ParseGetV1OrgOrgNameSpacesSpaceNameWaveCatalogResponse(rsp *http.Response) (*GetV1OrgOrgNameSpacesSpaceNameWaveCatalogResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -44203,6 +46686,53 @@ func ParseGetV1SpacesResponse(rsp *http.Response) (*GetV1SpacesResponse, error) 
 	}
 
 	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetV1WatchfoldersResponse parses an HTTP response from a GetV1WatchfoldersWithResponse call
+func ParseGetV1WatchfoldersResponse(rsp *http.Response) (*GetV1WatchfoldersResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1WatchfoldersResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []WatchFolderDto
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
 		var dest CustomError
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {

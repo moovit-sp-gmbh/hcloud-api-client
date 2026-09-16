@@ -13,6 +13,7 @@ import (
 	"strings"
 
 	"github.com/oapi-codegen/runtime"
+	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
 const (
@@ -105,6 +106,16 @@ type DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams struct {
 
 // PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams defines parameters for PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName.
 type PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams struct {
+	Authorization string `json:"authorization"`
+}
+
+// DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams defines parameters for DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId.
+type DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams struct {
+	Authorization string `json:"authorization"`
+}
+
+// PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams defines parameters for PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId.
+type PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams struct {
 	Authorization string `json:"authorization"`
 }
 
@@ -246,6 +257,12 @@ type ClientInterface interface {
 
 	// PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName request
 	PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName string, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId request
+	DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, params *DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId request
+	PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, params *PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteV1AvatarOrgOrgNameStoragesStorageName request
 	DeleteV1AvatarOrgOrgNameStoragesStorageName(ctx context.Context, orgName string, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -400,6 +417,30 @@ func (c *Client) DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx c
 
 func (c *Client) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName(ctx context.Context, orgName string, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(c.Server, orgName, spaceName, poolName, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, params *DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdRequest(c.Server, orgName, spaceName, bookId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, params *PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdRequest(c.Server, orgName, spaceName, bookId, params)
 	if err != nil {
 		return nil, err
 	}
@@ -1130,6 +1171,128 @@ func NewPostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameRequest(server st
 	return req, nil
 }
 
+// NewDeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdRequest generates requests for DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId
+func NewDeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdRequest(server string, orgName string, spaceName string, bookId openapi_types.UUID, params *DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "bookId", bookId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/avatar/org/%s/spaces/%s/address-book/%s", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
+// NewPostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdRequest generates requests for PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId
+func NewPostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdRequest(server string, orgName string, spaceName string, bookId openapi_types.UUID, params *PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "bookId", bookId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/avatar/org/%s/spaces/%s/address-book/%s", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+
+		var headerParam0 string
+
+		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("authorization", headerParam0)
+
+	}
+
+	return req, nil
+}
+
 // NewDeleteV1AvatarOrgOrgNameStoragesStorageNameRequest generates requests for DeleteV1AvatarOrgOrgNameStoragesStorageName
 func NewDeleteV1AvatarOrgOrgNameStoragesStorageNameRequest(server string, orgName string, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams) (*http.Request, error) {
 	var err error
@@ -1504,6 +1667,12 @@ type ClientWithResponsesInterface interface {
 
 	// PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse request
 	PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameWithResponse(ctx context.Context, orgName string, spaceName string, poolName string, params *PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse, error)
+
+	// DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse request
+	DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, params *DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse, error)
+
+	// PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse request
+	PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, params *PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse, error)
 
 	// DeleteV1AvatarOrgOrgNameStoragesStorageNameWithResponse request
 	DeleteV1AvatarOrgOrgNameStoragesStorageNameWithResponse(ctx context.Context, orgName string, storageName string, params *DeleteV1AvatarOrgOrgNameStoragesStorageNameParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameStoragesStorageNameResponse, error)
@@ -1938,6 +2107,75 @@ func (r PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse) Content
 	return ""
 }
 
+type DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON201      *AvatarDto
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type DeleteV1AvatarOrgOrgNameStoragesStorageNameResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -2248,6 +2486,24 @@ func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoo
 		return nil, err
 	}
 	return ParsePostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse(rsp)
+}
+
+// DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse request returning *DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse
+func (c *ClientWithResponses) DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, params *DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams, reqEditors ...RequestEditorFn) (*DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse, error) {
+	rsp, err := c.DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId(ctx, orgName, spaceName, bookId, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse(rsp)
+}
+
+// PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse request returning *PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse
+func (c *ClientWithResponses) PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, params *PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdParams, reqEditors ...RequestEditorFn) (*PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse, error) {
+	rsp, err := c.PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId(ctx, orgName, spaceName, bookId, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse(rsp)
 }
 
 // DeleteV1AvatarOrgOrgNameStoragesStorageNameWithResponse request returning *DeleteV1AvatarOrgOrgNameStoragesStorageNameResponse
@@ -2942,6 +3198,121 @@ func ParsePostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse(rsp *h
 	}
 
 	response := &PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolNameResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest AvatarDto
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse parses an HTTP response from a DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse call
+func ParseDeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse(rsp *http.Response) (*DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse parses an HTTP response from a PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse call
+func ParsePostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse(rsp *http.Response) (*PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookIdResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}

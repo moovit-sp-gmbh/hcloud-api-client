@@ -24,6 +24,24 @@ const (
 	PatAuthScopes    patAuthContextKey    = "patAuth.Scopes"
 )
 
+// Defines values for AddressBookMemberDtoType.
+const (
+	EXTERNAL AddressBookMemberDtoType = "EXTERNAL"
+	INTERNAL AddressBookMemberDtoType = "INTERNAL"
+)
+
+// Valid indicates whether the value is a known member of the AddressBookMemberDtoType enum.
+func (e AddressBookMemberDtoType) Valid() bool {
+	switch e {
+	case EXTERNAL:
+		return true
+	case INTERNAL:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for AssetBrowseDtoSortingDirection.
 const (
 	AssetBrowseDtoSortingDirectionASC  AssetBrowseDtoSortingDirection = "ASC"
@@ -81,6 +99,36 @@ func (e AssetDto0AssetType) Valid() bool {
 	case AssetDto0AssetTypeUNKNOWN:
 		return true
 	case AssetDto0AssetTypeVIDEO:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AssetDto0Media2Type.
+const (
+	AssetDto0Media2TypeAUDIO AssetDto0Media2Type = "AUDIO"
+)
+
+// Valid indicates whether the value is a known member of the AssetDto0Media2Type enum.
+func (e AssetDto0Media2Type) Valid() bool {
+	switch e {
+	case AssetDto0Media2TypeAUDIO:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AssetDto0Media3Type.
+const (
+	AssetDto0Media3TypeVIDEO AssetDto0Media3Type = "VIDEO"
+)
+
+// Valid indicates whether the value is a known member of the AssetDto0Media3Type enum.
+func (e AssetDto0Media3Type) Valid() bool {
+	switch e {
+	case AssetDto0Media3TypeVIDEO:
 		return true
 	default:
 		return false
@@ -159,6 +207,36 @@ const (
 func (e AssetDto2Type) Valid() bool {
 	switch e {
 	case AssetDto2TypeFOLDER:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AssetDto3Media2Type.
+const (
+	AssetDto3Media2TypeAUDIO AssetDto3Media2Type = "AUDIO"
+)
+
+// Valid indicates whether the value is a known member of the AssetDto3Media2Type enum.
+func (e AssetDto3Media2Type) Valid() bool {
+	switch e {
+	case AssetDto3Media2TypeAUDIO:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AssetDto3Media3Type.
+const (
+	AssetDto3Media3TypeVIDEO AssetDto3Media3Type = "VIDEO"
+)
+
+// Valid indicates whether the value is a known member of the AssetDto3Media3Type enum.
+func (e AssetDto3Media3Type) Valid() bool {
+	switch e {
+	case AssetDto3Media3TypeVIDEO:
 		return true
 	default:
 		return false
@@ -1883,16 +1961,16 @@ func (e SharePatchDtoPermissions) Valid() bool {
 
 // Defines values for SortDirection.
 const (
-	ASC  SortDirection = "ASC"
-	DESC SortDirection = "DESC"
+	SortDirectionASC  SortDirection = "ASC"
+	SortDirectionDESC SortDirection = "DESC"
 )
 
 // Valid indicates whether the value is a known member of the SortDirection enum.
 func (e SortDirection) Valid() bool {
 	switch e {
-	case ASC:
+	case SortDirectionASC:
 		return true
-	case DESC:
+	case SortDirectionDESC:
 		return true
 	default:
 		return false
@@ -3146,19 +3224,22 @@ func (e GetV1OrgOrgNameSpacesSpaceNameAssetsAssetIdUsers200JSONResponseBody1Type
 
 // Defines values for GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField.
 const (
-	GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortFieldCreateDate GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField = "createDate"
-	GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortFieldCreator    GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField = "creator"
-	GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortFieldTimecode   GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField = "timecode"
+	CREATOR  GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField = "CREATOR"
+	NEWEST   GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField = "NEWEST"
+	OLDEST   GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField = "OLDEST"
+	TIMECODE GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField = "TIMECODE"
 )
 
 // Valid indicates whether the value is a known member of the GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField enum.
 func (e GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField) Valid() bool {
 	switch e {
-	case GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortFieldCreateDate:
+	case CREATOR:
 		return true
-	case GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortFieldCreator:
+	case NEWEST:
 		return true
-	case GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortFieldTimecode:
+	case OLDEST:
+		return true
+	case TIMECODE:
 		return true
 	default:
 		return false
@@ -3167,16 +3248,16 @@ func (e GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortF
 
 // Defines values for GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirection.
 const (
-	Asc  GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirection = "asc"
-	Desc GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirection = "desc"
+	GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirectionASC  GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirection = "ASC"
+	GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirectionDESC GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirection = "DESC"
 )
 
 // Valid indicates whether the value is a known member of the GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirection enum.
 func (e GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirection) Valid() bool {
 	switch e {
-	case Asc:
+	case GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirectionASC:
 		return true
-	case Desc:
+	case GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirectionDESC:
 		return true
 	default:
 		return false
@@ -4739,49 +4820,49 @@ func (e GetV1OrgOrgNameSpacesSpaceNameUsers200JSONResponseBody1Type) Valid() boo
 
 // Defines values for PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus.
 const (
-	BLOCKED          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "BLOCKED"
-	BOUNCED          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "BOUNCED"
-	CLICKED          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "CLICKED"
-	DELIVERED        PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "DELIVERED"
-	DELIVEREDDELAYED PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "DELIVERED_DELAYED"
-	FAILED           PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "FAILED"
-	NOTSENT          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "NOT_SENT"
-	OPENED           PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "OPENED"
-	PENDING          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "PENDING"
-	SENT             PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "SENT"
-	SPAM             PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "SPAM"
-	SUPPRESSED       PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "SUPPRESSED"
-	UNKNOWN          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "UNKNOWN"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusBLOCKED          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "BLOCKED"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusBOUNCED          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "BOUNCED"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusCLICKED          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "CLICKED"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusDELIVERED        PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "DELIVERED"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusDELIVEREDDELAYED PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "DELIVERED_DELAYED"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusFAILED           PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "FAILED"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusNOTSENT          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "NOT_SENT"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusOPENED           PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "OPENED"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusPENDING          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "PENDING"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusSENT             PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "SENT"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusSPAM             PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "SPAM"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusSUPPRESSED       PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "SUPPRESSED"
+	PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusUNKNOWN          PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus = "UNKNOWN"
 )
 
 // Valid indicates whether the value is a known member of the PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus enum.
 func (e PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus) Valid() bool {
 	switch e {
-	case BLOCKED:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusBLOCKED:
 		return true
-	case BOUNCED:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusBOUNCED:
 		return true
-	case CLICKED:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusCLICKED:
 		return true
-	case DELIVERED:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusDELIVERED:
 		return true
-	case DELIVEREDDELAYED:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusDELIVEREDDELAYED:
 		return true
-	case FAILED:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusFAILED:
 		return true
-	case NOTSENT:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusNOTSENT:
 		return true
-	case OPENED:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusOPENED:
 		return true
-	case PENDING:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusPENDING:
 		return true
-	case SENT:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusSENT:
 		return true
-	case SPAM:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusSPAM:
 		return true
-	case SUPPRESSED:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusSUPPRESSED:
 		return true
-	case UNKNOWN:
+	case PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatusUNKNOWN:
 		return true
 	default:
 		return false
@@ -4790,13 +4871,13 @@ func (e PostV1UserSharesSearch200JSONResponseBodyEmailStatusStatus) Valid() bool
 
 // Defines values for PostV1UserSharesSearch200JSONResponseBodyItems0Type.
 const (
-	PostV1UserSharesSearch200JSONResponseBodyItems0TypeFOLDER PostV1UserSharesSearch200JSONResponseBodyItems0Type = "FOLDER"
+	FOLDER PostV1UserSharesSearch200JSONResponseBodyItems0Type = "FOLDER"
 )
 
 // Valid indicates whether the value is a known member of the PostV1UserSharesSearch200JSONResponseBodyItems0Type enum.
 func (e PostV1UserSharesSearch200JSONResponseBodyItems0Type) Valid() bool {
 	switch e {
-	case PostV1UserSharesSearch200JSONResponseBodyItems0TypeFOLDER:
+	case FOLDER:
 		return true
 	default:
 		return false
@@ -5009,6 +5090,9 @@ type AddressBookDto struct {
 	// UnderscoreId ID of the address book
 	UnderscoreId openapi_types.UUID `json:"_id"`
 
+	// AvatarUrl URL of the avatar
+	AvatarUrl string `json:"avatarUrl"`
+
 	// CreateDate Creation timestamp in milliseconds
 	CreateDate float32 `json:"createDate"`
 
@@ -5018,8 +5102,8 @@ type AddressBookDto struct {
 	// Description Optional description
 	Description *string `json:"description,omitempty"`
 
-	// Members Members as key-value pairs (email / optional name)
-	Members map[string]string `json:"members"`
+	// Members Members of the address book
+	Members []AddressBookMemberDto `json:"members"`
 
 	// ModifyDate Last modification timestamp in milliseconds
 	ModifyDate float32 `json:"modifyDate"`
@@ -5036,6 +5120,24 @@ type AddressBookMemberAddDto struct {
 	// Members Members as key-value pairs (email -> optional name)
 	Members map[string]string `json:"members"`
 }
+
+// AddressBookMemberDto defines model for AddressBookMemberDto.
+type AddressBookMemberDto struct {
+	// AddedDate Timestamp in milliseconds when the member was added
+	AddedDate float32 `json:"addedDate"`
+
+	// Email Email address of the member
+	Email openapi_types.Email `json:"email"`
+
+	// Name Optional display name
+	Name *string `json:"name,omitempty"`
+
+	// Type INTERNAL for existing helmut.cloud users, EXTERNAL for email-only recipients
+	Type AddressBookMemberDtoType `json:"type"`
+}
+
+// AddressBookMemberDtoType INTERNAL for existing helmut.cloud users, EXTERNAL for email-only recipients
+type AddressBookMemberDtoType string
 
 // AddressBookMemberRemoveDto defines model for AddressBookMemberRemoveDto.
 type AddressBookMemberRemoveDto struct {
@@ -5083,14 +5185,20 @@ type AssetBrowseDto_Sorting_Fields_Item struct {
 
 // AssetBulkDeleteResultDto defines model for AssetBulkDeleteResultDto.
 type AssetBulkDeleteResultDto struct {
-	// AssetIds IDs of the deleted assets
+	// AssetIds IDs of the deleted assets. On a dry run, the IDs that would be deleted.
 	AssetIds []openapi_types.UUID `json:"assetIds"`
 
-	// Count Number of assets that matched the filters and were deleted
+	// Count Number of assets that were deleted, capped by the limit. On a dry run, the number that would be deleted.
 	Count int `json:"count"`
+
+	// DryRun Whether this was a dry run, in which case nothing was deleted
+	DryRun bool `json:"dryRun"`
 
 	// Mode The deletion mode that was applied
 	Mode AssetBulkDeleteResultDtoMode `json:"mode"`
+
+	// Total Total number of assets matching the filters, regardless of the limit
+	Total int `json:"total"`
 }
 
 // AssetBulkDeleteResultDtoMode The deletion mode that was applied
@@ -5168,7 +5276,8 @@ type AssetDto0 struct {
 	Extension *string `json:"extension,omitempty"`
 
 	// FrameRate Frame rate of the video if the asset is a video asset
-	FrameRate *float32 `json:"frameRate,omitempty"`
+	FrameRate *float32                 `json:"frameRate,omitempty"`
+	Media     *[]AssetDto_0_Media_Item `json:"media,omitempty"`
 
 	// ModifyDate Date of last change
 	ModifyDate float32 `json:"modifyDate"`
@@ -5254,6 +5363,52 @@ type AssetDto0 struct {
 // AssetDto0AssetType Media_Asset Type
 type AssetDto0AssetType string
 
+// AssetDto0Media2 defines model for .
+type AssetDto0Media2 struct {
+	// Metadata Media metadata
+	Metadata *[]AudioMetadata `json:"metadata,omitempty"`
+
+	// Name Name of the media
+	Name string `json:"name"`
+
+	// Type Media type
+	Type AssetDto0Media2Type `json:"type"`
+
+	// Url URL to the media. Can be undefined if the media is still being uploaded
+	Url *string `json:"url,omitempty"`
+}
+
+// AssetDto0Media2Type Media type
+type AssetDto0Media2Type string
+
+// AssetDto0Media3 defines model for .
+type AssetDto0Media3 struct {
+	// Metadata Media metadata
+	Metadata *[]AssetDto_0_Media_3_Metadata_Item `json:"metadata,omitempty"`
+
+	// Name Name of the media
+	Name string `json:"name"`
+
+	// Type Media type
+	Type AssetDto0Media3Type `json:"type"`
+
+	// Url URL to the media. Can be undefined if the media is still being uploaded
+	Url *string `json:"url,omitempty"`
+}
+
+// AssetDto_0_Media_3_Metadata_Item defines model for AssetDto.0.Media.3.Metadata.Item.
+type AssetDto_0_Media_3_Metadata_Item struct {
+	union json.RawMessage
+}
+
+// AssetDto0Media3Type Media type
+type AssetDto0Media3Type string
+
+// AssetDto_0_Media_Item defines model for AssetDto.0.Media.Item.
+type AssetDto_0_Media_Item struct {
+	union json.RawMessage
+}
+
 // AssetDto0Status Upload status of the asset
 type AssetDto0Status string
 
@@ -5298,7 +5453,8 @@ type AssetDto3 struct {
 	UnderscoreId openapi_types.UUID `json:"_id"`
 
 	// CommentCount Number of parent comments linked to the asset. Replies are not included.
-	CommentCount float32 `json:"commentCount"`
+	CommentCount float32                  `json:"commentCount"`
+	Media        *[]AssetDto_3_Media_Item `json:"media,omitempty"`
 
 	// Name Item name
 	Name string `json:"name"`
@@ -5306,6 +5462,52 @@ type AssetDto3 struct {
 	// Permissions Allowed operations on the asset
 	Permissions *[]string     `json:"permissions,omitempty"`
 	Type        AssetDto3Type `json:"type"`
+}
+
+// AssetDto3Media2 defines model for .
+type AssetDto3Media2 struct {
+	// Metadata Media metadata
+	Metadata *[]AudioMetadata `json:"metadata,omitempty"`
+
+	// Name Name of the media
+	Name string `json:"name"`
+
+	// Type Media type
+	Type AssetDto3Media2Type `json:"type"`
+
+	// Url URL to the media. Can be undefined if the media is still being uploaded
+	Url *string `json:"url,omitempty"`
+}
+
+// AssetDto3Media2Type Media type
+type AssetDto3Media2Type string
+
+// AssetDto3Media3 defines model for .
+type AssetDto3Media3 struct {
+	// Metadata Media metadata
+	Metadata *[]AssetDto_3_Media_3_Metadata_Item `json:"metadata,omitempty"`
+
+	// Name Name of the media
+	Name string `json:"name"`
+
+	// Type Media type
+	Type AssetDto3Media3Type `json:"type"`
+
+	// Url URL to the media. Can be undefined if the media is still being uploaded
+	Url *string `json:"url,omitempty"`
+}
+
+// AssetDto_3_Media_3_Metadata_Item defines model for AssetDto.3.Media.3.Metadata.Item.
+type AssetDto_3_Media_3_Metadata_Item struct {
+	union json.RawMessage
+}
+
+// AssetDto3Media3Type Media type
+type AssetDto3Media3Type string
+
+// AssetDto_3_Media_Item defines model for AssetDto.3.Media.Item.
+type AssetDto_3_Media_Item struct {
+	union json.RawMessage
 }
 
 // AssetDto3Type defines model for AssetDto.3.Type.
@@ -7860,6 +8062,8 @@ type DeleteV1OrgOrgNameSpacesSpaceNameAssetsBulkDeleteParams struct {
 	Namespace *struct {
 		union json.RawMessage
 	} `form:"namespace,omitempty" json:"namespace,omitempty"`
+	Limit *int     `form:"limit,omitempty" json:"limit,omitempty"`
+	Page  *float32 `form:"page,omitempty" json:"page,omitempty"`
 }
 
 // DeleteV1OrgOrgNameSpacesSpaceNameAssetsBulkDeleteParamsNamespace0 defines parameters for DeleteV1OrgOrgNameSpacesSpaceNameAssetsBulkDelete.
@@ -8756,6 +8960,9 @@ type PostV1OrgOrgNameSpacesSpaceNameAddressBookSearchJSONRequestBody = Search
 // PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdJSONRequestBody defines body for PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookId for application/json ContentType.
 type PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdJSONRequestBody = AddressBookUpdateDto
 
+// PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarMultipartRequestBody defines body for PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatar for multipart/form-data ContentType.
+type PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarMultipartRequestBody = CustomAvatarDto
+
 // DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersJSONRequestBody defines body for DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembers for application/json ContentType.
 type DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersJSONRequestBody = AddressBookMemberRemoveDto
 
@@ -9518,6 +9725,410 @@ func (t AssetDto) MarshalJSON() ([]byte, error) {
 }
 
 func (t *AssetDto) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsAudioMetadata returns the union data inside the AssetDto_0_Media_3_Metadata_Item as a AudioMetadata
+func (t AssetDto_0_Media_3_Metadata_Item) AsAudioMetadata() (AudioMetadata, error) {
+	var body AudioMetadata
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAudioMetadata overwrites any union data inside the AssetDto_0_Media_3_Metadata_Item as the provided AudioMetadata
+func (t *AssetDto_0_Media_3_Metadata_Item) FromAudioMetadata(v AudioMetadata) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeAudioMetadata performs a merge with any union data inside the AssetDto_0_Media_3_Metadata_Item, using the provided AudioMetadata
+func (t *AssetDto_0_Media_3_Metadata_Item) MergeAudioMetadata(v AudioMetadata) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsVideoMetadata returns the union data inside the AssetDto_0_Media_3_Metadata_Item as a VideoMetadata
+func (t AssetDto_0_Media_3_Metadata_Item) AsVideoMetadata() (VideoMetadata, error) {
+	var body VideoMetadata
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromVideoMetadata overwrites any union data inside the AssetDto_0_Media_3_Metadata_Item as the provided VideoMetadata
+func (t *AssetDto_0_Media_3_Metadata_Item) FromVideoMetadata(v VideoMetadata) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeVideoMetadata performs a merge with any union data inside the AssetDto_0_Media_3_Metadata_Item, using the provided VideoMetadata
+func (t *AssetDto_0_Media_3_Metadata_Item) MergeVideoMetadata(v VideoMetadata) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t AssetDto_0_Media_3_Metadata_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *AssetDto_0_Media_3_Metadata_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsUnknown returns the union data inside the AssetDto_0_Media_Item as a Unknown
+func (t AssetDto_0_Media_Item) AsUnknown() (Unknown, error) {
+	var body Unknown
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUnknown overwrites any union data inside the AssetDto_0_Media_Item as the provided Unknown
+func (t *AssetDto_0_Media_Item) FromUnknown(v Unknown) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUnknown performs a merge with any union data inside the AssetDto_0_Media_Item, using the provided Unknown
+func (t *AssetDto_0_Media_Item) MergeUnknown(v Unknown) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsImage returns the union data inside the AssetDto_0_Media_Item as a Image
+func (t AssetDto_0_Media_Item) AsImage() (Image, error) {
+	var body Image
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromImage overwrites any union data inside the AssetDto_0_Media_Item as the provided Image
+func (t *AssetDto_0_Media_Item) FromImage(v Image) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeImage performs a merge with any union data inside the AssetDto_0_Media_Item, using the provided Image
+func (t *AssetDto_0_Media_Item) MergeImage(v Image) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAssetDto0Media2 returns the union data inside the AssetDto_0_Media_Item as a AssetDto0Media2
+func (t AssetDto_0_Media_Item) AsAssetDto0Media2() (AssetDto0Media2, error) {
+	var body AssetDto0Media2
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAssetDto0Media2 overwrites any union data inside the AssetDto_0_Media_Item as the provided AssetDto0Media2
+func (t *AssetDto_0_Media_Item) FromAssetDto0Media2(v AssetDto0Media2) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeAssetDto0Media2 performs a merge with any union data inside the AssetDto_0_Media_Item, using the provided AssetDto0Media2
+func (t *AssetDto_0_Media_Item) MergeAssetDto0Media2(v AssetDto0Media2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAssetDto0Media3 returns the union data inside the AssetDto_0_Media_Item as a AssetDto0Media3
+func (t AssetDto_0_Media_Item) AsAssetDto0Media3() (AssetDto0Media3, error) {
+	var body AssetDto0Media3
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAssetDto0Media3 overwrites any union data inside the AssetDto_0_Media_Item as the provided AssetDto0Media3
+func (t *AssetDto_0_Media_Item) FromAssetDto0Media3(v AssetDto0Media3) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeAssetDto0Media3 performs a merge with any union data inside the AssetDto_0_Media_Item, using the provided AssetDto0Media3
+func (t *AssetDto_0_Media_Item) MergeAssetDto0Media3(v AssetDto0Media3) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsVtt returns the union data inside the AssetDto_0_Media_Item as a Vtt
+func (t AssetDto_0_Media_Item) AsVtt() (Vtt, error) {
+	var body Vtt
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromVtt overwrites any union data inside the AssetDto_0_Media_Item as the provided Vtt
+func (t *AssetDto_0_Media_Item) FromVtt(v Vtt) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeVtt performs a merge with any union data inside the AssetDto_0_Media_Item, using the provided Vtt
+func (t *AssetDto_0_Media_Item) MergeVtt(v Vtt) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t AssetDto_0_Media_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *AssetDto_0_Media_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsAudioMetadata returns the union data inside the AssetDto_3_Media_3_Metadata_Item as a AudioMetadata
+func (t AssetDto_3_Media_3_Metadata_Item) AsAudioMetadata() (AudioMetadata, error) {
+	var body AudioMetadata
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAudioMetadata overwrites any union data inside the AssetDto_3_Media_3_Metadata_Item as the provided AudioMetadata
+func (t *AssetDto_3_Media_3_Metadata_Item) FromAudioMetadata(v AudioMetadata) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeAudioMetadata performs a merge with any union data inside the AssetDto_3_Media_3_Metadata_Item, using the provided AudioMetadata
+func (t *AssetDto_3_Media_3_Metadata_Item) MergeAudioMetadata(v AudioMetadata) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsVideoMetadata returns the union data inside the AssetDto_3_Media_3_Metadata_Item as a VideoMetadata
+func (t AssetDto_3_Media_3_Metadata_Item) AsVideoMetadata() (VideoMetadata, error) {
+	var body VideoMetadata
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromVideoMetadata overwrites any union data inside the AssetDto_3_Media_3_Metadata_Item as the provided VideoMetadata
+func (t *AssetDto_3_Media_3_Metadata_Item) FromVideoMetadata(v VideoMetadata) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeVideoMetadata performs a merge with any union data inside the AssetDto_3_Media_3_Metadata_Item, using the provided VideoMetadata
+func (t *AssetDto_3_Media_3_Metadata_Item) MergeVideoMetadata(v VideoMetadata) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t AssetDto_3_Media_3_Metadata_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *AssetDto_3_Media_3_Metadata_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsUnknown returns the union data inside the AssetDto_3_Media_Item as a Unknown
+func (t AssetDto_3_Media_Item) AsUnknown() (Unknown, error) {
+	var body Unknown
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUnknown overwrites any union data inside the AssetDto_3_Media_Item as the provided Unknown
+func (t *AssetDto_3_Media_Item) FromUnknown(v Unknown) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUnknown performs a merge with any union data inside the AssetDto_3_Media_Item, using the provided Unknown
+func (t *AssetDto_3_Media_Item) MergeUnknown(v Unknown) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsImage returns the union data inside the AssetDto_3_Media_Item as a Image
+func (t AssetDto_3_Media_Item) AsImage() (Image, error) {
+	var body Image
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromImage overwrites any union data inside the AssetDto_3_Media_Item as the provided Image
+func (t *AssetDto_3_Media_Item) FromImage(v Image) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeImage performs a merge with any union data inside the AssetDto_3_Media_Item, using the provided Image
+func (t *AssetDto_3_Media_Item) MergeImage(v Image) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAssetDto3Media2 returns the union data inside the AssetDto_3_Media_Item as a AssetDto3Media2
+func (t AssetDto_3_Media_Item) AsAssetDto3Media2() (AssetDto3Media2, error) {
+	var body AssetDto3Media2
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAssetDto3Media2 overwrites any union data inside the AssetDto_3_Media_Item as the provided AssetDto3Media2
+func (t *AssetDto_3_Media_Item) FromAssetDto3Media2(v AssetDto3Media2) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeAssetDto3Media2 performs a merge with any union data inside the AssetDto_3_Media_Item, using the provided AssetDto3Media2
+func (t *AssetDto_3_Media_Item) MergeAssetDto3Media2(v AssetDto3Media2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAssetDto3Media3 returns the union data inside the AssetDto_3_Media_Item as a AssetDto3Media3
+func (t AssetDto_3_Media_Item) AsAssetDto3Media3() (AssetDto3Media3, error) {
+	var body AssetDto3Media3
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAssetDto3Media3 overwrites any union data inside the AssetDto_3_Media_Item as the provided AssetDto3Media3
+func (t *AssetDto_3_Media_Item) FromAssetDto3Media3(v AssetDto3Media3) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeAssetDto3Media3 performs a merge with any union data inside the AssetDto_3_Media_Item, using the provided AssetDto3Media3
+func (t *AssetDto_3_Media_Item) MergeAssetDto3Media3(v AssetDto3Media3) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsVtt returns the union data inside the AssetDto_3_Media_Item as a Vtt
+func (t AssetDto_3_Media_Item) AsVtt() (Vtt, error) {
+	var body Vtt
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromVtt overwrites any union data inside the AssetDto_3_Media_Item as the provided Vtt
+func (t *AssetDto_3_Media_Item) FromVtt(v Vtt) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeVtt performs a merge with any union data inside the AssetDto_3_Media_Item, using the provided Vtt
+func (t *AssetDto_3_Media_Item) MergeVtt(v Vtt) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t AssetDto_3_Media_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *AssetDto_3_Media_Item) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -14369,6 +14980,9 @@ type ClientInterface interface {
 
 	PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookId(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, body PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarWithBody request with any body
+	PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarWithBody(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersWithBody request with any body
 	DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersWithBody(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -14941,6 +15555,18 @@ func (c *Client) PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdWithBody(ctx c
 
 func (c *Client) PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookId(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, body PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdRequest(c.Server, orgName, spaceName, bookId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarWithBody(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarRequestWithBody(c.Server, orgName, spaceName, bookId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -17485,6 +18111,56 @@ func NewPatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdRequestWithBody(server 
 	return req, nil
 }
 
+// NewPatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarRequestWithBody generates requests for PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatar with any type of body
+func NewPatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarRequestWithBody(server string, orgName string, spaceName string, bookId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgName", orgName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "spaceName", spaceName, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "bookId", bookId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/org/%s/spaces/%s/address-book/%s/avatar", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewDeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersRequest calls the generic DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembers builder with application/json body
 func NewDeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersRequest(server string, orgName string, spaceName string, bookId openapi_types.UUID, body DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -17920,6 +18596,30 @@ func NewDeleteV1OrgOrgNameSpacesSpaceNameAssetsBulkDeleteRequestWithBody(server 
 		if params.Namespace != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "namespace", *params.Namespace, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "limit", *params.Limit, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Page != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "page", *params.Page, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "number", Format: ""}); err != nil {
 				return nil, err
 			} else {
 				for _, qp := range strings.Split(queryFrag, "&") {
@@ -22693,6 +23393,9 @@ type ClientWithResponsesInterface interface {
 
 	PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdWithResponse(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, body PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdResponse, error)
 
+	// PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarWithBodyWithResponse request with any body
+	PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse, error)
+
 	// DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersWithBodyWithResponse request with any body
 	DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersResponse, error)
 
@@ -23490,6 +24193,41 @@ func (r PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdResponse) StatusCode() 
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *AddressBookDto
+	JSON400      *CustomError
+	JSON401      *CustomError
+	JSON403      *CustomError
+	JSON404      *CustomError
+	JSON500      *CustomError
+}
+
+// Status returns HTTPResponse.Status
+func (r PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -27091,6 +27829,15 @@ func (c *ClientWithResponses) PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdW
 	return ParsePatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdResponse(rsp)
 }
 
+// PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarWithBodyWithResponse request with arbitrary body returning *PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse
+func (c *ClientWithResponses) PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse, error) {
+	rsp, err := c.PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarWithBody(ctx, orgName, spaceName, bookId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse(rsp)
+}
+
 // DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersWithBodyWithResponse request with arbitrary body returning *DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersResponse
 func (c *ClientWithResponses) DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersWithBodyWithResponse(ctx context.Context, orgName string, spaceName string, bookId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersResponse, error) {
 	rsp, err := c.DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembersWithBody(ctx, orgName, spaceName, bookId, contentType, body, reqEditors...)
@@ -28953,6 +29700,67 @@ func ParsePatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdResponse(rsp *http.Re
 	}
 
 	response := &PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AddressBookDto
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest CustomError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse parses an HTTP response from a PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarWithResponse call
+func ParsePatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse(rsp *http.Response) (*PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookIdAvatarResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
