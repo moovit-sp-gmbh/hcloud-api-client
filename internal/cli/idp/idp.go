@@ -101,6 +101,7 @@ func Command() *cobra.Command {
 	idpCommand.AddCommand(whoamiCommand)
 	idpCommand.AddCommand(oauthCommand)
 	idpCommand.AddCommand(guestCommand)
+	idpCommand.AddCommand(messagesCommand)
 
 	return idpCommand
 }
