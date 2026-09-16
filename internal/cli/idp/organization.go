@@ -27,6 +27,7 @@ func init() {
 
 	orgCommand.AddCommand(createOrgCommand)
 	orgCommand.AddCommand(organizationGetCommand)
+	orgCommand.AddCommand(organizationLicenseCommand)
 }
 
 var orgCommand = &cobra.Command{

@@ -130,6 +130,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-get.yaml
   - client: idpClient
+    operation: GetV1OrgOrgNameLicense
+    method: GET
+    path: /v1/org/{orgName}/license
+    command: idp organization license get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-organization-license-get.yaml
+  - client: idpClient
     operation: GetV1User
     method: GET
     path: /v1/user
