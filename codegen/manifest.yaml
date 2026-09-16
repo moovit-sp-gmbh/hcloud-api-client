@@ -178,6 +178,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-settings-domains-get.yaml
   - client: idpClient
+    operation: GetV1OrgOrgNameSettingsDomainsOidc
+    method: GET
+    path: /v1/org/{orgName}/settings/domains/oidc
+    command: idp organization settings domains oidc
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-organization-settings-domains-oidc.yaml
+  - client: idpClient
     operation: GetV1User
     method: GET
     path: /v1/user
