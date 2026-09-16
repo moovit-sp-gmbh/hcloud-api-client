@@ -159,6 +159,14 @@ endpoints:
     status: implemented
     source: handwritten
   - client: idpClient
+    operation: GetV1UserLicense
+    method: GET
+    path: /v1/user/license
+    command: idp user license get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-license-get.yaml
+  - client: idpClient
     operation: GetV1UserNats
     method: GET
     path: /v1/user/nats

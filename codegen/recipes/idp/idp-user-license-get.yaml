@@ -1,0 +1,35 @@
+# Generation input for `idp user license get`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1UserLicense
+command:
+  path:
+    - idp
+    - user
+    - license
+    - get
+  file: license.go
+  var: userLicenseGetCommand
+  short: Get the current license applied
+  long: |2-
+    Required scopes: IDP_USER_READ
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

@@ -13,6 +13,8 @@ import (
 )
 
 func init() {
+	userLicenseGetCommand.Flags().String("token", "", "authorization token")
+	userLicenseCommand.AddCommand(userLicenseGetCommand)
 	organizationLicenseGetCommand.Flags().String("orgName", "", "Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)")
 	organizationLicenseGetCommand.Flags().String("token", "", "authorization token")
 	organizationLicenseCommand.AddCommand(organizationLicenseGetCommand)
@@ -55,6 +57,64 @@ var organizationLicenseGetCommand = &cobra.Command{
 		latest.Jwt = sql.NullString{Valid: true, String: jwt}
 
 		res, err := client.GetV1OrgOrgNameLicenseWithResponse(context.TODO(), orgName, func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", jwt)
+			return nil
+		})
+		if err != nil {
+			return err
+		}
+
+		var data any
+		err = json.Unmarshal(res.Body, &data)
+		if err != nil {
+			return err
+		}
+		text, err := command.JSON(data)
+		if err != nil {
+			return err
+		}
+
+		if res.StatusCode() >= 200 && res.StatusCode() < 300 {
+			service.Push(latest)
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var userLicenseCommand = &cobra.Command{
+	Use:   "license",
+	Short: "Commands for license",
+	Run: func(cmd *cobra.Command, args []string) {
+		cmd.Help()
+	},
+}
+
+var userLicenseGetCommand = &cobra.Command{
+	Use:   "get",
+	Short: "Get the current license applied",
+	Long:  "\nRequired scopes: IDP_USER_READ",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		client, err := clients.NewIDPClient(cmd)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		latest, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		jwt, err := command.GetArg(cmd, command.StringFlagIfSet("token"), command.ContextIfValidString(latest.Jwt), command.PromptString("authorization token"))
+		if err != nil {
+			return err
+		}
+		latest.Jwt = sql.NullString{Valid: true, String: jwt}
+
+		res, err := client.GetV1UserLicenseWithResponse(context.TODO(), func(_ context.Context, req *http.Request) error {
 			req.Header.Set("authorization", jwt)
 			return nil
 		})
