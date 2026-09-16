@@ -194,6 +194,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-settings-domains-saml.yaml
   - client: idpClient
+    operation: GetV1OrgOrgNameStats
+    method: GET
+    path: /v1/org/{orgName}/stats
+    command: idp organization stats
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-organization-stats.yaml
+  - client: idpClient
     operation: GetV1User
     method: GET
     path: /v1/user
