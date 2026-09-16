@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"encoding/json"
+	"net/http"
 
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/clients"
@@ -13,6 +14,11 @@ import (
 )
 
 func init() {
+	organizationSettingsOauthGetCommand.Flags().String("orgName", "", "Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)")
+	organizationSettingsOauthGetCommand.Flags().String("oAuthAppId", "", "")
+	organizationSettingsOauthGetCommand.Flags().String("token", "", "authorization token")
+	organizationSettingsOauthCommand.AddCommand(organizationSettingsOauthGetCommand)
+	organizationSettingsCommand.AddCommand(organizationSettingsOauthCommand)
 	loginOauthInfoCommand.Flags().String("clientId", "", "The ID of the application that is asking for authorization")
 	loginOauthInfoCommand.Flags().String("redirectURI", "", "A successful response will redirect to this URI")
 	loginOauthInfoCommand.Flags().String("scope", "", "Space-delimited list of hcloud permissions that the application requires as well as openId if required")
@@ -299,6 +305,84 @@ var loginOauthInfoCommand = &cobra.Command{
 		}
 
 		res, err := client.GetV1LoginOauthInfoWithResponse(context.TODO(), params)
+		if err != nil {
+			return err
+		}
+
+		var data any
+		err = json.Unmarshal(res.Body, &data)
+		if err != nil {
+			return err
+		}
+		text, err := command.JSON(data)
+		if err != nil {
+			return err
+		}
+
+		if res.StatusCode() >= 200 && res.StatusCode() < 300 {
+			service.Push(latest)
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var organizationSettingsCommand = &cobra.Command{
+	Use:   "settings",
+	Short: "Commands for settings",
+	Run: func(cmd *cobra.Command, args []string) {
+		cmd.Help()
+	},
+}
+
+var organizationSettingsOauthCommand = &cobra.Command{
+	Use:   "oauth",
+	Short: "Commands for oauth",
+	Run: func(cmd *cobra.Command, args []string) {
+		cmd.Help()
+	},
+}
+
+var organizationSettingsOauthGetCommand = &cobra.Command{
+	Use:   "get",
+	Short: "Retrieves an organization's oAuthApp by its ID",
+	Long:  "\nRequired role: ADMIN\nRequired scopes: IDP_ORGANIZATION_ADMIN",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		client, err := clients.NewIDPClient(cmd)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		latest, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		orgName, err := command.GetArg(cmd, command.StringFlagIfSet("orgName"), command.ContextIfValidString(latest.OrgName), command.PromptString("organization name"))
+		if err != nil {
+			return err
+		}
+		latest.OrgName = sql.NullString{Valid: true, String: orgName}
+
+		oAuthAppId, err := command.GetArg(cmd, command.StringFlagIfSet("oAuthAppId"), command.ContextIfValidString(latest.OauthAppID), command.PromptString("OAuth application ID"))
+		if err != nil {
+			return err
+		}
+		latest.OauthAppID = sql.NullString{Valid: true, String: oAuthAppId}
+
+		jwt, err := command.GetArg(cmd, command.StringFlagIfSet("token"), command.ContextIfValidString(latest.Jwt), command.PromptString("authorization token"))
+		if err != nil {
+			return err
+		}
+		latest.Jwt = sql.NullString{Valid: true, String: jwt}
+
+		res, err := client.GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdWithResponse(context.TODO(), orgName, oAuthAppId, func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", jwt)
+			return nil
+		})
 		if err != nil {
 			return err
 		}

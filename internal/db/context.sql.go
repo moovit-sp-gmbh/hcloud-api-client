@@ -28,8 +28,10 @@ INSERT INTO context (
         oauth_app_client_id,
         oauth_app_redirect_uri,
         email,
-        storage_id
+        storage_id,
+        oauth_app_id
 ) VALUES (
+        ?,
         ?,
         ?,
         ?,
@@ -68,6 +70,7 @@ type CreateContextParams struct {
 	OauthAppRedirectUri sql.NullString
 	Email               sql.NullString
 	StorageID           sql.NullString
+	OauthAppID          sql.NullString
 }
 
 func (q *Queries) CreateContext(ctx context.Context, arg CreateContextParams) error {
@@ -89,12 +92,13 @@ func (q *Queries) CreateContext(ctx context.Context, arg CreateContextParams) er
 		arg.OauthAppRedirectUri,
 		arg.Email,
 		arg.StorageID,
+		arg.OauthAppID,
 	)
 	return err
 }
 
 const getContext = `-- name: GetContext :one
-SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token, high5_space_id, high5_space_name, oauth_app_client_id, oauth_app_redirect_uri, email, storage_id FROM context
+SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token, high5_space_id, high5_space_name, oauth_app_client_id, oauth_app_redirect_uri, email, storage_id, oauth_app_id FROM context
 WHERE id=?
 `
 
@@ -120,12 +124,13 @@ func (q *Queries) GetContext(ctx context.Context, id int64) (Context, error) {
 		&i.OauthAppRedirectUri,
 		&i.Email,
 		&i.StorageID,
+		&i.OauthAppID,
 	)
 	return i, err
 }
 
 const getLatestContext = `-- name: GetLatestContext :one
-SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token, high5_space_id, high5_space_name, oauth_app_client_id, oauth_app_redirect_uri, email, storage_id FROM context
+SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token, high5_space_id, high5_space_name, oauth_app_client_id, oauth_app_redirect_uri, email, storage_id, oauth_app_id FROM context
 ORDER BY timestamp DESC
 LIMIT 1
 `
@@ -152,12 +157,13 @@ func (q *Queries) GetLatestContext(ctx context.Context) (Context, error) {
 		&i.OauthAppRedirectUri,
 		&i.Email,
 		&i.StorageID,
+		&i.OauthAppID,
 	)
 	return i, err
 }
 
 const list = `-- name: List :many
-SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token, high5_space_id, high5_space_name, oauth_app_client_id, oauth_app_redirect_uri, email, storage_id FROM context
+SELECT id, timestamp, jwt, org_name, new_name, server, agent_token, agent_secret, agent_uuid, agent_private_key, agent_public_key, agent_hello_token, high5_space_id, high5_space_name, oauth_app_client_id, oauth_app_redirect_uri, email, storage_id, oauth_app_id FROM context
 ORDER BY timestamp DESC
 LIMIT ?
 OFFSET ?
@@ -196,6 +202,7 @@ func (q *Queries) List(ctx context.Context, arg ListParams) ([]Context, error) {
 			&i.OauthAppRedirectUri,
 			&i.Email,
 			&i.StorageID,
+			&i.OauthAppID,
 		); err != nil {
 			return nil, err
 		}

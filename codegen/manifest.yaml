@@ -162,6 +162,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-service-accounts-get.yaml
   - client: idpClient
+    operation: GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId
+    method: GET
+    path: /v1/org/{orgName}/settings/applications/oauth/{oAuthAppId}
+    command: idp organization settings oauth get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-organization-settings-oauth-get.yaml
+  - client: idpClient
     operation: GetV1User
     method: GET
     path: /v1/user
