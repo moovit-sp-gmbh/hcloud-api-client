@@ -1,0 +1,50 @@
+# Generation input for `idp organization settings domains saml`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1OrgOrgNameSettingsDomainsSaml
+command:
+  path:
+    - idp
+    - organization
+    - settings
+    - domains
+    - saml
+  file: domains.go
+  var: organizationSettingsDomainsSamlCommand
+  short: Gets all providers for an organization
+  long: |2-
+    Required organization role: ADMIN
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: organization name
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200
