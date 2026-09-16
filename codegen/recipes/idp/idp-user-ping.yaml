@@ -1,0 +1,33 @@
+# Generation input for `idp user ping`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1UserPing
+command:
+  path:
+    - idp
+    - user
+    - ping
+  file: user.go
+  var: userPingCommand
+  short: Keep user online
+  long: |2-
+    Required scopes: HCLOUD_FULL
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body

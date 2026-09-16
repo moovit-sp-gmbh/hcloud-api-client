@@ -253,6 +253,14 @@ endpoints:
     status: implemented
     source: handwritten
   - client: idpClient
+    operation: GetV1UserPing
+    method: GET
+    path: /v1/user/ping
+    command: idp user ping
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-ping.yaml
+  - client: idpClient
     operation: GetV1UserSettingsConnections
     method: GET
     path: /v1/user/settings/connections
