@@ -22,6 +22,7 @@ func init() {
 	whoamiCommand.AddCommand(getUserNatsPermissionsCommand)
 	whoamiCommand.AddCommand(patchPwCommand)
 	whoamiCommand.AddCommand(userLicenseCommand)
+	whoamiCommand.AddCommand(userSettingsCommand)
 
 }
 

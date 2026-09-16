@@ -1,0 +1,33 @@
+# Generation input for `idp user settings connections`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1UserSettingsConnections
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - connections
+  file: connections.go
+  var: userSettingsConnectionsCommand
+  short: Retrieves the connection settings of the requesting user
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200
