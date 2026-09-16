@@ -48,6 +48,7 @@ func (cs *ContextService) Push(arg db.Context) error {
 		OauthAppClientID:    arg.OauthAppClientID,
 		OauthAppRedirectUri: arg.OauthAppRedirectUri,
 		Email:               arg.Email,
+		StorageID:           arg.StorageID,
 	})
 }
 

@@ -26,4 +26,5 @@ type Context struct {
 	OauthAppClientID    sql.NullString
 	OauthAppRedirectUri sql.NullString
 	Email               sql.NullString
+	StorageID           sql.NullString
 }

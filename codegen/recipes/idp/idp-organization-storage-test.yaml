@@ -1,0 +1,48 @@
+# Generation input for `idp organization storage test`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1OrgOrgNameStorageStorageIdTest
+command:
+  path:
+    - idp
+    - organization
+    - storage
+    - test
+  file: storage.go
+  var: organizationStorageTestCommand
+  short: Test storage configuration
+  long: |2-
+    Required scopes: IDP_STORAGE_READ
+args:
+  - source: path
+    name: storageId
+    goName: storageId
+    cli: storageId
+    var: storageId
+    type: string
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: StorageID
+    persist: true
+    prompt: storage ID
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

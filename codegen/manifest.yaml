@@ -122,6 +122,14 @@ endpoints:
     status: implemented
     source: handwritten
   - client: idpClient
+    operation: GetV1OrgOrgNameStorageStorageIdTest
+    method: GET
+    path: /v1/org/:orgName/storage/{storageId}/test
+    command: idp organization storage test
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-organization-storage-test.yaml
+  - client: idpClient
     operation: GetV1OrgOrgName
     method: GET
     path: /v1/org/{orgName}
