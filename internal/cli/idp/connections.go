@@ -15,6 +15,7 @@ import (
 func init() {
 	userSettingsConnectionsCommand.Flags().String("token", "", "authorization token")
 	userSettingsCommand.AddCommand(userSettingsConnectionsCommand)
+	userSettingsCommand.AddCommand(userSettingsGeneralCommand)
 }
 
 var userSettingsCommand = &cobra.Command{

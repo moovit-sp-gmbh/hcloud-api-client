@@ -170,6 +170,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-settings-oauth-get.yaml
   - client: idpClient
+    operation: DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName
+    method: DELETE
+    path: /v1/org/{orgName}/settings/applications/oauth/{oAuthAppId}/secret/{name}
+    command: idp organization settings oauth secret delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-organization-settings-oauth-secret-delete.yaml
+  - client: idpClient
     operation: GetV1OrgOrgNameSettingsDomains
     method: GET
     path: /v1/org/{orgName}/settings/domains
@@ -268,6 +276,14 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-user-settings-connections.yaml
+  - client: idpClient
+    operation: GetV1UserSettingsGeneral
+    method: GET
+    path: /v1/user/settings/general
+    command: idp user settings general get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-general-get.yaml
   - client: mothershipClient
     operation: DeleteV1Agent
     method: DELETE
