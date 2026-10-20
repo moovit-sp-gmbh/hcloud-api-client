@@ -1,0 +1,79 @@
+# Generation input for `cosmo spaces assets create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: PostV1OrgOrgNameSpacesSpaceNameAssets
+command:
+  path:
+    - cosmo
+    - spaces
+    - assets
+    - create
+  file: spaces-assets.go
+  var: spacesAssetsCreateCommand
+  short: Create an asset
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: string
+      description: Media_Asset name. It must include a file extension
+      resolve:
+        - flag
+        - prompt
+      prompt: name
+    - field: ParentId
+      name: parentId
+      cli: parentId
+      var: parentId
+      type: '*openapi_types.UUID'
+      description: Parent ID. If omitted, the asset will be placed at the root level.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON201

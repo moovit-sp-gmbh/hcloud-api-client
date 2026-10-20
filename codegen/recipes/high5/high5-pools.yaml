@@ -1,0 +1,33 @@
+# Generation input for `high5 pools`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: GetV1Pools
+command:
+  path:
+    - high5
+    - pools
+  file: pools.go
+  var: poolsCommand
+  short: Get all pools the user assigned to
+  long: Get all pools the user assigned to. Used mostly by the agent
+args:
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

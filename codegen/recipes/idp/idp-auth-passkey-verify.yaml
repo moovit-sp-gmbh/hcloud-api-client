@@ -1,0 +1,20 @@
+# Generation input for `idp auth passkey verify`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1AuthPasskeyVerify
+command:
+  path:
+    - idp
+    - auth
+    - passkey
+    - verify
+  file: auth-passkey.go
+  var: authPasskeyVerifyCommand
+  short: Verify a WebAuthn authentication response and authorize the user against the system
+  long: No authentication required. On success, sets the Authorization header and auth_token cookie
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

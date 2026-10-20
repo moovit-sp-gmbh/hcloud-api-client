@@ -1,0 +1,93 @@
+# Generation input for `idp members invitations create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1OrgOrgNameMembersInvitations
+command:
+  path:
+    - idp
+    - members
+    - invitations
+    - create
+  file: members-invitations.go
+  var: membersInvitationsCreateCommand
+  short: Invite a member to an organization
+  long: |-
+    Required role: ADMIN
+    Required scopes: IDP_ORGANIZATION_WRITE
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: AllowNonRegisteredUsers
+      name: allowNonRegisteredUsers
+      cli: allowNonRegisteredUsers
+      var: allowNonRegisteredUsers
+      type: '*bool'
+      description: If non-registered users are allowed and the email is not bound to an HCloud user, then a registration email will be sent to this email. Upon registration, the user will be added automatically to the organization.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Email
+      name: email
+      cli: email
+      var: email
+      type: openapi_types.Email
+      description: Email of the user
+      resolve:
+        - flag
+        - context
+        - prompt
+      context: Email
+      prompt: email
+    - field: Role
+      name: role
+      cli: role
+      var: role
+      type: OrganizationRole
+      description: Role the user shall have in the Organization
+      resolve:
+        - flag
+        - prompt
+      prompt: role
+    - field: TargetUrl
+      name: targetUrl
+      cli: targetUrl
+      var: targetUrl
+      type: '*string'
+      description: URL to create the redirect link in the email. It will default to https://app.helmut.cloud.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON201

@@ -14,6 +14,8 @@ import (
 )
 
 func init() {
+	loginOauthDeviceAuthorizeCommand.AddCommand(loginOauthDeviceAuthorizeCreateCommand)
+	loginOauthAuthorizeCommand.AddCommand(loginOauthAuthorizeCreateCommand)
 	organizationSettingsOauthSecretDeleteCommand.Flags().String("orgName", "", "Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)")
 	organizationSettingsOauthSecretDeleteCommand.Flags().String("oAuthAppId", "", "")
 	organizationSettingsOauthSecretDeleteCommand.Flags().String("name", "", "Name of the secret to delete")

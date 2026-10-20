@@ -1,0 +1,56 @@
+# Generation input for `idp user settings pats regenerate`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1UserSettingsPatsPatIdRegenerate
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - pats
+    - regenerate
+  file: user-settings-pats.go
+  var: userSettingsPatsRegenerateCommand
+  short: Regenerate an existing pat token with previous defined expiration date
+  long: 'Required scopes: HCLOUD_FULL'
+args:
+  - source: path
+    name: patId
+    goName: patId
+    cli: patId
+    var: patId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: patId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Token
+      name: token
+      cli: bodyToken
+      var: bodyToken
+      type: '*string'
+      description: TOTP token. Must be defined if the user has 2FA enabled
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON200

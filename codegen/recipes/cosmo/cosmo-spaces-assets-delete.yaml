@@ -1,0 +1,68 @@
+# Generation input for `cosmo spaces assets delete`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: DeleteV1OrgOrgNameSpacesSpaceNameAssets
+command:
+  path:
+    - cosmo
+    - spaces
+    - assets
+    - delete
+  file: spaces-assets.go
+  var: spacesAssetsDeleteCommand
+  short: Delete assets
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: query
+    name: force
+    goName: Force
+    cli: force
+    var: force
+    type: '*struct{union json.RawMessage}'
+    description: If asset is folder and force is set to false, it will only succeed if the folder is empty. If set to true, it will always succeed, but delete all children in the process
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body

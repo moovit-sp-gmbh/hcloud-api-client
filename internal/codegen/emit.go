@@ -527,27 +527,36 @@ func (e *emitter) emitOptional(s optionalSpec) error {
 		assign = "%s.%s = %s"
 	}
 
+	// convert emits whatever turns the flag's value into the field's type. A
+	// UUID has to be parsed rather than cast, and the parse can fail, so it
+	// cannot be folded into the assignment.
+	convert := func(variable string) string {
+		if kind.Parse {
+			parsed := variable + "Parsed"
+			e.line("%s, err := uuid.Parse(%s)", parsed, variable)
+			e.errCheck()
+			return parsed
+		}
+		if kind.Wrap != "" {
+			converted := variable + "Value"
+			e.line("%s := %s", converted, kind.Convert(variable))
+			return converted
+		}
+		return variable
+	}
+
 	e.blank()
 	if s.unset == UnsetDefault {
 		e.line("%s, err := cmd.Flags().Get%s(%q)", variable, kind.Flag, s.cli)
 		e.errCheck()
-		if kind.Wrap != "" {
-			converted := variable + "Value"
-			e.line("%s := %s", converted, kind.Convert(variable))
-			variable = converted
-		}
-		e.line(assign, s.target, s.field, variable)
+		e.line(assign, s.target, s.field, convert(variable))
 		return nil
 	}
 
 	e.line("if cmd.Flags().Changed(%q) {", s.cli)
 	e.line("%s, err := cmd.Flags().Get%s(%q)", variable, kind.Flag, s.cli)
 	e.errCheck()
-	if kind.Wrap != "" {
-		converted := variable + "Value"
-		e.line("%s := %s", converted, kind.Convert(variable))
-		variable = converted
-	}
+	variable = convert(variable)
 	e.line(assign, s.target, s.field, variable)
 	e.line("}")
 	return nil

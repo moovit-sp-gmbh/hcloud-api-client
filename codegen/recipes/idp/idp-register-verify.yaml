@@ -1,0 +1,40 @@
+# Generation input for `idp register verify`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1RegisterVerify
+command:
+  path:
+    - idp
+    - register
+    - verify
+  file: register.go
+  var: registerVerifyCommand
+  short: Verify a previous registration
+body:
+  mode: typed
+  fields:
+    - field: Email
+      name: email
+      cli: email
+      var: email
+      type: openapi_types.Email
+      description: Email of the user
+      resolve:
+        - flag
+        - context
+        - prompt
+      context: Email
+      prompt: email
+    - field: VerificationCode
+      name: verificationCode
+      cli: verificationCode
+      var: verificationCode
+      type: openapi_types.UUID
+      description: Verification code
+      resolve:
+        - flag
+        - prompt
+      prompt: verificationCode
+response:
+  render: body
+  field: JSON200

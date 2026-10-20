@@ -1,0 +1,71 @@
+# Generation input for `high5 spaces watchfolders patch`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId
+command:
+  path:
+    - high5
+    - spaces
+    - watchfolders
+    - patch
+  file: spaces-watchfolders.go
+  var: spacesWatchfoldersPatchCommand
+  short: Update existing watch folder
+  long: Updates an existing watch folder's properties
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: watchFolderId
+    goName: watchFolderId
+    cli: watchFolderId
+    var: watchFolderId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: watchFolderId
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

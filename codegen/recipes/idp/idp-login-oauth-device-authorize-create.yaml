@@ -1,0 +1,56 @@
+# Generation input for `idp login oauth device authorize create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1LoginOauthDeviceAuthorizeClientIdUserCode
+command:
+  path:
+    - idp
+    - login
+    - oauth
+    - device
+    - authorize
+    - create
+  file: login-oauth-device-authorize.go
+  var: loginOauthDeviceAuthorizeCreateCommand
+  short: Device flow - Accept/reject authorization
+  long: |-
+    Endpoint used in the OAuth 2.0 Device Authorization Flow to store the decision made by the user
+    Required scopes: HCLOUD_FULL
+args:
+  - source: path
+    name: client_id
+    goName: clientId
+    cli: client_id
+    var: clientId
+    type: string
+    description: Client ID of the OAuth application
+    resolve:
+      - flag
+      - prompt
+    prompt: client_id
+  - source: path
+    name: user_code
+    goName: userCode
+    cli: user_code
+    var: userCode
+    type: string
+    description: User code to validate
+    resolve:
+      - flag
+      - prompt
+    prompt: user_code
+body:
+  mode: typed
+  fields:
+    - field: Status
+      name: status
+      cli: status
+      var: status
+      type: OAuthDeviceDecisionStatus
+      description: Status to set
+      resolve:
+        - flag
+        - prompt
+      prompt: status
+response:
+  render: body

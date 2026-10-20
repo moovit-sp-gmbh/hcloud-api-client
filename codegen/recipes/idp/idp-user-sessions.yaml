@@ -1,0 +1,32 @@
+# Generation input for `idp user sessions`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: DeleteV1UserSessions
+command:
+  path:
+    - idp
+    - user
+    - sessions
+  file: user.go
+  var: userSessionsCommand
+  short: Resets all user sessions and therewith logs him out of hcloud on all devices
+  long: 'Required scopes: HCLOUD_FULL'
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body

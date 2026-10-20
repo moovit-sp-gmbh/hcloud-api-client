@@ -1,0 +1,99 @@
+# Generation input for `high5 spaces databases documents create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PostV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocuments
+command:
+  path:
+    - high5
+    - spaces
+    - databases
+    - documents
+    - create
+  file: spaces-databases-documents.go
+  var: spacesDatabasesDocumentsCreateCommand
+  short: Add a new document to the database
+  long: Creates a new document in the specified database. The `type` field determines the expected data type of `value`. Returns 409 if a document with the same key already exists in the space
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: dbName
+    goName: dbName
+    cli: dbName
+    var: dbName
+    type: string
+    description: Name of the database (only alphanumeric characters, underscores, hyphens and dots are allowed; it should contain between 1 and 128 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: dbName
+body:
+  mode: typed
+  fields:
+    - field: Key
+      name: key
+      cli: key
+      var: key
+      type: string
+      description: Key of the document (only alphanumeric characters, underscores, hyphens and dots are allowed; it should contain between 1 and 64 characters)
+      resolve:
+        - flag
+        - prompt
+      prompt: key
+    - field: Ttl
+      name: ttl
+      cli: ttl
+      var: ttl
+      type: '*int'
+      description: Time-to-live in seconds (undefined if missing)
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Type
+      name: type
+      cli: type
+      var: typeValue
+      type: DocumentType
+      description: Type of the document value
+      resolve:
+        - flag
+        - prompt
+      prompt: type
+    - field: Value
+      name: value
+      cli: value
+      var: value
+      type: interface{}
+      description: Document value (data type must match the type specified in the "type" field)
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+      skip: true
+response:
+  render: body
+  field: JSON201

@@ -1,0 +1,34 @@
+# Generation input for `dali avatar user create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: daliClient
+operation: PostV1AvatarUser
+command:
+  path:
+    - dali
+    - avatar
+    - user
+    - create
+  file: avatar-user.go
+  var: avatarUserCreateCommand
+  short: Create a new Avatar for user
+args:
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body
+  field: JSON201

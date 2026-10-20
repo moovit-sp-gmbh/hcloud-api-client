@@ -1,0 +1,80 @@
+# Generation input for `high5 spaces jobs next`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: GetV1OrgOrgNameSpacesSpaceNameJobsJobIdNext
+command:
+  path:
+    - high5
+    - spaces
+    - jobs
+    - next
+  file: spaces-jobs.go
+  var: spacesJobsNextCommand
+  short: Retrieves the timestamps (in milliseconds, UTC+0) of the next n cronjob executions
+  long: Returns up to 10 UTC timestamps (in milliseconds) for the upcoming executions of the specified cronjob, defaulting to 3 if no amount is provided
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: jobId
+    goName: jobId
+    cli: jobId
+    var: jobId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: jobId
+  - source: query
+    name: amount
+    goName: Amount
+    cli: amount
+    var: amount
+    type: '*float32'
+    description: Amount of execution-timestamps that should be returned
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

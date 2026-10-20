@@ -1,0 +1,182 @@
+# Generation input for `cosmo spaces namespaces comments patch`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: PatchV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsCommentId
+command:
+  path:
+    - cosmo
+    - spaces
+    - namespaces
+    - comments
+    - patch
+  file: spaces-namespaces-comments.go
+  var: spacesNamespacesCommentsPatchCommand
+  short: Edit Comment
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: namespaceName
+    goName: namespaceName
+    cli: namespaceName
+    var: namespaceName
+    type: string
+    description: Name of the namespace (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: namespaceName
+  - source: path
+    name: commentId
+    goName: commentId
+    cli: commentId
+    var: commentId
+    type: openapi_types.UUID
+    resolve:
+      - flag
+      - prompt
+    prompt: commentId
+  - source: query
+    name: annotation
+    goName: Annotation
+    cli: annotation
+    var: annotation
+    type: '*bool'
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Annotation
+      name: annotation
+      cli: bodyAnnotation
+      var: bodyAnnotation
+      type: '*string'
+      description: Optional annotation for the comment
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Color
+      name: color
+      cli: color
+      var: color
+      type: '*CommentEditDtoColor'
+      description: Comment color
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Completed
+      name: completed
+      cli: completed
+      var: completed
+      type: '*bool'
+      description: Set the comment to completed/uncompleted.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Mentions
+      name: mentions
+      cli: mentions
+      var: mentions
+      type: '*[]string'
+      description: Array of mentioned user IDs
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: MentionsTeams
+      name: mentionsTeams
+      cli: mentionsTeams
+      var: mentionsTeams
+      type: '*[]string'
+      description: Array of mentioned team ids
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Metadata
+      name: metadata
+      cli: metadata
+      var: metadata
+      type: '*map[string]CommentEditDto_Metadata_AdditionalProperties'
+      description: Optional custom key/value metadata for integration with third-party systems. Values can be strings, numbers, booleans, or arrays thereof.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+      skip: true
+    - field: Text
+      name: text
+      cli: text
+      var: textValue
+      type: '*string'
+      description: Comment text
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Timestamp
+      name: timestamp
+      cli: timestamp
+      var: timestamp
+      type: '*struct{In float32; Out *float32}'
+      description: Timestamp the comment refers to
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+      skip: true
+    - field: Visibility
+      name: visibility
+      cli: visibility
+      var: visibility
+      type: '*CommentEditDtoVisibility'
+      description: Visibility of the comment. Internal comments are only visible to org members.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON200

@@ -1,0 +1,28 @@
+# Generation input for `cosmo assets upload`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: PutV1AssetsUpload
+command:
+  path:
+    - cosmo
+    - assets
+    - upload
+  file: assets.go
+  var: assetsUploadCommand
+  short: Upload an asset
+args:
+  - source: query
+    name: token
+    goName: Token
+    cli: token
+    var: token
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: token
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

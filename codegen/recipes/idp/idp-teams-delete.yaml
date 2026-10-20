@@ -1,0 +1,62 @@
+# Generation input for `idp teams delete`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: DeleteV1OrgOrgNameTeamsTeamName
+command:
+  path:
+    - idp
+    - teams
+    - delete
+  file: teams.go
+  var: teamsDeleteCommand
+  short: Delete Team
+  long: |-
+    Required role: ADMIN
+    Required scopes: IDP_ORGANIZATION_WRITE
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: teamName
+    goName: teamName
+    cli: teamName
+    var: teamName
+    type: string
+    description: Name of the team (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: TeamName
+    persist: true
+    prompt: teamName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body

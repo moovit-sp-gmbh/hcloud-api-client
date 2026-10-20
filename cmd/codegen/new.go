@@ -89,6 +89,7 @@ func regenCommand() *cobra.Command {
 	var (
 		dryRun   bool
 		skipSQLC bool
+		quiet    bool
 	)
 
 	cmd := &cobra.Command{
@@ -123,21 +124,34 @@ func regenCommand() *cobra.Command {
 				return nil
 			}
 
+			// Reuse one index across the batch: reparsing 4.4MB of generated
+			// client per recipe would dominate a full replay.
+			ix, err := codegen.LoadIndex(root)
+			if err != nil {
+				return err
+			}
+
 			out := cmd.OutOrStdout()
 			for i, r := range recipes {
-				fmt.Fprintf(out, "\n=== %s ===\n", paths[i])
-				res, err := codegen.Apply(root, r, codegen.ApplyOptions{DryRun: dryRun, SkipSQLC: skipSQLC})
+				if !quiet {
+					fmt.Fprintf(out, "\n=== %s ===\n", paths[i])
+				}
+				res, err := codegen.Apply(root, r, codegen.ApplyOptions{DryRun: dryRun, SkipSQLC: skipSQLC, Index: ix})
 				if err != nil {
 					return fmt.Errorf("%s: %w", paths[i], err)
 				}
-				report(out, res, dryRun)
+				if !quiet {
+					report(out, res, dryRun)
+				}
 			}
+			fmt.Fprintf(out, "\nreplayed %d recipes\n", len(recipes))
 			return nil
 		},
 	}
 
 	cmd.Flags().BoolVar(&dryRun, "dry-run", false, "report what would be written without writing it")
 	cmd.Flags().BoolVar(&skipSQLC, "skip-sqlc", false, "do not run sqlc generate for a new context column")
+	cmd.Flags().BoolVarP(&quiet, "quiet", "q", false, "only report the total")
 	return cmd
 }
 

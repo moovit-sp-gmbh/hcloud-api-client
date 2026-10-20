@@ -15,6 +15,8 @@ func init() {
 	loginCommand.AddCommand(loginOauthCommand)
 	loginCommand.AddCommand(loginPreCommand)
 	loginCommand.AddCommand(loginSamlCommand)
+	loginCommand.AddCommand(loginForgotPasswordCommand)
+	loginCommand.AddCommand(loginVerifyCommand)
 	loginCommand.Flags().StringP("email", "e", "", "email")
 	loginCommand.Flags().StringP("password", "p", "", "password")
 }
@@ -102,6 +104,16 @@ func Command() *cobra.Command {
 	idpCommand.AddCommand(oauthCommand)
 	idpCommand.AddCommand(guestCommand)
 	idpCommand.AddCommand(messagesCommand)
+	idpCommand.AddCommand(authCommand)
+	idpCommand.AddCommand(deleteCommand)
+	idpCommand.AddCommand(idpPatchCommand)
+	idpCommand.AddCommand(licenseCommand)
+	idpCommand.AddCommand(membersCommand)
+	idpCommand.AddCommand(serviceAccountsCommand)
+	idpCommand.AddCommand(settingsCommand)
+	idpCommand.AddCommand(storageCommand)
+	idpCommand.AddCommand(teamsCommand)
+	idpCommand.AddCommand(registerCommand)
 
 	return idpCommand
 }

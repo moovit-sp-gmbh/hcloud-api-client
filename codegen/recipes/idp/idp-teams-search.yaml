@@ -1,0 +1,90 @@
+# Generation input for `idp teams search`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1OrgOrgNameTeamsSearch
+command:
+  path:
+    - idp
+    - teams
+    - search
+  file: teams.go
+  var: teamsSearchCommand
+  short: Search all teams of organization by organization name and the supplied filters
+  long: |-
+    Required role: MEMBER
+    Required scopes: IDP_ORGANIZATION_READ
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: query
+    name: limit
+    goName: Limit
+    cli: limit
+    var: limit
+    type: '*float32'
+    description: Page size
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: page
+    goName: Page
+    cli: page
+    var: page
+    type: '*float32'
+    description: Page index
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: totalMemberCount
+    goName: TotalMemberCount
+    cli: totalMemberCount
+    var: totalMemberCount
+    type: '*bool'
+    description: If true, an additional property holding the total member count of the organization will be returned
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: membersSample
+    goName: MembersSample
+    cli: membersSample
+    var: membersSample
+    type: '*float32'
+    description: If set, an additional property holding a sample of members will be returned. The provided number represents the max size of the sample
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

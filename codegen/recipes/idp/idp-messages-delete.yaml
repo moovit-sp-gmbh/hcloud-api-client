@@ -1,0 +1,41 @@
+# Generation input for `idp messages delete`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: DeleteV1MessagesMessageId
+command:
+  path:
+    - idp
+    - messages
+    - delete
+  file: messages.go
+  var: messagesDeleteCommand
+  short: Delete message by ID
+args:
+  - source: path
+    name: messageId
+    goName: messageId
+    cli: messageId
+    var: messageId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: messageId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body

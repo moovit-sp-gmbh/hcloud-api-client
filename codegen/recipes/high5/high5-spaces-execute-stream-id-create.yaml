@@ -1,0 +1,91 @@
+# Generation input for `high5 spaces execute stream id create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PostV1OrgOrgNameSpacesSpaceNameExecuteStreamIdStreamId
+command:
+  path:
+    - high5
+    - spaces
+    - execute
+    - stream
+    - id
+    - create
+  file: spaces-execute-stream-id.go
+  var: spacesExecuteStreamIdCreateCommand
+  short: Execute a stream by it's ID
+  long: Creates execution entries in the database and dispatches the stream to the specified target agent via NATS; supports an optional 'design' flag to execute the current design instead of the published snapshot and an optional 'debug' flag to enable step-by-step debug mode
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: streamId
+    goName: streamId
+    cli: streamId
+    var: streamId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: streamId
+  - source: query
+    name: design
+    goName: Design
+    cli: design
+    var: design
+    type: '*bool'
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: debug
+    goName: Debug
+    cli: debug
+    var: debug
+    type: '*bool'
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

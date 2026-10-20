@@ -1,0 +1,59 @@
+# Generation input for `idp settings domains create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1OrgOrgNameSettingsDomains
+command:
+  path:
+    - idp
+    - settings
+    - domains
+    - create
+  file: settings-domains.go
+  var: settingsDomainsCreateCommand
+  short: Creates a new domain for an organization
+  long: 'Required role: ADMIN'
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: string
+      description: Fully qualified domain name
+      resolve:
+        - flag
+        - prompt
+      prompt: name
+response:
+  render: body
+  field: JSON201

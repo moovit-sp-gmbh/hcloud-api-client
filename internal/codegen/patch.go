@@ -193,6 +193,95 @@ func ReplaceVarDecl(src []byte, name, decl string) ([]byte, error) {
 	return nil, fmt.Errorf("no declaration of %s to replace", name)
 }
 
+// SetFlagsFor makes init() register exactly these flags for one command.
+//
+// An existing block is replaced where it stands rather than removed and
+// re-added. Several commands share an init() once they share a file, and
+// re-adding at a fixed position would shuffle the blocks on every regeneration,
+// so replaying a recipe would never reproduce its own output.
+func SetFlagsFor(src []byte, varName string, lines []string) ([]byte, error) {
+	if len(lines) == 0 {
+		return RemoveFlagsFor(src, varName)
+	}
+
+	fset := token.NewFileSet()
+	f, err := parser.ParseFile(fset, "src.go", src, parser.ParseComments)
+	if err != nil {
+		return nil, err
+	}
+
+	var block strings.Builder
+	for i, l := range lines {
+		if i > 0 {
+			block.WriteString("\n")
+		}
+		block.WriteString("\t" + l)
+	}
+
+	for _, decl := range f.Decls {
+		fn, ok := decl.(*ast.FuncDecl)
+		if !ok || fn.Recv != nil || fn.Name.Name != "init" || fn.Body == nil {
+			continue
+		}
+
+		// Replace this command's existing registrations in place.
+		var first, last ast.Stmt
+		var lastAnyFlag ast.Stmt
+		for _, stmt := range fn.Body.List {
+			expr, ok := stmt.(*ast.ExprStmt)
+			if !ok {
+				continue
+			}
+			if isFlagRegistration(expr.X, varName) {
+				if first == nil {
+					first = stmt
+				}
+				last = stmt
+			}
+			if isAnyFlagRegistration(expr.X) {
+				lastAnyFlag = stmt
+			}
+		}
+		if first != nil {
+			start := fset.Position(first.Pos()).Offset
+			end := fset.Position(last.End()).Offset
+			return splice(src, start, end, strings.TrimLeft(block.String(), "\t")), nil
+		}
+
+		// New to this init(): sit with the other flag registrations, which keeps
+		// them ahead of the AddCommand calls.
+		if lastAnyFlag != nil {
+			at := fset.Position(lastAnyFlag.End()).Offset
+			return splice(src, at, at, "\n"+block.String()), nil
+		}
+		opening := fset.Position(fn.Body.Lbrace).Offset + 1
+		return splice(src, opening, opening, "\n"+block.String()+"\n"), nil
+	}
+
+	return AddFlagsToInit(src, lines)
+}
+
+// isAnyFlagRegistration matches a flag registration on any command.
+func isAnyFlagRegistration(e ast.Expr) bool {
+	call, ok := e.(*ast.CallExpr)
+	if !ok {
+		return false
+	}
+	sel, ok := call.Fun.(*ast.SelectorExpr)
+	if !ok {
+		return false
+	}
+	inner, ok := sel.X.(*ast.CallExpr)
+	if !ok {
+		return false
+	}
+	innerSel, ok := inner.Fun.(*ast.SelectorExpr)
+	if !ok {
+		return false
+	}
+	return innerSel.Sel.Name == "Flags" || innerSel.Sel.Name == "PersistentFlags"
+}
+
 // RemoveFlagsFor drops every flag registration in init() that targets one
 // command variable, so regeneration re-registers rather than accumulating.
 func RemoveFlagsFor(src []byte, varName string) ([]byte, error) {

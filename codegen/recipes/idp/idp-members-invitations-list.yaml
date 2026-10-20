@@ -1,0 +1,51 @@
+# Generation input for `idp members invitations-list`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1OrgOrgNameMembersInvitationsList
+command:
+  path:
+    - idp
+    - members
+    - invitations-list
+  file: members.go
+  var: membersInvitationsListCommand
+  short: Invite multiple members to an organization
+  long: |-
+    Sends invitations to a list of users to join the specified organization
+    Required role: ADMIN
+    Required scopes: IDP_ORGANIZATION_WRITE
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON201

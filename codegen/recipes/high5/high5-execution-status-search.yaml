@@ -1,0 +1,68 @@
+# Generation input for `high5 execution status search`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PostV1OrgOrgNameExecutionStatusSearch
+command:
+  path:
+    - high5
+    - execution
+    - status
+    - search
+  file: execution-status.go
+  var: executionStatusSearchCommand
+  short: Retrieve the Stream execution states of an Organization
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: query
+    name: limit
+    goName: Limit
+    cli: limit
+    var: limit
+    type: '*float32'
+    description: Page size
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: page
+    goName: Page
+    cli: page
+    var: page
+    type: '*float32'
+    description: Page index
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: raw
+  flag: body
+response:
+  render: body

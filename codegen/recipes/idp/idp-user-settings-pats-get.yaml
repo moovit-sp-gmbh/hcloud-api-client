@@ -1,0 +1,45 @@
+# Generation input for `idp user settings pats get`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1UserSettingsPatsPatId
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - pats
+    - get
+  file: user-settings-pats.go
+  var: userSettingsPatsGetCommand
+  short: Get a single pat by ID
+  long: 'Required scopes: HCLOUD_FULL'
+args:
+  - source: path
+    name: patId
+    goName: patId
+    cli: patId
+    var: patId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: patId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

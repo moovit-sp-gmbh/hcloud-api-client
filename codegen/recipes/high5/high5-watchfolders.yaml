@@ -1,0 +1,33 @@
+# Generation input for `high5 watchfolders`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: GetV1Watchfolders
+command:
+  path:
+    - high5
+    - watchfolders
+  file: watchfolders.go
+  var: watchfoldersCommand
+  short: Get all watch folders the user is assigned to as target
+  long: Get all watch folders the user is assigned to as target, directly or through a pool. Used by idp to compute NATS permissions and by the agent to join the watch folders it is already assigned to on startup/reconnect.
+args:
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

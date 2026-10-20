@@ -1,0 +1,110 @@
+# Generation input for `idp register create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1Register
+command:
+  path:
+    - idp
+    - register
+    - create
+  file: register.go
+  var: registerCreateCommand
+  short: Register a user in hcloud system
+args:
+  - source: query
+    name: validationCode
+    goName: ValidationCode
+    cli: validationCode
+    var: validationCode
+    type: '*openapi_types.UUID'
+    description: Optional validation code (required for complete registration that was not triggered before)
+    unset: omit
+    resolve:
+      - flag
+body:
+  mode: typed
+  fields:
+    - field: Captcha
+      name: captcha
+      cli: captcha
+      var: captcha
+      type: string
+      description: Valid google reCAPTCHAV2
+      resolve:
+        - flag
+        - prompt
+      prompt: captcha
+    - field: Company
+      name: company
+      cli: company
+      var: company
+      type: '*string'
+      description: Name of the company the organization belongs to (only alphanumeric characters, underscores, hyphens, dots and spaces are allowed; it should contain between 1 and 255 characters)
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Email
+      name: email
+      cli: email
+      var: email
+      type: openapi_types.Email
+      description: Email of the user
+      resolve:
+        - flag
+        - context
+        - prompt
+      context: Email
+      prompt: email
+    - field: Language
+      name: language
+      cli: language
+      var: language
+      type: '*UserRegistrationDtoLanguage'
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: string
+      description: Name of the user (only alphanumeric characters, underscores, hyphens, dots and spaces are allowed; it should contain between 3 and 255 characters)
+      resolve:
+        - flag
+        - prompt
+      prompt: name
+    - field: Password
+      name: password
+      cli: password
+      var: password
+      type: string
+      description: Password of the user (only alphanumeric, underscores, hyphens, dots and special characters are allowed; it should contain between 8 and 255 characters)
+      resolve:
+        - flag
+        - prompt
+      prompt: password
+    - field: TargetUrl
+      name: targetUrl
+      cli: targetUrl
+      var: targetUrl
+      type: '*string'
+      description: URL to create the redirect link in the email. Defaults to https://app.helmut.cloud.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Timezone
+      name: timezone
+      cli: timezone
+      var: timezone
+      type: '*string'
+      description: Define the user's timezone
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON200

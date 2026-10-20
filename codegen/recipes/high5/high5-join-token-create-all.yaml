@@ -1,0 +1,19 @@
+# Generation input for `high5 join token create-all`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PostV1JoinToken
+command:
+  path:
+    - high5
+    - join
+    - token
+    - create-all
+  file: join-token.go
+  var: joinTokenCreateAllCommand
+  short: Use a join token to create an agent user
+  long: Create an agent user using a join token in the Authorization header
+body:
+  mode: none
+response:
+  render: body
+  field: JSON201

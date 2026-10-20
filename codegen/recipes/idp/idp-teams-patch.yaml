@@ -1,0 +1,94 @@
+# Generation input for `idp teams patch`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1OrgOrgNameTeamsTeamName
+command:
+  path:
+    - idp
+    - teams
+    - patch
+  file: teams.go
+  var: teamsPatchCommand
+  short: Patch a team by its name
+  long: |-
+    Required role: MANAGER
+    Required scopes: IDP_ORGANIZATION_WRITE
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: teamName
+    goName: teamName
+    cli: teamName
+    var: teamName
+    type: string
+    description: Name of the team (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: TeamName
+    persist: true
+    prompt: teamName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: '*string'
+      description: Name of the team (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: UserIds
+      name: userIds
+      cli: userIds
+      var: userIds
+      type: '*[]string'
+      description: Array of user database IDs that should be part of the team
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: UsersOperation
+      name: usersOperation
+      cli: usersOperation
+      var: usersOperation
+      type: '*UsersOperation'
+      description: Define which operation should be performed with the provided users array on the existing users array
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON200

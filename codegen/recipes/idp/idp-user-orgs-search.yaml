@@ -1,0 +1,85 @@
+# Generation input for `idp user orgs search`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1UserOrgsSearch
+command:
+  path:
+    - idp
+    - user
+    - orgs
+    - search
+  file: user-orgs.go
+  var: userOrgsSearchCommand
+  short: Search for organizations with search filters
+  long: 'Required scopes: IDP_ORGANIZATION_READ'
+args:
+  - source: query
+    name: limit
+    goName: Limit
+    cli: limit
+    var: limit
+    type: '*float32'
+    description: Page size
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: page
+    goName: Page
+    cli: page
+    var: page
+    type: '*float32'
+    description: Page index
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: teamsOfUser
+    goName: TeamsOfUser
+    cli: teamsOfUser
+    var: teamsOfUser
+    type: '*bool'
+    description: If true, an additional property holding all teams that the requesting user is part of and that belong to the organization will be returned
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: totalMemberCount
+    goName: TotalMemberCount
+    cli: totalMemberCount
+    var: totalMemberCount
+    type: '*bool'
+    description: If true, an additional property holding the total member count of the organization will be returned
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: membersSample
+    goName: MembersSample
+    cli: membersSample
+    var: membersSample
+    type: '*float32'
+    description: If set, an additional property holding a sample of members will be returned. The provided number represents the max size of the sample
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

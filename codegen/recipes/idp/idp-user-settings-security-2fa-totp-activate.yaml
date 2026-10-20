@@ -1,0 +1,48 @@
+# Generation input for `idp user settings security 2fa totp activate`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1UserSettingsSecurity2faTotpActivate
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - security
+    - 2fa
+    - totp
+    - activate
+  file: user-settings-security-2fa-totp.go
+  var: userSettingsSecurity2faTotpActivateCommand
+  short: Activate a user TOTP
+  long: 'Required scopes: IDP_USER_DELETE'
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Token
+      name: token
+      cli: bodyToken
+      var: bodyToken
+      type: string
+      description: Token to match against a TOTP secret
+      resolve:
+        - flag
+        - prompt
+      prompt: token
+response:
+  render: body
+  field: JSON200

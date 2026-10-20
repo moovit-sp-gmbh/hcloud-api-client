@@ -1,0 +1,58 @@
+# Generation input for `cosmo spaces trash create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: PostV1OrgOrgNameSpacesSpaceNameTrash
+command:
+  path:
+    - cosmo
+    - spaces
+    - trash
+    - create
+  file: spaces-trash.go
+  var: spacesTrashCreateCommand
+  short: Empty the trashbin
+  long: This is a non-recoverable action. All assets in the trash bin will be permanently deleted.
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body

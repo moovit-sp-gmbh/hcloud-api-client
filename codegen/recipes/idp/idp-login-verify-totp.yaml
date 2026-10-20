@@ -1,0 +1,40 @@
+# Generation input for `idp login verify totp`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1LoginVerifyTotp
+command:
+  path:
+    - idp
+    - login
+    - verify
+    - totp
+  file: login-verify.go
+  var: loginVerifyTotpCommand
+  short: Endpoint to validate user totp
+body:
+  mode: typed
+  fields:
+    - field: Email
+      name: email
+      cli: email
+      var: email
+      type: openapi_types.Email
+      description: Email of the user
+      resolve:
+        - flag
+        - context
+        - prompt
+      context: Email
+      prompt: email
+    - field: Token
+      name: token
+      cli: token
+      var: token
+      type: string
+      description: Token to match against a TOTP secret if 2FA is enabled
+      resolve:
+        - flag
+        - prompt
+      prompt: token
+response:
+  render: body

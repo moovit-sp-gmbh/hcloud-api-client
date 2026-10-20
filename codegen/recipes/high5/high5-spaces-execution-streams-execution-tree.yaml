@@ -1,0 +1,70 @@
+# Generation input for `high5 spaces execution streams execution-tree`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: GetV1OrgOrgNameSpacesSpaceNameExecutionStreamsExecutionTreeStreamStatusId
+command:
+  path:
+    - high5
+    - spaces
+    - execution
+    - streams
+    - execution-tree
+  file: spaces-execution-streams.go
+  var: spacesExecutionStreamsExecutionTreeCommand
+  short: Retrieve the complete executionTree the stream execution is part of. An executionTree represents the hierarchical structure of stream executions initiated by a 'Trigger Stream' node
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: streamStatusId
+    goName: streamStatusId
+    cli: streamStatusId
+    var: streamStatusId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: streamStatusId
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

@@ -20,6 +20,8 @@ func init() {
 	patchCommand.Flags().String("name", "", "New user name")
 	patchPwCommand.Flags().String("old", "", "Old password")
 	patchPwCommand.Flags().String("new", "", "New password")
+	userDeleteCommand.Flags().String("token", "", "authorization token")
+	userSessionsCommand.Flags().String("token", "", "authorization token")
 	whoamiCommand.AddCommand(patchCommand)
 	whoamiCommand.AddCommand(getUserEmailCommand)
 	whoamiCommand.AddCommand(getUserNatsPermissionsCommand)
@@ -27,6 +29,11 @@ func init() {
 	whoamiCommand.AddCommand(userLicenseCommand)
 	whoamiCommand.AddCommand(userSettingsCommand)
 	whoamiCommand.AddCommand(userPingCommand)
+	whoamiCommand.AddCommand(userDeleteCommand)
+	whoamiCommand.AddCommand(userOrgsCommand)
+	whoamiCommand.AddCommand(userPasskeyCommand)
+	whoamiCommand.AddCommand(userPasswordCommand)
+	whoamiCommand.AddCommand(userSessionsCommand)
 
 }
 
@@ -344,6 +351,106 @@ var userPingCommand = &cobra.Command{
 		latest.Jwt = sql.NullString{Valid: true, String: jwt}
 
 		res, err := client.GetV1UserPingWithResponse(context.TODO(), func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", jwt)
+			return nil
+		})
+		if err != nil {
+			return err
+		}
+
+		var data any
+		err = json.Unmarshal(res.Body, &data)
+		if err != nil {
+			return err
+		}
+		text, err := command.JSON(data)
+		if err != nil {
+			return err
+		}
+
+		if res.StatusCode() >= 200 && res.StatusCode() < 300 {
+			service.Push(latest)
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var userDeleteCommand = &cobra.Command{
+	Use:   "delete",
+	Short: "Delete the current request user",
+	Long:  "Required scopes: IDP_USER_DELETE",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		client, err := clients.NewIDPClient(cmd)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		latest, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		jwt, err := command.GetArg(cmd, command.StringFlagIfSet("token"), command.ContextIfValidString(latest.Jwt), command.PromptString("authorization token"))
+		if err != nil {
+			return err
+		}
+		latest.Jwt = sql.NullString{Valid: true, String: jwt}
+
+		res, err := client.DeleteV1UserWithResponse(context.TODO(), func(_ context.Context, req *http.Request) error {
+			req.Header.Set("authorization", jwt)
+			return nil
+		})
+		if err != nil {
+			return err
+		}
+
+		var data any
+		err = json.Unmarshal(res.Body, &data)
+		if err != nil {
+			return err
+		}
+		text, err := command.JSON(data)
+		if err != nil {
+			return err
+		}
+
+		if res.StatusCode() >= 200 && res.StatusCode() < 300 {
+			service.Push(latest)
+		}
+
+		command.SetResult(cmd, text)
+
+		return nil
+	},
+}
+
+var userSessionsCommand = &cobra.Command{
+	Use:   "sessions",
+	Short: "Resets all user sessions and therewith logs him out of hcloud on all devices",
+	Long:  "Required scopes: HCLOUD_FULL",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		client, err := clients.NewIDPClient(cmd)
+		if err != nil {
+			return err
+		}
+
+		service := internal.New()
+		latest, err := service.GetLatest()
+		if err != nil {
+			return err
+		}
+
+		jwt, err := command.GetArg(cmd, command.StringFlagIfSet("token"), command.ContextIfValidString(latest.Jwt), command.PromptString("authorization token"))
+		if err != nil {
+			return err
+		}
+		latest.Jwt = sql.NullString{Valid: true, String: jwt}
+
+		res, err := client.DeleteV1UserSessionsWithResponse(context.TODO(), func(_ context.Context, req *http.Request) error {
 			req.Header.Set("authorization", jwt)
 			return nil
 		})

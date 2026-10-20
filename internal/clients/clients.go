@@ -1,6 +1,7 @@
 package clients
 
 import (
+	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/clients/cosmoClient"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/clients/daliClient"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/clients/high5Client"
 	"github.com/moovit-sp-gmbh/hcloud-cli-repl/internal/clients/idpClient"
@@ -35,21 +36,6 @@ func NewHigh5Client(cmd *cobra.Command) (*high5Client.ClientWithResponses, error
 
 	return client, nil
 }
-
-// func NewCosmoClient(cmd *cobra.Command) (*cosmoClient.ClientWithResponses, error) {
-// 	server, err := command.ServerMothership(cmd)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-//
-// 	client, err := mothershipClient.NewClientWithResponses(server)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-//
-// 	return client, nil
-// }
-
 func NewDaliClient(cmd *cobra.Command) (*daliClient.ClientWithResponses, error) {
 	server, err := command.ServerDali(cmd)
 	if err != nil {
@@ -71,6 +57,20 @@ func NewMothershipClient(cmd *cobra.Command) (*mothershipClient.ClientWithRespon
 	}
 
 	client, err := mothershipClient.NewClientWithResponses(server)
+	if err != nil {
+		return nil, err
+	}
+
+	return client, nil
+}
+
+func NewCosmoClient(cmd *cobra.Command) (*cosmoClient.ClientWithResponses, error) {
+	server, err := command.ServerCosmo(cmd)
+	if err != nil {
+		return nil, err
+	}
+
+	client, err := cosmoClient.NewClientWithResponses(server)
 	if err != nil {
 		return nil, err
 	}

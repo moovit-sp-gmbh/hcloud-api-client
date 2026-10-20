@@ -1,0 +1,46 @@
+# Generation input for `high5 spaces request catch list`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: GetV1OrgOrgNameSpacesSpaceNameRequestCatch
+command:
+  path:
+    - high5
+    - spaces
+    - request
+    - catch
+    - list
+  file: spaces-request-catch.go
+  var: spacesRequestCatchListCommand
+  short: Catch and forward HTTP request to NATS
+  long: Captures incoming HTTP request headers and body from any method and forwards them to NATS for persistence. Requests with payloads exceeding 512KB will be rejected
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

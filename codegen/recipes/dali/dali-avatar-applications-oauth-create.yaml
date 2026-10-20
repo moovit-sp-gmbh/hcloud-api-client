@@ -1,0 +1,60 @@
+# Generation input for `dali avatar applications oauth create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: daliClient
+operation: PostV1AvatarOrgOrgNameApplicationsOauthAppId
+command:
+  path:
+    - dali
+    - avatar
+    - applications
+    - oauth
+    - create
+  file: avatar-applications-oauth.go
+  var: avatarApplicationsOauthCreateCommand
+  short: Create a new avatar for the OAuth application
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: appId
+    goName: appId
+    cli: appId
+    var: appId
+    type: string
+    description: ID of the OAuth application (ObjectId identifier, consists of 24 hexadecimal digits)
+    resolve:
+      - flag
+      - prompt
+    prompt: appId
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body
+  field: JSON201

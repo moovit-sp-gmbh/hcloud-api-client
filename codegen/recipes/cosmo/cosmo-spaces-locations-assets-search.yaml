@@ -1,0 +1,70 @@
+# Generation input for `cosmo spaces locations assets search`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: PostV1OrgOrgNameSpacesSpaceNameLocationsLocationIdAssetsSearch
+command:
+  path:
+    - cosmo
+    - spaces
+    - locations
+    - assets
+    - search
+  file: spaces-locations-assets.go
+  var: spacesLocationsAssetsSearchCommand
+  short: Search assets of location
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: locationId
+    goName: locationId
+    cli: locationId
+    var: locationId
+    type: openapi_types.UUID
+    resolve:
+      - flag
+      - prompt
+    prompt: locationId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

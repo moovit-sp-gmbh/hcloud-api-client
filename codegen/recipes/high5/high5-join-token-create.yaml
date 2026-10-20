@@ -1,0 +1,60 @@
+# Generation input for `high5 join token create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PostV1OrgOrgNameJoinToken
+command:
+  path:
+    - high5
+    - join
+    - token
+    - create
+  file: join-token.go
+  var: joinTokenCreateCommand
+  short: Creates a join token for an organization
+  long: Creates a join token for an organization with a given name that can be used to create agent users
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: typed
+  fields:
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: string
+      description: Name of the join token (only alphanumeric characters, underscores, hyphens and dots are allowed; it should contain between 1 and 64 characters)
+      resolve:
+        - flag
+        - prompt
+      prompt: name
+response:
+  render: body
+  field: JSON201

@@ -1,0 +1,100 @@
+# Generation input for `idp login oauth access-token`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1LoginOauthAccessToken
+command:
+  path:
+    - idp
+    - login
+    - oauth
+    - access-token
+  file: login-oauth.go
+  var: loginOauthAccessTokenCommand
+  short: OAuth Token Endpoint
+  long: Use this endpoint to exchange a code for an access token. The code can be obtained via the authorization endpoint
+body:
+  mode: typed
+  fields:
+    - field: ClientId
+      name: client_id
+      cli: client_id
+      var: clientId
+      type: string
+      description: HcloudClientId of the OAuth app
+      resolve:
+        - flag
+        - prompt
+      prompt: client_id
+    - field: ClientSecret
+      name: client_secret
+      cli: client_secret
+      var: clientSecret
+      type: '*string'
+      description: Client secret of the OAuth app
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Code
+      name: code
+      cli: code
+      var: code
+      type: '*string'
+      description: Code from the OAuth code grant. Will be ignored if the grant type is not authorization_code
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: CodeVerifier
+      name: code_verifier
+      cli: code_verifier
+      var: codeVerifier
+      type: '*string'
+      description: Optional value, used for PKCE (https://www.rfc-editor.org/rfc/rfc7636#section-4)
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: GrantType
+      name: grant_type
+      cli: grant_type
+      var: grantType
+      type: GrantType
+      description: Type of authorization grant.
+      resolve:
+        - flag
+        - prompt
+      prompt: grant_type
+    - field: RedirectUri
+      name: redirect_uri
+      cli: redirect_uri
+      var: redirectUri
+      type: '*string'
+      description: Callback URI of the OAuth app. If a redirect_uri was sent in the authorization phase, then it must be sent again. Optional for the authorization_code grant and ignored in the refresh_token grant
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: RefreshToken
+      name: refresh_token
+      cli: refresh_token
+      var: refreshToken
+      type: '*string'
+      description: RefreshToken from the OAuth token grant. Required in the refresh_token grant and ignored in the authorization_code grant
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Scope
+      name: scope
+      cli: scope
+      var: scope
+      type: '*string'
+      description: Scope that the access token should be granted. Optional for the refresh_token grant and ignored in the authorization_code grant. The requested scope MUST NOT include any scope not originally granted, and if omitted is treated as equal to the scope originally granted
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON200

@@ -1,0 +1,56 @@
+# Generation input for `high5 spaces execute webhook create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PostV1OrgOrgNameSpacesSpaceNameExecuteWebhookWebhookToken
+command:
+  path:
+    - high5
+    - spaces
+    - execute
+    - webhook
+    - create
+  file: spaces-execute-webhook.go
+  var: spacesExecuteWebhookCreateCommand
+  short: Execute webhook
+  long: Executes a webhook. This path is equivalent to the 'url' property of Webhook
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: webhookToken
+    goName: webhookToken
+    cli: webhookToken
+    var: webhookToken
+    type: string
+    description: Last path segment of the webhook URL (128 char long hex string)
+    resolve:
+      - flag
+      - prompt
+    prompt: webhookToken
+body:
+  mode: none
+response:
+  render: body

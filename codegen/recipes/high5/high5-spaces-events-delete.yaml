@@ -1,0 +1,80 @@
+# Generation input for `high5 spaces events delete`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: DeleteV1OrgOrgNameSpacesSpaceNameEventsEventName
+command:
+  path:
+    - high5
+    - spaces
+    - events
+    - delete
+  file: spaces-events.go
+  var: spacesEventsDeleteCommand
+  short: Delete an event by it's name
+  long: Deletes an event along with all its streams and designs. If jobs linked to this event exist, a 409 is returned unless deleteLinkedJobs=true is provided, in which case linked jobs are deleted as well
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: eventName
+    goName: eventName
+    cli: eventName
+    var: eventName
+    type: string
+    description: Name of the event (only alphanumeric characters, underscores, hyphens and dots are allowed; it should contain between 1 and 128 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: eventName
+  - source: query
+    name: deleteLinkedJobs
+    goName: DeleteLinkedJobs
+    cli: deleteLinkedJobs
+    var: deleteLinkedJobs
+    type: '*bool'
+    description: If true, all jobs linked to this event are deleted together with the event; if omitted or false and linked jobs exist, a 409 is returned
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body

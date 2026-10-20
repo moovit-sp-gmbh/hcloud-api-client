@@ -19,6 +19,10 @@ type ApplyOptions struct {
 	// new context column does not exist on db.Context until sqlc has run, so
 	// the tree will not build without it.
 	SkipSQLC bool
+	// Index, when set, is reused instead of reparsing the generated clients.
+	// Those are 4.4MB of Go, so a bulk run that reloaded them per command would
+	// spend almost all of its time there.
+	Index *Index
 }
 
 // ApplyResult records what applying a recipe did.
@@ -40,9 +44,12 @@ func Apply(root string, r *Recipe, opts ApplyOptions) (*ApplyResult, error) {
 		return nil, err
 	}
 
-	ix, err := LoadIndex(root)
-	if err != nil {
-		return nil, err
+	ix := opts.Index
+	if ix == nil {
+		var err error
+		if ix, err = LoadIndex(root); err != nil {
+			return nil, err
+		}
 	}
 	op, ok := ix.Op(r.Client, r.Operation)
 	if !ok {
@@ -51,6 +58,8 @@ func Apply(root string, r *Recipe, opts ApplyOptions) (*ApplyResult, error) {
 	if !op.Callable() {
 		return nil, fmt.Errorf("%s %s cannot be called: %s", op.Method, op.Path, op.Blocked)
 	}
+	// The tree is reloaded every time: a previous command may have added the
+	// group this one hangs under.
 	tree, err := LoadTree(root)
 	if err != nil {
 		return nil, err
@@ -492,26 +501,33 @@ func (a *apply) command(parentVar, parentFile string) error {
 	if err != nil {
 		return fmt.Errorf("%s: %w", g.Path, err)
 	}
+	// Replacing a declaration is how regeneration works, but only when it is
+	// this command's own. Two commands deriving the same variable name would
+	// otherwise silently overwrite each other.
+	if declared {
+		if n, ok := a.tree.Node(g.Dir, a.recipe.Command.Var); ok {
+			if want := strings.Join(a.recipe.Command.Path, " "); n.String() != want {
+				return fmt.Errorf("%s already declares %s for %q; %q needs a different command variable",
+					g.Path, a.recipe.Command.Var, n.String(), want)
+			}
+		}
+	}
 
 	if src, err = AddImports(src, g.Imports); err != nil {
 		return err
 	}
+	// SetFlagsFor replaces this command's registrations where they stand, so a
+	// file shared by several commands keeps its order across regenerations.
+	if src, err = SetFlagsFor(src, a.recipe.Command.Var, g.Flags); err != nil {
+		return err
+	}
 	if declared {
-		// Regenerating: the recipe owns this declaration, so replace it and its
-		// flags rather than appending a second copy.
-		if src, err = RemoveFlagsFor(src, a.recipe.Command.Var); err != nil {
-			return err
-		}
-		if src, err = AddFlagsToInit(src, g.Flags); err != nil {
-			return err
-		}
+		// Regenerating: the recipe owns this declaration, so replace it rather
+		// than appending a second copy.
 		if src, err = ReplaceVarDecl(src, a.recipe.Command.Var, g.VarBlock); err != nil {
 			return err
 		}
 	} else {
-		if src, err = AddFlagsToInit(src, g.Flags); err != nil {
-			return err
-		}
 		src = AppendDecl(src, g.VarBlock)
 	}
 	return a.write(g.Path, src, false)

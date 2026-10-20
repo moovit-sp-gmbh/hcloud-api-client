@@ -3,6 +3,990 @@
 # add a `status: skipped` entry with a `reason` to retire an endpoint from
 # the missing list.
 endpoints:
+  - client: cosmoClient
+    operation: PutV1AssetsUpload
+    method: PUT
+    path: /v1/assets/upload
+    command: cosmo assets upload
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-assets-upload.yaml
+  - client: cosmoClient
+    operation: GetV1Events
+    method: GET
+    path: /v1/events
+    command: cosmo events
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-events.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameAssetsBrowse
+    method: POST
+    path: /v1/org/{orgName}/assets/browse
+    command: cosmo assets browse
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-assets-browse.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameAssetsSearch
+    method: POST
+    path: /v1/org/{orgName}/assets/search
+    command: cosmo assets search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-assets-search.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpaces
+    method: GET
+    path: /v1/org/{orgName}/spaces
+    command: cosmo spaces list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-list.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpaces
+    method: POST
+    path: /v1/org/{orgName}/spaces
+    command: cosmo spaces create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-create.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceName
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}
+    command: cosmo spaces delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-delete.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceName
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}
+    command: cosmo spaces get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-get.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameAddressBook
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/address-book
+    command: cosmo spaces address-book create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-address-book-create.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameAddressBookSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/address-book/search
+    command: cosmo spaces address-book search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-address-book-search.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/address-book/{bookId}
+    command: cosmo spaces address-book delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-address-book-delete.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameAddressBookBookId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/address-book/{bookId}
+    command: cosmo spaces address-book get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-address-book-get.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameAddressBookBookId
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/address-book/{bookId}
+    command: cosmo spaces address-book patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-address-book-patch.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembers
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/address-book/{bookId}/members
+    command: cosmo spaces address-book members delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-address-book-members-delete.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameAddressBookBookIdMembers
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/address-book/{bookId}/members
+    command: cosmo spaces address-book members create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-address-book-members-create.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameAddressBookBookIdTeams
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/address-book/{bookId}/teams
+    command: cosmo spaces address-book teams delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-address-book-teams-delete.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameAddressBookBookIdTeams
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/address-book/{bookId}/teams
+    command: cosmo spaces address-book teams create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-address-book-teams-create.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameAssets
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets
+    command: cosmo spaces assets delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-delete.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameAssets
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets
+    command: cosmo spaces assets create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-create.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameAssetsBulkDelete
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/bulk-delete
+    command: cosmo spaces assets bulk-delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-bulk-delete.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameAssetsBulkMoveCopy
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/bulk-move-copy
+    command: cosmo spaces assets bulk-move-copy
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-bulk-move-copy.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameAssetsClone
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/clone
+    command: cosmo spaces assets clone
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-clone.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameAssetsDownloadUrls
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/downloadUrls
+    command: cosmo spaces assets download-urls
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-download-urls.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameAssetsPermissions
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/permissions
+    command: cosmo spaces assets permissions
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-permissions.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameAssetsSubscribe
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/subscribe
+    command: cosmo spaces assets subscribe delete-all
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-subscribe-delete-all.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameAssetsSubscribe
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/subscribe
+    command: cosmo spaces assets subscribe update-all
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-subscribe-update-all.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameAssetsAssetId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}
+    command: cosmo spaces assets get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-get.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameAssetsAssetIdActivity
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}/activity
+    command: cosmo spaces assets activity
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-activity.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameAssetsAssetIdLocation
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}/location
+    command: cosmo spaces assets location
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-location.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameAssetsAssetIdName
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}/name
+    command: cosmo spaces assets name
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-name.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameAssetsAssetIdSubscribe
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}/subscribe
+    command: cosmo spaces assets subscribe delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-subscribe-delete.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameAssetsAssetIdSubscribe
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}/subscribe
+    command: cosmo spaces assets subscribe update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-subscribe-update.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameAssetsAssetIdThumbnail
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}/thumbnail
+    command: cosmo spaces assets thumbnail
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-thumbnail.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameAssetsAssetIdUsers
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}/users
+    command: cosmo spaces assets users
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-users.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameAssetsAssetIdVtt
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}/vtt
+    command: cosmo spaces assets vtt
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-vtt.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameAssetsAssetIdWaveform
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/assets/{assetId}/waveform
+    command: cosmo spaces assets waveform
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-assets-waveform.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameFolders
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/folders
+    command: cosmo spaces folders
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-folders.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameHigh5LinkSpace
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/high5/link/space
+    command: cosmo spaces high5 link space
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-high5-link-space.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameHigh5UnlinkSpace
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/high5/unlink/space
+    command: cosmo spaces high5 unlink space
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-high5-unlink-space.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameLocations
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/locations
+    command: cosmo spaces locations create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-locations-create.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameLocationsLocationIdAssetsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/locations/{locationId}/assets/search
+    command: cosmo spaces locations assets search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-locations-assets-search.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameName
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/name
+    command: cosmo spaces name
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-name.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameNamespaces
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces
+    command: cosmo spaces namespaces create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-create.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameAssetsAssetIdTags
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/assets/{assetId}/tags
+    command: cosmo spaces namespaces assets tags delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-assets-tags-delete.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameAssetsAssetIdTagsTagName
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/assets/{assetId}/tags/{tagName}
+    command: cosmo spaces namespaces assets tags patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-assets-tags-patch.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameComments
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/comments
+    command: cosmo spaces namespaces comments delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-comments-delete.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameComments
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/comments
+    command: cosmo spaces namespaces comments list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-comments-list.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameComments
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/comments
+    command: cosmo spaces namespaces comments create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-comments-create.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/comments/search
+    command: cosmo spaces namespaces comments search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-comments-search.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsCommentId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/comments/{commentId}
+    command: cosmo spaces namespaces comments get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-comments-get.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsCommentId
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/comments/{commentId}
+    command: cosmo spaces namespaces comments patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-comments-patch.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameRefRefIdMetadata
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/ref/{refId}/metadata
+    command: cosmo spaces namespaces ref metadata
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-ref-metadata.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameRefRefIdStatus
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/ref/{refId}/status
+    command: cosmo spaces namespaces ref status
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-ref-status.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameTags
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/tags
+    command: cosmo spaces namespaces tags list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-tags-list.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameTags
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/tags
+    command: cosmo spaces namespaces tags create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-tags-create.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameTagsReorder
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/tags/reorder
+    command: cosmo spaces namespaces tags reorder
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-tags-reorder.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameTagsTagName
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/tags/{tagName}
+    command: cosmo spaces namespaces tags delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-tags-delete.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameTagsTagName
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/namespaces/{namespaceName}/tags/{tagName}
+    command: cosmo spaces namespaces tags patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-namespaces-tags-patch.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameProductions
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/productions
+    command: cosmo spaces productions
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-productions.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameRoles
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/roles
+    command: cosmo spaces roles create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-roles-create.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameRolesSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/roles/search
+    command: cosmo spaces roles search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-roles-search.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameRolesRoleId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/roles/{roleId}
+    command: cosmo spaces roles delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-roles-delete.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameRolesRoleId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/roles/{roleId}
+    command: cosmo spaces roles get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-roles-get.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameRolesRoleId
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/roles/{roleId}
+    command: cosmo spaces roles update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-roles-update.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameRolesRoleIdTeam
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/roles/{roleId}/team
+    command: cosmo spaces roles team update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-roles-team-update.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameRolesRoleIdTeamTeamName
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/roles/{roleId}/team/{teamName}
+    command: cosmo spaces roles team delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-roles-team-delete.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameRolesRoleIdUser
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/roles/{roleId}/user
+    command: cosmo spaces roles user update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-roles-user-update.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameRolesRoleIdUserUserId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/roles/{roleId}/user/{userId}
+    command: cosmo spaces roles user delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-roles-user-delete.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameShares
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares
+    command: cosmo spaces shares delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-delete.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameShares
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares
+    command: cosmo spaces shares create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-create.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameSharesSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/search
+    command: cosmo spaces shares search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-search.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameSharesShareId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/{shareId}
+    command: cosmo spaces shares get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-get.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameSharesShareId
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/{shareId}
+    command: cosmo spaces shares patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-patch.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameSharesShareId
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/{shareId}
+    command: cosmo spaces shares update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-update.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameSharesShareIdEmail
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/{shareId}/email
+    command: cosmo spaces shares email create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-email-create.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameSharesShareIdEmailAll
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/{shareId}/email/all
+    command: cosmo spaces shares email all
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-email-all.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameSharesShareIdEmailPublicLink
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/{shareId}/email/publicLink
+    command: cosmo spaces shares email public-link
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-email-public-link.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameSharesShareIdEmailStatus
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/{shareId}/emailStatus
+    command: cosmo spaces shares email-status
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-email-status.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameSharesShareIdLink
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/{shareId}/link
+    command: cosmo spaces shares link
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-link.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameSharesShareIdUserUserId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/shares/{shareId}/user/{userId}
+    command: cosmo spaces shares user
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-shares-user.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameStacks
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/stacks
+    command: cosmo spaces stacks create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-stacks-create.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameStacksStackId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/stacks/{stackId}
+    command: cosmo spaces stacks delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-stacks-delete.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameStacksStackIdAssetsAdd
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/stacks/{stackId}/assets/add
+    command: cosmo spaces stacks assets add
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-stacks-assets-add.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameStacksStackIdAssetsRemove
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/stacks/{stackId}/assets/remove
+    command: cosmo spaces stacks assets remove
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-stacks-assets-remove.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameStacksStackIdOrder
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/stacks/{stackId}/order
+    command: cosmo spaces stacks order
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-stacks-order.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameStats
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/stats
+    command: cosmo spaces stats
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-stats.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameStorageStorageId
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/storage/{storageId}
+    command: cosmo spaces storage
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-storage.yaml
+  - client: cosmoClient
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameTrash
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/trash
+    command: cosmo spaces trash delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-trash-delete.yaml
+  - client: cosmoClient
+    operation: PostV1OrgOrgNameSpacesSpaceNameTrash
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/trash
+    command: cosmo spaces trash create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-trash-create.yaml
+  - client: cosmoClient
+    operation: PutV1OrgOrgNameSpacesSpaceNameTrash
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/trash
+    command: cosmo spaces trash update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-trash-update.yaml
+  - client: cosmoClient
+    operation: PatchV1OrgOrgNameSpacesSpaceNameTrashPolicy
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/trash/policy
+    command: cosmo spaces trash policy
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-trash-policy.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameSpacesSpaceNameUsers
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/users
+    command: cosmo spaces users
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-spaces-users.yaml
+  - client: cosmoClient
+    operation: GetV1OrgOrgNameStats
+    method: GET
+    path: /v1/org/{orgName}/stats
+    command: cosmo stats
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-stats.yaml
+  - client: cosmoClient
+    operation: GetV1PermissionsDiscovery
+    method: GET
+    path: /v1/permissions/discovery
+    command: cosmo permissions discovery
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-permissions-discovery.yaml
+  - client: cosmoClient
+    operation: PostV1UserSharesSearch
+    method: POST
+    path: /v1/user/shares/search
+    command: cosmo user shares search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/cosmo/cosmo-user-shares-search.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarOrgOrgName
+    method: DELETE
+    path: /v1/avatar/org/{orgName}
+    command: dali avatar delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarOrgOrgName
+    method: POST
+    path: /v1/avatar/org/{orgName}
+    command: dali avatar create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-create.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarOrgOrgNameApplicationsOauthAppId
+    method: DELETE
+    path: /v1/avatar/org/{orgName}/applications/oauth/{appId}
+    command: dali avatar applications oauth delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-applications-oauth-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarOrgOrgNameApplicationsOauthAppId
+    method: POST
+    path: /v1/avatar/org/{orgName}/applications/oauth/{appId}
+    command: dali avatar applications oauth create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-applications-oauth-create.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarOrgOrgNameServiceAccountsUserId
+    method: DELETE
+    path: /v1/avatar/org/{orgName}/service-accounts/{userId}
+    command: dali avatar service-accounts delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-service-accounts-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarOrgOrgNameServiceAccountsUserId
+    method: POST
+    path: /v1/avatar/org/{orgName}/service-accounts/{userId}
+    command: dali avatar service-accounts create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-service-accounts-create.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarOrgOrgNameSpacesCosmoSpaceName
+    method: DELETE
+    path: /v1/avatar/org/{orgName}/spaces/cosmo/{spaceName}
+    command: dali avatar spaces cosmo delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-spaces-cosmo-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarOrgOrgNameSpacesCosmoSpaceName
+    method: POST
+    path: /v1/avatar/org/{orgName}/spaces/cosmo/{spaceName}
+    command: dali avatar spaces cosmo create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-spaces-cosmo-create.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceName
+    method: DELETE
+    path: /v1/avatar/org/{orgName}/spaces/high5/{spaceName}
+    command: dali avatar spaces high5 delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-spaces-high5-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarOrgOrgNameSpacesHigh5SpaceName
+    method: POST
+    path: /v1/avatar/org/{orgName}/spaces/high5/{spaceName}
+    command: dali avatar spaces high5 create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-spaces-high5-create.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName
+    method: DELETE
+    path: /v1/avatar/org/{orgName}/spaces/high5/{spaceName}/pools/{poolName}
+    command: dali avatar spaces high5 pools delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-spaces-high5-pools-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarOrgOrgNameSpacesHigh5SpaceNamePoolsPoolName
+    method: POST
+    path: /v1/avatar/org/{orgName}/spaces/high5/{spaceName}/pools/{poolName}
+    command: dali avatar spaces high5 pools create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-spaces-high5-pools-create.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId
+    method: DELETE
+    path: /v1/avatar/org/{orgName}/spaces/{spaceName}/address-book/{bookId}
+    command: dali avatar spaces address-book delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-spaces-address-book-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId
+    method: POST
+    path: /v1/avatar/org/{orgName}/spaces/{spaceName}/address-book/{bookId}
+    command: dali avatar spaces address-book create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-spaces-address-book-create.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarOrgOrgNameStoragesStorageName
+    method: DELETE
+    path: /v1/avatar/org/{orgName}/storages/{storageName}
+    command: dali avatar storages delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-storages-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarOrgOrgNameStoragesStorageName
+    method: POST
+    path: /v1/avatar/org/{orgName}/storages/{storageName}
+    command: dali avatar storages create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-storages-create.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarOrgOrgNameTeamsTeamName
+    method: DELETE
+    path: /v1/avatar/org/{orgName}/teams/{teamName}
+    command: dali avatar teams delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-teams-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarOrgOrgNameTeamsTeamName
+    method: POST
+    path: /v1/avatar/org/{orgName}/teams/{teamName}
+    command: dali avatar teams create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-teams-create.yaml
+  - client: daliClient
+    operation: DeleteV1AvatarUser
+    method: DELETE
+    path: /v1/avatar/user
+    command: dali avatar user delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-user-delete.yaml
+  - client: daliClient
+    operation: PostV1AvatarUser
+    method: POST
+    path: /v1/avatar/user
+    command: dali avatar user create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/dali/dali-avatar-user-create.yaml
+  - client: high5Client
+    operation: PostV1CronResolve
+    method: POST
+    path: /v1/cron/resolve
+    command: high5 cron resolve
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-cron-resolve.yaml
+  - client: high5Client
+    operation: PostV1ExecuteQueue
+    method: POST
+    path: /v1/execute/queue
+    command: high5 execute queue
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-execute-queue.yaml
+  - client: high5Client
+    operation: PostV1JoinToken
+    method: POST
+    path: /v1/join/token
+    command: high5 join token create-all
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-join-token-create-all.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameExecutionLogsSearch
+    method: POST
+    path: /v1/org/{orgName}/execution/logs/search
+    command: high5 execution logs search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-execution-logs-search.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameExecutionStatusSearch
+    method: POST
+    path: /v1/org/{orgName}/execution/status/search
+    command: high5 execution status search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-execution-status-search.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameJoinToken
+    method: GET
+    path: /v1/org/{orgName}/join/token
+    command: high5 join token get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-join-token-get.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameJoinToken
+    method: POST
+    path: /v1/org/{orgName}/join/token
+    command: high5 join token create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-join-token-create.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameJoinTokenTokenId
+    method: DELETE
+    path: /v1/org/{orgName}/join/token/{tokenId}
+    command: high5 join token delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-join-token-delete.yaml
   - client: high5Client
     operation: PostV1OrgOrgNameSpaces
     method: POST
@@ -12,6 +996,22 @@ endpoints:
     source: generated
     recipe: codegen/recipes/high5/high5-space-create.yaml
   - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/search
+    command: high5 spaces search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-search.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceName
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}
+    command: high5 spaces delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-delete.yaml
+  - client: high5Client
     operation: GetV1OrgOrgNameSpacesSpaceName
     method: GET
     path: /v1/org/{orgName}/spaces/{spaceName}
@@ -20,6 +1020,198 @@ endpoints:
     source: generated
     recipe: codegen/recipes/high5/high5-space-get.yaml
   - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameDatabases
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases
+    command: high5 spaces databases create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-create.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameDatabasesSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/search
+    command: high5 spaces databases search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-search.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameDatabasesDbName
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}
+    command: high5 spaces databases delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameDatabasesDbName
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}
+    command: high5 spaces databases get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-get.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameDatabasesDbNameApikey
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/apikey
+    command: high5 spaces databases apikey create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-apikey-create.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameDatabasesDbNameApikeyKeyName
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/apikey/{keyName}
+    command: high5 spaces databases apikey delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-apikey-delete.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocuments
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents
+    command: high5 spaces databases documents create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-create.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeySearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/:key/search
+    command: high5 spaces databases documents search create-all by-db-name
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-search-create-all-by-db-name.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/search
+    command: high5 spaces databases documents search create-all by-db-name-2
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-search-create-all-by-db-name-2.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKey
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}
+    command: high5 spaces databases documents delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKey
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}
+    command: high5 spaces databases documents get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-get.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKey
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}
+    command: high5 spaces databases documents patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-patch.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKey
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}
+    command: high5 spaces databases documents update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-update.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyDec
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/dec
+    command: high5 spaces databases documents dec patch-all
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-dec-patch-all.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyDecValue
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/dec/{value}
+    command: high5 spaces databases documents dec patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-dec-patch.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyInc
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/inc
+    command: high5 spaces databases documents inc patch-all
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-inc-patch-all.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyIncValue
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/inc/{value}
+    command: high5 spaces databases documents inc patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-inc-patch.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyIndexIndex
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/index/{index}
+    command: high5 spaces databases documents index delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-index-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyIndexIndex
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/index/{index}
+    command: high5 spaces databases documents index list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-index-list.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyKeys
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/keys
+    command: high5 spaces databases documents keys
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-keys.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyPartial
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/partial
+    command: high5 spaces databases documents partial
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-partial.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyPush
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/push
+    command: high5 spaces databases documents push
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-push.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameDocumentsKeyUnshift
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/documents/{key}/unshift
+    command: high5 spaces databases documents unshift
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-documents-unshift.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameDatabasesDbNameName
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/databases/{dbName}/name
+    command: high5 spaces databases name
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-databases-name.yaml
+  - client: high5Client
     operation: PatchV1OrgOrgNameSpacesSpaceNameDev
     method: PATCH
     path: /v1/org/{orgName}/spaces/{spaceName}/dev
@@ -27,6 +1219,806 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/high5/high5-space-edit-dev.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameEvents
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/events
+    command: high5 spaces events create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-create.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameEventsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/search
+    command: high5 spaces events search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-search.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameEventsEventName
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}
+    command: high5 spaces events delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameEventsEventName
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}
+    command: high5 spaces events get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-get.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameEventsEventNameName
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/name
+    command: high5 spaces events name
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-name.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameEventsEventNameStreams
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams
+    command: high5 spaces events streams create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-create.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsOrder
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/order
+    command: high5 spaces events streams order patch-all
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-order-patch-all.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/search
+    command: high5 spaces events streams search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-search.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}
+    command: high5 spaces events streams delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}
+    command: high5 spaces events streams get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-get.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdActive
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/active
+    command: high5 spaces events streams active
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-active.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdDesign
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/design
+    command: high5 spaces events streams design list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-design-list.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdDesign
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/design
+    command: high5 spaces events streams design update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-design-update.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdDesignOperations
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/design/operations
+    command: high5 spaces events streams design operations
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-design-operations.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdDesignPublish
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/design/publish
+    command: high5 spaces events streams design publish
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-design-publish.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdDesignSnapshots
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/design/snapshots
+    command: high5 spaces events streams design snapshots create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-design-snapshots-create.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdDesignSnapshotsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/design/snapshots/search
+    command: high5 spaces events streams design snapshots search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-design-snapshots-search.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdDesignSnapshotsSnapshotId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/design/snapshots/{snapshotId}
+    command: high5 spaces events streams design snapshots delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-design-snapshots-delete.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdDesignSnapshotsSnapshotId
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/design/snapshots/{snapshotId}
+    command: high5 spaces events streams design snapshots patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-design-snapshots-patch.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdDesignSnapshotsSnapshotIdRestore
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/design/snapshots/{snapshotId}/restore
+    command: high5 spaces events streams design snapshots restore
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-design-snapshots-restore.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdEvent
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/event
+    command: high5 spaces events streams event
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-event.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdName
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/name
+    command: high5 spaces events streams name
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-name.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameEventsEventNameStreamsStreamIdOrder
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/events/{eventName}/streams/{streamId}/order
+    command: high5 spaces events streams order patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-events-streams-order-patch.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameExecuteEventNameEventName
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/execute/event/name/{eventName}
+    command: high5 spaces execute event name
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execute-event-name.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameExecuteStreamIdStreamId
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/execute/stream/id/{streamId}
+    command: high5 spaces execute stream id create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execute-stream-id-create.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameExecuteStreamIdStreamIdPackageSecret
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/execute/stream/id/{streamId}/package/{secret}
+    command: high5 spaces execute stream id package
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execute-stream-id-package.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameExecuteWebhookWebhookToken
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/execute/webhook/{webhookToken}
+    command: high5 spaces execute webhook list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execute-webhook-list.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameExecuteWebhookWebhookToken
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/execute/webhook/{webhookToken}
+    command: high5 spaces execute webhook create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execute-webhook-create.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameExecuteWebhookWebhookTokenCallbackCallbackUUID
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/execute/webhook/{webhookToken}/callback/{callbackUUID}
+    command: high5 spaces execute webhook callback
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execute-webhook-callback.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameExecuteExecutionIdDebug
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/execute/{executionId}/debug
+    command: high5 spaces execute debug
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execute-debug.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameExecutionLogsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/execution/logs/search
+    command: high5 spaces execution logs search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execution-logs-search.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameExecutionStreamsExecutionTreeStreamStatusId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/execution/streams/executionTree/{streamStatusId}
+    command: high5 spaces execution streams execution-tree
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execution-streams-execution-tree.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameExecutionStreamsLogsStreamLogId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/execution/streams/logs/{streamLogId}
+    command: high5 spaces execution streams logs
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execution-streams-logs.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameExecutionStreamsStatusStreamStatusId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/execution/streams/status/{streamStatusId}
+    command: high5 spaces execution streams status
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execution-streams-status.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameExecutionStreamsStreamSecret
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/execution/streams/{streamSecret}
+    command: high5 spaces execution streams patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execution-streams-patch.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameExecutionStreamsStreamSecretCrash
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/execution/streams/{streamSecret}/crash
+    command: high5 spaces execution streams crash
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execution-streams-crash.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameExecutionHigh5ExecutionIdCancel
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/execution/{high5ExecutionId}/cancel
+    command: high5 spaces execution cancel
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-execution-cancel.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameJobs
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs
+    command: high5 spaces jobs create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-create.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameJobsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs/search
+    command: high5 spaces jobs search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-search.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameJobsJobId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs/{jobId}
+    command: high5 spaces jobs delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameJobsJobId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs/{jobId}
+    command: high5 spaces jobs get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-get.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNameJobsJobId
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs/{jobId}
+    command: high5 spaces jobs update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-update.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameJobsJobIdEnabled
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs/{jobId}/enabled
+    command: high5 spaces jobs enabled
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-enabled.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameJobsJobIdExpression
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs/{jobId}/expression
+    command: high5 spaces jobs expression
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-expression.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameJobsJobIdLogsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs/{jobId}/logs/search
+    command: high5 spaces jobs logs search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-logs-search.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameJobsJobIdLogsLogId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs/{jobId}/logs/{logId}
+    command: high5 spaces jobs logs get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-logs-get.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameJobsJobIdNext
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/jobs/{jobId}/next
+    command: high5 spaces jobs next
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-jobs-next.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameName
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/name
+    command: high5 spaces name
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-name.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameNodes
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/nodes
+    command: high5 spaces nodes list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-nodes-list.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameNodes
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/nodes
+    command: high5 spaces nodes create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-nodes-create.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameNodesContentSecret
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/nodes/content/{secret}
+    command: high5 spaces nodes content
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-nodes-content.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameNodesNodeId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/nodes/{nodeId}
+    command: high5 spaces nodes delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-nodes-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameNodesNodeId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/nodes/{nodeId}
+    command: high5 spaces nodes get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-nodes-get.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameNodesNodeId
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/nodes/{nodeId}
+    command: high5 spaces nodes patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-nodes-patch.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNamePermissionsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/permissions/search
+    command: high5 spaces permissions search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-permissions-search.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNamePermissionsTeam
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/permissions/team
+    command: high5 spaces permissions team
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-permissions-team.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNamePermissionsUser
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/permissions/user
+    command: high5 spaces permissions user
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-permissions-user.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNamePools
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/pools
+    command: high5 spaces pools create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-pools-create.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNamePoolsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/pools/search
+    command: high5 spaces pools search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-pools-search.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNamePoolsPoolName
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/pools/{poolName}
+    command: high5 spaces pools delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-pools-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNamePoolsPoolName
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/pools/{poolName}
+    command: high5 spaces pools get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-pools-get.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNamePoolsPoolName
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/pools/{poolName}
+    command: high5 spaces pools patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-pools-patch.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNamePoolsPoolName
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/pools/{poolName}
+    command: high5 spaces pools update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-pools-update.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNamePoolsPoolNameTargetsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/pools/{poolName}/targets/search
+    command: high5 spaces pools targets search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-pools-targets-search.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameRequestCatch
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/request/catch
+    command: high5 spaces request catch delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-request-catch-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameRequestCatch
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/request/catch
+    command: high5 spaces request catch list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-request-catch-list.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameRequestCatch
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/request/catch
+    command: high5 spaces request catch patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-request-catch-patch.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameRequestCatch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/request/catch
+    command: high5 spaces request catch create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-request-catch-create.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNameRequestCatch
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/request/catch
+    command: high5 spaces request catch update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-request-catch-update.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameSecrets
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/secrets
+    command: high5 spaces secrets create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-secrets-create.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameSecretsSecretKey
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/secrets/:secretKey
+    command: high5 spaces secrets delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-secrets-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameSecretsSecretKey
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/secrets/:secretKey
+    command: high5 spaces secrets list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-secrets-list.yaml
+  - client: high5Client
+    operation: PutV1OrgOrgNameSpacesSpaceNameSecretsSecretKey
+    method: PUT
+    path: /v1/org/{orgName}/spaces/{spaceName}/secrets/:secretKey
+    command: high5 spaces secrets update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-secrets-update.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameSecretsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/secrets/search
+    command: high5 spaces secrets search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-secrets-search.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameStats
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/stats
+    command: high5 spaces stats
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-stats.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameStreamsSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/streams/search
+    command: high5 spaces streams search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-streams-search.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameTarget
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/target
+    command: high5 spaces target
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-target.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameWatchfolders
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/watchfolders
+    command: high5 spaces watchfolders create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-watchfolders-create.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/watchfolders/{watchFolderId}
+    command: high5 spaces watchfolders delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-watchfolders-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/watchfolders/{watchFolderId}
+    command: high5 spaces watchfolders get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-watchfolders-get.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderId
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/watchfolders/{watchFolderId}
+    command: high5 spaces watchfolders patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-watchfolders-patch.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdFiles
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/watchfolders/{watchFolderId}/files
+    command: high5 spaces watchfolders files
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-watchfolders-files.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/watchfolders/{watchFolderId}/scan/{scanSecret}
+    command: high5 spaces watchfolders scan list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-watchfolders-scan-list.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameWatchfoldersWatchFolderIdScanScanSecret
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/watchfolders/{watchFolderId}/scan/{scanSecret}
+    command: high5 spaces watchfolders scan create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-watchfolders-scan-create.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameWaveCatalog
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/wave/catalog
+    command: high5 spaces wave catalog list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-wave-catalog-list.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameWaveCatalog
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/wave/catalog
+    command: high5 spaces wave catalog create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-wave-catalog-create.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameWaveCatalogCatalogId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/wave/catalog/{catalogId}
+    command: high5 spaces wave catalog delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-wave-catalog-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameWaveEngine
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/wave/engine
+    command: high5 spaces wave engine list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-wave-engine-list.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameWaveEngine
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/wave/engine
+    command: high5 spaces wave engine patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-wave-engine-patch.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameWebhooks
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/webhooks
+    command: high5 spaces webhooks create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-webhooks-create.yaml
+  - client: high5Client
+    operation: PostV1OrgOrgNameSpacesSpaceNameWebhooksSearch
+    method: POST
+    path: /v1/org/{orgName}/spaces/{spaceName}/webhooks/search
+    command: high5 spaces webhooks search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-webhooks-search.yaml
+  - client: high5Client
+    operation: DeleteV1OrgOrgNameSpacesSpaceNameWebhooksWebhookId
+    method: DELETE
+    path: /v1/org/{orgName}/spaces/{spaceName}/webhooks/{webhookId}
+    command: high5 spaces webhooks delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-webhooks-delete.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameWebhooksWebhookId
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/webhooks/{webhookId}
+    command: high5 spaces webhooks get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-webhooks-get.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameWebhooksWebhookId
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/webhooks/{webhookId}
+    command: high5 spaces webhooks patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-webhooks-patch.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameSpacesSpaceNameWebhooksWebhookIdLogs
+    method: GET
+    path: /v1/org/{orgName}/spaces/{spaceName}/webhooks/{webhookId}/logs
+    command: high5 spaces webhooks logs
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-webhooks-logs.yaml
+  - client: high5Client
+    operation: PatchV1OrgOrgNameSpacesSpaceNameWebhooksWebhookIdRegenerateUrl
+    method: PATCH
+    path: /v1/org/{orgName}/spaces/{spaceName}/webhooks/{webhookId}/regenerateUrl
+    command: high5 spaces webhooks regenerate-url
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-webhooks-regenerate-url.yaml
+  - client: high5Client
+    operation: GetV1OrgOrgNameStats
+    method: GET
+    path: /v1/org/{orgName}/stats
+    command: high5 stats
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-stats.yaml
+  - client: high5Client
+    operation: GetV1Pools
+    method: GET
+    path: /v1/pools
+    command: high5 pools
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-pools.yaml
+  - client: high5Client
+    operation: GetV1Spaces
+    method: GET
+    path: /v1/spaces
+    command: high5 spaces list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-spaces-list.yaml
+  - client: high5Client
+    operation: GetV1Watchfolders
+    method: GET
+    path: /v1/watchfolders
+    command: high5 watchfolders
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/high5/high5-watchfolders.yaml
   - client: idpClient
     operation: GetV1WellKnownOauthAuthorizationServer
     method: GET
@@ -35,6 +2027,38 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-oauth-well-known.yaml
+  - client: idpClient
+    operation: PostV1AuthPasskeyOptions
+    method: POST
+    path: /v1/auth/passkey/options
+    command: idp auth passkey options
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-auth-passkey-options.yaml
+  - client: idpClient
+    operation: PostV1AuthPasskeyVerify
+    method: POST
+    path: /v1/auth/passkey/verify
+    command: idp auth passkey verify
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-auth-passkey-verify.yaml
+  - client: idpClient
+    operation: PostV1Guest
+    method: POST
+    path: /v1/guest
+    command: idp guest create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-guest-create.yaml
+  - client: idpClient
+    operation: PutV1Guest
+    method: PUT
+    path: /v1/guest
+    command: idp guest update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-guest-update.yaml
   - client: idpClient
     operation: GetV1GuestEmailEmail
     method: GET
@@ -50,6 +2074,22 @@ endpoints:
     command: idp login
     status: implemented
     source: handwritten
+  - client: idpClient
+    operation: PostV1LoginForgotPassword
+    method: POST
+    path: /v1/login/forgot_password
+    command: idp login forgot-password
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-login-forgot-password.yaml
+  - client: idpClient
+    operation: PostV1LoginOauthAccessToken
+    method: POST
+    path: /v1/login/oauth/access_token
+    command: idp login oauth access-token
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-login-oauth-access-token.yaml
   - client: idpClient
     operation: GetV1LoginOauthAppClientId
     method: GET
@@ -67,6 +2107,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-login-oauth-authorize.yaml
   - client: idpClient
+    operation: PostV1LoginOauthAuthorize
+    method: POST
+    path: /v1/login/oauth/authorize
+    command: idp login oauth authorize create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-login-oauth-authorize-create.yaml
+  - client: idpClient
     operation: GetV1LoginOauthDeviceAuthorize
     method: GET
     path: /v1/login/oauth/device/authorize
@@ -74,6 +2122,14 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-login-oauth-device-authorize.yaml
+  - client: idpClient
+    operation: PostV1LoginOauthDeviceAuthorizeClientIdUserCode
+    method: POST
+    path: /v1/login/oauth/device/authorize/{client_id}/{user_code}
+    command: idp login oauth device authorize create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-login-oauth-device-authorize-create.yaml
   - client: idpClient
     operation: GetV1LoginOauthInfo
     method: GET
@@ -99,6 +2155,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-login-saml.yaml
   - client: idpClient
+    operation: PostV1LoginSamlAssert
+    method: POST
+    path: /v1/login/saml/assert
+    command: idp login saml assert
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-login-saml-assert.yaml
+  - client: idpClient
     operation: GetV1LoginSamlMetadataXml
     method: GET
     path: /v1/login/saml/metadata.xml
@@ -107,6 +2171,38 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-login-saml-metadata.yaml
   - client: idpClient
+    operation: PostV1LoginVerifyTotp
+    method: POST
+    path: /v1/login/verify/totp
+    command: idp login verify totp
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-login-verify-totp.yaml
+  - client: idpClient
+    operation: PatchV1MessagesBulkRead
+    method: PATCH
+    path: /v1/messages/bulk-read
+    command: idp messages bulk-read
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-messages-bulk-read.yaml
+  - client: idpClient
+    operation: PostV1MessagesSearch
+    method: POST
+    path: /v1/messages/search
+    command: idp messages search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-messages-search.yaml
+  - client: idpClient
+    operation: DeleteV1MessagesMessageId
+    method: DELETE
+    path: /v1/messages/{messageId}
+    command: idp messages delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-messages-delete.yaml
+  - client: idpClient
     operation: GetV1MessagesMessageId
     method: GET
     path: /v1/messages/{messageId}
@@ -114,6 +2210,22 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-messages-get.yaml
+  - client: idpClient
+    operation: PatchV1MessagesMessageIdDeleted
+    method: PATCH
+    path: /v1/messages/{messageId}/deleted
+    command: idp messages deleted
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-messages-deleted.yaml
+  - client: idpClient
+    operation: PatchV1MessagesMessageIdRead
+    method: PATCH
+    path: /v1/messages/{messageId}/read
+    command: idp messages read
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-messages-read.yaml
   - client: idpClient
     operation: PostV1Org
     method: POST
@@ -130,6 +2242,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-storage-test.yaml
   - client: idpClient
+    operation: DeleteV1OrgOrgName
+    method: DELETE
+    path: /v1/org/{orgName}
+    command: idp delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-delete.yaml
+  - client: idpClient
     operation: GetV1OrgOrgName
     method: GET
     path: /v1/org/{orgName}
@@ -137,6 +2257,14 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-organization-get.yaml
+  - client: idpClient
+    operation: PatchV1OrgOrgName
+    method: PATCH
+    path: /v1/org/{orgName}
+    command: idp patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-patch.yaml
   - client: idpClient
     operation: GetV1OrgOrgNameLicense
     method: GET
@@ -146,6 +2274,86 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-license-get.yaml
   - client: idpClient
+    operation: PutV1OrgOrgNameLicense
+    method: PUT
+    path: /v1/org/{orgName}/license
+    command: idp license
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-license.yaml
+  - client: idpClient
+    operation: DeleteV1OrgOrgNameMembers
+    method: DELETE
+    path: /v1/org/{orgName}/members
+    command: idp members delete-all
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-delete-all.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameMembersInvitations
+    method: POST
+    path: /v1/org/{orgName}/members/invitations
+    command: idp members invitations create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-invitations-create.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameMembersInvitationsList
+    method: POST
+    path: /v1/org/{orgName}/members/invitations-list
+    command: idp members invitations-list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-invitations-list.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameMembersInvitationsSearch
+    method: POST
+    path: /v1/org/{orgName}/members/invitations/search
+    command: idp members invitations search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-invitations-search.yaml
+  - client: idpClient
+    operation: DeleteV1OrgOrgNameMembersInvitationsInvitationId
+    method: DELETE
+    path: /v1/org/{orgName}/members/invitations/{invitationId}
+    command: idp members invitations delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-invitations-delete.yaml
+  - client: idpClient
+    operation: PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval
+    method: PATCH
+    path: /v1/org/{orgName}/members/invitations/{invitationId}/approval
+    command: idp members invitations approval
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-invitations-approval.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameMembersInvitationsInvitationIdResend
+    method: POST
+    path: /v1/org/{orgName}/members/invitations/{invitationId}/resend
+    command: idp members invitations resend
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-invitations-resend.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameMembersSearch
+    method: POST
+    path: /v1/org/{orgName}/members/search
+    command: idp members search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-search.yaml
+  - client: idpClient
+    operation: DeleteV1OrgOrgNameMembersUserId
+    method: DELETE
+    path: /v1/org/{orgName}/members/{userId}
+    command: idp members delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-delete.yaml
+  - client: idpClient
     operation: GetV1OrgOrgNameMembersUserId
     method: GET
     path: /v1/org/{orgName}/members/{userId}
@@ -153,6 +2361,46 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-organization-members-get.yaml
+  - client: idpClient
+    operation: PatchV1OrgOrgNameMembersUserIdExecutionTarget
+    method: PATCH
+    path: /v1/org/{orgName}/members/{userId}/executionTarget
+    command: idp members execution-target
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-execution-target.yaml
+  - client: idpClient
+    operation: PatchV1OrgOrgNameMembersUserIdRole
+    method: PATCH
+    path: /v1/org/{orgName}/members/{userId}/role
+    command: idp members role
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-members-role.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameServiceAccounts
+    method: POST
+    path: /v1/org/{orgName}/service-accounts
+    command: idp service-accounts create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-service-accounts-create.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameServiceAccountsSearch
+    method: POST
+    path: /v1/org/{orgName}/service-accounts/search
+    command: idp service-accounts search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-service-accounts-search.yaml
+  - client: idpClient
+    operation: DeleteV1OrgOrgNameServiceAccountsServiceAccountId
+    method: DELETE
+    path: /v1/org/{orgName}/service-accounts/{serviceAccountId}
+    command: idp service-accounts delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-service-accounts-delete.yaml
   - client: idpClient
     operation: GetV1OrgOrgNameServiceAccountsServiceAccountId
     method: GET
@@ -162,6 +2410,46 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-service-accounts-get.yaml
   - client: idpClient
+    operation: PatchV1OrgOrgNameServiceAccountsServiceAccountIdName
+    method: PATCH
+    path: /v1/org/{orgName}/service-accounts/{serviceAccountId}/name
+    command: idp service-accounts name
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-service-accounts-name.yaml
+  - client: idpClient
+    operation: PatchV1OrgOrgNameServiceAccountsServiceAccountIdRegenerate
+    method: PATCH
+    path: /v1/org/{orgName}/service-accounts/{serviceAccountId}/regenerate
+    command: idp service-accounts regenerate
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-service-accounts-regenerate.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameSettingsApplicationsOauth
+    method: POST
+    path: /v1/org/{orgName}/settings/applications/oauth
+    command: idp settings applications oauth create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-applications-oauth-create.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameSettingsApplicationsOauthSearch
+    method: POST
+    path: /v1/org/{orgName}/settings/applications/oauth/search
+    command: idp settings applications oauth search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-applications-oauth-search.yaml
+  - client: idpClient
+    operation: DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppId
+    method: DELETE
+    path: /v1/org/{orgName}/settings/applications/oauth/{oAuthAppId}
+    command: idp settings applications oauth delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-applications-oauth-delete.yaml
+  - client: idpClient
     operation: GetV1OrgOrgNameSettingsApplicationsOauthOAuthAppId
     method: GET
     path: /v1/org/{orgName}/settings/applications/oauth/{oAuthAppId}
@@ -169,6 +2457,22 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-organization-settings-oauth-get.yaml
+  - client: idpClient
+    operation: PutV1OrgOrgNameSettingsApplicationsOauthOAuthAppId
+    method: PUT
+    path: /v1/org/{orgName}/settings/applications/oauth/{oAuthAppId}
+    command: idp settings applications oauth update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-applications-oauth-update.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecret
+    method: POST
+    path: /v1/org/{orgName}/settings/applications/oauth/{oAuthAppId}/secret
+    command: idp settings applications oauth secret
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-applications-oauth-secret.yaml
   - client: idpClient
     operation: DeleteV1OrgOrgNameSettingsApplicationsOauthOAuthAppIdSecretName
     method: DELETE
@@ -186,6 +2490,14 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-settings-domains-get.yaml
   - client: idpClient
+    operation: PostV1OrgOrgNameSettingsDomains
+    method: POST
+    path: /v1/org/{orgName}/settings/domains
+    command: idp settings domains create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-domains-create.yaml
+  - client: idpClient
     operation: GetV1OrgOrgNameSettingsDomainsOidc
     method: GET
     path: /v1/org/{orgName}/settings/domains/oidc
@@ -202,6 +2514,54 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-settings-domains-saml.yaml
   - client: idpClient
+    operation: DeleteV1OrgOrgNameSettingsDomainsDomainName
+    method: DELETE
+    path: /v1/org/{orgName}/settings/domains/{domainName}
+    command: idp settings domains delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-domains-delete.yaml
+  - client: idpClient
+    operation: DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc
+    method: DELETE
+    path: /v1/org/{orgName}/settings/domains/{domainName}/oidc
+    command: idp settings domains oidc delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-domains-oidc-delete.yaml
+  - client: idpClient
+    operation: PatchV1OrgOrgNameSettingsDomainsDomainNameOidc
+    method: PATCH
+    path: /v1/org/{orgName}/settings/domains/{domainName}/oidc
+    command: idp settings domains oidc patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-domains-oidc-patch.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameSettingsDomainsDomainNameOidc
+    method: POST
+    path: /v1/org/{orgName}/settings/domains/{domainName}/oidc
+    command: idp settings domains oidc create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-domains-oidc-create.yaml
+  - client: idpClient
+    operation: DeleteV1OrgOrgNameSettingsDomainsDomainNameSaml
+    method: DELETE
+    path: /v1/org/{orgName}/settings/domains/{domainName}/saml
+    command: idp settings domains saml
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-domains-saml.yaml
+  - client: idpClient
+    operation: PatchV1OrgOrgNameSettingsDomainsDomainNameVerify
+    method: PATCH
+    path: /v1/org/{orgName}/settings/domains/{domainName}/verify
+    command: idp settings domains verify
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-settings-domains-verify.yaml
+  - client: idpClient
     operation: GetV1OrgOrgNameStats
     method: GET
     path: /v1/org/{orgName}/stats
@@ -210,6 +2570,62 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-organization-stats.yaml
   - client: idpClient
+    operation: PostV1OrgOrgNameStorage
+    method: POST
+    path: /v1/org/{orgName}/storage
+    command: idp storage create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-storage-create.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameStorageSearch
+    method: POST
+    path: /v1/org/{orgName}/storage/search
+    command: idp storage search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-storage-search.yaml
+  - client: idpClient
+    operation: DeleteV1OrgOrgNameStorageStorageId
+    method: DELETE
+    path: /v1/org/{orgName}/storage/{storageId}
+    command: idp storage delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-storage-delete.yaml
+  - client: idpClient
+    operation: PatchV1OrgOrgNameStorageStorageId
+    method: PATCH
+    path: /v1/org/{orgName}/storage/{storageId}
+    command: idp storage patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-storage-patch.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameTeams
+    method: POST
+    path: /v1/org/{orgName}/teams
+    command: idp teams create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-teams-create.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameTeamsSearch
+    method: POST
+    path: /v1/org/{orgName}/teams/search
+    command: idp teams search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-teams-search.yaml
+  - client: idpClient
+    operation: DeleteV1OrgOrgNameTeamsTeamName
+    method: DELETE
+    path: /v1/org/{orgName}/teams/{teamName}
+    command: idp teams delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-teams-delete.yaml
+  - client: idpClient
     operation: GetV1OrgOrgNameTeamsTeamName
     method: GET
     path: /v1/org/{orgName}/teams/{teamName}
@@ -217,6 +2633,54 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-organization-teams-get.yaml
+  - client: idpClient
+    operation: PatchV1OrgOrgNameTeamsTeamName
+    method: PATCH
+    path: /v1/org/{orgName}/teams/{teamName}
+    command: idp teams patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-teams-patch.yaml
+  - client: idpClient
+    operation: PostV1OrgOrgNameTeamsTeamNameMembersSearch
+    method: POST
+    path: /v1/org/{orgName}/teams/{teamName}/members/search
+    command: idp teams members search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-teams-members-search.yaml
+  - client: idpClient
+    operation: PostV1Register
+    method: POST
+    path: /v1/register
+    command: idp register create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-register-create.yaml
+  - client: idpClient
+    operation: PatchV1RegisterResendRegistrationEmail
+    method: PATCH
+    path: /v1/register/resendRegistrationEmail
+    command: idp register resend-registration-email
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-register-resend-registration-email.yaml
+  - client: idpClient
+    operation: PatchV1RegisterVerify
+    method: PATCH
+    path: /v1/register/verify
+    command: idp register verify
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-register-verify.yaml
+  - client: idpClient
+    operation: DeleteV1User
+    method: DELETE
+    path: /v1/user
+    command: idp user delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-delete.yaml
   - client: idpClient
     operation: GetV1User
     method: GET
@@ -247,12 +2711,68 @@ endpoints:
     source: generated
     recipe: codegen/recipes/idp/idp-user-license-get.yaml
   - client: idpClient
+    operation: PutV1UserLicense
+    method: PUT
+    path: /v1/user/license
+    command: idp user license update
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-license-update.yaml
+  - client: idpClient
     operation: GetV1UserNats
     method: GET
     path: /v1/user/nats
     command: idp user nats
     status: implemented
     source: handwritten
+  - client: idpClient
+    operation: PostV1UserOrgsInvitationsSearch
+    method: POST
+    path: /v1/user/orgs/invitations/search
+    command: idp user orgs invitations search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-orgs-invitations-search.yaml
+  - client: idpClient
+    operation: PostV1UserOrgsSearch
+    method: POST
+    path: /v1/user/orgs/search
+    command: idp user orgs search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-orgs-search.yaml
+  - client: idpClient
+    operation: GetV1UserPasskey
+    method: GET
+    path: /v1/user/passkey
+    command: idp user passkey list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-passkey-list.yaml
+  - client: idpClient
+    operation: PostV1UserPasskeyOptions
+    method: POST
+    path: /v1/user/passkey/options
+    command: idp user passkey options
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-passkey-options.yaml
+  - client: idpClient
+    operation: PostV1UserPasskeyVerify
+    method: POST
+    path: /v1/user/passkey/verify
+    command: idp user passkey verify
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-passkey-verify.yaml
+  - client: idpClient
+    operation: DeleteV1UserPasskeyCredentialId
+    method: DELETE
+    path: /v1/user/passkey/{credentialId}
+    command: idp user passkey delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-passkey-delete.yaml
   - client: idpClient
     operation: PatchV1UserPassword
     method: PATCH
@@ -261,6 +2781,14 @@ endpoints:
     status: implemented
     source: handwritten
   - client: idpClient
+    operation: PostV1UserPasswordReset
+    method: POST
+    path: /v1/user/password/reset
+    command: idp user password reset
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-password-reset.yaml
+  - client: idpClient
     operation: GetV1UserPing
     method: GET
     path: /v1/user/ping
@@ -268,6 +2796,14 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-user-ping.yaml
+  - client: idpClient
+    operation: DeleteV1UserSessions
+    method: DELETE
+    path: /v1/user/sessions
+    command: idp user sessions
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-sessions.yaml
   - client: idpClient
     operation: GetV1UserSettingsConnections
     method: GET
@@ -284,6 +2820,142 @@ endpoints:
     status: implemented
     source: generated
     recipe: codegen/recipes/idp/idp-user-settings-general-get.yaml
+  - client: idpClient
+    operation: PatchV1UserSettingsGeneral
+    method: PATCH
+    path: /v1/user/settings/general
+    command: idp user settings general patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-general-patch.yaml
+  - client: idpClient
+    operation: PatchV1UserSettingsGeneralLastVisit
+    method: PATCH
+    path: /v1/user/settings/general/lastVisit
+    command: idp user settings general last-visit
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-general-last-visit.yaml
+  - client: idpClient
+    operation: GetV1UserSettingsNotifications
+    method: GET
+    path: /v1/user/settings/notifications
+    command: idp user settings notifications list
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-notifications-list.yaml
+  - client: idpClient
+    operation: PatchV1UserSettingsNotifications
+    method: PATCH
+    path: /v1/user/settings/notifications
+    command: idp user settings notifications patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-notifications-patch.yaml
+  - client: idpClient
+    operation: PostV1UserSettingsOauthSearch
+    method: POST
+    path: /v1/user/settings/oauth/search
+    command: idp user settings oauth search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-oauth-search.yaml
+  - client: idpClient
+    operation: DeleteV1UserSettingsOauthOAuthAppIdRevoke
+    method: DELETE
+    path: /v1/user/settings/oauth/{oAuthAppId}/revoke
+    command: idp user settings oauth revoke
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-oauth-revoke.yaml
+  - client: idpClient
+    operation: DeleteV1UserSettingsPats
+    method: DELETE
+    path: /v1/user/settings/pats
+    command: idp user settings pats delete-all
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-pats-delete-all.yaml
+  - client: idpClient
+    operation: PostV1UserSettingsPats
+    method: POST
+    path: /v1/user/settings/pats
+    command: idp user settings pats create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-pats-create.yaml
+  - client: idpClient
+    operation: PostV1UserSettingsPatsSearch
+    method: POST
+    path: /v1/user/settings/pats/search
+    command: idp user settings pats search
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-pats-search.yaml
+  - client: idpClient
+    operation: DeleteV1UserSettingsPatsPatId
+    method: DELETE
+    path: /v1/user/settings/pats/{patId}
+    command: idp user settings pats delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-pats-delete.yaml
+  - client: idpClient
+    operation: GetV1UserSettingsPatsPatId
+    method: GET
+    path: /v1/user/settings/pats/{patId}
+    command: idp user settings pats get
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-pats-get.yaml
+  - client: idpClient
+    operation: PatchV1UserSettingsPatsPatId
+    method: PATCH
+    path: /v1/user/settings/pats/{patId}
+    command: idp user settings pats patch
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-pats-patch.yaml
+  - client: idpClient
+    operation: PatchV1UserSettingsPatsPatIdRegenerate
+    method: PATCH
+    path: /v1/user/settings/pats/{patId}/regenerate
+    command: idp user settings pats regenerate
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-pats-regenerate.yaml
+  - client: idpClient
+    operation: DeleteV1UserSettingsSecurity2faTotp
+    method: DELETE
+    path: /v1/user/settings/security/2fa/totp
+    command: idp user settings security 2fa totp delete
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-security-2fa-totp-delete.yaml
+  - client: idpClient
+    operation: PostV1UserSettingsSecurity2faTotp
+    method: POST
+    path: /v1/user/settings/security/2fa/totp
+    command: idp user settings security 2fa totp create
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-security-2fa-totp-create.yaml
+  - client: idpClient
+    operation: PatchV1UserSettingsSecurity2faTotpActivate
+    method: PATCH
+    path: /v1/user/settings/security/2fa/totp/activate
+    command: idp user settings security 2fa totp activate
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-security-2fa-totp-activate.yaml
+  - client: idpClient
+    operation: DeleteV1UserSettingsSecurity2faTotpRecover
+    method: DELETE
+    path: /v1/user/settings/security/2fa/totp/recover
+    command: idp user settings security 2fa totp recover
+    status: implemented
+    source: generated
+    recipe: codegen/recipes/idp/idp-user-settings-security-2fa-totp-recover.yaml
   - client: mothershipClient
     operation: DeleteV1Agent
     method: DELETE

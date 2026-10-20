@@ -1,0 +1,69 @@
+# Generation input for `idp members invitations approval`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1OrgOrgNameMembersInvitationsInvitationIdApproval
+command:
+  path:
+    - idp
+    - members
+    - invitations
+    - approval
+  file: members-invitations.go
+  var: membersInvitationsApprovalCommand
+  short: Accept/Reject an invitation to an organization
+  long: 'Required scopes: IDP_ORGANIZATION_WRITE'
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: invitationId
+    goName: invitationId
+    cli: invitationId
+    var: invitationId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: invitationId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Accept
+      name: accept
+      cli: accept
+      var: accept
+      type: bool
+      description: True to accept. False to reject
+      resolve:
+        - flag
+        - prompt
+      prompt: accept
+response:
+  render: body
+  field: JSON200

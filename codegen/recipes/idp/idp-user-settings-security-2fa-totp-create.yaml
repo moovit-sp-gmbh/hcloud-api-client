@@ -1,0 +1,37 @@
+# Generation input for `idp user settings security 2fa totp create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1UserSettingsSecurity2faTotp
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - security
+    - 2fa
+    - totp
+    - create
+  file: user-settings-security-2fa-totp.go
+  var: userSettingsSecurity2faTotpCreateCommand
+  short: Create a new user TOTP
+  long: 'Required scopes: IDP_USER_DELETE'
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON201

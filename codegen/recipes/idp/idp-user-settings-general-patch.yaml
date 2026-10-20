@@ -1,0 +1,105 @@
+# Generation input for `idp user settings general patch`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1UserSettingsGeneral
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - general
+    - patch
+  file: user-settings-general.go
+  var: userSettingsGeneralPatchCommand
+  short: Patch the current general settings of the logged in user
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: DateFormat
+      name: dateFormat
+      cli: dateFormat
+      var: dateFormat
+      type: '*DateFormat'
+      description: New format to use for dates
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Entrypoint
+      name: entrypoint
+      cli: entrypoint
+      var: entrypoint
+      type: '*Entrypoint'
+      description: New entrypoint in helmut.cloud
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Language
+      name: language
+      cli: language
+      var: language
+      type: '*Language'
+      description: New language
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: LastUrl
+      name: lastUrl
+      cli: lastUrl
+      var: lastUrl
+      type: '*string'
+      description: Last URL visited by the user
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: LastView
+      name: lastView
+      cli: lastView
+      var: lastView
+      type: '*Views'
+      description: Last view the user was in
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Theme
+      name: theme
+      cli: theme
+      var: theme
+      type: '*Theme'
+      description: Theme to use
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Timezone
+      name: timezone
+      cli: timezone
+      var: timezone
+      type: '*string'
+      description: IANA timezone
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON200

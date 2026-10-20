@@ -1,0 +1,34 @@
+# Generation input for `idp user passkey options`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1UserPasskeyOptions
+command:
+  path:
+    - idp
+    - user
+    - passkey
+    - options
+  file: user-passkey.go
+  var: userPasskeyOptionsCommand
+  short: Create WebAuthn registration options to set up a new passkey for the authenticated user
+  long: 'Required scopes: IDP_USER_WRITE'
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

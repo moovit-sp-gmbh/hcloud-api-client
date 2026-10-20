@@ -1,0 +1,53 @@
+# Generation input for `idp messages search`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1MessagesSearch
+command:
+  path:
+    - idp
+    - messages
+    - search
+  file: messages.go
+  var: messagesSearchCommand
+  short: Retrieves all messages to the specified user that match the provided search filter. Will return all user messages if no filter provided
+args:
+  - source: query
+    name: limit
+    goName: Limit
+    cli: limit
+    var: limit
+    type: '*float32'
+    description: Page size
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: page
+    goName: Page
+    cli: page
+    var: page
+    type: '*float32'
+    description: Page index
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

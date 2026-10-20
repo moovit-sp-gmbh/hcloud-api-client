@@ -1,0 +1,87 @@
+# Generation input for `idp user settings pats patch`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1UserSettingsPatsPatId
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - pats
+    - patch
+  file: user-settings-pats.go
+  var: userSettingsPatsPatchCommand
+  short: Change a pats access scopes, expiration or name
+  long: 'Required scopes: HCLOUD_FULL'
+args:
+  - source: path
+    name: patId
+    goName: patId
+    cli: patId
+    var: patId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: patId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Expiration
+      name: expiration
+      cli: expiration
+      var: expiration
+      type: '*float32'
+      description: UNIX timestamp with new expiration. Use the value -1 to make the token never expire.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: '*string'
+      description: Name of the Personal Access Token (only alphanumeric characters, underscores, hyphens, dots and spaces are allowed; it should contain between 1 and 64 characters)
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Scopes
+      name: scopes
+      cli: scopes
+      var: scopes
+      type: '*[]Scope'
+      description: Set of scopes the user of the PAT is allowed to access
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+      skip: true
+    - field: Token
+      name: token
+      cli: bodyToken
+      var: bodyToken
+      type: '*string'
+      description: TOTP token. Must be defined if the user has 2FA enabled.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON200

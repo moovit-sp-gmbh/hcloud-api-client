@@ -1,0 +1,41 @@
+# Generation input for `idp guest update`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PutV1Guest
+command:
+  path:
+    - idp
+    - guest
+    - update
+  file: guest.go
+  var: guestUpdateCommand
+  short: Login a guest user
+  long: Login as a guest user by providing an email and HMAC
+body:
+  mode: typed
+  fields:
+    - field: Email
+      name: email
+      cli: email
+      var: email
+      type: openapi_types.Email
+      description: Email of the guest
+      resolve:
+        - flag
+        - context
+        - prompt
+      context: Email
+      prompt: email
+    - field: Hmac
+      name: hmac
+      cli: hmac
+      var: hmac
+      type: string
+      description: Url-safe base64 representation of the HMAC of the email address
+      resolve:
+        - flag
+        - prompt
+      prompt: hmac
+response:
+  render: body
+  field: JSON200

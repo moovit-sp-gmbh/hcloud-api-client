@@ -241,6 +241,24 @@ func deriveBodyField(f Field, schema *ContextSchema) RecipeBodyField {
 // the same path carries more than one method, because that is exactly when the
 // noun alone would be ambiguous.
 func SuggestPath(op *Operation, client *Client) []string {
+	path := CommandNouns(op)
+
+	if client != nil && len(siblingMethods(op, client)) > 1 {
+		if verb := MethodVerb(op.Method); verb != "" {
+			path = append(path, verb)
+		}
+	}
+	if len(path) == 1 {
+		if verb := MethodVerb(op.Method); verb != "" {
+			path = append(path, verb)
+		}
+	}
+	return path
+}
+
+// CommandNouns is the command path an endpoint reduces to before any verb is
+// added: the service, then the path's literal segments.
+func CommandNouns(op *Operation) []string {
 	path := []string{Service(op.Client)}
 
 	segments := strings.Split(strings.Trim(op.Path, "/"), "/")
@@ -262,17 +280,6 @@ func SuggestPath(op *Operation, client *Client) []string {
 			continue
 		}
 		path = append(path, KebabCase(seg))
-	}
-
-	if client != nil && len(siblingMethods(op, client)) > 1 {
-		if verb := MethodVerb(op.Method); verb != "" {
-			path = append(path, verb)
-		}
-	}
-	if len(path) == 1 {
-		if verb := MethodVerb(op.Method); verb != "" {
-			path = append(path, verb)
-		}
 	}
 	return path
 }

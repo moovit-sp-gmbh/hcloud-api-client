@@ -15,6 +15,7 @@ import (
 
 func init() {
 	loginSamlCommand.AddCommand(loginSamlMetadataCommand)
+	loginSamlCommand.AddCommand(loginSamlAssertCommand)
 	loginSamlCommand.Flags().String("origin", "", "A URL marking the starting point of the login process. At the end the user will be redirected back to this URL with token=<JWT> added to the query string")
 	loginSamlCommand.Flags().String("email", "", "The user's email. The email domain will be used to determine the appropriate SAML 2.0 provider to use going forward")
 }

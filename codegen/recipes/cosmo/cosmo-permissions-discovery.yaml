@@ -1,0 +1,17 @@
+# Generation input for `cosmo permissions discovery`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: GetV1PermissionsDiscovery
+command:
+  path:
+    - cosmo
+    - permissions
+    - discovery
+  file: permissions.go
+  var: permissionsDiscoveryCommand
+  short: Obtain a list of possible permissions inside the Cosmo service
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

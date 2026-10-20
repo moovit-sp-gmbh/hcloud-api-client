@@ -1,0 +1,47 @@
+# Generation input for `idp user settings oauth revoke`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: DeleteV1UserSettingsOauthOAuthAppIdRevoke
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - oauth
+    - revoke
+  file: user-settings-oauth.go
+  var: userSettingsOauthRevokeCommand
+  short: Revoke OAuth App Access
+  long: 'Required scopes: IDP_ORGANIZATION_ADMIN'
+args:
+  - source: path
+    name: oAuthAppId
+    goName: oAuthAppId
+    cli: oAuthAppId
+    var: oAuthAppId
+    type: string
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OauthAppID
+    persist: true
+    prompt: oAuthAppId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body

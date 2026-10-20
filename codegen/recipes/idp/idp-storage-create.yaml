@@ -1,0 +1,112 @@
+# Generation input for `idp storage create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1OrgOrgNameStorage
+command:
+  path:
+    - idp
+    - storage
+    - create
+  file: storage.go
+  var: storageCreateCommand
+  short: Create a new storage
+  long: 'Required scopes: IDP_ORGANIZATION_WRITE'
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: query
+    name: noAvatar
+    goName: NoAvatar
+    cli: noAvatar
+    var: noAvatar
+    type: '*bool'
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: AccessKeyId
+      name: accessKeyId
+      cli: accessKeyId
+      var: accessKeyId
+      type: string
+      resolve:
+        - flag
+        - prompt
+      prompt: accessKeyId
+    - field: Bucket
+      name: bucket
+      cli: bucket
+      var: bucket
+      type: string
+      resolve:
+        - flag
+        - prompt
+      prompt: bucket
+    - field: Endpoint
+      name: endpoint
+      cli: endpoint
+      var: endpoint
+      type: string
+      resolve:
+        - flag
+        - prompt
+      prompt: endpoint
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: string
+      description: Name of the storage (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+      resolve:
+        - flag
+        - prompt
+      prompt: name
+    - field: Region
+      name: region
+      cli: region
+      var: region
+      type: string
+      resolve:
+        - flag
+        - prompt
+      prompt: region
+    - field: SecretAccessKey
+      name: secretAccessKey
+      cli: secretAccessKey
+      var: secretAccessKey
+      type: string
+      resolve:
+        - flag
+        - prompt
+      prompt: secretAccessKey
+response:
+  render: body
+  field: JSON201

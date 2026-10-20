@@ -1,0 +1,92 @@
+# Generation input for `high5 spaces wave catalog create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PostV1OrgOrgNameSpacesSpaceNameWaveCatalog
+command:
+  path:
+    - high5
+    - spaces
+    - wave
+    - catalog
+    - create
+  file: spaces-wave-catalog.go
+  var: spacesWaveCatalogCreateCommand
+  short: Add or update a new wave catalog to a space
+  long: Adds a new wave catalog to the space or updates an existing one, checking the license quota unless the catalog is already registered
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: typed
+  fields:
+    - field: MinimumEngineVersion
+      name: minimumEngineVersion
+      cli: minimumEngineVersion
+      var: minimumEngineVersion
+      type: '*string'
+      description: Minimum engine version the catalog can run against
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Url
+      name: url
+      cli: url
+      var: url
+      type: string
+      description: Url to the catalog
+      resolve:
+        - flag
+        - prompt
+      prompt: url
+    - field: Version
+      name: version
+      cli: version
+      var: version
+      type: string
+      description: Version that should be used to serve nodes from for a space
+      resolve:
+        - flag
+        - prompt
+      prompt: version
+response:
+  render: body
+  field: JSON200

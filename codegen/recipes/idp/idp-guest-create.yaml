@@ -1,0 +1,51 @@
+# Generation input for `idp guest create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1Guest
+command:
+  path:
+    - idp
+    - guest
+    - create
+  file: guest.go
+  var: guestCreateCommand
+  short: Create a guest user
+  long: Create a guest user by providing an email and HMAC
+body:
+  mode: typed
+  fields:
+    - field: Email
+      name: email
+      cli: email
+      var: email
+      type: openapi_types.Email
+      description: Email of the guest
+      resolve:
+        - flag
+        - context
+        - prompt
+      context: Email
+      prompt: email
+    - field: Hmac
+      name: hmac
+      cli: hmac
+      var: hmac
+      type: string
+      description: Url-safe base64 representation of the HMAC of the email address
+      resolve:
+        - flag
+        - prompt
+      prompt: hmac
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: string
+      description: Name of the guest account
+      resolve:
+        - flag
+        - prompt
+      prompt: name
+response:
+  render: body
+  field: JSON200

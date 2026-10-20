@@ -1,0 +1,59 @@
+# Generation input for `idp license`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PutV1OrgOrgNameLicense
+command:
+  path:
+    - idp
+    - license
+  file: license.go
+  var: licenseCommand
+  short: Update the license of the organization
+  long: |-
+    Required role: OWNER
+    Required scopes: IDP_ORGANIZATION_ADMIN
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Identifier
+      name: identifier
+      cli: identifier
+      var: identifier
+      type: string
+      description: Identifier of the license
+      resolve:
+        - flag
+        - prompt
+      prompt: identifier
+response:
+  render: body
+  field: JSON200

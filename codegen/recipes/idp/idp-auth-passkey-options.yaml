@@ -1,0 +1,19 @@
+# Generation input for `idp auth passkey options`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1AuthPasskeyOptions
+command:
+  path:
+    - idp
+    - auth
+    - passkey
+    - options
+  file: auth-passkey.go
+  var: authPasskeyOptionsCommand
+  short: Create WebAuthn authentication options to log in with a passkey (discoverable credential, no prior identification needed)
+  long: No authentication required
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

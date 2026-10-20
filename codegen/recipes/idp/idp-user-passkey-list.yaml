@@ -1,0 +1,34 @@
+# Generation input for `idp user passkey list`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1UserPasskey
+command:
+  path:
+    - idp
+    - user
+    - passkey
+    - list
+  file: user-passkey.go
+  var: userPasskeyListCommand
+  short: List the passkeys registered for the authenticated user
+  long: 'Required scopes: IDP_USER_READ'
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

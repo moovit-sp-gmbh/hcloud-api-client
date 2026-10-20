@@ -1,0 +1,140 @@
+# Generation input for `cosmo spaces namespaces comments list`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameComments
+command:
+  path:
+    - cosmo
+    - spaces
+    - namespaces
+    - comments
+    - list
+  file: spaces-namespaces-comments.go
+  var: spacesNamespacesCommentsListCommand
+  short: List comments
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: namespaceName
+    goName: namespaceName
+    cli: namespaceName
+    var: namespaceName
+    type: string
+    description: Name of the namespace (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: namespaceName
+  - source: query
+    name: refId
+    goName: RefId
+    cli: refId
+    var: refId
+    type: openapi_types.UUID
+    description: ID of the entity the comments should refer to
+    resolve:
+      - flag
+      - prompt
+    prompt: refId
+  - source: query
+    name: limit
+    goName: Limit
+    cli: limit
+    var: limit
+    type: '*struct{union json.RawMessage}'
+    description: Page size
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: page
+    goName: Page
+    cli: page
+    var: page
+    type: '*float32'
+    description: Page index
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: annotation
+    goName: Annotation
+    cli: annotation
+    var: annotation
+    type: '*bool'
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: replySample
+    goName: ReplySample
+    cli: replySample
+    var: replySample
+    type: '*float32'
+    description: Page size
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: sort_field
+    goName: SortField
+    cli: sort_field
+    var: sortField
+    type: '*GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortField'
+    description: Field to sort comments by. NEWEST/OLDEST sort by create date desc/asc.
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: sort_direction
+    goName: SortDirection
+    cli: sort_direction
+    var: sortDirection
+    type: '*GetV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameCommentsParamsSortDirection'
+    description: Sort direction for comments (ignored for NEWEST/OLDEST).
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

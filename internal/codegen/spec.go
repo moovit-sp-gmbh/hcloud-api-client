@@ -80,9 +80,13 @@ func LoadSpecs(root string) *Specs {
 				default:
 					continue
 				}
+				// Many descriptions start with a newline. YAML strips that on
+				// the way back out of a recipe, so leaving it in would make a
+				// regenerated command differ from the one just drafted — and a
+				// Long that opens with a blank line reads badly anyway.
 				info := OpInfo{
-					Summary:     op.Summary,
-					Description: op.Description,
+					Summary:     strings.TrimSpace(op.Summary),
+					Description: strings.TrimSpace(op.Description),
 					Deprecated:  op.Deprecated,
 					Secured:     len(op.Security) > 0,
 					Known:       true,
@@ -151,9 +155,9 @@ func (p specParameter) describe() string {
 		desc = p.Schema.describe()
 	}
 	if first, _, joined := strings.Cut(desc, " | "); joined {
-		return strings.TrimSpace(first)
+		desc = first
 	}
-	return desc
+	return strings.TrimSpace(desc)
 }
 
 func (s specSchema) describe() string {

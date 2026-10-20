@@ -1,0 +1,70 @@
+# Generation input for `high5 spaces name`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PatchV1OrgOrgNameSpacesSpaceNameName
+command:
+  path:
+    - high5
+    - spaces
+    - name
+  file: spaces.go
+  var: spacesNameCommand
+  short: Rename a Space
+  long: Renames the space after verifying the new name is not already in use within the organization
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: typed
+  fields:
+    - field: NewSpaceName
+      name: newSpaceName
+      cli: newSpaceName
+      var: newSpaceName
+      type: string
+      description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+      resolve:
+        - flag
+        - prompt
+      prompt: newSpaceName
+response:
+  render: body
+  field: JSON200

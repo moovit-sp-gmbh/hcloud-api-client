@@ -1,0 +1,78 @@
+# Generation input for `cosmo spaces shares email public-link`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: PostV1OrgOrgNameSpacesSpaceNameSharesShareIdEmailPublicLink
+command:
+  path:
+    - cosmo
+    - spaces
+    - shares
+    - email
+    - public-link
+  file: spaces-shares-email.go
+  var: spacesSharesEmailPublicLinkCommand
+  short: Send the share email after public link got clicked
+  long: Sends a share email to the users after the public link has been clicked.
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: shareId
+    goName: shareId
+    cli: shareId
+    var: shareId
+    type: openapi_types.UUID
+    resolve:
+      - flag
+      - prompt
+    prompt: shareId
+body:
+  mode: typed
+  fields:
+    - field: Email
+      name: email
+      cli: email
+      var: email
+      type: openapi_types.Email
+      description: Email addresses to send the share link to
+      resolve:
+        - flag
+        - context
+        - prompt
+      context: Email
+      prompt: email
+    - field: ShareIdHMAC
+      name: shareIdHMAC
+      cli: shareIdHMAC
+      var: shareIdHMAC
+      type: string
+      description: HMAC of the shareId provided in the public link
+      resolve:
+        - flag
+        - prompt
+      prompt: shareIdHMAC
+response:
+  render: body

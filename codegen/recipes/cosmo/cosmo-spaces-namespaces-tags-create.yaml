@@ -1,0 +1,91 @@
+# Generation input for `cosmo spaces namespaces tags create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: PostV1OrgOrgNameSpacesSpaceNameNamespacesNamespaceNameTags
+command:
+  path:
+    - cosmo
+    - spaces
+    - namespaces
+    - tags
+    - create
+  file: spaces-namespaces-tags.go
+  var: spacesNamespacesTagsCreateCommand
+  short: Create a tag
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: namespaceName
+    goName: namespaceName
+    cli: namespaceName
+    var: namespaceName
+    type: string
+    description: Name of the namespace (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: namespaceName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Color
+      name: color
+      cli: color
+      var: color
+      type: string
+      description: Color for the tag
+      resolve:
+        - flag
+        - prompt
+      prompt: color
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: string
+      description: Name for the tag
+      resolve:
+        - flag
+        - prompt
+      prompt: name
+response:
+  render: body
+  field: JSON201

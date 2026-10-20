@@ -1,0 +1,56 @@
+# Generation input for `idp user orgs invitations search`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1UserOrgsInvitationsSearch
+command:
+  path:
+    - idp
+    - user
+    - orgs
+    - invitations
+    - search
+  file: user-orgs-invitations.go
+  var: userOrgsInvitationsSearchCommand
+  short: Retrieves all organization invitations of the user that match the provided search filter. Will return all invitations of the user if no filter provided
+  long: 'Required scopes: IDP_ORGANIZATION_READ'
+args:
+  - source: query
+    name: limit
+    goName: Limit
+    cli: limit
+    var: limit
+    type: '*float32'
+    description: Page size
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: page
+    goName: Page
+    cli: page
+    var: page
+    type: '*float32'
+    description: Page index
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

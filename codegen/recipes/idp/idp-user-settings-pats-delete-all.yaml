@@ -1,0 +1,34 @@
+# Generation input for `idp user settings pats delete-all`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: DeleteV1UserSettingsPats
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - pats
+    - delete-all
+  file: user-settings-pats.go
+  var: userSettingsPatsDeleteAllCommand
+  short: Deletes all users pats
+  long: 'Required scopes: HCLOUD_FULL'
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body

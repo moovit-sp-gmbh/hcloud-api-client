@@ -1,0 +1,65 @@
+# Generation input for `idp user settings notifications patch`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1UserSettingsNotifications
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - notifications
+    - patch
+  file: user-settings-notifications.go
+  var: userSettingsNotificationsPatchCommand
+  short: Updates the notification settings of the requesting user
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: CosmoNotifications
+      name: cosmoNotifications
+      cli: cosmoNotifications
+      var: cosmoNotifications
+      type: '*bool'
+      description: Enable/disable cosmo notifications
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: OrganizationInvitationEmail
+      name: organizationInvitationEmail
+      cli: organizationInvitationEmail
+      var: organizationInvitationEmail
+      type: '*bool'
+      description: Enable/disable email notification when invited to an organization
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: SystemNotifications
+      name: systemNotifications
+      cli: systemNotifications
+      var: systemNotifications
+      type: '*bool'
+      description: Enable/disable system notifications
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON200

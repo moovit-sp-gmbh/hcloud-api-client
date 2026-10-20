@@ -1,0 +1,97 @@
+# Generation input for `cosmo spaces assets bulk-delete`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: DeleteV1OrgOrgNameSpacesSpaceNameAssetsBulkDelete
+command:
+  path:
+    - cosmo
+    - spaces
+    - assets
+    - bulk-delete
+  file: spaces-assets.go
+  var: spacesAssetsBulkDeleteCommand
+  short: Bulk delete assets by filter
+  long: |-
+    Deletes the assets of the space that match the given filters. All filters must match for an asset to be deleted (AND combination).
+    To match one of multiple values for the same field, provide an array as the filter value.
+    Depending on the mode, the matching assets are either moved to the trash bin (TRASHBIN, default) or permanently deleted (PERMANENT).
+    Folders are never deleted by this endpoint and assets that are already in the trash bin are ignored. Stacks are deleted as a whole, including all of their versions.
+    At most `limit` assets are deleted per call. Matching more than that is not an error - `total` reports how many assets match in total, so the caller can repeat the call until `total` is 0.
+    When deleting in batches, keep requesting page 0: deleting a page shifts the remaining matches, so incrementing the page would skip assets.
+    If the user is not allowed to delete one of the matching assets, the call fails. Moving to the trash bin is atomic, a permanent deletion commits in batches, so assets removed by an earlier batch stay deleted.
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: query
+    name: namespace
+    goName: Namespace
+    cli: namespace
+    var: namespace
+    type: '*struct{union json.RawMessage}'
+    description: Use * to fetch from all namespaces. Can only be used if spaceName is also defined.
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: limit
+    goName: Limit
+    cli: limit
+    var: limit
+    type: '*int'
+    description: Maximum number of assets to delete. -1 deletes all matches.
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: page
+    goName: Page
+    cli: page
+    var: page
+    type: '*float32'
+    description: Page index
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

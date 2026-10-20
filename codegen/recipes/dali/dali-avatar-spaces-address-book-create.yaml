@@ -1,0 +1,71 @@
+# Generation input for `dali avatar spaces address-book create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: daliClient
+operation: PostV1AvatarOrgOrgNameSpacesSpaceNameAddressBookBookId
+command:
+  path:
+    - dali
+    - avatar
+    - spaces
+    - address-book
+    - create
+  file: avatar-spaces-address-book.go
+  var: avatarSpacesAddressBookCreateCommand
+  short: Create a new avatar for the address book
+  long: Generates and uploads a new default avatar for the specified address book and returns its public URL
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: bookId
+    goName: bookId
+    cli: bookId
+    var: bookId
+    type: openapi_types.UUID
+    resolve:
+      - flag
+      - prompt
+    prompt: bookId
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body
+  field: JSON201

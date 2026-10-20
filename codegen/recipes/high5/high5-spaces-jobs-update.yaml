@@ -1,0 +1,81 @@
+# Generation input for `high5 spaces jobs update`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PutV1OrgOrgNameSpacesSpaceNameJobsJobId
+command:
+  path:
+    - high5
+    - spaces
+    - jobs
+    - update
+  file: spaces-jobs.go
+  var: spacesJobsUpdateCommand
+  short: Updates a cronjob
+  long: Fully replaces all fields of the specified cronjob with the provided data, accepting either a Quartz cron expression or a future Unix timestamp
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: jobId
+    goName: jobId
+    cli: jobId
+    var: jobId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: jobId
+  - source: query
+    name: nextExecution
+    goName: NextExecution
+    cli: nextExecution
+    var: nextExecution
+    type: '*bool'
+    description: Alongside the cronjob also retrieve the timestamps for three next executions (for the specified timezone, in milliseconds)
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON201

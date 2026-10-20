@@ -1,0 +1,53 @@
+# Generation input for `idp user settings security 2fa totp recover`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: DeleteV1UserSettingsSecurity2faTotpRecover
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - security
+    - 2fa
+    - totp
+    - recover
+  file: user-settings-security-2fa-totp.go
+  var: userSettingsSecurity2faTotpRecoverCommand
+  short: Delete a user TOTP by using a recover code
+body:
+  mode: typed
+  fields:
+    - field: Code
+      name: code
+      cli: code
+      var: code
+      type: openapi_types.UUID
+      description: Code to match against the TOTP recoverCodes
+      resolve:
+        - flag
+        - prompt
+      prompt: code
+    - field: Email
+      name: email
+      cli: email
+      var: email
+      type: openapi_types.Email
+      description: Email of the user
+      resolve:
+        - flag
+        - context
+        - prompt
+      context: Email
+      prompt: email
+    - field: Password
+      name: password
+      cli: password
+      var: password
+      type: string
+      description: Password of the user (only alphanumeric, underscores, hyphens, dots and special characters are allowed; it should contain between 8 and 255 characters)
+      resolve:
+        - flag
+        - prompt
+      prompt: password
+response:
+  render: body

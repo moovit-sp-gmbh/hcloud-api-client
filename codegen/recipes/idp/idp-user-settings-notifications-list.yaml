@@ -1,0 +1,34 @@
+# Generation input for `idp user settings notifications list`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: GetV1UserSettingsNotifications
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - notifications
+    - list
+  file: user-settings-notifications.go
+  var: userSettingsNotificationsListCommand
+  short: Retrieves the notification settings of the requesting user
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

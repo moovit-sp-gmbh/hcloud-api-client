@@ -16,6 +16,10 @@ func init() {
 	userSettingsConnectionsCommand.Flags().String("token", "", "authorization token")
 	userSettingsCommand.AddCommand(userSettingsConnectionsCommand)
 	userSettingsCommand.AddCommand(userSettingsGeneralCommand)
+	userSettingsCommand.AddCommand(userSettingsNotificationsCommand)
+	userSettingsCommand.AddCommand(userSettingsOauthCommand)
+	userSettingsCommand.AddCommand(userSettingsPatsCommand)
+	userSettingsCommand.AddCommand(userSettingsSecurityCommand)
 }
 
 var userSettingsCommand = &cobra.Command{

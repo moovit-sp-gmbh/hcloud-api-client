@@ -1,0 +1,53 @@
+# Generation input for `idp messages deleted`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1MessagesMessageIdDeleted
+command:
+  path:
+    - idp
+    - messages
+    - deleted
+  file: messages.go
+  var: messagesDeletedCommand
+  short: Set the soft-delete state of a received message
+args:
+  - source: path
+    name: messageId
+    goName: messageId
+    cli: messageId
+    var: messageId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: messageId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Deleted
+      name: deleted
+      cli: deleted
+      var: deleted
+      type: bool
+      description: Indicates whether the message is soft-deleted
+      resolve:
+        - flag
+        - prompt
+      prompt: deleted
+response:
+  render: body
+  field: JSON200

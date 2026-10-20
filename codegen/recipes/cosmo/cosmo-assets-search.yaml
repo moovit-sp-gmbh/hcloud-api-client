@@ -1,0 +1,124 @@
+# Generation input for `cosmo assets search`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: PostV1OrgOrgNameAssetsSearch
+command:
+  path:
+    - cosmo
+    - assets
+    - search
+  file: assets.go
+  var: assetsSearchCommand
+  short: Search assets of an organization across all spaces
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: query
+    name: context
+    goName: Context
+    cli: context
+    var: contextValue
+    type: '*PostV1OrgOrgNameAssetsSearchParamsContext'
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: limit
+    goName: Limit
+    cli: limit
+    var: limit
+    type: '*float32'
+    description: Page size
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: page
+    goName: Page
+    cli: page
+    var: page
+    type: '*float32'
+    description: Page index
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: recursive
+    goName: Recursive
+    cli: recursive
+    var: recursive
+    type: '*struct{union json.RawMessage}'
+    description: Recursive flag. If true the search will be recursive.
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: spaceName
+    goName: SpaceName
+    cli: spaceName
+    var: spaceName
+    type: '*string'
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: namespace
+    goName: Namespace
+    cli: namespace
+    var: namespace
+    type: '*struct{union json.RawMessage}'
+    description: Use * to fetch from all namespaces. Can only be used if spaceName is also defined.
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: parentId
+    goName: ParentId
+    cli: parentId
+    var: parentId
+    type: '*openapi_types.UUID'
+    unset: omit
+    resolve:
+      - flag
+  - source: query
+    name: shareId
+    goName: ShareId
+    cli: shareId
+    var: shareId
+    type: '*openapi_types.UUID'
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON200

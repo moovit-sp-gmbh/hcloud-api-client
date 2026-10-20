@@ -1,0 +1,36 @@
+# Generation input for `idp user settings pats create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PostV1UserSettingsPats
+command:
+  path:
+    - idp
+    - user
+    - settings
+    - pats
+    - create
+  file: user-settings-pats.go
+  var: userSettingsPatsCreateCommand
+  short: Add a new pat for request user
+  long: 'Required scopes: HCLOUD_FULL'
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: raw
+  flag: body
+response:
+  render: body
+  field: JSON201

@@ -1,0 +1,79 @@
+# Generation input for `cosmo spaces create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: cosmoClient
+operation: PostV1OrgOrgNameSpaces
+command:
+  path:
+    - cosmo
+    - spaces
+    - create
+  file: spaces.go
+  var: spacesCreateCommand
+  short: Create a space
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: query
+    name: noAvatar
+    goName: NoAvatar
+    cli: noAvatar
+    var: noAvatar
+    type: '*bool'
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: string
+      description: Name for the space
+      resolve:
+        - flag
+        - prompt
+      prompt: name
+    - field: StorageId
+      name: storageId
+      cli: storageId
+      var: storageId
+      type: '*string'
+      description: ID of the storage to be used for the space. If not provided, the default storage will be used.
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+        - context
+        - prompt
+      context: StorageID
+response:
+  render: body
+  field: JSON201

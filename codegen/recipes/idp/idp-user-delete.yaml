@@ -1,0 +1,32 @@
+# Generation input for `idp user delete`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: DeleteV1User
+command:
+  path:
+    - idp
+    - user
+    - delete
+  file: user.go
+  var: userDeleteCommand
+  short: Delete the current request user
+  long: 'Required scopes: IDP_USER_DELETE'
+args:
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body

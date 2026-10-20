@@ -1,0 +1,93 @@
+# Generation input for `high5 spaces execute stream id package`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: GetV1OrgOrgNameSpacesSpaceNameExecuteStreamIdStreamIdPackageSecret
+command:
+  path:
+    - high5
+    - spaces
+    - execute
+    - stream
+    - id
+    - package
+  file: spaces-execute-stream-id.go
+  var: spacesExecuteStreamIdPackageCommand
+  short: Request the execution package by streamId and a secret
+  long: Returns the complete execution package needed by the agent to run a stream, including the stream build, payload, wave engine version and catalog data; the optional 'hash' query parameter allows the agent to skip re-downloading an unchanged design build
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: streamId
+    goName: streamId
+    cli: streamId
+    var: streamId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: streamId
+  - source: path
+    name: secret
+    goName: secret
+    cli: secret
+    var: secret
+    type: string
+    description: Secret that got generated on execution package creation at one of the POST execute endpoints (it should contain between 3 and 1024 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: secret
+  - source: query
+    name: hash
+    goName: Hash
+    cli: hash
+    var: hash
+    type: '*string'
+    description: SHA-256 hash of the client's cached design, used to determine if a fresh download is required
+    unset: omit
+    resolve:
+      - flag
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body
+  field: JSON200

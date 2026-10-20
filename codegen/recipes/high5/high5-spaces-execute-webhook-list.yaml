@@ -1,0 +1,66 @@
+# Generation input for `high5 spaces execute webhook list`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: GetV1OrgOrgNameSpacesSpaceNameExecuteWebhookWebhookToken
+command:
+  path:
+    - high5
+    - spaces
+    - execute
+    - webhook
+    - list
+  file: spaces-execute-webhook.go
+  var: spacesExecuteWebhookListCommand
+  short: Validate webhook url and set headers
+  long: Validate webhook url and set headers. This path is equivalent to the 'url' property of Webhook
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: webhookToken
+    goName: webhookToken
+    cli: webhookToken
+    var: webhookToken
+    type: string
+    description: Last path segment of the webhook URL (128 char long hex string)
+    resolve:
+      - flag
+      - prompt
+    prompt: webhookToken
+  - source: query
+    name: challenge
+    goName: Challenge
+    cli: challenge
+    var: challenge
+    type: '*string'
+    description: Some third party services require to validate the target URL of a webhook first. To do so, they sent an initial GET request with a query-string called 'challenge' (only alphanumeric characters, underscores and hyphens are allowed; it should contain between 1 and 128 characters)
+    unset: omit
+    resolve:
+      - flag
+body:
+  mode: none
+response:
+  render: body

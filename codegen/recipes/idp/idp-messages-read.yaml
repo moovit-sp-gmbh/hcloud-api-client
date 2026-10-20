@@ -1,0 +1,53 @@
+# Generation input for `idp messages read`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1MessagesMessageIdRead
+command:
+  path:
+    - idp
+    - messages
+    - read
+  file: messages.go
+  var: messagesReadCommand
+  short: Set the status of the received message as read or unread
+args:
+  - source: path
+    name: messageId
+    goName: messageId
+    cli: messageId
+    var: messageId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: messageId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: Read
+      name: read
+      cli: read
+      var: read
+      type: bool
+      description: Indicates whether the message has been read
+      resolve:
+        - flag
+        - prompt
+      prompt: read
+response:
+  render: body
+  field: JSON200

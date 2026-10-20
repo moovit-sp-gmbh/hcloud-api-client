@@ -1,0 +1,65 @@
+# Generation input for `high5 cron resolve`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PostV1CronResolve
+command:
+  path:
+    - high5
+    - cron
+    - resolve
+  file: cron.go
+  var: cronResolveCommand
+  short: Resolve a Quartz cron expression along with a timezone to get the next execution(s)
+  long: Resolves a Quartz cron expression against a given timezone and returns the UTC timestamps (in milliseconds) of the next n upcoming executions without requiring an existing cronjob
+args:
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: typed
+  fields:
+    - field: Amount
+      name: amount
+      cli: amount
+      var: amount
+      type: '*int'
+      description: Amount of returned execution-dates
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+    - field: Expression
+      name: expression
+      cli: expression
+      var: expression
+      type: string
+      description: Quartz cron expression
+      resolve:
+        - flag
+        - prompt
+      prompt: expression
+    - field: Timezone
+      name: timezone
+      cli: timezone
+      var: timezone
+      type: string
+      description: Timezone of the Quartz expression in IANA format, e.g. Europe/Berlin
+      resolve:
+        - flag
+        - prompt
+      prompt: timezone
+response:
+  render: body
+  field: JSON200

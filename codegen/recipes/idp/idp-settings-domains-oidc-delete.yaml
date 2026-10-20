@@ -1,0 +1,58 @@
+# Generation input for `idp settings domains oidc delete`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: DeleteV1OrgOrgNameSettingsDomainsDomainNameOidc
+command:
+  path:
+    - idp
+    - settings
+    - domains
+    - oidc
+    - delete
+  file: settings-domains-oidc.go
+  var: settingsDomainsOidcDeleteCommand
+  short: Deletes a OIDC IdP
+  long: 'Required organization role: ADMIN'
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: domainName
+    goName: domainName
+    cli: domainName
+    var: domainName
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: domainName
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: none
+response:
+  render: body

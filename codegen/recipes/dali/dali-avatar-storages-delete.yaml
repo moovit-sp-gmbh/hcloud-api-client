@@ -1,0 +1,58 @@
+# Generation input for `dali avatar storages delete`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: daliClient
+operation: DeleteV1AvatarOrgOrgNameStoragesStorageName
+command:
+  path:
+    - dali
+    - avatar
+    - storages
+    - delete
+  file: avatar-storages.go
+  var: avatarStoragesDeleteCommand
+  short: Delete avatar for the storage
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: storageName
+    goName: storageName
+    cli: storageName
+    var: storageName
+    type: string
+    description: Name of the storage (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: storageName
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: none
+response:
+  render: body

@@ -1,0 +1,73 @@
+# Generation input for `idp members execution-target`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: idpClient
+operation: PatchV1OrgOrgNameMembersUserIdExecutionTarget
+command:
+  path:
+    - idp
+    - members
+    - execution-target
+  file: members.go
+  var: membersExecutionTargetCommand
+  short: Set whether or not this user should be considered an execution target
+  long: |-
+    A member can set its execution target to true or false.
+    A manager of an organization can set the execution target of any other member to false, but not to true.
+    Only the member itself (when userId is the same as the ID of the request user) can set to true
+    Required role: MEMBER
+    Required scopes: IDP_ORGANIZATION_WRITE
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: userId
+    goName: userId
+    cli: userId
+    var: userId
+    type: string
+    resolve:
+      - flag
+      - prompt
+    prompt: userId
+  - source: header
+    name: authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: editor
+body:
+  mode: typed
+  fields:
+    - field: ExecutionTarget
+      name: executionTarget
+      cli: executionTarget
+      var: executionTarget
+      type: bool
+      description: Boolean flag that determines if this user can be an execution target for this organization.
+      resolve:
+        - flag
+        - prompt
+      prompt: executionTarget
+response:
+  render: body
+  field: JSON200

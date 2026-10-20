@@ -1,0 +1,92 @@
+# Generation input for `high5 spaces events streams create`.
+# Edit and re-run `codegen regen` to regenerate the command.
+client: high5Client
+operation: PostV1OrgOrgNameSpacesSpaceNameEventsEventNameStreams
+command:
+  path:
+    - high5
+    - spaces
+    - events
+    - streams
+    - create
+  file: spaces-events-streams.go
+  var: spacesEventsStreamsCreateCommand
+  short: Add a new stream for an event or duplicate an existing stream (if streamId is provided)
+args:
+  - source: path
+    name: orgName
+    goName: orgName
+    cli: orgName
+    var: orgName
+    type: string
+    description: Name of the organization (only alphanumeric characters, hyphens and dots are allowed; it should contain between 3 and 64 characters)
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: OrgName
+    persist: true
+    prompt: orgName
+  - source: path
+    name: spaceName
+    goName: spaceName
+    cli: spaceName
+    var: spaceName
+    type: string
+    description: Name of the space (only alphanumeric characters, hyphens and dots are allowed; it should contain between 1 and 32 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: spaceName
+  - source: path
+    name: eventName
+    goName: eventName
+    cli: eventName
+    var: eventName
+    type: string
+    description: Name of the event (only alphanumeric characters, underscores, hyphens and dots are allowed; it should contain between 1 and 128 characters)
+    resolve:
+      - flag
+      - prompt
+    prompt: eventName
+  - source: header
+    name: authorization
+    goName: Authorization
+    cli: token
+    var: jwt
+    type: string
+    description: authorization token
+    resolve:
+      - flag
+      - context
+      - prompt
+    context: Jwt
+    persist: true
+    prompt: authorization token
+    via: params
+body:
+  mode: typed
+  fields:
+    - field: Name
+      name: name
+      cli: name
+      var: name
+      type: string
+      description: Name of the stream, dots and spaces are allowed only inside a name (only alphanumeric characters, underscores, hyphens, dots and spaces are allowed; it should contain between 1 and 128 characters)
+      resolve:
+        - flag
+        - prompt
+      prompt: name
+    - field: StreamId
+      name: streamId
+      cli: streamId
+      var: streamId
+      type: '*string'
+      description: ID of the stream which will be duplicated
+      optional: true
+      unset: omit
+      resolve:
+        - flag
+response:
+  render: body
+  field: JSON201
